@@ -1,0 +1,288 @@
+[gd_scene load_steps=9 format=3 uid="uid://p6rcqo7jdo2r"]
+
+[ext_resource type="Script" path="res://scripts/menus/menu_disclaimer.gd" id="1_dqqjv"]
+[ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="1_yf63x"]
+
+[sub_resource type="Animation" id="Animation_ps85c"]
+resource_name = "Flash"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer_VBox/Press_Label:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oshcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer_VBox/Press_Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c7oi"]
+_data = {
+"Flash": SubResource("Animation_ps85c"),
+"RESET": SubResource("Animation_oshcs")
+}
+
+[sub_resource type="Animation" id="Animation_anktq"]
+resource_name = "FadeIn"
+length = 4.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_VBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_VBox2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.75, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Disclaimer_MC/Disclaimer_VBox/GameIcon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Press_Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.25, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3s5um"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_VBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Header_VBox2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Disclaimer_MC/Disclaimer_VBox/GameIcon:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Disclaimer_MC/Disclaimer_VBox/Press_Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qj48"]
+_data = {
+"FadeIn": SubResource("Animation_anktq"),
+"RESET": SubResource("Animation_3s5um")
+}
+
+[node name="MenuDisclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dqqjv")
+
+[node name="Disclaimer_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Disclaimer_VBox" type="VBoxContainer" parent="Disclaimer_MC"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Header_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "CONTENT WARNING"
+horizontal_alignment = 1
+
+[node name="Header_VBox" type="VBoxContainer" parent="Disclaimer_MC/Disclaimer_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Paragraph1_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GAME NAME may have themes and gameplay"
+horizontal_alignment = 1
+
+[node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = " that may be triggering. Please review the following"
+horizontal_alignment = 1
+
+[node name="Paragraph3_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "content warnings below before continuing:"
+horizontal_alignment = 1
+
+[node name="Header_VBox2" type="VBoxContainer" parent="Disclaimer_MC/Disclaimer_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Paragraph1_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "1) Death an or dying."
+horizontal_alignment = 1
+
+[node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "2) Insert warning here,"
+horizontal_alignment = 1
+
+[node name="Paragraph3_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "3) Insert warning here,"
+horizontal_alignment = 1
+
+[node name="Paragraph4_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "4) Insert warning here,"
+horizontal_alignment = 1
+
+[node name="Paragraph5_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "5) Insert warning here."
+horizontal_alignment = 1
+
+[node name="GameIcon" type="TextureRect" parent="Disclaimer_MC/Disclaimer_VBox"]
+layout_mode = 2
+texture = ExtResource("1_yf63x")
+stretch_mode = 3
+
+[node name="Press_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Press ANY BUTTON to CONTINUE"
+horizontal_alignment = 1
+
+[node name="Text_AnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Disclaimer_MC")
+libraries = {
+"": SubResource("AnimationLibrary_2c7oi")
+}
+autoplay = "Flash"
+
+[node name="Fade_AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3qj48")
+}
+autoplay = "FadeIn"
+
+[connection signal="animation_finished" from="Fade_AnimPlayer" to="." method="_on_fade_anim_player_animation_finished"]

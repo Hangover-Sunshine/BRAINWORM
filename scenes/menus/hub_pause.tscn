@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvws2phcvy2lr"]
+
+[ext_resource type="Script" path="res://scripts/menus/hub_pause.gd" id="1_11pth"]
+[ext_resource type="PackedScene" uid="uid://bi14mcu1ni7nu" path="res://scenes/menus/menu_pause.tscn" id="1_lmxmo"]
+[ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="3_e0kcy"]
+
+[sub_resource type="Animation" id="Animation_0ubep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPause:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuSettings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6op5r"]
+resource_name = "ToPause"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPause:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuSettings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_10r0r"]
+resource_name = "ToSettings"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuPause:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuSettings:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0e1jm"]
+_data = {
+"RESET": SubResource("Animation_0ubep"),
+"ToPause": SubResource("Animation_6op5r"),
+"ToSettings": SubResource("Animation_10r0r")
+}
+
+[node name="HubPause" type="Node2D"]
+script = ExtResource("1_11pth")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="MenuPause" parent="." instance=ExtResource("1_lmxmo")]
+
+[node name="MenuSettings" parent="." instance=ExtResource("3_e0kcy")]
+visible = false
+
+[node name="HubPause_AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0e1jm")
+}

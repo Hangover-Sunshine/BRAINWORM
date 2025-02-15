@@ -1,0 +1,165 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdx15nqmqr1cu"]
+
+[ext_resource type="Script" path="res://scripts/menus/menu_pregame.gd" id="1_3jfox"]
+
+[node name="MenuPregame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jfox")
+
+[node name="Pregame_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Pregame_VBox" type="VBoxContainer" parent="Pregame_MC"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Header_VBox" type="VBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -60
+
+[node name="Header1_Label" type="Label" parent="Pregame_MC/Pregame_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "LEVELS"
+horizontal_alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Tutorial_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "TUTORIAL"
+
+[node name="1to5_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="1_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/1to5_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="2_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/1to5_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "2"
+
+[node name="3_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/1to5_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "3"
+
+[node name="4_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/1to5_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "4"
+
+[node name="5_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/1to5_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "5"
+
+[node name="6to10_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="6_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/6to10_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "6"
+
+[node name="7_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/6to10_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "7"
+
+[node name="8_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/6to10_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "8"
+
+[node name="9_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/6to10_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "9"
+
+[node name="10_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/6to10_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="11to15_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="11_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/11to15_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "11"
+
+[node name="12_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/11to15_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "12"
+
+[node name="13_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/11to15_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "13"
+
+[node name="14_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/11to15_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "14"
+
+[node name="15_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/11to15_HBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "15"
+
+[node name="Back_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Back_Button" to="." method="_on_back_button_pressed"]

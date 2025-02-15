@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://craw6cydplqpm"]
+
+[ext_resource type="Script" path="res://scripts/menus/menu_main.gd" id="1_yoc7x"]
+
+[node name="MenuMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yoc7x")
+
+[node name="Main_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Header_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -60
+
+[node name="Header1_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "GAME JAM"
+horizontal_alignment = 1
+
+[node name="Header2_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "GAME TITLE"
+horizontal_alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Settings_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+
+[node name="Exit_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "EXIT"
+
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_exit_button_pressed"]

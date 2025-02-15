@@ -1,0 +1,183 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqxt4qvvqx5lj"]
+
+[ext_resource type="Script" path="res://scripts/menus/menu_settings.gd" id="1_1ptlj"]
+[ext_resource type="Texture2D" uid="uid://c3rkgo18l3esc" path="res://assets/particle/Checkbox_Full.png" id="1_qe0ko"]
+[ext_resource type="Texture2D" uid="uid://b6o6d4lvr77ql" path="res://assets/particle/Checkbox_Empty.png" id="2_62cxx"]
+
+[node name="MenuSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ptlj")
+
+[node name="Settings_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="Settings_VBox" type="VBoxContainer" parent="Settings_MC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Tab_Vbox" type="VBoxContainer" parent="Settings_MC/Settings_VBox"]
+layout_mode = 2
+
+[node name="Header1_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Settings_Tab_Hbox" type="VBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="General_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Display_VBox" type="VBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Display_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GENERAL"
+horizontal_alignment = 1
+
+[node name="Full_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Full_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Full_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Fullscreen Mode"
+
+[node name="Full_Check" type="CheckBox" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Full_HBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_icons/checked = ExtResource("1_qe0ko")
+theme_override_icons/unchecked = ExtResource("2_62cxx")
+
+[node name="Rez_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Rez_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Rez_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Resolution"
+
+[node name="Rez_Drop" type="OptionButton" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Rez_HBox"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "1080p"
+popup/item_0/id = 0
+popup/item_1/text = "720p"
+popup/item_1/id = 1
+popup/item_2/text = "480p"
+popup/item_2/id = 2
+
+[node name="Audio_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Audio_VBox" type="VBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Audio_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="Overall_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Overall_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Overall_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Overall"
+
+[node name="Overall_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Overall_HBox"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Overall_Percent" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Overall_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100%"
+
+[node name="SFX_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="SFX_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Effects"
+
+[node name="SFX_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="SFX_Percent" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100%"
+
+[node name="Music_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Music_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="Music_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+
+[node name="Music_Percent" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100%"
+
+[node name="Tab_HBox" type="HBoxContainer" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Back_Button" type="Button" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Tab_HBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = " Back "
+
+[connection signal="pressed" from="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Tab_HBox/Back_Button" to="." method="_on_back_button_pressed"]

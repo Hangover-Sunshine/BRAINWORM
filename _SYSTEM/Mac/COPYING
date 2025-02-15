@@ -1,0 +1,3569 @@
+Software Licensing Summary
+==========================
+
+314 distinct software components
+1 lack a known software license
+0 have unknown license expressions
+11 distinct SPDX licenses
+0 components in the public domain
+9 have copyleft licenses
+
+Count   OSI   FSF free   Copyleft   SPDX License
+    1   [x]     [ ]        [ ]      BSD Zero Clause License
+  228   [x]     [x]        [ ]      Apache License 2.0
+    2   [x]     [x]        [ ]      BSD 2-Clause "Simplified" License
+    4   [x]     [x]        [ ]      BSD 3-Clause "New" or "Revised" License
+    1   [x]     [x]        [ ]      Boost Software License 1.0
+    2   [ ]     [ ]        [ ]      Blue Oak Model License 1.0.0
+    8   [x]     [x]        [ ]      ISC License
+  266   [x]     [x]        [ ]      MIT License
+    9   [x]     [x]        [x]      Mozilla Public License 2.0
+    7   [x]     [x]        [ ]      The Unlicense
+    8   [x]     [x]        [ ]      zlib License
+
+Noteworthy Licensing Info
+=========================
+
+* Rust crate apple-bundles has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate apple-codesign has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate apple-flat-package has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate apple-xar has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate cpio-archive has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate cryptographic-message-syntax has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate option-ext has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate ring lacks a known license
+* Rust crate webpki-roots has copyleft licenses exclusively (Mozilla Public License 2.0)
+* Rust crate x509-certificate has copyleft licenses exclusively (Mozilla Public License 2.0)
+
+Software Components
+===================
+
+Rust crate adler
+----------------
+
+Authors: Jonas Schievink <jonasschievink@gmail.com>
+Source location: https://github.com/jonas-schievink/adler.git
+Licensed according to SPDX expression: 0BSD OR MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ahash
+----------------
+
+Authors: Tom Kaitchuck <Tom.Kaitchuck@gmail.com>
+Source location: https://github.com/tkaitchuck/ahash
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aho-corasick
+-----------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/aho-corasick
+Source location: https://github.com/BurntSushi/aho-corasick
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anstream
+-------------------
+
+Homepage: https://github.com/rust-cli/anstyle
+Source location: https://github.com/rust-cli/anstyle.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anstyle
+------------------
+
+Homepage: https://github.com/rust-cli/anstyle
+Source location: https://github.com/rust-cli/anstyle.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anstyle-parse
+------------------------
+
+Homepage: https://github.com/rust-cli/anstyle
+Source location: https://github.com/rust-cli/anstyle.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anstyle-query
+------------------------
+
+Source location: https://github.com/rust-cli/anstyle
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anstyle-wincon
+-------------------------
+
+Homepage: https://github.com/rust-cli/anstyle
+Source location: https://github.com/rust-cli/anstyle.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate anyhow
+-----------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/anyhow
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate app-store-connect
+----------------------------
+
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate apple-bundles
+------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate apple-codesign
+-------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate apple-flat-package
+-----------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate apple-xar
+--------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate arrayvec
+-------------------
+
+Authors: bluss
+Source location: https://github.com/bluss/arrayvec
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate asn1-rs
+------------------
+
+Authors: Pierre Chifflier <chifflier@wzdftpd.net>
+Homepage: https://github.com/rusticata/asn1-rs
+Source location: https://github.com/rusticata/asn1-rs.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate asn1-rs-derive
+-------------------------
+
+Authors: Pierre Chifflier <chifflier@wzdftpd.net>
+Homepage: https://github.com/rusticata/asn1-rs
+Source location: https://github.com/rusticata/asn1-rs.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate asn1-rs-impl
+-----------------------
+
+Authors: Pierre Chifflier <chifflier@wzdftpd.net>
+Homepage: https://github.com/rusticata/asn1-rs
+Source location: https://github.com/rusticata/asn1-rs.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-config
+---------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-credential-types
+-------------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-http
+-------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-runtime
+----------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-sdk-s3
+---------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/awslabs/aws-sdk-rust
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-sdk-sso
+----------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/awslabs/aws-sdk-rust
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-sdk-ssooidc
+--------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/awslabs/aws-sdk-rust
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-sdk-sts
+----------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/awslabs/aws-sdk-rust
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-sigv4
+--------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, David Barsky <me@davidbarsky.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-async
+---------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, John DiSanti <jdisanti@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-checksums
+-------------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Zelda Hessler <zhessler@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-eventstream
+---------------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, John DiSanti <jdisanti@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-http
+--------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-json
+--------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, John DiSanti <jdisanti@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-query
+---------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, John DiSanti <jdisanti@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-runtime
+-----------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Zelda Hessler <zhessler@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-runtime-api
+---------------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Zelda Hessler <zhessler@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-types
+---------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-smithy-xml
+-------------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate aws-types
+--------------------
+
+Authors: AWS Rust SDK Team <aws-sdk-rust@amazon.com>, Russell Cohen <rcoh@amazon.com>
+Source location: https://github.com/smithy-lang/smithy-rs
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate backtrace
+--------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-lang/backtrace-rs
+Source location: https://github.com/rust-lang/backtrace-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate base16ct
+-------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/base16ct
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate base64
+-----------------
+
+Authors: Alice Maz <alice@alicemaz.com>, Marshall Pierce <marshall@mpierce.org>
+Source location: https://github.com/marshallpierce/rust-base64
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate base64-simd
+----------------------
+
+Source location: https://github.com/Nugine/simd
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate base64ct
+-------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/base64ct
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bcder
+----------------
+
+Authors: NLnet Labs <rust-team@nlnetlabs.nl>
+Source location: https://github.com/nlnetlabs/bcder
+Licensed according to SPDX expression: BSD-3-Clause
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bitflags
+-------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/bitflags/bitflags
+Source location: https://github.com/bitflags/bitflags
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bitvec
+-----------------
+
+Homepage: https://bitvecto-rs.github.io/bitvec
+Source location: https://github.com/bitvecto-rs/bitvec
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bitvec-nom2
+----------------------
+
+Authors: contact@geoffroycouprie.com
+Source location: https://github.com/rust-bakery/nom-bitvec
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate block-buffer
+-----------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/utils
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate block-padding
+------------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/utils
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate byteorder
+--------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/byteorder
+Source location: https://github.com/BurntSushi/byteorder
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bytes
+----------------
+
+Authors: Carl Lerche <me@carllerche.com>, Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/tokio-rs/bytes
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bytes-utils
+----------------------
+
+Authors: Michal 'vorner' Vaner <vorner@vorner.cz>
+Source location: https://github.com/vorner/bytes-utils
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bytesize
+-------------------
+
+Authors: Hyunsik Choi <hyunsik.choi@gmail.com>
+Homepage: https://github.com/hyunsik/bytesize/
+Source location: https://github.com/hyunsik/bytesize/
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bzip2
+----------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/bzip2-rs
+Source location: https://github.com/alexcrichton/bzip2-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate bzip2-sys
+--------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/bzip2-rs
+Source location: https://github.com/alexcrichton/bzip2-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cbc
+--------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/block-modes
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cfg-if
+-----------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/cfg-if
+Source location: https://github.com/alexcrichton/cfg-if
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate chrono
+-----------------
+
+Homepage: https://github.com/chronotope/chrono
+Source location: https://github.com/chronotope/chrono
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cipher
+-----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/traits
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate clap
+---------------
+
+Source location: https://github.com/clap-rs/clap
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate clap_builder
+-----------------------
+
+Source location: https://github.com/clap-rs/clap
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate clap_derive
+----------------------
+
+Source location: https://github.com/clap-rs/clap/tree/master/clap_derive
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate clap_lex
+-------------------
+
+Source location: https://github.com/clap-rs/clap/tree/master/clap_lex
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate colorchoice
+----------------------
+
+Source location: https://github.com/rust-cli/anstyle
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate console
+------------------
+
+Authors: Armin Ronacher <armin.ronacher@active-4.com>
+Homepage: https://github.com/console-rs/console
+Source location: https://github.com/console-rs/console
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate const-oid
+--------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/const-oid
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate const_panic
+----------------------
+
+Authors: rodrimati1992 <rodrimatt1985@gmail.com>
+Source location: https://github.com/rodrimati1992/const_panic/
+Licensed according to SPDX expression: Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cookie-factory
+-------------------------
+
+Authors: Geoffroy Couprie <geo.couprie@gmail.com>, Pierre Chifflier <chifflier@wzdftpd.net>
+Source location: https://github.com/rust-bakery/cookie-factory
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cpio-archive
+-----------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/apple-platform-rs
+Source location: https://github.com/indygreg/apple-platform-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cpufeatures
+----------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/utils
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crc32c
+-----------------
+
+Authors: Zack Owens
+Homepage: https://github.com/zowens/crc32c
+Source location: https://github.com/zowens/crc32c
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crc32fast
+--------------------
+
+Authors: Sam Rijs <srijs@airpost.net>, Alex Crichton <alex@alexcrichton.com>
+Source location: https://github.com/srijs/rust-crc32fast
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crossbeam-deque
+--------------------------
+
+Homepage: https://github.com/crossbeam-rs/crossbeam/tree/master/crossbeam-deque
+Source location: https://github.com/crossbeam-rs/crossbeam
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crossbeam-epoch
+--------------------------
+
+Homepage: https://github.com/crossbeam-rs/crossbeam/tree/master/crossbeam-epoch
+Source location: https://github.com/crossbeam-rs/crossbeam
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crossbeam-utils
+--------------------------
+
+Homepage: https://github.com/crossbeam-rs/crossbeam/tree/master/crossbeam-utils
+Source location: https://github.com/crossbeam-rs/crossbeam
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crypto-bigint
+------------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/crypto-bigint
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate crypto-common
+------------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/traits
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate cryptographic-message-syntax
+---------------------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/cryptography-rs
+Source location: https://github.com/indygreg/cryptography-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate curve25519-dalek
+---------------------------
+
+Authors: Isis Lovecruft <isis@patternsinthevoid.net>, Henry de Valence <hdevalence@hdevalence.ca>
+Homepage: https://github.com/dalek-cryptography/curve25519-dalek
+Source location: https://github.com/dalek-cryptography/curve25519-dalek/tree/main/curve25519-dalek
+Licensed according to SPDX expression: BSD-3-Clause
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate curve25519-dalek-derive
+----------------------------------
+
+Homepage: https://github.com/dalek-cryptography/curve25519-dalek
+Source location: https://github.com/dalek-cryptography/curve25519-dalek
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate data-encoding
+------------------------
+
+Authors: Julien Cretin <git@ia0.eu>
+Source location: https://github.com/ia0/data-encoding
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate der
+--------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/der
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate der_derive
+---------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/der/derive
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate deranged
+-------------------
+
+Authors: Jacob Pratt <jacob@jhpratt.dev>
+Source location: https://github.com/jhpratt/deranged
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate derive_more
+----------------------
+
+Authors: Jelte Fennema <github-tech@jeltef.nl>
+Source location: https://github.com/JelteF/derive_more
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate des
+--------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/block-ciphers
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate dialoguer
+--------------------
+
+Authors: Armin Ronacher <armin.ronacher@active-4.com>, Pavan Kumar Sunkara <pavan.sss1991@gmail.com>
+Homepage: https://github.com/console-rs/dialoguer
+Source location: https://github.com/console-rs/dialoguer
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate difference
+---------------------
+
+Authors: Johann Hofmann <mail@johann-hofmann.com>
+Source location: https://github.com/johannhof/difference.rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate digest
+-----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/traits
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate dirs
+---------------
+
+Authors: Simon Ochsenreither <simon@ochsenreither.de>
+Source location: https://github.com/soc/dirs-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate dirs-sys
+-------------------
+
+Authors: Simon Ochsenreither <simon@ochsenreither.de>
+Source location: https://github.com/dirs-dev/dirs-sys-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate displaydoc
+---------------------
+
+Authors: Jane Lusby <jlusby@yaah.dev>
+Homepage: https://github.com/yaahc/displaydoc
+Source location: https://github.com/yaahc/displaydoc
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate doc-comment
+----------------------
+
+Authors: Guillaume Gomez <guillaume1.gomez@gmail.com>
+Source location: https://github.com/GuillaumeGomez/doc-comment
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ecdsa
+----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/signatures/tree/master/ecdsa
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate either
+-----------------
+
+Authors: bluss
+Source location: https://github.com/bluss/either
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate elliptic-curve
+-------------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/traits/tree/master/elliptic-curve
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate encode_unicode
+-------------------------
+
+Authors: Torbjørn Birch Moltu <t.b.moltu@lyse.net>
+Source location: https://github.com/tormol/encode_unicode
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate encoding_rs
+----------------------
+
+Authors: Henri Sivonen <hsivonen@hsivonen.fi>
+Homepage: https://docs.rs/encoding_rs/
+Source location: https://github.com/hsivonen/encoding_rs
+Licensed according to SPDX expression: (Apache-2.0 OR MIT) AND BSD-3-Clause
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate env_logger
+---------------------
+
+Source location: https://github.com/rust-cli/env_logger
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate equivalent
+---------------------
+
+Source location: https://github.com/cuviper/equivalent
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate fastrand
+-------------------
+
+Authors: Stjepan Glavina <stjepang@gmail.com>
+Source location: https://github.com/smol-rs/fastrand
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ff
+-------------
+
+Authors: Sean Bowe <ewillbefull@gmail.com>, Jack Grigg <thestr4d@gmail.com>
+Homepage: https://github.com/zkcrypto/ff
+Source location: https://github.com/zkcrypto/ff
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate figment
+------------------
+
+Authors: Sergio Benitez <sb@sergio.bz>
+Source location: https://github.com/SergioBenitez/Figment
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate filetime
+-------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/filetime
+Source location: https://github.com/alexcrichton/filetime
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate flagset
+------------------
+
+Authors: Nathaniel McCallum <nathaniel@profian.com>
+Homepage: https://github.com/enarx/flagset
+Source location: https://github.com/enarx/flagset
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate flate2
+-----------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>, Josh Triplett <josh@joshtriplett.org>
+Homepage: https://github.com/rust-lang/flate2-rs
+Source location: https://github.com/rust-lang/flate2-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate fnv
+--------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Source location: https://github.com/servo/rust-fnv
+Licensed according to SPDX expression: Apache-2.0  OR  MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate form_urlencoded
+--------------------------
+
+Authors: The rust-url developers
+Source location: https://github.com/servo/rust-url
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate funty
+----------------
+
+Authors: myrrlyn <self@myrrlyn.dev>
+Source location: https://github.com/myrrlyn/funty
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-channel
+--------------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-core
+-----------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-io
+---------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-sink
+-----------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-task
+-----------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate futures-util
+-----------------------
+
+Homepage: https://rust-lang.github.io/futures-rs
+Source location: https://github.com/rust-lang/futures-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate generic-array
+------------------------
+
+Authors: Bartłomiej Kamiński <fizyk20@gmail.com>, Aaron Trent <novacrazy@gmail.com>
+Source location: https://github.com/fizyk20/generic-array.git
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate getrandom
+--------------------
+
+Authors: The Rand Project Developers
+Source location: https://github.com/rust-random/getrandom
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate glob
+---------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-lang/glob
+Source location: https://github.com/rust-lang/glob
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate goblin
+-----------------
+
+Authors: m4b <m4b.github.io@gmail.com>, seu <seu@panopticon.re>, Will Glynn <will@willglynn.com>, Philip Craig <philipjcraig@gmail.com>, Lzu Tao <taolzu@gmail.com>
+Source location: https://github.com/m4b/goblin
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate group
+----------------
+
+Authors: Sean Bowe <ewillbefull@gmail.com>, Jack Grigg <jack@z.cash>
+Homepage: https://github.com/zkcrypto/group
+Source location: https://github.com/zkcrypto/group
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate h2
+-------------
+
+Authors: Carl Lerche <me@carllerche.com>, Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/hyperium/h2
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hashbrown
+--------------------
+
+Authors: Amanieu d'Antras <amanieu@gmail.com>
+Source location: https://github.com/rust-lang/hashbrown
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hex
+--------------
+
+Authors: KokaKiwi <kokakiwi@kokakiwi.net>
+Source location: https://github.com/KokaKiwi/rust-hex
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hkdf
+---------------
+
+Authors: RustCrypto Developers
+Homepage: https://github.com/RustCrypto/KDFs/
+Source location: https://github.com/RustCrypto/KDFs/
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hmac
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/MACs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate http
+---------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>, Carl Lerche <me@carllerche.com>, Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/hyperium/http
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate http-body
+--------------------
+
+Authors: Carl Lerche <me@carllerche.com>, Lucio Franco <luciofranco14@gmail.com>, Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/hyperium/http-body
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate httparse
+-------------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/seanmonstar/httparse
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate httpdate
+-------------------
+
+Authors: Pyfisch <pyfisch@posteo.org>
+Source location: https://github.com/pyfisch/httpdate
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate humantime
+--------------------
+
+Authors: Paul Colomiets <paul@colomiets.name>
+Homepage: https://github.com/tailhook/humantime
+Source location: https://github.com/tailhook/humantime
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hyper
+----------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Homepage: https://hyper.rs
+Source location: https://github.com/hyperium/hyper
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate hyper-rustls
+-----------------------
+
+Homepage: https://github.com/rustls/hyper-rustls
+Source location: https://github.com/rustls/hyper-rustls
+Licensed according to SPDX expression: Apache-2.0 OR ISC OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate idna
+---------------
+
+Authors: The rust-url developers
+Source location: https://github.com/servo/rust-url/
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate indexmap
+-------------------
+
+Source location: https://github.com/bluss/indexmap
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate inlinable_string
+---------------------------
+
+Authors: Nick Fitzgerald <fitzgen@gmail.com>
+Source location: https://github.com/fitzgen/inlinable_string
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate inout
+----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/utils
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ipnet
+----------------
+
+Authors: Kris Price <kris@krisprice.nz>
+Source location: https://github.com/krisprice/ipnet
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate is-terminal
+----------------------
+
+Authors: softprops <d.tangren@gmail.com>, Dan Gohman <dev@sunfishcode.online>
+Source location: https://github.com/sunfishcode/is-terminal
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate is_executable
+------------------------
+
+Authors: Nick Fitzgerald <fitzgen@gmail.com>
+Source location: https://github.com/fitzgen/is_executable
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate itoa
+---------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/itoa
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate jsonwebtoken
+-----------------------
+
+Authors: Vincent Prouillet <hello@vincentprouillet.com>
+Homepage: https://github.com/Keats/jsonwebtoken
+Source location: https://github.com/Keats/jsonwebtoken
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate jzon
+---------------
+
+Authors: Sandro-Alessio Gierens <sandro@gierens.de>, Maciej Hirsz <hello@maciej.codes>
+Source location: https://github.com/rustadopt/jzon-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate konst
+----------------
+
+Authors: rodrimati1992 <rodrimatt1985@gmail.com>
+Source location: https://github.com/rodrimati1992/konst/
+Licensed according to SPDX expression: Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate konst_kernel
+-----------------------
+
+Authors: rodrimati1992 <rodrimatt1985@gmail.com>
+Source location: https://github.com/rodrimati1992/konst/
+Licensed according to SPDX expression: Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate lazy_static
+----------------------
+
+Authors: Marvin Löbel <loebel.marvin@gmail.com>
+Source location: https://github.com/rust-lang-nursery/lazy-static.rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate libc
+---------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-lang/libc
+Source location: https://github.com/rust-lang/libc
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate libm
+---------------
+
+Authors: Jorge Aparicio <jorge@japaric.io>
+Source location: https://github.com/rust-lang/libm
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate line-wrap
+--------------------
+
+Authors: Marshall Pierce <marshall@mpierce.org>
+Source location: https://bitbucket.org/marshallpierce/line-wrap-rs/src
+Licensed according to SPDX expression: Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate log
+--------------
+
+Authors: The Rust Project Developers
+Source location: https://github.com/rust-lang/log
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate lzma-sys
+-------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/xz2-rs
+Source location: https://github.com/alexcrichton/xz2-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate md-5
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/hashes
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate memchr
+-----------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>, bluss
+Homepage: https://github.com/BurntSushi/memchr
+Source location: https://github.com/BurntSushi/memchr
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate mime
+---------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/hyperium/mime
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate minicbor
+-------------------
+
+Authors: Toralf Wittner <tw@dtex.org>
+Source location: https://gitlab.com/twittner/minicbor
+Licensed according to SPDX expression: BlueOak-1.0.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate minicbor-derive
+--------------------------
+
+Authors: Toralf Wittner <tw@dtex.org>
+Source location: https://gitlab.com/twittner/minicbor
+Licensed according to SPDX expression: BlueOak-1.0.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate minimal-lexical
+--------------------------
+
+Authors: Alex Huszagh <ahuszagh@gmail.com>
+Source location: https://github.com/Alexhuszagh/minimal-lexical
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate miniz_oxide
+----------------------
+
+Authors: Frommi <daniil.liferenko@gmail.com>, oyvindln <oyvindln@users.noreply.github.com>
+Homepage: https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
+Source location: https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
+Licensed according to SPDX expression: MIT OR Zlib OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate mio
+--------------
+
+Authors: Carl Lerche <me@carllerche.com>, Thomas de Zeeuw <thomasdezeeuw@gmail.com>, Tokio Contributors <team@tokio.rs>
+Homepage: https://github.com/tokio-rs/mio
+Source location: https://github.com/tokio-rs/mio
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate nom
+--------------
+
+Authors: contact@geoffroycouprie.com
+Source location: https://github.com/Geal/nom
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num-bigint
+---------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-num/num-bigint
+Source location: https://github.com/rust-num/num-bigint
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num-bigint-dig
+-------------------------
+
+Authors: dignifiedquire <dignifiedquire@gmail.com>, The Rust Project Developers
+Homepage: https://github.com/dignifiedquire/num-bigint
+Source location: https://github.com/dignifiedquire/num-bigint
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num-integer
+----------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-num/num-integer
+Source location: https://github.com/rust-num/num-integer
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num-iter
+-------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-num/num-iter
+Source location: https://github.com/rust-num/num-iter
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num-traits
+---------------------
+
+Authors: The Rust Project Developers
+Homepage: https://github.com/rust-num/num-traits
+Source location: https://github.com/rust-num/num-traits
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate num_cpus
+-------------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/seanmonstar/num_cpus
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate object
+-----------------
+
+Source location: https://github.com/gimli-rs/object
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate oid-registry
+-----------------------
+
+Authors: Pierre Chifflier <chifflier@wzdftpd.net>
+Homepage: https://github.com/rusticata/oid-registry
+Source location: https://github.com/rusticata/oid-registry.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate once_cell
+--------------------
+
+Authors: Aleksey Kladov <aleksey.kladov@gmail.com>
+Source location: https://github.com/matklad/once_cell
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate option-ext
+---------------------
+
+Authors: Simon Ochsenreither <simon@ochsenreither.de>
+Homepage: https://github.com/soc/option-ext
+Source location: https://github.com/soc/option-ext.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate outref
+-----------------
+
+Source location: https://github.com/Nugine/outref
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate p12
+--------------
+
+Authors: hjiayz <hjiayz@gmail.com>, Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Homepage: https://github.com/hjiayz/p12
+Source location: https://github.com/hjiayz/p12
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate p256
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/elliptic-curves/tree/master/p256
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate p384
+---------------
+
+Authors: RustCrypto Developers, Frank Denis <github@pureftpd.org>
+Source location: https://github.com/RustCrypto/elliptic-curves/tree/master/p384
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pbkdf2
+-----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/password-hashes/tree/master/pbkdf2
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pcsc
+---------------
+
+Authors: Ran Benita <ran@unusedvar.com>
+Homepage: https://github.com/bluetech/pcsc-rust
+Source location: https://github.com/bluetech/pcsc-rust
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pcsc-sys
+-------------------
+
+Authors: Ran Benita <ran@unusedvar.com>
+Homepage: https://github.com/bluetech/pcsc-rust
+Source location: https://github.com/bluetech/pcsc-rust
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pear
+---------------
+
+Authors: Sergio Benitez <sb@sergio.bz>
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pear_codegen
+-----------------------
+
+Authors: Sergio Benitez <sb@sergio.bz>
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pem
+--------------
+
+Authors: Jonathan Creekmore <jonathan@thecreekmores.org>
+Homepage: https://github.com/jcreekmore/pem-rs.git
+Source location: https://github.com/jcreekmore/pem-rs.git
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pem-rfc7468
+----------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/pem-rfc7468
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate percent-encoding
+---------------------------
+
+Authors: The rust-url developers
+Source location: https://github.com/servo/rust-url/
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pin-project-lite
+---------------------------
+
+Source location: https://github.com/taiki-e/pin-project-lite
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pin-utils
+--------------------
+
+Authors: Josef Brandl <mail@josefbrandl.de>
+Source location: https://github.com/rust-lang-nursery/pin-utils
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pkcs1
+----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/pkcs1
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate pkcs8
+----------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/pkcs8
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate plain
+----------------
+
+Authors: jzr
+Homepage: https://github.com/randomites/plain
+Source location: https://github.com/randomites/plain
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate plist
+----------------
+
+Authors: Ed Barnard <eabarnard@gmail.com>
+Source location: https://github.com/ebarnard/rust-plist/
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate powerfmt
+-------------------
+
+Authors: Jacob Pratt <jacob@jhpratt.dev>
+Source location: https://github.com/jhpratt/powerfmt
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ppv-lite86
+---------------------
+
+Authors: The CryptoCorrosion Contributors
+Source location: https://github.com/cryptocorrosion/cryptocorrosion
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate primeorder
+---------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/elliptic-curves/tree/master/primeorder
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate quick-xml
+--------------------
+
+Source location: https://github.com/tafia/quick-xml
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate radium
+-----------------
+
+Authors: Nika Layzell <nika@thelayzells.com>, myrrlyn <self@myrrlyn.dev>
+Homepage: https://github.com/bitvecto-rs/radium
+Source location: https://github.com/bitvecto-rs/radium
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rand
+---------------
+
+Authors: The Rand Project Developers, The Rust Project Developers
+Homepage: https://rust-random.github.io/book
+Source location: https://github.com/rust-random/rand
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rand_chacha
+----------------------
+
+Authors: The Rand Project Developers, The Rust Project Developers, The CryptoCorrosion Contributors
+Homepage: https://rust-random.github.io/book
+Source location: https://github.com/rust-random/rand
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rand_core
+--------------------
+
+Authors: The Rand Project Developers, The Rust Project Developers
+Homepage: https://rust-random.github.io/book
+Source location: https://github.com/rust-random/rand
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rasn
+---------------
+
+Source location: https://github.com/XAMPPRocky/rasn.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rasn-derive
+----------------------
+
+Source location: https://github.com/XAMPPRocky/rasn.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rayon
+----------------
+
+Authors: Niko Matsakis <niko@alum.mit.edu>, Josh Stone <cuviper@gmail.com>
+Source location: https://github.com/rayon-rs/rayon
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rayon-core
+---------------------
+
+Authors: Niko Matsakis <niko@alum.mit.edu>, Josh Stone <cuviper@gmail.com>
+Source location: https://github.com/rayon-rs/rayon
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rc2
+--------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/block-ciphers
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate regex
+----------------
+
+Authors: The Rust Project Developers, Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/rust-lang/regex
+Source location: https://github.com/rust-lang/regex
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate regex-automata
+-------------------------
+
+Authors: The Rust Project Developers, Andrew Gallant <jamslam@gmail.com>
+Source location: https://github.com/rust-lang/regex/tree/master/regex-automata
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate regex-lite
+---------------------
+
+Authors: The Rust Project Developers, Andrew Gallant <jamslam@gmail.com>
+Source location: https://github.com/rust-lang/regex/tree/master/regex-lite
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate regex-syntax
+-----------------------
+
+Authors: The Rust Project Developers, Andrew Gallant <jamslam@gmail.com>
+Source location: https://github.com/rust-lang/regex/tree/master/regex-syntax
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate reqwest
+------------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/seanmonstar/reqwest
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rfc6979
+------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/signatures/tree/master/rfc6979
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ring
+---------------
+
+Authors: Brian Smith <brian@briansmith.org>
+Source location: https://github.com/briansmith/ring
+No licensing information available.
+
+
+Rust crate rsa
+--------------
+
+Authors: RustCrypto Developers, dignifiedquire <dignifiedquire@gmail.com>
+Source location: https://github.com/RustCrypto/RSA
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustc-demangle
+-------------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/rustc-demangle
+Source location: https://github.com/alexcrichton/rustc-demangle
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rusticata-macros
+---------------------------
+
+Authors: Pierre Chifflier <chifflier@wzdftpd.net>
+Homepage: https://github.com/rusticata/rusticata-macros
+Source location: https://github.com/rusticata/rusticata-macros.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustls
+-----------------
+
+Homepage: https://github.com/rustls/rustls
+Source location: https://github.com/rustls/rustls
+Licensed according to SPDX expression: Apache-2.0 OR ISC OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustls-native-certs
+------------------------------
+
+Homepage: https://github.com/rustls/rustls-native-certs
+Source location: https://github.com/rustls/rustls-native-certs
+Licensed according to SPDX expression: Apache-2.0 OR ISC OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustls-pemfile
+-------------------------
+
+Homepage: https://github.com/rustls/pemfile
+Source location: https://github.com/rustls/pemfile
+Licensed according to SPDX expression: Apache-2.0 OR ISC OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustls-pki-types
+---------------------------
+
+Homepage: https://github.com/rustls/pki-types
+Source location: https://github.com/rustls/pki-types
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate rustls-webpki
+------------------------
+
+Source location: https://github.com/rustls/webpki
+Licensed according to SPDX expression: ISC
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ruzstd
+-----------------
+
+Authors: Moritz Borcherding <moritz.borcherding@web.de>
+Homepage: https://github.com/KillingSpark/zstd-rs
+Source location: https://github.com/KillingSpark/zstd-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate ryu
+--------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/ryu
+Licensed according to SPDX expression: Apache-2.0 OR BSL-1.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate safemem
+------------------
+
+Authors: Austin Bonander <austin.bonander@gmail.com>
+Source location: https://github.com/abonander/safemem
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate same-file
+--------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/same-file
+Source location: https://github.com/BurntSushi/same-file
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate schannel
+-------------------
+
+Authors: Steven Fackler <sfackler@gmail.com>, Steffen Butzer <steffen.butzer@outlook.com>
+Source location: https://github.com/steffengy/schannel-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate scroll
+-----------------
+
+Authors: m4b <m4b.github.io@gmail.com>, Ted Mielczarek <ted@mielczarek.org>
+Source location: https://github.com/m4b/scroll
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate scroll_derive
+------------------------
+
+Authors: m4b <m4b.github.io@gmail.com>, Ted Mielczarek <ted@mielczarek.org>, Systemcluster <me@systemcluster.me>
+Source location: https://github.com/m4b/scroll
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate sct
+--------------
+
+Authors: Joseph Birr-Pixton <jpixton@gmail.com>
+Homepage: https://github.com/rustls/sct.rs
+Source location: https://github.com/rustls/sct.rs
+Licensed according to SPDX expression: Apache-2.0 OR ISC OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate sec1
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/sec1
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate secrecy
+------------------
+
+Authors: Tony Arcieri <tony@iqlusion.io>
+Homepage: https://github.com/iqlusioninc/crates/
+Source location: https://github.com/iqlusioninc/crates/tree/main/secrecy
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate semver
+-----------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/semver
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde
+----------------
+
+Authors: Erick Tryzelaar <erick.tryzelaar@gmail.com>, David Tolnay <dtolnay@gmail.com>
+Homepage: https://serde.rs
+Source location: https://github.com/serde-rs/serde
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde-xml-rs
+-----------------------
+
+Authors: Ingvar Stepanyan <me@rreverser.com>
+Source location: https://github.com/RReverser/serde-xml-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde_derive
+-----------------------
+
+Authors: Erick Tryzelaar <erick.tryzelaar@gmail.com>, David Tolnay <dtolnay@gmail.com>
+Homepage: https://serde.rs
+Source location: https://github.com/serde-rs/serde
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde_json
+---------------------
+
+Authors: Erick Tryzelaar <erick.tryzelaar@gmail.com>, David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/serde-rs/json
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde_spanned
+------------------------
+
+Homepage: https://github.com/toml-rs/toml
+Source location: https://github.com/toml-rs/toml
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde_urlencoded
+---------------------------
+
+Authors: Anthony Ramine <n.oxyde@gmail.com>
+Source location: https://github.com/nox/serde_urlencoded
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate serde_yaml
+---------------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/serde-yaml
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate sha1
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/hashes
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate sha2
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/hashes
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate shell-words
+----------------------
+
+Authors: Tomasz Miąsko <tomasz.miasko@gmail.com>
+Source location: https://github.com/tmiasko/shell-words
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate signature
+--------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/traits/tree/master/signature
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate simple-file-manifest
+-------------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/simple-file-manifest-rs
+Source location: https://github.com/indygreg/simple-file-manifest-rs.git
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate simple_asn1
+----------------------
+
+Authors: Adam Wick <awick@uhsure.com>
+Source location: https://github.com/acw/simple_asn1
+Licensed according to SPDX expression: ISC
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate slab
+---------------
+
+Authors: Carl Lerche <me@carllerche.com>
+Source location: https://github.com/tokio-rs/slab
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate smallvec
+-------------------
+
+Authors: The Servo Project Developers
+Source location: https://github.com/servo/rust-smallvec
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate snafu
+----------------
+
+Authors: Jake Goulding <jake.goulding@gmail.com>
+Source location: https://github.com/shepmaster/snafu
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate snafu-derive
+-----------------------
+
+Authors: Jake Goulding <jake.goulding@gmail.com>
+Source location: https://github.com/shepmaster/snafu
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate socket2
+------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>, Thomas de Zeeuw <thomasdezeeuw@gmail.com>
+Homepage: https://github.com/rust-lang/socket2
+Source location: https://github.com/rust-lang/socket2
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate spake2
+-----------------
+
+Authors: Brian Warner <warner@lothar.com>
+Homepage: https://github.com/RustCrypto/PAKEs
+Source location: https://github.com/RustCrypto/PAKEs/tree/master/spake2
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate spin
+---------------
+
+Authors: Mathijs van de Nes <git@mathijs.vd-nes.nl>, John Ericson <git@JohnEricson.me>, Joshua Barretto <joshua.s.barretto@gmail.com>
+Source location: https://github.com/mvdnes/spin-rs.git
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate spki
+---------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/spki
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate static_assertions
+----------------------------
+
+Authors: Nikolai Vazquez
+Homepage: https://github.com/nvzqz/static-assertions-rs
+Source location: https://github.com/nvzqz/static-assertions-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate strsim
+-----------------
+
+Authors: Danny Guo <danny@dannyguo.com>
+Homepage: https://github.com/dguo/strsim-rs
+Source location: https://github.com/dguo/strsim-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate subtle
+-----------------
+
+Authors: Isis Lovecruft <isis@patternsinthevoid.net>, Henry de Valence <hdevalence@hdevalence.ca>
+Homepage: https://dalek.rs/
+Source location: https://github.com/dalek-cryptography/subtle
+Licensed according to SPDX expression: BSD-3-Clause
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tap
+--------------
+
+Authors: Elliott Linder <elliott.darfink@gmail.com>, myrrlyn <self@myrrlyn.dev>
+Homepage: https://github.com/myrrlyn/tap
+Source location: https://github.com/myrrlyn/tap
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tempfile
+-------------------
+
+Authors: Steven Allen <steven@stebalien.com>, The Rust Project Developers, Ashley Mannix <ashleymannix@live.com.au>, Jason White <me@jasonwhite.io>
+Homepage: https://stebalien.com/projects/tempfile-rs/
+Source location: https://github.com/Stebalien/tempfile
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate termcolor
+--------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/termcolor
+Source location: https://github.com/BurntSushi/termcolor
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate thiserror
+--------------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/thiserror
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate thiserror-impl
+-------------------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/thiserror
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate time
+---------------
+
+Authors: Jacob Pratt <open-source@jhpratt.dev>, Time contributors
+Homepage: https://time-rs.github.io
+Source location: https://github.com/time-rs/time
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate time-core
+--------------------
+
+Authors: Jacob Pratt <open-source@jhpratt.dev>, Time contributors
+Source location: https://github.com/time-rs/time
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate time-macros
+----------------------
+
+Authors: Jacob Pratt <open-source@jhpratt.dev>, Time contributors
+Source location: https://github.com/time-rs/time
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tinyvec
+------------------
+
+Authors: Lokathor <zefria@gmail.com>
+Source location: https://github.com/Lokathor/tinyvec
+Licensed according to SPDX expression: Zlib OR Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tinyvec_macros
+-------------------------
+
+Authors: Soveu <marx.tomasz@gmail.com>
+Source location: https://github.com/Soveu/tinyvec_macros
+Licensed according to SPDX expression: MIT OR Apache-2.0 OR Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tokio
+----------------
+
+Authors: Tokio Contributors <team@tokio.rs>
+Homepage: https://tokio.rs
+Source location: https://github.com/tokio-rs/tokio
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tokio-rustls
+-----------------------
+
+Homepage: https://github.com/rustls/tokio-rustls
+Source location: https://github.com/rustls/tokio-rustls
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tokio-util
+---------------------
+
+Authors: Tokio Contributors <team@tokio.rs>
+Homepage: https://tokio.rs
+Source location: https://github.com/tokio-rs/tokio
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate toml
+---------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/toml-rs/toml
+Source location: https://github.com/toml-rs/toml
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate toml_datetime
+------------------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/toml-rs/toml
+Source location: https://github.com/toml-rs/toml
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate toml_edit
+--------------------
+
+Authors: Andronik Ordian <write@reusable.software>, Ed Page <eopage@gmail.com>
+Source location: https://github.com/toml-rs/toml
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tower-service
+------------------------
+
+Authors: Tower Maintainers <team@tower-rs.com>
+Homepage: https://github.com/tower-rs/tower
+Source location: https://github.com/tower-rs/tower
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tracing
+------------------
+
+Authors: Eliza Weisman <eliza@buoyant.io>, Tokio Contributors <team@tokio.rs>
+Homepage: https://tokio.rs
+Source location: https://github.com/tokio-rs/tracing
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tracing-attributes
+-----------------------------
+
+Authors: Tokio Contributors <team@tokio.rs>, Eliza Weisman <eliza@buoyant.io>, David Barsky <dbarsky@amazon.com>
+Homepage: https://tokio.rs
+Source location: https://github.com/tokio-rs/tracing
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tracing-core
+-----------------------
+
+Authors: Tokio Contributors <team@tokio.rs>
+Homepage: https://tokio.rs
+Source location: https://github.com/tokio-rs/tracing
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate try-lock
+-------------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Homepage: https://github.com/seanmonstar/try-lock
+Source location: https://github.com/seanmonstar/try-lock
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate tungstenite
+----------------------
+
+Authors: Alexey Galakhov, Daniel Abramov
+Homepage: https://github.com/snapview/tungstenite-rs
+Source location: https://github.com/snapview/tungstenite-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate twox-hash
+--------------------
+
+Authors: Jake Goulding <jake.goulding@gmail.com>
+Source location: https://github.com/shepmaster/twox-hash
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate typenum
+------------------
+
+Authors: Paho Lurie-Gregg <paho@paholg.com>, Andre Bogus <bogusandre@gmail.com>
+Source location: https://github.com/paholg/typenum
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate typewit
+------------------
+
+Authors: rodrimati1992 <rodrimatt1985@gmail.com>
+Source location: https://github.com/rodrimati1992/typewit/
+Licensed according to SPDX expression: Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate typewit_proc_macros
+------------------------------
+
+Authors: rodrimati1992 <rodrimatt1985@gmail.com>
+Source location: https://github.com/rodrimati1992/typewit/
+Licensed according to SPDX expression: Zlib
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate uncased
+------------------
+
+Authors: Sergio Benitez <sb@sergio.bz>
+Source location: https://github.com/SergioBenitez/uncased
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate unicode-bidi
+-----------------------
+
+Authors: The Servo Project Developers
+Source location: https://github.com/servo/unicode-bidi
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate unicode-normalization
+--------------------------------
+
+Authors: kwantam <kwantam@gmail.com>, Manish Goregaokar <manishsmail@gmail.com>
+Homepage: https://github.com/unicode-rs/unicode-normalization
+Source location: https://github.com/unicode-rs/unicode-normalization
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate unicode-width
+------------------------
+
+Authors: kwantam <kwantam@gmail.com>, Manish Goregaokar <manishsmail@gmail.com>
+Homepage: https://github.com/unicode-rs/unicode-width
+Source location: https://github.com/unicode-rs/unicode-width
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate unsafe-libyaml
+-------------------------
+
+Authors: David Tolnay <dtolnay@gmail.com>
+Source location: https://github.com/dtolnay/unsafe-libyaml
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate untrusted
+--------------------
+
+Authors: Brian Smith <brian@briansmith.org>
+Source location: https://github.com/briansmith/untrusted
+Licensed according to SPDX expression: ISC
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate url
+--------------
+
+Authors: The rust-url developers
+Source location: https://github.com/servo/rust-url
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate urlencoding
+----------------------
+
+Authors: Kornel <kornel@geekhood.net>, Bertram Truong <b@bertramtruong.com>
+Homepage: https://lib.rs/urlencoding
+Source location: https://github.com/kornelski/rust_urlencoding
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate utf-8
+----------------
+
+Authors: Simon Sapin <simon.sapin@exyr.org>
+Source location: https://github.com/SimonSapin/rust-utf8
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate utf8parse
+--------------------
+
+Authors: Joe Wilm <joe@jwilm.com>, Christian Duerr <contact@christianduerr.com>
+Source location: https://github.com/alacritty/vte
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate uuid
+---------------
+
+Authors: Ashley Mannix<ashleymannix@live.com.au>, Christopher Armstrong, Dylan DPC<dylan.dpc@gmail.com>, Hunar Roop Kahlon<hunar.roop@gmail.com>
+Homepage: https://github.com/uuid-rs/uuid
+Source location: https://github.com/uuid-rs/uuid
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate vsimd
+----------------
+
+Source location: https://github.com/Nugine/simd
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate walkdir
+------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/walkdir
+Source location: https://github.com/BurntSushi/walkdir
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate want
+---------------
+
+Authors: Sean McArthur <sean@seanmonstar.com>
+Source location: https://github.com/seanmonstar/want
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate webpki-roots
+-----------------------
+
+Homepage: https://github.com/rustls/webpki-roots
+Source location: https://github.com/rustls/webpki-roots
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate widestring
+---------------------
+
+Source location: https://github.com/starkat99/widestring-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate winapi
+-----------------
+
+Authors: Peter Atashian <retep998@gmail.com>
+Source location: https://github.com/retep998/winapi-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate winapi-util
+----------------------
+
+Authors: Andrew Gallant <jamslam@gmail.com>
+Homepage: https://github.com/BurntSushi/winapi-util
+Source location: https://github.com/BurntSushi/winapi-util
+Licensed according to SPDX expression: Unlicense OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate windows-sys
+----------------------
+
+Authors: Microsoft
+Source location: https://github.com/microsoft/windows-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate windows-targets
+--------------------------
+
+Authors: Microsoft
+Source location: https://github.com/microsoft/windows-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate windows_x86_64_msvc
+------------------------------
+
+Authors: Microsoft
+Source location: https://github.com/microsoft/windows-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate winnow
+-----------------
+
+Source location: https://github.com/winnow-rs/winnow
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate winreg
+-----------------
+
+Authors: Igor Shaula <gentoo90@gmail.com>
+Source location: https://github.com/gentoo90/winreg-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate wyz
+--------------
+
+Authors: myrrlyn <self@myrrlyn.dev>
+Homepage: https://myrrlyn.net/crates/wyz
+Source location: https://github.com/myrrlyn/wyz
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate x509
+---------------
+
+Authors: Jack Grigg <thestr4d@gmail.com>
+Source location: https://github.com/str4d/x509.rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate x509-cert
+--------------------
+
+Authors: RustCrypto Developers
+Source location: https://github.com/RustCrypto/formats/tree/master/x509-cert
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate x509-certificate
+---------------------------
+
+Authors: Gregory Szorc <gregory.szorc@gmail.com>
+Homepage: https://github.com/indygreg/cryptography-rs
+Source location: https://github.com/indygreg/cryptography-rs.git
+Licensed according to SPDX expression: MPL-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate xml-rs
+-----------------
+
+Authors: Vladimir Matveev <vmatveev@citrine.cc>
+Homepage: https://lib.rs/crates/xml-rs
+Source location: https://github.com/kornelski/xml-rs
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate xmlparser
+--------------------
+
+Authors: Yevhenii Reizner <razrfalcon@gmail.com>
+Source location: https://github.com/RazrFalcon/xmlparser
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate xz2
+--------------
+
+Authors: Alex Crichton <alex@alexcrichton.com>
+Homepage: https://github.com/alexcrichton/xz2-rs
+Source location: https://github.com/alexcrichton/xz2-rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate yansi
+----------------
+
+Authors: Sergio Benitez <sb@sergio.bz>
+Source location: https://github.com/SergioBenitez/yansi
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate yasna
+----------------
+
+Authors: Masaki Hara <ackie.h.gmai@gmail.com>
+Homepage: https://github.com/qnighy/yasna.rs
+Source location: https://github.com/qnighy/yasna.rs
+Licensed according to SPDX expression: MIT OR Apache-2.0
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate yubikey
+------------------
+
+Authors: Tony Arcieri <tony@iqlusion.io>, Yubico AB
+Source location: https://github.com/iqlusioninc/yubikey.rs
+Licensed according to SPDX expression: BSD-2-Clause
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate zerocopy
+-------------------
+
+Authors: Joshua Liebow-Feeser <joshlf@google.com>
+Source location: https://github.com/google/zerocopy
+Licensed according to SPDX expression: BSD-2-Clause OR Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate zeroize
+------------------
+
+Authors: The RustCrypto Project Developers
+Source location: https://github.com/RustCrypto/utils/tree/master/zeroize
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate zeroize_derive
+-------------------------
+
+Authors: The RustCrypto Project Developers
+Source location: https://github.com/RustCrypto/utils/tree/master/zeroize/derive
+Licensed according to SPDX expression: Apache-2.0 OR MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate zip
+--------------
+
+Authors: Mathijs van de Nes <git@mathijs.vd-nes.nl>, Marli Frost <marli@frost.red>, Ryan Levick <ryan.levick@gmail.com>
+Source location: https://github.com/zip-rs/zip.git
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+Rust crate zip_structs
+----------------------
+
+Authors: Tatsunori Uchino <tats.u@live.jp>
+Source location: https://github.com/tats-u/rust-zip-structs/
+Licensed according to SPDX expression: MIT
+
+The license texts for this component are reproduced elsewhere in this document.
+
+SPDX License Texts
+==================
+
+The following sections contain license texts for all SPDX licenses
+referenced by software components listed above.
+
+0BSD / BSD Zero Clause License
+------------------------------
+
+Copyright (C) YEAR by AUTHOR EMAIL
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+Apache-2.0 / Apache License 2.0
+-------------------------------
+
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+1. Definitions.
+
+"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
+
+"Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+
+"Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.
+
+"You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+
+"Source" form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.
+
+"Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.
+
+"Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).
+
+"Derivative Works" shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.
+
+"Contribution" shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, "submitted" means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as "Not a Contribution."
+
+"Contributor" shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.
+
+2. Grant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.
+
+3. Grant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.
+
+4. Redistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:
+
+     (a) You must give any other recipients of the Work or Derivative Works a copy of this License; and
+
+     (b) You must cause any modified files to carry prominent notices stating that You changed the files; and
+
+     (c) You must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and
+
+     (d) If the Work includes a "NOTICE" text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License.
+
+     You may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.
+
+5. Submission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.
+
+6. Trademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.
+
+7. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.
+
+8. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.
+
+9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
+
+END OF TERMS AND CONDITIONS
+
+APPENDIX: How to apply the Apache License to your work.
+
+To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by brackets "[]" replaced with your own identifying information. (Don't include the brackets!)  The text should be enclosed in the appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
+
+Copyright [yyyy] [name of copyright owner]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+BSD-2-Clause / BSD 2-Clause "Simplified" License
+------------------------------------------------
+
+Copyright (c) <year> <owner> 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+BSD-3-Clause / BSD 3-Clause "New" or "Revised" License
+------------------------------------------------------
+
+Copyright (c) <year> <owner>. 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+BSL-1.0 / Boost Software License 1.0
+------------------------------------
+
+Boost Software License - Version 1.0 - August 17th, 2003
+
+Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative works are solely in the form of machine-executable object code generated by a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+BlueOak-1.0.0 / Blue Oak Model License 1.0.0
+--------------------------------------------
+
+# Blue Oak Model License
+
+Version 1.0.0
+
+## Purpose
+
+This license gives everyone as much permission to work with
+this software as possible, while protecting contributors
+from liability.
+
+## Acceptance
+
+In order to receive this license, you must agree to its
+rules.  The rules of this license are both obligations
+under that agreement and conditions to your license.
+You must not do anything with this software that triggers
+a rule that you cannot or will not follow.
+
+## Copyright
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe that contributor's
+copyright in it.
+
+## Notices
+
+You must ensure that everyone who gets a copy of
+any part of this software from you, with or without
+changes, also gets the text of this license or a link to
+<https://blueoakcouncil.org/license/1.0.0>.
+
+## Excuse
+
+If anyone notifies you in writing that you have not
+complied with [Notices](#notices), you can keep your
+license by taking all practical steps to comply within 30
+days after the notice.  If you do not do so, your license
+ends immediately.
+
+## Patent
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe any patent claims
+they can license or become able to license.
+
+## Reliability
+
+No contributor can revoke this license.
+
+## No Liability
+
+***As far as the law allows, this software comes as is,
+without any warranty or condition, and no contributor
+will be liable to anyone for any damages related to this
+software or this license, under any kind of legal claim.***
+
+
+ISC / ISC License
+-----------------
+
+ISC License:
+
+Copyright (c) 2004-2010 by Internet Systems Consortium, Inc. ("ISC")
+Copyright (c) 1995-2003 by Internet Software Consortium
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+MIT / MIT License
+-----------------
+
+MIT License
+
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+MPL-2.0 / Mozilla Public License 2.0
+------------------------------------
+
+Mozilla Public License Version 2.0
+==================================
+
+1. Definitions
+--------------
+
+1.1. "Contributor"
+    means each individual or legal entity that creates, contributes to
+    the creation of, or owns Covered Software.
+
+1.2. "Contributor Version"
+    means the combination of the Contributions of others (if any) used
+    by a Contributor and that particular Contributor's Contribution.
+
+1.3. "Contribution"
+    means Covered Software of a particular Contributor.
+
+1.4. "Covered Software"
+    means Source Code Form to which the initial Contributor has attached
+    the notice in Exhibit A, the Executable Form of such Source Code
+    Form, and Modifications of such Source Code Form, in each case
+    including portions thereof.
+
+1.5. "Incompatible With Secondary Licenses"
+    means
+
+    (a) that the initial Contributor has attached the notice described
+        in Exhibit B to the Covered Software; or
+
+    (b) that the Covered Software was made available under the terms of
+        version 1.1 or earlier of the License, but not also under the
+        terms of a Secondary License.
+
+1.6. "Executable Form"
+    means any form of the work other than Source Code Form.
+
+1.7. "Larger Work"
+    means a work that combines Covered Software with other material, in 
+    a separate file or files, that is not Covered Software.
+
+1.8. "License"
+    means this document.
+
+1.9. "Licensable"
+    means having the right to grant, to the maximum extent possible,
+    whether at the time of the initial grant or subsequently, any and
+    all of the rights conveyed by this License.
+
+1.10. "Modifications"
+    means any of the following:
+
+    (a) any file in Source Code Form that results from an addition to,
+        deletion from, or modification of the contents of Covered
+        Software; or
+
+    (b) any new file in Source Code Form that contains any Covered
+        Software.
+
+1.11. "Patent Claims" of a Contributor
+    means any patent claim(s), including without limitation, method,
+    process, and apparatus claims, in any patent Licensable by such
+    Contributor that would be infringed, but for the grant of the
+    License, by the making, using, selling, offering for sale, having
+    made, import, or transfer of either its Contributions or its
+    Contributor Version.
+
+1.12. "Secondary License"
+    means either the GNU General Public License, Version 2.0, the GNU
+    Lesser General Public License, Version 2.1, the GNU Affero General
+    Public License, Version 3.0, or any later versions of those
+    licenses.
+
+1.13. "Source Code Form"
+    means the form of the work preferred for making modifications.
+
+1.14. "You" (or "Your")
+    means an individual or a legal entity exercising rights under this
+    License. For legal entities, "You" includes any entity that
+    controls, is controlled by, or is under common control with You. For
+    purposes of this definition, "control" means (a) the power, direct
+    or indirect, to cause the direction or management of such entity,
+    whether by contract or otherwise, or (b) ownership of more than
+    fifty percent (50%) of the outstanding shares or beneficial
+    ownership of such entity.
+
+2. License Grants and Conditions
+--------------------------------
+
+2.1. Grants
+
+Each Contributor hereby grants You a world-wide, royalty-free,
+non-exclusive license:
+
+(a) under intellectual property rights (other than patent or trademark)
+    Licensable by such Contributor to use, reproduce, make available,
+    modify, display, perform, distribute, and otherwise exploit its
+    Contributions, either on an unmodified basis, with Modifications, or
+    as part of a Larger Work; and
+
+(b) under Patent Claims of such Contributor to make, use, sell, offer
+    for sale, have made, import, and otherwise transfer either its
+    Contributions or its Contributor Version.
+
+2.2. Effective Date
+
+The licenses granted in Section 2.1 with respect to any Contribution
+become effective for each Contribution on the date the Contributor first
+distributes such Contribution.
+
+2.3. Limitations on Grant Scope
+
+The licenses granted in this Section 2 are the only rights granted under
+this License. No additional rights or licenses will be implied from the
+distribution or licensing of Covered Software under this License.
+Notwithstanding Section 2.1(b) above, no patent license is granted by a
+Contributor:
+
+(a) for any code that a Contributor has removed from Covered Software;
+    or
+
+(b) for infringements caused by: (i) Your and any other third party's
+    modifications of Covered Software, or (ii) the combination of its
+    Contributions with other software (except as part of its Contributor
+    Version); or
+
+(c) under Patent Claims infringed by Covered Software in the absence of
+    its Contributions.
+
+This License does not grant any rights in the trademarks, service marks,
+or logos of any Contributor (except as may be necessary to comply with
+the notice requirements in Section 3.4).
+
+2.4. Subsequent Licenses
+
+No Contributor makes additional grants as a result of Your choice to
+distribute the Covered Software under a subsequent version of this
+License (see Section 10.2) or under the terms of a Secondary License (if
+permitted under the terms of Section 3.3).
+
+2.5. Representation
+
+Each Contributor represents that the Contributor believes its
+Contributions are its original creation(s) or it has sufficient rights
+to grant the rights to its Contributions conveyed by this License.
+
+2.6. Fair Use
+
+This License is not intended to limit any rights You have under
+applicable copyright doctrines of fair use, fair dealing, or other
+equivalents.
+
+2.7. Conditions
+
+Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
+in Section 2.1.
+
+3. Responsibilities
+-------------------
+
+3.1. Distribution of Source Form
+
+All distribution of Covered Software in Source Code Form, including any
+Modifications that You create or to which You contribute, must be under
+the terms of this License. You must inform recipients that the Source
+Code Form of the Covered Software is governed by the terms of this
+License, and how they can obtain a copy of this License. You may not
+attempt to alter or restrict the recipients' rights in the Source Code
+Form.
+
+3.2. Distribution of Executable Form
+
+If You distribute Covered Software in Executable Form then:
+
+(a) such Covered Software must also be made available in Source Code
+    Form, as described in Section 3.1, and You must inform recipients of
+    the Executable Form how they can obtain a copy of such Source Code
+    Form by reasonable means in a timely manner, at a charge no more
+    than the cost of distribution to the recipient; and
+
+(b) You may distribute such Executable Form under the terms of this
+    License, or sublicense it under different terms, provided that the
+    license for the Executable Form does not attempt to limit or alter
+    the recipients' rights in the Source Code Form under this License.
+
+3.3. Distribution of a Larger Work
+
+You may create and distribute a Larger Work under terms of Your choice,
+provided that You also comply with the requirements of this License for
+the Covered Software. If the Larger Work is a combination of Covered
+Software with a work governed by one or more Secondary Licenses, and the
+Covered Software is not Incompatible With Secondary Licenses, this
+License permits You to additionally distribute such Covered Software
+under the terms of such Secondary License(s), so that the recipient of
+the Larger Work may, at their option, further distribute the Covered
+Software under the terms of either this License or such Secondary
+License(s).
+
+3.4. Notices
+
+You may not remove or alter the substance of any license notices
+(including copyright notices, patent notices, disclaimers of warranty,
+or limitations of liability) contained within the Source Code Form of
+the Covered Software, except that You may alter any license notices to
+the extent required to remedy known factual inaccuracies.
+
+3.5. Application of Additional Terms
+
+You may choose to offer, and to charge a fee for, warranty, support,
+indemnity or liability obligations to one or more recipients of Covered
+Software. However, You may do so only on Your own behalf, and not on
+behalf of any Contributor. You must make it absolutely clear that any
+such warranty, support, indemnity, or liability obligation is offered by
+You alone, and You hereby agree to indemnify every Contributor for any
+liability incurred by such Contributor as a result of warranty, support,
+indemnity or liability terms You offer. You may include additional
+disclaimers of warranty and limitations of liability specific to any
+jurisdiction.
+
+4. Inability to Comply Due to Statute or Regulation
+---------------------------------------------------
+
+If it is impossible for You to comply with any of the terms of this
+License with respect to some or all of the Covered Software due to
+statute, judicial order, or regulation then You must: (a) comply with
+the terms of this License to the maximum extent possible; and (b)
+describe the limitations and the code they affect. Such description must
+be placed in a text file included with all distributions of the Covered
+Software under this License. Except to the extent prohibited by statute
+or regulation, such description must be sufficiently detailed for a
+recipient of ordinary skill to be able to understand it.
+
+5. Termination
+--------------
+
+5.1. The rights granted under this License will terminate automatically
+if You fail to comply with any of its terms. However, if You become
+compliant, then the rights granted under this License from a particular
+Contributor are reinstated (a) provisionally, unless and until such
+Contributor explicitly and finally terminates Your grants, and (b) on an
+ongoing basis, if such Contributor fails to notify You of the
+non-compliance by some reasonable means prior to 60 days after You have
+come back into compliance. Moreover, Your grants from a particular
+Contributor are reinstated on an ongoing basis if such Contributor
+notifies You of the non-compliance by some reasonable means, this is the
+first time You have received notice of non-compliance with this License
+from such Contributor, and You become compliant prior to 30 days after
+Your receipt of the notice.
+
+5.2. If You initiate litigation against any entity by asserting a patent
+infringement claim (excluding declaratory judgment actions,
+counter-claims, and cross-claims) alleging that a Contributor Version
+directly or indirectly infringes any patent, then the rights granted to
+You by any and all Contributors for the Covered Software under Section
+2.1 of this License shall terminate.
+
+5.3. In the event of termination under Sections 5.1 or 5.2 above, all
+end user license agreements (excluding distributors and resellers) which
+have been validly granted by You or Your distributors under this License
+prior to termination shall survive termination.
+
+************************************************************************
+*                                                                      *
+*  6. Disclaimer of Warranty                                           *
+*  -------------------------                                           *
+*                                                                      *
+*  Covered Software is provided under this License on an "as is"       *
+*  basis, without warranty of any kind, either expressed, implied, or  *
+*  statutory, including, without limitation, warranties that the       *
+*  Covered Software is free of defects, merchantable, fit for a        *
+*  particular purpose or non-infringing. The entire risk as to the     *
+*  quality and performance of the Covered Software is with You.        *
+*  Should any Covered Software prove defective in any respect, You     *
+*  (not any Contributor) assume the cost of any necessary servicing,   *
+*  repair, or correction. This disclaimer of warranty constitutes an   *
+*  essential part of this License. No use of any Covered Software is   *
+*  authorized under this License except under this disclaimer.         *
+*                                                                      *
+************************************************************************
+
+************************************************************************
+*                                                                      *
+*  7. Limitation of Liability                                          *
+*  --------------------------                                          *
+*                                                                      *
+*  Under no circumstances and under no legal theory, whether tort      *
+*  (including negligence), contract, or otherwise, shall any           *
+*  Contributor, or anyone who distributes Covered Software as          *
+*  permitted above, be liable to You for any direct, indirect,         *
+*  special, incidental, or consequential damages of any character      *
+*  including, without limitation, damages for lost profits, loss of    *
+*  goodwill, work stoppage, computer failure or malfunction, or any    *
+*  and all other commercial damages or losses, even if such party      *
+*  shall have been informed of the possibility of such damages. This   *
+*  limitation of liability shall not apply to liability for death or   *
+*  personal injury resulting from such party's negligence to the       *
+*  extent applicable law prohibits such limitation. Some               *
+*  jurisdictions do not allow the exclusion or limitation of           *
+*  incidental or consequential damages, so this exclusion and          *
+*  limitation may not apply to You.                                    *
+*                                                                      *
+************************************************************************
+
+8. Litigation
+-------------
+
+Any litigation relating to this License may be brought only in the
+courts of a jurisdiction where the defendant maintains its principal
+place of business and such litigation shall be governed by laws of that
+jurisdiction, without reference to its conflict-of-law provisions.
+Nothing in this Section shall prevent a party's ability to bring
+cross-claims or counter-claims.
+
+9. Miscellaneous
+----------------
+
+This License represents the complete agreement concerning the subject
+matter hereof. If any provision of this License is held to be
+unenforceable, such provision shall be reformed only to the extent
+necessary to make it enforceable. Any law or regulation which provides
+that the language of a contract shall be construed against the drafter
+shall not be used to construe this License against a Contributor.
+
+10. Versions of the License
+---------------------------
+
+10.1. New Versions
+
+Mozilla Foundation is the license steward. Except as provided in Section
+10.3, no one other than the license steward has the right to modify or
+publish new versions of this License. Each version will be given a
+distinguishing version number.
+
+10.2. Effect of New Versions
+
+You may distribute the Covered Software under the terms of the version
+of the License under which You originally received the Covered Software,
+or under the terms of any subsequent version published by the license
+steward.
+
+10.3. Modified Versions
+
+If you create software not governed by this License, and you want to
+create a new license for such software, you may create and use a
+modified version of this License if you rename the license and remove
+any references to the name of the license steward (except to note that
+such modified license differs from this License).
+
+10.4. Distributing Source Code Form that is Incompatible With Secondary
+Licenses
+
+If You choose to distribute Source Code Form that is Incompatible With
+Secondary Licenses under the terms of this version of the License, the
+notice described in Exhibit B of this License must be attached.
+
+Exhibit A - Source Code Form License Notice
+-------------------------------------------
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+If it is not possible or desirable to put the notice in a particular
+file, then You may include the notice in a location (such as a LICENSE
+file in a relevant directory) where a recipient would be likely to look
+for such a notice.
+
+You may add additional accurate notices of copyright ownership.
+
+Exhibit B - "Incompatible With Secondary Licenses" Notice
+---------------------------------------------------------
+
+  This Source Code Form is "Incompatible With Secondary Licenses", as
+  defined by the Mozilla Public License, v. 2.0.
+
+
+Unlicense / The Unlicense
+-------------------------
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
+
+In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org/>
+
+
+Zlib / zlib License
+-------------------
+
+zlib License
+
+This software is provided 'as-is', without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+
+     1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
+
+     2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+
+     3. This notice may not be removed or altered from any source distribution.
+
+

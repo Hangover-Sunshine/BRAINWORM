@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://5mpw8kapddme"]
+
+[ext_resource type="Script" path="res://scripts/system/main_scene.gd" id="1_8uaxr"]
+[ext_resource type="Script" path="res://addons/verho/resources/TransitionBank.gd" id="1_aeq3o"]
+[ext_resource type="Resource" uid="uid://cokyxyvryfnhm" path="res://prefabs/transitions/black_fade.tres" id="2_wd62i"]
+[ext_resource type="Script" path="res://scripts/system/dummy_start.gd" id="4_wtvdh"]
+
+[node name="MainScene" type="Node"]
+script = ExtResource("1_8uaxr")
+
+[node name="TransitionBank" type="Node" parent="."]
+script = ExtResource("1_aeq3o")
+TRANSITIONS = Array[Resource("res://addons/verho/resources/TransitionResource.gd")]([ExtResource("2_wd62i")])
+
+[node name="DummyStart" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_wtvdh")
+
+[node name="ColorRect" type="ColorRect" parent="DummyStart"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

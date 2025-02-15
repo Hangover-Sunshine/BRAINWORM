@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi14mcu1ni7nu"]
+
+[ext_resource type="Script" path="res://scripts/menus/menu_pause.gd" id="1_euawq"]
+
+[node name="MenuPause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_euawq")
+
+[node name="Pause_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Pause_VBox" type="VBoxContainer" parent="Pause_MC"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Header1_Label" type="Label" parent="Pause_MC/Pause_VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="Pause_MC/Pause_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Pause_MC/Pause_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cont_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "RESUME"
+
+[node name="Settings_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+
+[node name="Leave_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "LEAVE"
+
+[connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_cont_button_pressed"]
+[connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]
