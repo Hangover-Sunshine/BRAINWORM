@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://qn8km83ps0fm"]
+
+[ext_resource type="Script" path="res://scripts/game/system/Room.gd" id="1_jc3kk"]
+[ext_resource type="Texture2D" uid="uid://hqxg4h3orok1" path="res://assets/temporary/Environment_Prototype1.png" id="2_luww8"]
+[ext_resource type="Texture2D" uid="uid://dl1yqaj07db8r" path="res://assets/particle/Ability_Bubble.png" id="3_m2kl3"]
+[ext_resource type="PackedScene" uid="uid://by052qngv4pa" path="res://prefabs/door_area.tscn" id="4_r4e6s"]
+
+[node name="RoomC" type="Node2D"]
+script = ExtResource("1_jc3kk")
+
+[node name="Floor" type="Sprite2D" parent="."]
+modulate = Color(0.728719, 0.410526, 0.0455833, 1)
+scale = Vector2(20, 11.5)
+texture = ExtResource("2_luww8")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-195, 0)
+texture = ExtResource("3_m2kl3")
+
+[node name="DoorArea" parent="." instance=ExtResource("4_r4e6s")]
+position = Vector2(870, 290)
+rotation = 3.14159
+LinkedRoom = "res://prefabs/topdown/test/room_a.tscn"
+LinkToDoorID = 1
+DoorDirection = 2
