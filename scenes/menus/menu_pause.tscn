@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi14mcu1ni7nu"]
+[gd_scene load_steps=4 format=3 uid="uid://bi14mcu1ni7nu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pause.gd" id="1_euawq"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_0lh7b"]
+[ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_v37kx"]
 
 [node name="MenuPause" type="Control"]
 layout_mode = 3
@@ -26,10 +28,29 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Header1_Label" type="Label" parent="Pause_MC/Pause_VBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_MC/Pause_VBox"]
 layout_mode = 2
+theme_override_constants/separation = -25
+
+[node name="Header1_Label2" type="Label" parent="Pause_MC/Pause_VBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lh7b")
+theme_override_font_sizes/font_size = 40
+text = "Version 1.0 • HANGOVER SUNSHINE"
+horizontal_alignment = 1
+
+[node name="Header1_Label" type="Label" parent="Pause_MC/Pause_VBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lh7b")
 theme_override_font_sizes/font_size = 150
-text = "PAUSED"
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Header1_Label3" type="Label" parent="Pause_MC/Pause_VBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lh7b")
+theme_override_font_sizes/font_size = 40
+text = "Godot Wildjam 78 & Brackeys Game Jam 2025.1"
 horizontal_alignment = 1
 
 [node name="Button_HBox" type="HBoxContainer" parent="Pause_MC/Pause_VBox"]
@@ -43,18 +64,21 @@ theme_override_constants/separation = 20
 [node name="Cont_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_v37kx")
 theme_override_font_sizes/font_size = 50
 text = "RESUME"
 
 [node name="Settings_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_v37kx")
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 
 [node name="Leave_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_v37kx")
 theme_override_font_sizes/font_size = 50
 text = "LEAVE"
 

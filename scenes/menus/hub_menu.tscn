@@ -1,11 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://d136umhx2ffrh"]
+[gd_scene load_steps=16 format=3 uid="uid://d136umhx2ffrh"]
 
 [ext_resource type="PackedScene" uid="uid://88fivnqio2ad" path="res://scenes/menus/menu_splash.tscn" id="1_5dhbp"]
 [ext_resource type="Script" path="res://scripts/menus/hub_menu.gd" id="1_eqpse"]
 [ext_resource type="PackedScene" uid="uid://p6rcqo7jdo2r" path="res://scenes/menus/menu_disclaimer.tscn" id="2_1n5cx"]
+[ext_resource type="Shader" path="res://assets/shaders/waves.gdshader" id="2_anr5p"]
 [ext_resource type="PackedScene" uid="uid://craw6cydplqpm" path="res://scenes/menus/menu_main.tscn" id="2_urtgt"]
 [ext_resource type="PackedScene" uid="uid://cdx15nqmqr1cu" path="res://scenes/menus/menu_pregame.tscn" id="3_36hlv"]
 [ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="4_dii0o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvjhp"]
+shader = ExtResource("2_anr5p")
+shader_parameter/bottom_color = Color(0.400698, 0.400698, 0.400698, 1)
+shader_parameter/top_color = Color(0.10748, 0.10748, 0.10748, 1)
+shader_parameter/wave_amp = 0.5
+shader_parameter/wave_size = 1.1
+shader_parameter/wave_time_mul = 0.5
+shader_parameter/total_phases = 10
 
 [sub_resource type="Animation" id="Animation_xv0je"]
 length = 0.001
@@ -378,10 +388,10 @@ _data = {
 [node name="HubMenu" type="Node2D"]
 script = ExtResource("1_eqpse")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uvjhp")
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
 
 [node name="MenuDisclaimer" parent="." instance=ExtResource("2_1n5cx")]
 
