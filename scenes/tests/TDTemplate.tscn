@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3klpxnwq73ci"]
+
+[ext_resource type="Script" path="res://scripts/game/topdown/TopdownPlayer.gd" id="1_emc2w"]
+[ext_resource type="Texture2D" uid="uid://btequsvovppnf" path="res://assets/temporary/Character_Smoll.png" id="1_i0vhq"]
+[ext_resource type="Script" path="res://scripts/game/system/RoomController.gd" id="1_j1j3y"]
+[ext_resource type="Script" path="res://scripts/game/system/Room.gd" id="1_tf0jt"]
+[ext_resource type="Texture2D" uid="uid://hqxg4h3orok1" path="res://assets/temporary/Environment_Prototype1.png" id="3_ka6kr"]
+[ext_resource type="Script" path="res://scripts/game/system/Door.gd" id="4_hoqjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snfcq"]
+size = Vector2(95, 288)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbs5h"]
+size = Vector2(87, 81)
+
+[node name="TopdownTemplate" type="Node2D"]
+process_mode = 3
+
+[node name="RoomController" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("1_j1j3y")
+
+[node name="RoomA" type="Node2D" parent="RoomController" node_paths=PackedStringArray("ConnectedRoom")]
+position = Vector2(960, 540)
+script = ExtResource("1_tf0jt")
+ConnectedRoom = NodePath("../RoomB")
+
+[node name="Floor" type="Sprite2D" parent="RoomController/RoomA"]
+modulate = Color(0.728719, 0.410526, 0.0455833, 1)
+scale = Vector2(20, 11.5)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="DoorArea" type="Area2D" parent="RoomController/RoomA"]
+position = Vector2(900, 0)
+scale = Vector2(1, 1)
+collision_layer = 2
+script = ExtResource("4_hoqjp")
+DoorDirection = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RoomController/RoomA/DoorArea"]
+modulate = Color(0.0888717, 0.467928, 1, 1)
+scale = Vector2(1, 3)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomController/RoomA/DoorArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_snfcq")
+debug_color = Color(0, 0.64809, 0.191923, 0.42)
+
+[node name="PlayerStart" type="Marker2D" parent="RoomController/RoomA/DoorArea"]
+position = Vector2(-110, 0)
+gizmo_extents = 60.0
+
+[node name="RoomB" type="Node2D" parent="RoomController" node_paths=PackedStringArray("ConnectedRoom")]
+position = Vector2(2900, 540)
+script = ExtResource("1_tf0jt")
+ConnectedRoom = NodePath("../RoomA")
+
+[node name="Floor" type="Sprite2D" parent="RoomController/RoomB"]
+modulate = Color(0.728719, 0.410526, 0.0455833, 1)
+scale = Vector2(20, 11.5)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="DoorArea" type="Area2D" parent="RoomController/RoomB"]
+position = Vector2(-900, 0)
+scale = Vector2(1, 1)
+collision_layer = 2
+script = ExtResource("4_hoqjp")
+DoorDirection = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RoomController/RoomB/DoorArea"]
+modulate = Color(0.0888717, 0.467928, 1, 1)
+scale = Vector2(1, 3)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomController/RoomB/DoorArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_snfcq")
+debug_color = Color(0, 0.64809, 0.191923, 0.42)
+
+[node name="PlayerStart" type="Marker2D" parent="RoomController/RoomB/DoorArea"]
+position = Vector2(110, 0)
+gizmo_extents = 60.0
+
+[node name="Player" type="CharacterBody2D" parent="."]
+process_mode = 1
+position = Vector2(1601, 528)
+script = ExtResource("1_emc2w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_i0vhq")
+region_enabled = true
+region_rect = Rect2(192, 0, 96, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_nbs5h")
+
+[connection signal="body_entered" from="RoomController/RoomA/DoorArea" to="RoomController/RoomA" method="_on_door_area_body_entered"]
+[connection signal="body_entered" from="RoomController/RoomA/DoorArea" to="RoomController/RoomA/DoorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomController/RoomB/DoorArea" to="RoomController/RoomB" method="_on_door_area_body_entered"]
+[connection signal="body_entered" from="RoomController/RoomB/DoorArea" to="RoomController/RoomB/DoorArea" method="_on_body_entered"]
