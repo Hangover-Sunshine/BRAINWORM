@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://p6rcqo7jdo2r"]
+[gd_scene load_steps=11 format=3 uid="uid://p6rcqo7jdo2r"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_disclaimer.gd" id="1_dqqjv"]
-[ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="1_yf63x"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_ihan8"]
+[ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="3_jgprp"]
+[ext_resource type="Texture2D" uid="uid://7ssom2u1kvv7" path="res://assets/particle/HS_Logo.png" id="4_4x0pm"]
 
 [sub_resource type="Animation" id="Animation_ps85c"]
 resource_name = "Flash"
@@ -201,6 +203,7 @@ alignment = 1
 
 [node name="Header_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ihan8")
 theme_override_font_sizes/font_size = 150
 text = "CONTENT WARNING"
 horizontal_alignment = 1
@@ -211,18 +214,21 @@ theme_override_constants/separation = -10
 
 [node name="Paragraph1_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "GAME NAME may have themes and gameplay"
 horizontal_alignment = 1
 
 [node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = " that may be triggering. Please review the following"
 horizontal_alignment = 1
 
 [node name="Paragraph3_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "content warnings below before continuing:"
 horizontal_alignment = 1
@@ -233,41 +239,47 @@ theme_override_constants/separation = -10
 
 [node name="Paragraph1_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "1) Death an or dying."
 horizontal_alignment = 1
 
 [node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "2) Insert warning here,"
 horizontal_alignment = 1
 
 [node name="Paragraph3_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "3) Insert warning here,"
 horizontal_alignment = 1
 
 [node name="Paragraph4_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "4) Insert warning here,"
 horizontal_alignment = 1
 
 [node name="Paragraph5_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "5) Insert warning here."
 horizontal_alignment = 1
 
 [node name="GameIcon" type="TextureRect" parent="Disclaimer_MC/Disclaimer_VBox"]
 layout_mode = 2
-texture = ExtResource("1_yf63x")
+texture = ExtResource("4_4x0pm")
 stretch_mode = 3
 
 [node name="Press_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
 text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1

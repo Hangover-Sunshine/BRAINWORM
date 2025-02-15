@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://craw6cydplqpm"]
+[gd_scene load_steps=4 format=3 uid="uid://craw6cydplqpm"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_main.gd" id="1_yoc7x"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_kx8im"]
+[ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_meo0q"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -23,23 +25,32 @@ theme_override_constants/margin_bottom = 60
 
 [node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Header_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox"]
+[node name="Title_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox"]
 layout_mode = 2
-theme_override_constants/separation = -60
+theme_override_constants/separation = -25
 
-[node name="Header1_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
+[node name="Header1_Label2" type="Label" parent="Main_MC/Main_VBox/Title_VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 150
-text = "GAME JAM"
+theme_override_fonts/font = ExtResource("2_kx8im")
+theme_override_font_sizes/font_size = 40
+text = "Version 1.0 • HANGOVER SUNSHINE"
 horizontal_alignment = 1
 
-[node name="Header2_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
+[node name="Header2_Label2" type="Label" parent="Main_MC/Main_VBox/Title_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kx8im")
 theme_override_font_sizes/font_size = 150
 text = "GAME TITLE"
+horizontal_alignment = 1
+
+[node name="Header1_Label3" type="Label" parent="Main_MC/Main_VBox/Title_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kx8im")
+theme_override_font_sizes/font_size = 40
+text = "Godot Wildjam 78 & Brackeys Game Jam 2025.1"
 horizontal_alignment = 1
 
 [node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
@@ -53,18 +64,21 @@ theme_override_constants/separation = 20
 [node name="Start_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_meo0q")
 theme_override_font_sizes/font_size = 50
 text = "START"
 
 [node name="Settings_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_meo0q")
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 
 [node name="Exit_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_meo0q")
 theme_override_font_sizes/font_size = 50
 text = "EXIT"
 

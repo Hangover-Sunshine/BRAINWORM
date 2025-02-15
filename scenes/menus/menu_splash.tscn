@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://88fivnqio2ad"]
+[gd_scene load_steps=6 format=3 uid="uid://88fivnqio2ad"]
+
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="1_8k0k8"]
+[ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_7bgs1"]
 
 [sub_resource type="Animation" id="Animation_ps85c"]
 resource_name = "Flash"
@@ -66,18 +69,21 @@ theme_override_constants/separation = -100
 
 [node name="Header1_Label" type="Label" parent="Splash_MC/Splash_VBox/Header_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8k0k8")
 theme_override_font_sizes/font_size = 250
-text = "GAME JAM"
+text = "GAME"
 horizontal_alignment = 1
 
 [node name="Header2_Label" type="Label" parent="Splash_MC/Splash_VBox/Header_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8k0k8")
 theme_override_font_sizes/font_size = 250
-text = "GAME TITLE"
+text = "TITLE"
 horizontal_alignment = 1
 
 [node name="Press_Label" type="Label" parent="Splash_MC/Splash_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7bgs1")
 theme_override_font_sizes/font_size = 50
 text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1
