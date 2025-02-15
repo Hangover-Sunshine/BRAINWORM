@@ -90,6 +90,41 @@ debug_color = Color(0, 0.64809, 0.191923, 0.42)
 position = Vector2(110, 0)
 gizmo_extents = 60.0
 
+[node name="RoomC" type="Node2D" parent="RoomController" node_paths=PackedStringArray("ConnectedRoom")]
+position = Vector2(-980, 540)
+script = ExtResource("1_tf0jt")
+ConnectedRoom = NodePath("../RoomA")
+
+[node name="Floor" type="Sprite2D" parent="RoomController/RoomC"]
+modulate = Color(0.728719, 0.410526, 0.0455833, 1)
+scale = Vector2(20, 11.5)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="DoorArea" type="Area2D" parent="RoomController/RoomC"]
+position = Vector2(-900, 0)
+scale = Vector2(1, 1)
+collision_layer = 2
+script = ExtResource("4_hoqjp")
+DoorDirection = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RoomController/RoomC/DoorArea"]
+modulate = Color(0.0888717, 0.467928, 1, 1)
+scale = Vector2(1, 3)
+texture = ExtResource("3_ka6kr")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomController/RoomC/DoorArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_snfcq")
+debug_color = Color(0, 0.64809, 0.191923, 0.42)
+
+[node name="PlayerStart" type="Marker2D" parent="RoomController/RoomC/DoorArea"]
+position = Vector2(110, 0)
+gizmo_extents = 60.0
+
 [node name="Player" type="CharacterBody2D" parent="."]
 process_mode = 1
 position = Vector2(1601, 528)
@@ -108,3 +143,5 @@ shape = SubResource("RectangleShape2D_nbs5h")
 [connection signal="body_entered" from="RoomController/RoomA/DoorArea" to="RoomController/RoomA/DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="RoomController/RoomB/DoorArea" to="RoomController/RoomB" method="_on_door_area_body_entered"]
 [connection signal="body_entered" from="RoomController/RoomB/DoorArea" to="RoomController/RoomB/DoorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="RoomController/RoomC/DoorArea" to="RoomController/RoomC" method="_on_door_area_body_entered"]
+[connection signal="body_entered" from="RoomController/RoomC/DoorArea" to="RoomController/RoomC/DoorArea" method="_on_body_entered"]

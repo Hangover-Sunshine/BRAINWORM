@@ -10,6 +10,11 @@ func _ready():
 	
 	# Attach all children nodes as potential
 	for child in get_children(): # TODO: replace with an array of surrounding rooms
+		# Turn off rooms that are not the current room -- don't let enemies wander/take up
+		#	cycles
+		if child != _current_room:
+			pass
+		##
 		child.connect("transfer_to", _transfer_to)
 		child.process_mode = Node.PROCESS_MODE_PAUSABLE
 	##
@@ -26,22 +31,24 @@ func _release_rooms():
 func _transfer_to(next_room:Room, spawn_pos:Vector2, direction:Door.Direction):
 	get_tree().paused = true
 	
+	var new_room_target_pos:Vector2 = _current_room.global_position
 	var lerp_direction:Vector2 = next_room.global_position.direction_to(_current_room.global_position)
 	
 	var x_sign:int = sign(lerp_direction.x)
 	var y_sign:int = sign(lerp_direction.y)
 	
 	# Which way to go for the original room?
+	var old_room_target_pos:Vector2
 	if x_sign != 0:
-		if x_sign == 1:
-			pass
-		else:
-			pass
+		if x_sign == 1: # room needs to go right
+			old_room_target_pos = Vector2(2900, 540)
+		else: # room needs to go left
+			old_room_target_pos = Vector2(-980, 540)
 		##
 	else:
-		if y_sign == 1:
+		if y_sign == 1: # room needs to go up
 			pass
-		else:
+		else: # room needs to go down
 			pass
 		##
 	##
