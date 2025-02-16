@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GDScriptTemplate"
+config/name="BRAINWORM"
 config/version="1.0"
 config/tags=PackedStringArray("hangover_sunshine")
 run/main_scene="res://scenes/main_scene.tscn"
