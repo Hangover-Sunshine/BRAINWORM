@@ -42,10 +42,10 @@ layer_0/tile_data = PackedInt32Array(131080, 65537, 0, 65544, 1, 0, 65543, 65537
 
 [node name="Line2D" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_wp177")
-position = Vector2(441, 58)
-points = PackedVector2Array(0, 0, 1024, 0, 1024, 960, 0, 960)
+position = Vector2(438, 59)
+points = PackedVector2Array(0, 0, 1044, 0, 1044, 970, 0, 970)
 closed = true
-width = 16.0
+width = 20.0
 joint_mode = 2
 
 [node name="Filter_Distortion" type="Sprite2D" parent="Background"]
