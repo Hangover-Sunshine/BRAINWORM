@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=20 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="7_y1ut5"]
+[ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="10_kdvpt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_miqr3"]
 shader = ExtResource("1_gki5t")
@@ -289,3 +290,6 @@ theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 45
 text = "999999999"
 horizontal_alignment = 2
+
+[node name="Art_Mac" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1181, 347)
