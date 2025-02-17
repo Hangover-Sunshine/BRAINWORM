@@ -188,6 +188,7 @@ script = ExtResource("1_dqqjv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
@@ -247,35 +248,28 @@ theme_override_constants/separation = -10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "1) Death an or dying."
+text = "1) Death an or dying,"
 horizontal_alignment = 1
 
 [node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "2) Insert warning here,"
+text = "2) Mild cartoon violence,"
 horizontal_alignment = 1
 
 [node name="Paragraph3_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "3) Insert warning here,"
+text = "3) Blood, and or gore (hemophobia),"
 horizontal_alignment = 1
 
 [node name="Paragraph4_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "4) Insert warning here,"
-horizontal_alignment = 1
-
-[node name="Paragraph5_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_jgprp")
-theme_override_font_sizes/font_size = 50
-text = "5) Insert warning here."
+text = "4) Depiction of brain decline (hypochondria),"
 horizontal_alignment = 1
 
 [node name="GameIcon" type="TextureRect" parent="Disclaimer_MC/Disclaimer_VBox"]
