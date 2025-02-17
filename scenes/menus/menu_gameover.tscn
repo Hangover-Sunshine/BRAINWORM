@@ -52,7 +52,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 50
-text = "Stage"
+text = "Score"
 horizontal_alignment = 1
 
 [node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Stats_Vbox"]
