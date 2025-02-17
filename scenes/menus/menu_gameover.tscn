@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=4 format=3 uid="uid://dgrchpsdeaxdt"]
 
+[ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_hr3v5"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
 
@@ -39,9 +40,26 @@ horizontal_alignment = 1
 
 [node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Title_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_igy8s")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
 text = "Congratulations! You're victorious!"
+horizontal_alignment = 1
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox"]
+layout_mode = 2
+
+[node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Stats_Vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 50
+text = "Score"
+horizontal_alignment = 1
+
+[node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Stats_Vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 40
+text = "###"
 horizontal_alignment = 1
 
 [node name="Button_HBox" type="HBoxContainer" parent="GameOver_MC/GameOver_VBox"]
