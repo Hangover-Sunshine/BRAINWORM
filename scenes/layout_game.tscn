@@ -1,10 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=16 format=3 uid="uid://c2cmtfshbsc1o"]
 
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="2_j7ggh"]
 [ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="2_ta1vs"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqr3"]
+shader = ExtResource("1_gki5t")
+shader_parameter/OCTAVE = 2
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.4
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 0.5
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0.129729, 0.0255367, 0.0527574, 1)
+shader_parameter/WATER2_COL = Color(0.210706, 0.0444339, 0.109765, 1)
+shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
 
@@ -32,15 +46,21 @@ width = 1100
 height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
 
+[sub_resource type="Environment" id="Environment_o221c"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+
 [node name="Layout_Game" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="Background" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_miqr3")
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.415686, 0.141176, 0.258824, 1)
 
 [node name="Environment" type="TileMap" parent="Background"]
 material = SubResource("ShaderMaterial_1peyr")
@@ -67,7 +87,7 @@ position = Vector2(672, 351)
 texture = ExtResource("2_ta1vs")
 
 [node name="GUI_Flesh" type="Node2D" parent="."]
-position = Vector2(240, 320)
+position = Vector2(1643, 755)
 
 [node name="Title_Flesh" type="Label" parent="GUI_Flesh"]
 anchors_preset = 7
@@ -82,9 +102,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Flesh"
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Number_Flesh" type="Label" parent="GUI_Flesh"]
 anchors_preset = 5
@@ -95,12 +115,11 @@ offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "###"
-horizontal_alignment = 1
 
 [node name="GUI_Macs" type="Node2D" parent="."]
-position = Vector2(240, 510)
+position = Vector2(1643, 858)
 
 [node name="Title_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 7
@@ -115,9 +134,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Macs"
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Number_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 5
@@ -128,12 +147,11 @@ offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "###"
-horizontal_alignment = 1
 
 [node name="GUI_Tissue" type="Node2D" parent="."]
-position = Vector2(240, 700)
+position = Vector2(1643, 959)
 
 [node name="Title_Tissue" type="Label" parent="GUI_Tissue"]
 anchors_preset = 7
@@ -148,9 +166,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Tissue"
-horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Number_Tissue" type="Label" parent="GUI_Tissue"]
 anchors_preset = 5
@@ -161,12 +179,11 @@ offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "###"
-horizontal_alignment = 1
 
 [node name="GUI_Stage" type="Node2D" parent="."]
-position = Vector2(1680, 417)
+position = Vector2(273, 109)
 
 [node name="Title_Flesh" type="Label" parent="GUI_Stage"]
 anchors_preset = 7
@@ -181,9 +198,10 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "Stage"
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Number_Flesh" type="Label" parent="GUI_Stage"]
 anchors_preset = 5
@@ -194,12 +212,12 @@ offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="GUI_Score" type="Node2D" parent="."]
-position = Vector2(1680, 607)
+position = Vector2(273, 959)
 
 [node name="Title_Score" type="Label" parent="GUI_Score"]
 anchors_preset = 7
@@ -214,19 +232,23 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "Score"
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Number_Score" type="Label" parent="GUI_Score"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -134.0
-offset_right = 134.0
+offset_left = -166.0
+offset_right = 131.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 50
-text = "#########"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 45
+text = "999999999"
+horizontal_alignment = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o221c")
