@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=13 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="2_j7ggh"]
 [ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="2_ta1vs"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
+[ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
 
@@ -33,6 +35,12 @@ noise = SubResource("FastNoiseLite_2p82t")
 [node name="Layout_Game" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.415686, 0.141176, 0.258824, 1)
 
 [node name="Environment" type="TileMap" parent="Background"]
 material = SubResource("ShaderMaterial_1peyr")
@@ -73,6 +81,7 @@ offset_right = 134.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 50
 text = "Flesh"
 horizontal_alignment = 1
@@ -85,14 +94,15 @@ offset_left = -134.0
 offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 50
 text = "###"
 horizontal_alignment = 1
 
-[node name="GUI_Microglia" type="Node2D" parent="."]
+[node name="GUI_Macs" type="Node2D" parent="."]
 position = Vector2(240, 510)
 
-[node name="Title_Microglia" type="Label" parent="GUI_Microglia"]
+[node name="Title_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -104,11 +114,12 @@ offset_right = 134.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 50
-text = "Microglia"
+text = "Macs"
 horizontal_alignment = 1
 
-[node name="Number_Microglia" type="Label" parent="GUI_Microglia"]
+[node name="Number_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -116,6 +127,7 @@ offset_left = -134.0
 offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 50
 text = "###"
 horizontal_alignment = 1
@@ -135,6 +147,7 @@ offset_right = 134.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 50
 text = "Tissue"
 horizontal_alignment = 1
@@ -147,6 +160,7 @@ offset_left = -134.0
 offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 50
 text = "###"
 horizontal_alignment = 1
@@ -166,6 +180,7 @@ offset_right = 134.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 50
 text = "Stage"
 horizontal_alignment = 1
@@ -178,6 +193,7 @@ offset_left = -134.0
 offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 1
@@ -197,6 +213,7 @@ offset_right = 134.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 50
 text = "Score"
 horizontal_alignment = 1
@@ -209,6 +226,7 @@ offset_left = -134.0
 offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 50
 text = "#########"
 horizontal_alignment = 1
