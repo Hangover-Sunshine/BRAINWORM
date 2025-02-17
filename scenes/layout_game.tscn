@@ -127,6 +127,39 @@ texture = ExtResource("2_ta1vs")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
+[node name="GUI_Time" type="Node2D" parent="GUI"]
+visible = false
+position = Vector2(1643, 109)
+
+[node name="Title_Time" type="Label" parent="GUI/GUI_Time"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_b4rxw")
+theme_override_font_sizes/font_size = 40
+text = "Time"
+vertical_alignment = 2
+
+[node name="Number_Time" type="Label" parent="GUI/GUI_Time"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_qqtgp")
+theme_override_font_sizes/font_size = 40
+text = "HH:MM:SS"
+
 [node name="GUI_Flesh" type="Node2D" parent="GUI"]
 position = Vector2(1643, 755)
 
@@ -226,7 +259,7 @@ text = "###"
 [node name="GUI_Stage" type="Node2D" parent="GUI"]
 position = Vector2(273, 109)
 
-[node name="Title_Flesh" type="Label" parent="GUI/GUI_Stage"]
+[node name="Title_Stage" type="Label" parent="GUI/GUI_Stage"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -239,12 +272,12 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 text = "Stage"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Number_Flesh" type="Label" parent="GUI/GUI_Stage"]
+[node name="Number_Stage" type="Label" parent="GUI/GUI_Stage"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -253,7 +286,7 @@ offset_right = 134.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 text = "1"
 horizontal_alignment = 2
 
@@ -273,7 +306,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 text = "Score"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -287,7 +320,7 @@ offset_right = 131.0
 offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 text = "999999999"
 horizontal_alignment = 2
 
