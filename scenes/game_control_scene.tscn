@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwdt2gmbwbhg2"]
+[gd_scene load_steps=8 format=3 uid="uid://b82wbqhe3bm8g"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_controller.gd" id="1_1jlle"]
 [ext_resource type="PackedScene" uid="uid://bbu36oi204on1" path="res://scenes/cutscenes/example_cutscene.tscn" id="2_mmsog"]
-[ext_resource type="PackedScene" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
+[ext_resource type="PackedScene" uid="uid://dv4v38ahvej5j" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
+[ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="4_r4oe0"]
 
 [sub_resource type="Animation" id="Animation_n6hay"]
 resource_name = "fade_in"
@@ -62,6 +63,9 @@ GameScene = ExtResource("3_8gbgv")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2
+visible = false
+
+[node name="HubPause" parent="PauseMenu" instance=ExtResource("4_r4oe0")]
 
 [node name="Fade" type="CanvasLayer" parent="."]
 layer = 128
@@ -72,6 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.929412, 0.501961, 0.6, 1)
 
 [node name="InternalFadeController" type="AnimationPlayer" parent="."]

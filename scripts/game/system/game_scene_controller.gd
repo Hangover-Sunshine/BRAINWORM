@@ -11,12 +11,13 @@ var _game_scene
 var _curr_level:int = 0
 
 var _curr_cutscene:CutsceneManager
-var _in_cutscene:bool = false
+var _in_cutscene:bool = true
 var _can_pause:bool = false
 
 func _ready():
 	GlobalSignals.connect("cutscene_finished", _on_cutscene_finished)
 	GlobalSignals.connect("game_status", _recv_game_status)
+	$PauseMenu/HubPause.connect("unpause", _unpause_game)
 	
 	# Load the cut scene
 	_curr_cutscene = Cutscenes[_curr_level].instantiate()
@@ -28,12 +29,18 @@ func _ready():
 func _input(event):
 	if _can_pause and event.is_action_pressed("pause"):
 		get_tree().paused = !get_tree().paused
+		$PauseMenu.visible = get_tree().paused
 	##
 	
 	if _in_cutscene and event.is_action_pressed("cutscene_skip"):
-		GlobalSignals.emit("cutscene_interrupted")
+		GlobalSignals.emit_signal("cutscene_interrupted")
 		_in_cutscene = false
 	##
+##
+
+func _unpause_game():
+	get_tree().paused = false
+	$PauseMenu.visible = get_tree().paused
 ##
 
 func _on_cutscene_finished():

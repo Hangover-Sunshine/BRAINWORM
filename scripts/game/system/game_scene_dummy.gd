@@ -1,8 +1,8 @@
 extends Node2D
 
 func _ready():
-	pass
-##
+	GlobalSignals.emit_signal("game_status", false)
+## 
 
 func _input(event):
 	# NOTE: Test win

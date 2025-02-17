@@ -1,11 +1,15 @@
 extends Node2D
 
+signal unpause
+
 @onready var menu_pause = $MenuPause
 @onready var menu_settings = $MenuSettings
 @onready var animplayer = $HubPause_AnimPlayer
 
 func _ready():
+	animplayer.play("ToPause")
 	handle_signals()
+##
 
 func handle_signals():
 	menu_pause.pause_to_game.connect(to_game)
@@ -15,7 +19,8 @@ func handle_signals():
 	Verho.connect("loaded_scene", to_free)
 
 func to_game():
-	print("The game is unpaused.")
+	emit_signal("unpause")
+##
 
 func to_pause():
 	animplayer.play("ToPause")
@@ -26,6 +31,7 @@ func to_settings():
 func to_load():
 	Verho.emit_signal("load_scene", "menus/hub_menu")
 
-func to_free(scene_name):
+func to_free(_scene_name):
 	self.queue_free()
-	
+##
+
