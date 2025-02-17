@@ -7,7 +7,7 @@ resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,18 +31,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cu10d")
 
-[node name="AP_TransitionAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nlmdy")
-}
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.6)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AP_TransitionAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nlmdy")
+}
 
 [connection signal="animation_finished" from="AP_TransitionAnimation" to="." method="_on_ap_transition_animation_animation_finished"]

@@ -13,20 +13,29 @@ extends Node2D
 @export var time_splash = 2
 
 @onready var ready_to_click = false
-var was_disclaimed = false
 
 # called when the node enters the scene tree for the first time. #
 func _ready():
-	if was_disclaimed == false:
+	get_tree().paused = false
+	
+	if GlobalSettings.WasDisclaimed == false:
 		animplayer.play("ToDisclaimer")
 		menu_timer.wait_time = time_disclaim
 		menu_timer.start()
-	elif was_disclaimed == true:
+	else:
 		animplayer.play("ToSplash")
 		menu_timer.wait_time = time_splash
 		menu_timer.start()
+	##
 	
 	handle_signals()
+##
+
+func _process(_delta):
+	if animplayer.is_playing():
+		print(animplayer.current_animation)
+	##
+##
 
 # manages page flipping for any button press. Keeps MenuTimer in mind to delay instant flipping #
 func _input(event):
@@ -50,7 +59,7 @@ func handle_signals():
 	Verho.connect("loaded_scene", to_free)
 
 func disclaimed():
-	was_disclaimed = true
+	GlobalSettings.WasDisclaimed = true
 
 func to_splash():
 	animplayer.play("ToSplash")
@@ -68,10 +77,14 @@ func to_exit():
 	get_tree().quit()
 
 func to_load():
-	Verho.emit_signal("load_scene", "DummySceneA")
+	Verho.change_scene("scenes/game_control_scene", "", "BlackFade")
+##
 
-func to_free(_scene_name):
-	self.queue_free()
+func to_free(scene_name):
+	if scene_name != self.name:
+		self.queue_free()
+	##
+##
 
 func _on_menu_timer_timeout():
 	ready_to_click = true

@@ -29,7 +29,7 @@ func to_settings():
 	animplayer.play("ToSettings")
 
 func to_load():
-	Verho.emit_signal("load_scene", "menus/hub_menu")
+	Verho.change_scene("scenes/menus/hub_menu", "", "BlackFade")
 
 func to_free(_scene_name):
 	self.queue_free()

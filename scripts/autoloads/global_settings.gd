@@ -14,6 +14,8 @@ var GameSFXVolume:float = 1.0
 
 var FullScreen:bool = false
 
+var WasDisclaimed:bool = false
+
 var os_type:String
 
 func _ready():

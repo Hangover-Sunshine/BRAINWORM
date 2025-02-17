@@ -248,7 +248,7 @@ theme_override_constants/separation = -10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "1) Death an or dying,"
+text = "1) Death and/or dying,"
 horizontal_alignment = 1
 
 [node name="Paragraph2_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
@@ -262,7 +262,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "3) Blood, and or gore (hemophobia),"
+text = "3) Blood, and/or gore (hemophobia),"
 horizontal_alignment = 1
 
 [node name="Paragraph4_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]

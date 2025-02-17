@@ -15,6 +15,7 @@ var _in_cutscene:bool = true
 var _can_pause:bool = false
 
 func _ready():
+	Verho.connect("loaded_scene", _new_scene_loaded)
 	GlobalSignals.connect("cutscene_finished", _on_cutscene_finished)
 	GlobalSignals.connect("game_status", _recv_game_status)
 	$PauseMenu/HubPause.connect("unpause", _unpause_game)
@@ -35,6 +36,12 @@ func _input(event):
 	if _in_cutscene and event.is_action_pressed("cutscene_skip"):
 		GlobalSignals.emit_signal("cutscene_interrupted")
 		_in_cutscene = false
+	##
+##
+
+func _new_scene_loaded(new_scene:String):
+	if new_scene != self.name:
+		self.queue_free()
 	##
 ##
 
