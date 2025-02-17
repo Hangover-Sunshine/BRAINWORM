@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=5 format=3 uid="uid://dgrchpsdeaxdt"]
 
+[ext_resource type="Script" path="res://scenes/menus/menu_gameover.gd" id="1_8tecl"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_hr3v5"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8tecl")
 
 [node name="GameOver_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -27,40 +29,164 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Title_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox"]
+[node name="Text_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox"]
 layout_mode = 2
-theme_override_constants/separation = -25
+theme_override_constants/separation = 20
 
-[node name="Title_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Title_VBox"]
+[node name="Win_Title" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
-text = "GAME OVER"
+text = "CONGRATS!"
 horizontal_alignment = 1
 
-[node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Title_VBox"]
+[node name="Lose_Title" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 150
+text = "FAILURE!"
+horizontal_alignment = 1
+
+[node name="Divider1" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+custom_minimum_size = Vector2(1250, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+layout_mode = 2
+
+[node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
-text = "Congratulations! You're victorious!"
+text = "You have succesfully consumed the entirety"
 horizontal_alignment = 1
 
-[node name="Stats_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox"]
+[node name="Caption_GameOver2" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "of a newly elected president's brain.
+"
+horizontal_alignment = 1
+
+[node name="Caption_GameOver3" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "Nothing can go wrong from this!
+"
+horizontal_alignment = 1
+
+[node name="Fail_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 layout_mode = 2
 
-[node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Stats_Vbox"]
+[node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "You have failed to consume all traces of your"
+horizontal_alignment = 1
+
+[node name="Caption_GameOver2" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "victim's memories and cognitive functions. Maybe
+"
+horizontal_alignment = 1
+
+[node name="Caption_GameOver3" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "other worms would be more successful?"
+horizontal_alignment = 1
+
+[node name="Divider2" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+custom_minimum_size = Vector2(1000, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Stats_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+layout_mode = 2
+
+[node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 50
 text = "Score"
 horizontal_alignment = 1
 
-[node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Stats_Vbox"]
+[node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 40
+text = "###########"
+horizontal_alignment = 1
+
+[node name="HBox_Stats" type="HBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="VBox_Flesh" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
+layout_mode = 2
+
+[node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Flesh"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 50
+text = "Flesh"
+horizontal_alignment = 1
+
+[node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Flesh"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 40
 text = "###"
 horizontal_alignment = 1
+
+[node name="VBox_Macs" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
+layout_mode = 2
+
+[node name="Title_Macs" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Macs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 50
+text = "Macs"
+horizontal_alignment = 1
+
+[node name="Number_Macs" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Macs"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 40
+text = "###"
+horizontal_alignment = 1
+
+[node name="VBox_Tissue" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
+layout_mode = 2
+
+[node name="Title_Tissue" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Tissue"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 50
+text = "Tissue"
+horizontal_alignment = 1
+
+[node name="Number_Tissue" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Tissue"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 40
+text = "###"
+horizontal_alignment = 1
+
+[node name="Divider3" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+custom_minimum_size = Vector2(1250, 10)
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Button_HBox" type="HBoxContainer" parent="GameOver_MC/GameOver_VBox"]
 layout_mode = 2
@@ -70,7 +196,7 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Cont_Button" type="Button" parent="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox"]
+[node name="Again_Button" type="Button" parent="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("3_bkwce")
@@ -84,5 +210,5 @@ theme = ExtResource("3_bkwce")
 theme_override_font_sizes/font_size = 50
 text = "Leave"
 
-[connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_cont_button_pressed"]
+[connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Again_Button" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]
