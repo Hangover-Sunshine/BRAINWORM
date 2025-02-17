@@ -26,8 +26,8 @@ shader_parameter/multiplierAmount = 0.002
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2p82t"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vldpw"]
-width = 1034
-height = 970
+width = 1100
+height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
 
 [node name="Layout_Game" type="Node2D"]
@@ -46,11 +46,12 @@ position = Vector2(441, 58)
 points = PackedVector2Array(0, 0, 1024, 0, 1024, 960, 0, 960)
 closed = true
 width = 16.0
+joint_mode = 2
 
 [node name="Filter_Distortion" type="Sprite2D" parent="Background"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_k6im5")
-position = Vector2(958, 543)
+position = Vector2(954, 538)
 texture = SubResource("NoiseTexture2D_vldpw")
 
 [node name="Placeholder_Worm" type="Sprite2D" parent="."]
