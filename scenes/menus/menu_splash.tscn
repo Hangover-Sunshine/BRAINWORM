@@ -71,14 +71,14 @@ theme_override_constants/separation = -100
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_8k0k8")
 theme_override_font_sizes/font_size = 250
-text = "GAME"
+text = "BRAIN"
 horizontal_alignment = 1
 
 [node name="Header2_Label" type="Label" parent="Splash_MC/Splash_VBox/Header_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_8k0k8")
 theme_override_font_sizes/font_size = 250
-text = "TITLE"
+text = "WORM"
 horizontal_alignment = 1
 
 [node name="Press_Label" type="Label" parent="Splash_MC/Splash_VBox"]

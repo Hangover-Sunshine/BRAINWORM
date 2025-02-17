@@ -65,7 +65,7 @@ theme_override_constants/separation = 25
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aif0l")
 theme_override_font_sizes/font_size = 50
-text = "Fullscreen Mode"
+text = "Toggle Fullscreen Mode"
 
 [node name="Full_Check" type="CheckBox" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Full_HBox"]
 layout_mode = 2
@@ -81,7 +81,7 @@ theme_override_constants/separation = 25
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aif0l")
 theme_override_font_sizes/font_size = 50
-text = "Disable Flashing"
+text = "Disable Post-Processing"
 
 [node name="Full_Check" type="CheckBox" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox/Full_HBox2"]
 layout_mode = 2

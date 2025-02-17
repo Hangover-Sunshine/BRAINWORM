@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgrchpsdeaxdt"]
+
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
+[ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
+
+[node name="MenuGameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="GameOver_VBox" type="VBoxContainer" parent="GameOver_MC"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Title_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -25
+
+[node name="Title_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Title_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Title_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 40
+text = "Congratulations! You're victorious!"
+horizontal_alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="GameOver_MC/GameOver_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cont_Button" type="Button" parent="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_bkwce")
+theme_override_font_sizes/font_size = 50
+text = "Play Again"
+
+[node name="Leave_Button" type="Button" parent="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_bkwce")
+theme_override_font_sizes/font_size = 50
+text = "Leave"
+
+[connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_cont_button_pressed"]
+[connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]

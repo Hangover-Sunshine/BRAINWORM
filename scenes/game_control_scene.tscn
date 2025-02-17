@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b82wbqhe3bm8g"]
+[gd_scene load_steps=7 format=3 uid="uid://bwdt2gmbwbhg2"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_controller.gd" id="1_1jlle"]
 [ext_resource type="PackedScene" uid="uid://bbu36oi204on1" path="res://scenes/cutscenes/example_cutscene.tscn" id="2_mmsog"]
-[ext_resource type="PackedScene" uid="uid://dv4v38ahvej5j" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
+[ext_resource type="PackedScene" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
 
 [sub_resource type="Animation" id="Animation_n6hay"]
 resource_name = "fade_in"
