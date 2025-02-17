@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82wbqhe3bm8g"]
+
+[ext_resource type="Script" path="res://scripts/game/system/game_scene_controller.gd" id="1_1jlle"]
+[ext_resource type="PackedScene" uid="uid://bbu36oi204on1" path="res://scenes/cutscenes/example_cutscene.tscn" id="2_mmsog"]
+[ext_resource type="PackedScene" uid="uid://dv4v38ahvej5j" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
+
+[sub_resource type="Animation" id="Animation_n6hay"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.929412, 0.501961, 0.6, 1), Color(0.12549, 0.12549, 0.12549, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kcquc"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.12549, 0.12549, 0.12549, 0), Color(0.929412, 0.501961, 0.6, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsc2k"]
+_data = {
+"fade_in": SubResource("Animation_n6hay"),
+"fade_out": SubResource("Animation_kcquc")
+}
+
+[node name="GameControlScene" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_1jlle")
+Cutscenes = Array[PackedScene]([ExtResource("2_mmsog"), ExtResource("2_mmsog")])
+GameScene = ExtResource("3_8gbgv")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Fade" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="FadeRect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.929412, 0.501961, 0.6, 1)
+
+[node name="InternalFadeController" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gsc2k")
+}
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(960, 540)

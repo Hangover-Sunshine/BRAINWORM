@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbu36oi204on1"]
+
+[ext_resource type="Script" path="res://scripts/game/system/Cutscenes/example_cutscene.gd" id="1_auhh7"]
+[ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_rj7i3"]
+
+[sub_resource type="Animation" id="Animation_ftha7"]
+resource_name = "yippie"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319, 9.42478, 12.5664, 15.708, 18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.561742, 0.974473, 1), Color(0.689493, 0.537176, 1, 1), Color(1, 0.616651, 0.596774, 1), Color(0.525277, 1, 0.102306, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"cutscene_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_145q2"]
+resource_name = "camera_zoom_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_h8415"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_rjqnw"]
+resource_name = "cancel"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwj2s"]
+_data = {
+"RESET": SubResource("Animation_h8415"),
+"camera_zoom_in": SubResource("Animation_145q2"),
+"cancel": SubResource("Animation_rjqnw"),
+"yippie": SubResource("Animation_ftha7")
+}
+
+[node name="ExampleCutscene" type="Node2D"]
+script = ExtResource("1_auhh7")
+TimeToStartCutscene = 1.05
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mwj2s")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+rotation = 18.8496
+texture = ExtResource("2_rj7i3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
