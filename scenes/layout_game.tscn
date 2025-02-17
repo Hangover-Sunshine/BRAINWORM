@@ -54,10 +54,10 @@ theme_override_font_sizes/font_size = 50
 text = "###"
 horizontal_alignment = 1
 
-[node name="GUI_Microglia" type="Node2D" parent="."]
+[node name="GUI_Macs" type="Node2D" parent="."]
 position = Vector2(240, 510)
 
-[node name="Title_Microglia" type="Label" parent="GUI_Microglia"]
+[node name="Title_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -70,10 +70,10 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 50
-text = "Microglia"
+text = "Macs"
 horizontal_alignment = 1
 
-[node name="Number_Microglia" type="Label" parent="GUI_Microglia"]
+[node name="Number_Macs" type="Label" parent="GUI_Macs"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
