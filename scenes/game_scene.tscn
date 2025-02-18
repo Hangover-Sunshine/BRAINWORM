@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=9 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
+[ext_resource type="Script" path="res://scripts/game/snake/game_control.gd" id="2_r1gp1"]
 
 [sub_resource type="Animation" id="Animation_0a1rh"]
 resource_name = "RESET"
@@ -114,7 +115,13 @@ offset_right = 2074.0
 offset_bottom = 3590.0
 color = Color(0.172549, 0.0352941, 0.0901961, 1)
 
-[node name="Layout_Game" parent="." instance=ExtResource("2_0p6tp")]
+[node name="GameControl" type="Node" parent="."]
+script = ExtResource("2_r1gp1")
+
+[node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
+
+[node name="Timer" type="Timer" parent="GameControl"]
+wait_time = 0.1
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -123,3 +130,5 @@ position = Vector2(960, 540)
 libraries = {
 "": SubResource("AnimationLibrary_kijkm")
 }
+
+[connection signal="timeout" from="GameControl/Timer" to="GameControl" method="_on_timer_timeout"]

@@ -9,7 +9,7 @@ func _ready():
 	pass
 ##
 
-func initialize(game_data:Dictionary, stage:int):
+func initialize_ui(game_data:Dictionary, stage:int):
 	$GUI.visible = true
 	$GUI.populate_flesh(game_data["flesh"])
 	$GUI.populate_macs(game_data["macs"])
@@ -18,6 +18,6 @@ func initialize(game_data:Dictionary, stage:int):
 	$GUI.populate_score(0)
 ##
 
-func place_worm_part(indx:int, pos:Vector2i):
-	print(environment.map_to_local(pos + GRID_OFFSET))
+func get_world_position_at(pos:Vector2i) -> Vector2:
+	return environment.map_to_local(pos + GRID_OFFSET)
 ##
