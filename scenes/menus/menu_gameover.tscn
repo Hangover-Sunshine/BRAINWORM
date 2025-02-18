@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=10 format=3 uid="uid://dgrchpsdeaxdt"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_gameover.gd" id="1_8tecl"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_3u58w"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_hr3v5"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
-[ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="3_3y6k2"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkpd4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8kyo"]
 shader = ExtResource("2_3u58w")
 shader_parameter/OCTAVE = 2
 shader_parameter/mulscale = 5.0
@@ -20,13 +19,19 @@ shader_parameter/WATER_COL = Color(0.129729, 0.0255367, 0.0527574, 1)
 shader_parameter/WATER2_COL = Color(0.210706, 0.0444339, 0.109765, 1)
 shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmeql"]
-shader = ExtResource("3_3y6k2")
-shader_parameter/player_position = Vector2(0.5, 0.5)
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/MULTIPLIER = 0.5
-shader_parameter/SCALE = 1.5
-shader_parameter/SOFTNESS = 0.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_760r8"]
+
+[sub_resource type="Gradient" id="Gradient_oqvp6"]
+offsets = PackedFloat32Array(0.753247, 1)
+colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rbqe2"]
+gradient = SubResource("Gradient_oqvp6")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.816514, 0.169725)
 
 [node name="MenuGameover" type="Control"]
 layout_mode = 3
@@ -38,17 +43,10 @@ grow_vertical = 2
 script = ExtResource("1_8tecl")
 
 [node name="Background" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_fkpd4")
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 0
+material = SubResource("ShaderMaterial_c8kyo")
+offset_top = -371.0
 offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="Filter_Vignette_All" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_cmeql")
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1549.0
 
 [node name="GameOver_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -257,6 +255,15 @@ layout_mode = 2
 theme = ExtResource("3_bkwce")
 theme_override_font_sizes/font_size = 50
 text = "Leave"
+
+[node name="Filter_Vignette_Overall" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_760r8")
+offset_left = -42.0
+offset_top = -423.0
+offset_right = 1958.0
+offset_bottom = 1577.0
+pivot_offset = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_rbqe2")
 
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Again_Button" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]
