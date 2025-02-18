@@ -40,11 +40,13 @@ script = ExtResource("1_8tecl")
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fkpd4")
 custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Filter_Vignette_All" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_cmeql")
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 

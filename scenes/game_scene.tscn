@@ -105,6 +105,7 @@ _data = {
 }
 
 [node name="GameScene" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ymqpa")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -120,8 +121,8 @@ script = ExtResource("2_r1gp1")
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
 
-[node name="Timer" type="Timer" parent="GameControl"]
-wait_time = 0.1
+[node name="MoveTimer" type="Timer" parent="GameControl"]
+wait_time = 0.15
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -131,4 +132,4 @@ libraries = {
 "": SubResource("AnimationLibrary_kijkm")
 }
 
-[connection signal="timeout" from="GameControl/Timer" to="GameControl" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameControl/MoveTimer" to="GameControl" method="_on_timer_timeout"]

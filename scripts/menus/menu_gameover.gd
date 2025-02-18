@@ -10,12 +10,14 @@ signal gameover_to_main
 @onready var fail_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox
 
 func to_lose():
+	$Background.visible = false
 	lose_title.visible = true
 	fail_text.visible = true
 	win_title.visible = false
 	win_text.visible = false
 
 func to_win():
+	$Background.visible = true
 	win_title.visible = true
 	win_text.visible = true
 	lose_title.visible = false

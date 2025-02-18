@@ -18,6 +18,10 @@ func initialize_ui(game_data:Dictionary, stage:int):
 	$GUI.populate_score(0)
 ##
 
+func hide_ui():
+	$GUI.visible = false
+##
+
 func get_world_position_at(pos:Vector2i) -> Vector2:
 	return environment.map_to_local(pos + GRID_OFFSET)
 ##

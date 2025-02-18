@@ -11,10 +11,16 @@ func _ready():
 	$ZoomControl.play("zoom_in")
 	
 	game_data["snake"] = []
+	game_data["mac_e"] = []
+	game_data["tissue_e"] = []
 	game_data["dir"] = Vector2i(1, 0)
 	game_data["flesh"] = 0
 	game_data["macs"] = 0
 	game_data["tissue"] = 0
+	
+	# TODO: Load data from file
+	
+	game_control.initialize_board(game_data)
 ##
 
 func _input(event):
@@ -24,7 +30,7 @@ func _input(event):
 	##
 	
 	# NOTE: Test lose
-	if event.is_action_pressed("down"):
+	if event.is_action_pressed("dummy_lose"):
 		GlobalSignals.emit_signal("player_died")
 	##
 ##
@@ -37,9 +43,14 @@ func _load():
 	pass
 ##
 
+func hide_ui():
+	game_board.hide_ui()
+##
+
 func camera_in_place():
 	GlobalSignals.emit_signal("game_status", false)
-	game_control.initialize_board(game_data, stage)
+	game_control.initialize_ui(game_data, stage)
+	game_control.can_move = true
 ##
 
 func game_won():
@@ -47,5 +58,10 @@ func game_won():
 ##
 
 func game_restarting():
+	get_tree().paused = false
 	$ZoomControl.play("zoom_out_go")
+##
+
+func freeze():
+	get_tree().paused = true
 ##

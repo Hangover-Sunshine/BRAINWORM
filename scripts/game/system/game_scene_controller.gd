@@ -47,7 +47,8 @@ func _new_scene_loaded(new_scene:String):
 ##
 
 func _player_died():
-	#_game_scene.freeze()
+	_game_scene.freeze()
+	_game_scene.hide_ui()
 	#_game_scene.clear_game()
 	_can_pause = false
 	game_over.visible = true
@@ -105,6 +106,8 @@ func _on_menu_gameover_gameover_to_game():
 	game_over.visible = false
 	_curr_level = 0
 	internal_fade_controller.play("fade_out")
+	$GameOver/ColorRect.color = Color("2c0917", 0)
+	$GameOver/MenuGameover.modulate = Color("ffffff", 0)
 ##
 
 func _on_menu_gameover_gameover_to_main():
