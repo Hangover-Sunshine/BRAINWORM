@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=23 format=3 uid="uid://c2cmtfshbsc1o"]
 
+[ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="2_j7ggh"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="3_wku17"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
+[ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="7_wkiok"]
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="7_y1ut5"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="10_kdvpt"]
 [ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="10_w53f0"]
@@ -78,6 +80,7 @@ height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
 
 [node name="Layout_Game" type="Node2D"]
+script = ExtResource("1_cruol")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -123,10 +126,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Placeholder_Worm" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(672, 351)
 texture = ExtResource("2_ta1vs")
 
 [node name="GUI" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("7_wkiok")
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
 visible = false
@@ -326,9 +332,11 @@ text = "999999999"
 horizontal_alignment = 2
 
 [node name="Art_Mac" parent="." instance=ExtResource("10_kdvpt")]
+visible = false
 position = Vector2(1181, 347)
 
 [node name="Heart" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(926, 544)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_w53f0")
