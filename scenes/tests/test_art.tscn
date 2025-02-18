@@ -127,7 +127,6 @@ position = Vector2(672, 351)
 texture = ExtResource("7_m2roh")
 
 [node name="GUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
 visible = false

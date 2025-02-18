@@ -29,6 +29,7 @@ func _ready():
 	marker = $Art_Marker
 	marker_body = marker.get_node("Marker_Body")
 	marker_head = marker.get_node("Marker_Head")
+	marker.visible = false
 	marker.position = Vector2(0,0)
 	randomize_color()
 
@@ -84,7 +85,7 @@ func randomize_color():
 		marker_head.color = mid_color
 ##
 
-## Macs animation functions - *Use "Idle" for when Mac idles and moves.
+## Macs animation functions - *Keep on "Idle" even when Mac moves.
 func spawn_mac():
 	ap_motion.play("Spawn")
 ##
@@ -98,35 +99,30 @@ func kill_mac():
 ##
 
 ## Trigger function, checks for number and points in direction.
+## Only use when they are about to go to another space. Avoid early use.
 func point_marker():
-	marker.visible = true
 	if direction == 1:
 		# going left
 		marker.position = Vector2(-64,0)
-		marker_body.emitting = true
-		marker_head.emitting = true
+		marker.visible = true
 	elif direction == 2:
 		# going up
 		marker.position = Vector2(0,-64)
-		marker_body.emitting = true
-		marker_head.emitting = true
+		marker.visible = true
 	elif direction == 3:
 		# going right
 		marker.position = Vector2(64,0)
-		marker_body.emitting = true
-		marker_head.emitting = true
+		marker.visible = true
 	elif direction == 4:
 		# going down
 		marker.position = Vector2(0,64)
-		marker_body.emitting = true
-		marker_head.emitting = true
+		marker.visible = true
 ##
 
-## Right before Mac moves, trigger function.
+## Right before Mac moves, trigger function to remove marker.
+## Marker will move with Mac if triggered late.
 func remove_marker():
 	marker.position = Vector2(0,0)
 	marker.direction = 0
 	marker.visible = false
-	marker_body.emitting = false
-	marker_head.emitting = false
 ##

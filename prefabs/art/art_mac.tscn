@@ -441,6 +441,7 @@ _data = {
 script = ExtResource("1_k7ga4")
 
 [node name="Art_Marker" parent="." instance=ExtResource("2_7r8nm")]
+visible = false
 
 [node name="Death" type="CPUParticles2D" parent="."]
 emitting = false

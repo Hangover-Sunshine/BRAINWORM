@@ -13,7 +13,6 @@ metadata/_snap_count = 2
 script = ExtResource("1_7axfu")
 
 [node name="Marker_Body" type="CPUParticles2D" parent="."]
-emitting = false
 local_coords = true
 texture = ExtResource("1_ow5nn")
 spread = 180.0
@@ -27,7 +26,6 @@ scale_amount_curve = SubResource("Curve_evjai")
 color = Color(0.917647, 0.678431, 0.929412, 1)
 
 [node name="Marker_Head" type="CPUParticles2D" parent="."]
-emitting = false
 amount = 12
 local_coords = true
 texture = ExtResource("1_ow5nn")
