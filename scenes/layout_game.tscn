@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=21 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
@@ -10,8 +10,6 @@
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 [ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="7_wkiok"]
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="7_y1ut5"]
-[ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="10_kdvpt"]
-[ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="10_w53f0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_miqr3"]
 shader = ExtResource("1_gki5t")
@@ -51,6 +49,11 @@ texture_region_size = Vector2i(64, 64)
 2:3/0 = 0
 4:3/0 = 0
 4:1/0 = 0
+1:3/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_na48k"]
 tile_size = Vector2i(64, 64)
@@ -330,13 +333,3 @@ theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
 text = "999999999"
 horizontal_alignment = 2
-
-[node name="Art_Mac" parent="." instance=ExtResource("10_kdvpt")]
-visible = false
-position = Vector2(1181, 347)
-
-[node name="Heart" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(926, 544)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_w53f0")

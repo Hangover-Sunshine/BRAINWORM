@@ -27,9 +27,31 @@ var neuron_pos:Vector2i
 var macs:Array
 var mac_positions:Array
 
+var brainfold_positions:Array[Vector2i]
+
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	add_child(neuron)
+	#brainfold_positions.push_back(Vector2i(4, 4))
+	#game_board.add_brainfold(Vector2i(4, 4), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(5, 4))
+	#game_board.add_brainfold(Vector2i(5, 4), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(4, 5))
+	#game_board.add_brainfold(Vector2i(4, 5), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(3, 4))
+	#game_board.add_brainfold(Vector2i(3, 4), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(4, 3))
+	#game_board.add_brainfold(Vector2i(4, 3), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(3, 3))
+	#game_board.add_brainfold(Vector2i(3, 3), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(3, 5))
+	#game_board.add_brainfold(Vector2i(3, 5), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(5, 5))
+	#game_board.add_brainfold(Vector2i(5, 5), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(5, 3))
+	#game_board.add_brainfold(Vector2i(5, 3), brainfold_positions)
+	#brainfold_positions.push_back(Vector2i(8,4))
+	#game_board.add_brainfold(Vector2i(8, 4), brainfold_positions)
 ##
 
 func initialize_ui(game_data:Dictionary, stage:int):
