@@ -52,6 +52,7 @@ layout_mode = 2
 
 [node name="Display_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/General_HBox/Display_VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.670588, 0.72549, 1)
 theme_override_fonts/font = ExtResource("2_8piho")
 theme_override_font_sizes/font_size = 50
 text = "GENERAL"
@@ -99,6 +100,7 @@ theme_override_constants/separation = -5
 
 [node name="Audio_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.670588, 0.72549, 1)
 theme_override_fonts/font = ExtResource("2_8piho")
 theme_override_font_sizes/font_size = 50
 text = "AUDIO"
@@ -114,6 +116,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aif0l")
 theme_override_font_sizes/font_size = 50
 text = "Overall"
+horizontal_alignment = 2
 
 [node name="Overall_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Overall_HBox"]
 custom_minimum_size = Vector2(500, 75)
@@ -134,10 +137,12 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="SFX_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox"]
+custom_minimum_size = Vector2(168, 63)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aif0l")
 theme_override_font_sizes/font_size = 50
 text = "Effects"
+horizontal_alignment = 2
 
 [node name="SFX_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox"]
 custom_minimum_size = Vector2(500, 75)
@@ -158,10 +163,12 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Music_Label" type="Label" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox"]
+custom_minimum_size = Vector2(168, 63)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aif0l")
 theme_override_font_sizes/font_size = 50
 text = "Music"
+horizontal_alignment = 2
 
 [node name="Music_Slider" type="HSlider" parent="Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox"]
 custom_minimum_size = Vector2(500, 75)

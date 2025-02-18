@@ -34,6 +34,7 @@ theme_override_constants/separation = -25
 
 [node name="Header1_Label2" type="Label" parent="Main_MC/Main_VBox/Title_VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.670588, 0.72549, 1)
 theme_override_fonts/font = ExtResource("2_kx8im")
 theme_override_font_sizes/font_size = 40
 text = "Version 1.0 • HANGOVER SUNSHINE"
@@ -48,6 +49,7 @@ horizontal_alignment = 1
 
 [node name="Header1_Label3" type="Label" parent="Main_MC/Main_VBox/Title_VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.670588, 0.72549, 1)
 theme_override_fonts/font = ExtResource("2_kx8im")
 theme_override_font_sizes/font_size = 40
 text = "Godot Wildjam 78 & Brackeys Game Jam 2025.1"

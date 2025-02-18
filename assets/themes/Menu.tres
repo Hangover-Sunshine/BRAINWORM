@@ -4,32 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://dfow4dp04gofq" path="res://assets/particle/Slider_Dot.png" id="2_28jhq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6tqo"]
-bg_color = Color(0.929715, 0.929715, 0.929715, 1)
+bg_color = Color(0.921569, 0.670588, 0.72549, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs6nf"]
-bg_color = Color(0.340339, 0.340339, 0.340339, 1)
+bg_color = Color(0.811765, 0.396078, 0.498039, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4pj2"]
+bg_color = Color(0.929412, 0.501961, 0.6, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cacf2"]
+bg_color = Color(0.921569, 0.670588, 0.72549, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqn1i"]
+bg_color = Color(0.921569, 0.670588, 0.72549, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -40,6 +43,7 @@ expand_margin_right = 13.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gq7v"]
+bg_color = Color(0.921569, 0.670588, 0.72549, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -50,6 +54,7 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gwhm"]
+bg_color = Color(0.811765, 0.396078, 0.498039, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -60,11 +65,11 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [resource]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_focus_color = Color(0.340339, 0.340339, 0.340339, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.811765, 0.396078, 0.498039, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(0.340339, 0.340339, 0.340339, 1)
-Button/colors/font_pressed_color = Color(0.340339, 0.340339, 0.340339, 1)
+Button/colors/font_hover_pressed_color = Color(0.811765, 0.396078, 0.498039, 1)
+Button/colors/font_pressed_color = Color(0.811765, 0.396078, 0.498039, 1)
 Button/fonts/font = ExtResource("1_soy6o")
 Button/styles/disabled = null
 Button/styles/focus = SubResource("StyleBoxFlat_n6tqo")
