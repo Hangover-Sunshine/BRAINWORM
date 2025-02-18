@@ -1,13 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqcuw8vcq561k"]
+[gd_scene load_steps=21 format=3 uid="uid://cqcuw8vcq561k"]
 
-[ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_vd86g"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_pyb6w"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="3_by6kh"]
 [ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="4_pvn58"]
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="5_3yyo0"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="6_16pc0"]
 [ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="7_m2roh"]
-[ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="8_hcnjl"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="9_j3quk"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_65wud"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="11_g5xqt"]
@@ -80,7 +78,6 @@ height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
 
 [node name="Layout_Game" type="Node2D"]
-script = ExtResource("1_vd86g")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -126,13 +123,11 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Placeholder_Worm" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(672, 351)
 texture = ExtResource("7_m2roh")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("8_hcnjl")
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
 visible = false
@@ -332,8 +327,25 @@ text = "999999999"
 horizontal_alignment = 2
 
 [node name="Art_Mac" parent="." instance=ExtResource("11_g5xqt")]
-visible = false
-position = Vector2(1181, 347)
+position = Vector2(1150, 286)
+
+[node name="Art_Mac2" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(972, 383)
+
+[node name="Art_Mac3" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(1294, 411)
+
+[node name="Art_Mac4" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(1150, 485)
+
+[node name="Art_Mac5" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(980, 598)
+
+[node name="Art_Mac6" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(1286, 608)
+
+[node name="Art_Mac7" parent="." instance=ExtResource("11_g5xqt")]
+position = Vector2(1120, 699)
 
 [node name="Heart" type="Sprite2D" parent="."]
 visible = false

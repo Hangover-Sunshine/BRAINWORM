@@ -9,6 +9,9 @@ extends Node2D
 @onready var head = $Skeleton/Head
 @onready var face = $Skeleton/Face
 
+# 0 = N/A, 1 = Left, 2 = Up, 3 = Right, 4 = Down
+@onready var direction = 0
+
 # Declaring variables to hold the marker and its parts
 var marker
 var marker_body
@@ -24,9 +27,9 @@ var dark_color = Color8(1,1,1,1)
 
 func _ready():
 	marker = $Art_Marker
-	marker.emitted = true
 	marker_body = marker.get_node("Marker_Body")
 	marker_head = marker.get_node("Marker_Head")
+	marker.position = Vector2(0,0)
 	randomize_color()
 
 func randomize_color():
@@ -92,4 +95,38 @@ func idle_mac():
 
 func kill_mac():
 	ap_motion.play("Die")
+##
+
+## Trigger function, checks for number and points in direction.
+func point_marker():
+	marker.visible = true
+	if direction == 1:
+		# going left
+		marker.position = Vector2(-64,0)
+		marker_body.emitting = true
+		marker_head.emitting = true
+	elif direction == 2:
+		# going up
+		marker.position = Vector2(0,-64)
+		marker_body.emitting = true
+		marker_head.emitting = true
+	elif direction == 3:
+		# going right
+		marker.position = Vector2(64,0)
+		marker_body.emitting = true
+		marker_head.emitting = true
+	elif direction == 4:
+		# going down
+		marker.position = Vector2(0,64)
+		marker_body.emitting = true
+		marker_head.emitting = true
+##
+
+## Right before Mac moves, trigger function.
+func remove_marker():
+	marker.position = Vector2(0,0)
+	marker.direction = 0
+	marker.visible = false
+	marker_body.emitting = false
+	marker_head.emitting = false
 ##
