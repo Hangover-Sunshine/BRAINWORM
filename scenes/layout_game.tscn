@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=23 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="7_y1ut5"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="9_323rp"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="10_kdvpt"]
 [ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="10_w53f0"]
 
@@ -76,6 +77,12 @@ shader_parameter/multiplierAmount = 0.002
 width = 1100
 height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
+
+[sub_resource type="Curve" id="Curve_qwha0"]
+_data = [Vector2(0, 0), 0.0, 6.0186, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.74588, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [node name="Layout_Game" type="Node2D"]
 
@@ -326,9 +333,87 @@ text = "999999999"
 horizontal_alignment = 2
 
 [node name="Art_Mac" parent="." instance=ExtResource("10_kdvpt")]
-position = Vector2(1181, 347)
+position = Vector2(1047, 214)
+
+[node name="Art_Mac2" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1122, 270)
+
+[node name="Art_Mac3" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1212, 211)
+
+[node name="Art_Mac4" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1279, 283)
+
+[node name="Art_Mac5" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1204, 349)
+
+[node name="Art_Mac6" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1039, 350)
+
+[node name="Art_Mac7" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1122, 424)
+
+[node name="Art_Mac8" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1275, 425)
+
+[node name="Art_Mac9" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1023, 483)
+
+[node name="Art_Mac10" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1196, 497)
+
+[node name="Art_Mac11" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1342, 498)
+
+[node name="Art_Mac12" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1350, 349)
+
+[node name="Art_Mac13" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1375, 215)
+
+[node name="Art_Mac14" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1301, 138)
+
+[node name="Art_Mac15" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1130, 138)
+
+[node name="Art_Mac16" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1118, 568)
+
+[node name="Art_Mac17" parent="." instance=ExtResource("10_kdvpt")]
+position = Vector2(1259, 581)
 
 [node name="Heart" type="Sprite2D" parent="."]
 position = Vector2(926, 544)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_w53f0")
+
+[node name="Head" type="CPUParticles2D" parent="."]
+position = Vector2(926, 349)
+speed_scale = 0.5
+local_coords = true
+texture = ExtResource("9_323rp")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angle_max = 180.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_qwha0")
+color = Color(0.921569, 0.670588, 0.72549, 1)
+
+[node name="Head2" type="CPUParticles2D" parent="."]
+position = Vector2(926, 349)
+speed_scale = 0.5
+local_coords = true
+texture = ExtResource("9_323rp")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angle_max = 180.0
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_qwha0")
+color = Color(0.929412, 0.501961, 0.6, 1)

@@ -501,20 +501,18 @@ scale_amount_curve = SubResource("Curve_nnbo2")
 color = Color(0.564706, 0.368627, 0.662745, 1)
 
 [node name="Face" type="Node2D" parent="Skeleton"]
+modulate = Color(0.252888, 0.182373, 0.289573, 1)
 
 [node name="Mouth" type="Sprite2D" parent="Skeleton/Face"]
-modulate = Color(0.196078, 0.2, 0.32549, 1)
 position = Vector2(0, 7)
 texture = ExtResource("2_i1ee7")
 
 [node name="L_Brow" type="Sprite2D" parent="Skeleton/Face"]
-modulate = Color(0.196078, 0.2, 0.32549, 1)
 position = Vector2(-7, -6.5)
 texture = ExtResource("3_icqg6")
 offset = Vector2(-3, -2.5)
 
 [node name="R_Brow" type="Sprite2D" parent="Skeleton/Face"]
-modulate = Color(0.196078, 0.2, 0.32549, 1)
 position = Vector2(7, -6.5)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -522,12 +520,10 @@ texture = ExtResource("3_icqg6")
 offset = Vector2(-3, -2.5)
 
 [node name="L_Eye" type="Sprite2D" parent="Skeleton/Face"]
-modulate = Color(0.196078, 0.2, 0.32549, 1)
 position = Vector2(-10, -5)
 texture = ExtResource("4_etgak")
 
 [node name="R_Eye" type="Sprite2D" parent="Skeleton/Face"]
-modulate = Color(0.196078, 0.2, 0.32549, 1)
 position = Vector2(10, -5)
 rotation = 3.14159
 scale = Vector2(1, -1)
