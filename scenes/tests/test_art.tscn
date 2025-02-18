@@ -1,0 +1,342 @@
+[gd_scene load_steps=23 format=3 uid="uid://cqcuw8vcq561k"]
+
+[ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_vd86g"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_pyb6w"]
+[ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="3_by6kh"]
+[ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="4_pvn58"]
+[ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="5_3yyo0"]
+[ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="6_16pc0"]
+[ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="7_m2roh"]
+[ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="8_hcnjl"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="9_j3quk"]
+[ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_65wud"]
+[ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="11_g5xqt"]
+[ext_resource type="Texture2D" uid="uid://xjwsl17rjyl3" path="res://assets/particle/Heart.png" id="12_gxs6j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqr3"]
+shader = ExtResource("2_pyb6w")
+shader_parameter/OCTAVE = 2
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.4
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 0.5
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0.129729, 0.0255367, 0.0527574, 1)
+shader_parameter/WATER2_COL = Color(0.210706, 0.0444339, 0.109765, 1)
+shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmqsi"]
+texture = ExtResource("3_by6kh")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmqef"]
+texture = ExtResource("4_pvn58")
+texture_region_size = Vector2i(64, 64)
+0:2/animation_columns = 2
+0:2/animation_separation = Vector2i(5, 0)
+0:2/0 = 0
+3:2/0 = 0
+3:0/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+2:1/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_na48k"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_dmqsi")
+sources/2 = SubResource("TileSetAtlasSource_rmqef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y27p0"]
+shader = ExtResource("5_3yyo0")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/MULTIPLIER = 0.5
+shader_parameter/SCALE = 1.5
+shader_parameter/SOFTNESS = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp177"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6im5"]
+shader = ExtResource("6_16pc0")
+shader_parameter/scrollAmount = Vector2(0.05, 0.05)
+shader_parameter/multiplierAmount = 0.002
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2p82t"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vldpw"]
+width = 1100
+height = 1036
+noise = SubResource("FastNoiseLite_2p82t")
+
+[node name="Layout_Game" type="Node2D"]
+script = ExtResource("1_vd86g")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_miqr3")
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Environment" type="TileMap" parent="Background"]
+material = SubResource("ShaderMaterial_1peyr")
+tile_set = SubResource("TileSet_na48k")
+format = 2
+layer_0/name = "Background"
+layer_0/tile_data = PackedInt32Array(131080, 65537, 0, 65544, 1, 0, 65543, 65537, 0, 131079, 1, 0, 196615, 65537, 0, 262151, 1, 0, 327687, 65537, 0, 393223, 1, 0, 458759, 65537, 0, 524295, 1, 0, 589831, 65537, 0, 655367, 1, 0, 720903, 65537, 0, 786439, 1, 0, 851975, 65537, 0, 917511, 1, 0, 983047, 65537, 0, 983048, 1, 0, 917512, 65537, 0, 851976, 1, 0, 786440, 65537, 0, 720904, 1, 0, 655368, 65537, 0, 589832, 1, 0, 524296, 65537, 0, 458760, 1, 0, 393224, 65537, 0, 327688, 1, 0, 262152, 65537, 0, 196616, 1, 0, 196617, 65537, 0, 131081, 1, 0, 65545, 65537, 0, 65546, 1, 0, 131082, 65537, 0, 196618, 1, 0, 262154, 65537, 0, 262153, 1, 0, 327689, 65537, 0, 393225, 1, 0, 458761, 65537, 0, 524297, 1, 0, 589833, 65537, 0, 655369, 1, 0, 720905, 65537, 0, 786441, 1, 0, 851977, 65537, 0, 917513, 1, 0, 983049, 65537, 0, 983050, 1, 0, 917514, 65537, 0, 851978, 1, 0, 786442, 65537, 0, 720906, 1, 0, 655370, 65537, 0, 589834, 1, 0, 524298, 65537, 0, 458762, 1, 0, 393226, 65537, 0, 327690, 1, 0, 327691, 65537, 0, 262155, 1, 0, 196619, 65537, 0, 131083, 1, 0, 65547, 65537, 0, 65548, 1, 0, 131084, 65537, 0, 196620, 1, 0, 262156, 65537, 0, 327692, 1, 0, 393228, 65537, 0, 393227, 1, 0, 458763, 65537, 0, 524299, 1, 0, 589835, 65537, 0, 655371, 1, 0, 720907, 65537, 0, 786443, 1, 0, 851979, 65537, 0, 917515, 1, 0, 983051, 65537, 0, 983052, 1, 0, 917516, 65537, 0, 851980, 1, 0, 786444, 65537, 0, 720908, 1, 0, 655372, 65537, 0, 589836, 1, 0, 524300, 65537, 0, 458764, 1, 0, 458765, 65537, 0, 393229, 1, 0, 327693, 65537, 0, 262157, 1, 0, 196621, 65537, 0, 131085, 1, 0, 65549, 65537, 0, 65550, 1, 0, 131086, 65537, 0, 196622, 1, 0, 262158, 65537, 0, 327694, 1, 0, 393230, 65537, 0, 458766, 1, 0, 524302, 65537, 0, 524301, 1, 0, 589837, 65537, 0, 655373, 1, 0, 720909, 65537, 0, 786445, 1, 0, 851981, 65537, 0, 917517, 1, 0, 983053, 65537, 0, 983054, 1, 0, 917518, 65537, 0, 851982, 1, 0, 786446, 65537, 0, 720910, 1, 0, 655374, 65537, 0, 589838, 1, 0, 589839, 65537, 0, 524303, 1, 0, 458767, 65537, 0, 393231, 1, 0, 327695, 65537, 0, 262159, 1, 0, 196623, 65537, 0, 131087, 1, 0, 65551, 65537, 0, 65552, 1, 0, 131088, 65537, 0, 196624, 1, 0, 262160, 65537, 0, 327696, 1, 0, 393232, 65537, 0, 458768, 1, 0, 524304, 65537, 0, 589840, 1, 0, 655376, 65537, 0, 655375, 1, 0, 720911, 65537, 0, 786447, 1, 0, 851983, 65537, 0, 917519, 1, 0, 983055, 65537, 0, 983056, 1, 0, 917520, 65537, 0, 851984, 1, 0, 786448, 65537, 0, 720912, 1, 0, 720913, 65537, 0, 655377, 1, 0, 589841, 65537, 0, 524305, 1, 0, 458769, 65537, 0, 393233, 1, 0, 327697, 65537, 0, 262161, 1, 0, 196625, 65537, 0, 131089, 1, 0, 65553, 65537, 0, 65554, 1, 0, 131090, 65537, 0, 196626, 1, 0, 262162, 65537, 0, 327698, 1, 0, 393234, 65537, 0, 458770, 1, 0, 524306, 65537, 0, 589842, 1, 0, 655378, 65537, 0, 720914, 1, 0, 786450, 65537, 0, 786449, 1, 0, 851985, 65537, 0, 917521, 1, 0, 983057, 65537, 0, 983058, 1, 0, 917522, 65537, 0, 851986, 1, 0, 851987, 65537, 0, 786451, 1, 0, 720915, 65537, 0, 655379, 1, 0, 589843, 65537, 0, 524307, 1, 0, 458771, 65537, 0, 393235, 1, 0, 327699, 65537, 0, 262163, 1, 0, 196627, 65537, 0, 131091, 1, 0, 65555, 65537, 0, 65556, 1, 0, 131092, 65537, 0, 196628, 1, 0, 262164, 65537, 0, 327700, 1, 0, 393236, 65537, 0, 458772, 1, 0, 524308, 65537, 0, 589844, 1, 0, 655380, 65537, 0, 720916, 1, 0, 786452, 65537, 0, 851988, 1, 0, 917524, 65537, 0, 917523, 1, 0, 983059, 65537, 0, 983060, 1, 0, 983061, 65537, 0, 917525, 1, 0, 851989, 65537, 0, 786453, 1, 0, 720917, 65537, 0, 655381, 1, 0, 589845, 65537, 0, 524309, 1, 0, 458773, 65537, 0, 393237, 1, 0, 327701, 65537, 0, 262165, 1, 0, 196629, 65537, 0, 131093, 1, 0, 65557, 65537, 0, 65558, 1, 0, 131094, 65537, 0, 196630, 1, 0, 262166, 65537, 0, 327702, 1, 0, 393238, 65537, 0, 458774, 1, 0, 524310, 65537, 0, 589846, 1, 0, 655382, 65537, 0, 720918, 1, 0, 786454, 65537, 0, 851990, 1, 0, 917526, 65537, 0, 983062, 1, 0)
+layer_1/name = "Tissue"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Filter_Vignette_Env" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_y27p0")
+offset_left = 437.0
+offset_top = 58.0
+offset_right = 1477.0
+offset_bottom = 1028.0
+
+[node name="Border" type="Line2D" parent="Background"]
+material = SubResource("ShaderMaterial_wp177")
+position = Vector2(438, 59)
+points = PackedVector2Array(0, 0, 1044, 0, 1044, 970, 0, 970)
+closed = true
+width = 20.0
+joint_mode = 2
+
+[node name="Filter_Distortion" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_k6im5")
+position = Vector2(954, 538)
+texture = SubResource("NoiseTexture2D_vldpw")
+
+[node name="Filter_Vignette_All" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_y27p0")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Placeholder_Worm" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(672, 351)
+texture = ExtResource("7_m2roh")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("8_hcnjl")
+
+[node name="GUI_Time" type="Node2D" parent="GUI"]
+visible = false
+position = Vector2(1643, 109)
+
+[node name="Title_Time" type="Label" parent="GUI/GUI_Time"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Time"
+vertical_alignment = 2
+
+[node name="Number_Time" type="Label" parent="GUI/GUI_Time"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "HH:MM:SS"
+
+[node name="GUI_Flesh" type="Node2D" parent="GUI"]
+position = Vector2(1643, 755)
+
+[node name="Title_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Flesh"
+vertical_alignment = 2
+
+[node name="Number_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "###"
+
+[node name="GUI_Macs" type="Node2D" parent="GUI"]
+position = Vector2(1643, 858)
+
+[node name="Title_Macs" type="Label" parent="GUI/GUI_Macs"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Macs"
+vertical_alignment = 2
+
+[node name="Number_Macs" type="Label" parent="GUI/GUI_Macs"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "###"
+
+[node name="GUI_Tissue" type="Node2D" parent="GUI"]
+position = Vector2(1643, 959)
+
+[node name="Title_Tissue" type="Label" parent="GUI/GUI_Tissue"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Tissue"
+vertical_alignment = 2
+
+[node name="Number_Tissue" type="Label" parent="GUI/GUI_Tissue"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "###"
+
+[node name="GUI_Stage" type="Node2D" parent="GUI"]
+position = Vector2(273, 109)
+
+[node name="Title_Stage" type="Label" parent="GUI/GUI_Stage"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Stage"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Number_Stage" type="Label" parent="GUI/GUI_Stage"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_right = 134.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 2
+
+[node name="GUI_Score" type="Node2D" parent="GUI"]
+position = Vector2(273, 959)
+
+[node name="Title_Score" type="Label" parent="GUI/GUI_Score"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Score"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Number_Score" type="Label" parent="GUI/GUI_Score"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_right = 131.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_65wud")
+theme_override_font_sizes/font_size = 40
+text = "999999999"
+horizontal_alignment = 2
+
+[node name="Art_Mac" parent="." instance=ExtResource("11_g5xqt")]
+visible = false
+position = Vector2(1181, 347)
+
+[node name="Heart" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(926, 544)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_gxs6j")
