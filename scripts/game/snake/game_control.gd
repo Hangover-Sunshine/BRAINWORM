@@ -22,9 +22,15 @@ var curr_positions:Array[Vector2i]
 var segments:Array
 var move_dir:Vector2i
 
-var neurons:Array
+var neuron
+var neuron_pos:Vector2i
 var macs:Array
 var mac_positions:Array
+
+func _ready():
+	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
+	add_child(neuron)
+##
 
 func initialize_ui(game_data:Dictionary, stage:int):
 	game_board.initialize_ui(game_data, stage)
@@ -61,11 +67,18 @@ func initialize_board(game_data:Dictionary):
 	# Which way were they going last?
 	move_dir = game_data["dir"]
 	
+	generate_neuron()
+	
 	# TODO: Begin count down
 ##
 
 func add_segment(position:Vector2i):
 	curr_positions.push_back(position)
+	
+	var snake_seg = SNAKE_SEGMENT.instantiate()
+	snake_seg.global_position = game_board.get_world_position_at(position)
+	add_child(snake_seg)
+	segments.push_back(snake_seg)
 ##
 
 func _process(_delta):
@@ -108,7 +121,7 @@ func _on_timer_timeout():
 	check_for_edge()
 	check_for_self()
 	check_for_enemy()
-	#check_for_neuron()
+	check_for_neuron()
 ##
 
 func check_for_edge():
@@ -134,4 +147,32 @@ func check_for_self():
 
 func check_for_enemy():
 	pass
+##
+
+func check_for_neuron():
+	if neuron_pos == curr_positions[0]:
+		add_segment(curr_positions[-1])
+		generate_neuron()
+	##
+##
+
+func generate_neuron():
+	var position:Vector2i
+	var regen_food:bool = true
+	while regen_food:
+		regen_food = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		
+		for pos in curr_positions:
+			if pos == position:
+				regen_food = true
+				break
+			##
+		##
+		
+		# TODO: Check if it is overlapped by a tissue
+	##
+	
+	neuron_pos = position
+	neuron.global_position = game_board.get_world_position_at(position)
 ##

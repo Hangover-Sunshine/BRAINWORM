@@ -7,27 +7,3 @@
 [node name="UnderneathVisualizer" type="Sprite2D" parent="."]
 texture = ExtResource("1_wwq15")
 region_rect = Rect2(128, 0, 64, 64)
-
-[node name="UnderneathVisualizer3" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-64, 0)
-texture = ExtResource("1_wwq15")
-region_rect = Rect2(128, 0, 64, 64)
-
-[node name="UnderneathVisualizer4" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-128, 0)
-texture = ExtResource("1_wwq15")
-region_rect = Rect2(128, 0, 64, 64)
-
-[node name="UnderneathVisualizer2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -64)
-texture = ExtResource("1_wwq15")
-region_rect = Rect2(128, 0, 64, 64)
-
-[node name="UnderneathVisualizer5" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -128)
-texture = ExtResource("1_wwq15")
-region_rect = Rect2(128, 0, 64, 64)
