@@ -4,11 +4,11 @@ extends Node2D
 @onready var ap_motion = $AP_Motion
 
 ## Trigger functions for animations.
-func spawn_flesh():
+func spawn_ram():
 	skeleton.visible = true
 	ap_motion.play("Spawn")
 ##
 
-func idle_flesh():
+func idle_ram():
 	ap_motion.play("Idle")
 ##

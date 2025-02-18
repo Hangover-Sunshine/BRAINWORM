@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2f4ytn43g7yj"]
+[gd_scene load_steps=10 format=3 uid="uid://drvg5jrhktmd8"]
 
-[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_1cows"]
-[ext_resource type="Script" path="res://scripts/art/art_neuron.gd" id="1_84shq"]
+[ext_resource type="Script" path="res://scripts/art/art_neuron.gd" id="1_otocj"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_m3j2d"]
+[ext_resource type="Texture2D" uid="uid://dvfydrd18yc8b" path="res://assets/particle/Bolt.png" id="3_u4f1q"]
 
 [sub_resource type="Curve" id="Curve_qwha0"]
+_data = [Vector2(0, 0), 0.0, 6.0186, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.74588, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="Curve" id="Curve_ksecb"]
 _data = [Vector2(0, 0), 0.0, 6.0186, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.74588, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
@@ -68,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton/Neuron_Core:emitting")
+tracks/2/path = NodePath("Skeleton/Ram_Back:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -80,7 +87,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton/Neuron_Back:emitting")
+tracks/3/path = NodePath("Skeleton/Ram_Core:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -97,7 +104,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton/Neuron_Core:emitting")
+tracks/0/path = NodePath("Skeleton/Ram_Back:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -109,7 +116,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton/Neuron_Back:emitting")
+tracks/1/path = NodePath("Skeleton/Ram_Core:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,15 +133,15 @@ _data = {
 "Spawn": SubResource("Animation_fy7qs")
 }
 
-[node name="Art_Neuron" type="Node2D"]
-script = ExtResource("1_84shq")
+[node name="Art_Ram" type="Node2D"]
+script = ExtResource("1_otocj")
 
 [node name="Skeleton" type="Node2D" parent="."]
 
-[node name="Neuron_Back" type="CPUParticles2D" parent="Skeleton"]
+[node name="Ram_Back" type="CPUParticles2D" parent="Skeleton"]
 speed_scale = 0.5
 local_coords = true
-texture = ExtResource("1_1cows")
+texture = ExtResource("2_m3j2d")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 5.0
@@ -143,21 +150,20 @@ angle_max = 180.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_qwha0")
-color = Color(0.921569, 0.670588, 0.72549, 1)
+color = Color(0.94902, 0.458824, 0.584314, 1)
 
-[node name="Neuron_Core" type="CPUParticles2D" parent="Skeleton"]
+[node name="Ram_Core" type="CPUParticles2D" parent="Skeleton"]
 speed_scale = 0.5
 local_coords = true
-texture = ExtResource("1_1cows")
+texture = ExtResource("3_u4f1q")
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-angle_max = 180.0
-scale_amount_min = 0.15
-scale_amount_max = 0.15
-scale_amount_curve = SubResource("Curve_qwha0")
-color = Color(0.929412, 0.501961, 0.6, 1)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_ksecb")
+color = Color(0.764706, 0.141176, 0.329412, 1)
 
 [node name="AP_Motion" type="AnimationPlayer" parent="."]
 libraries = {
