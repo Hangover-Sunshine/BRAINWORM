@@ -1,9 +1,111 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=8 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
 
+[sub_resource type="Animation" id="Animation_0a1rh"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o3cmu"]
+resource_name = "zoom_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c5ysk"]
+resource_name = "zoom_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 3),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.2, 0.2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"game_won"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kbdut"]
+resource_name = "zoom_out_go"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kijkm"]
+_data = {
+"RESET": SubResource("Animation_0a1rh"),
+"zoom_in": SubResource("Animation_o3cmu"),
+"zoom_out": SubResource("Animation_c5ysk"),
+"zoom_out_go": SubResource("Animation_kbdut")
+}
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_ymqpa")
 
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10000, 3000)
+offset_left = -3926.0
+offset_top = -2410.0
+offset_right = 2074.0
+offset_bottom = 3590.0
+color = Color(0.172549, 0.0352941, 0.0901961, 1)
+
 [node name="Layout_Game" parent="." instance=ExtResource("2_0p6tp")]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="ZoomControl" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kijkm")
+}

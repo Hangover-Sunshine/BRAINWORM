@@ -1,7 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbu36oi204on1"]
+[gd_scene load_steps=11 format=3 uid="uid://bbu36oi204on1"]
 
 [ext_resource type="Script" path="res://scripts/game/system/Cutscenes/example_cutscene.gd" id="1_auhh7"]
 [ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_rj7i3"]
+
+[sub_resource type="Animation" id="Animation_h8415"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_rjqnw"]
+resource_name = "cancel"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ftha7"]
 resource_name = "yippie"
@@ -45,8 +76,31 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_145q2"]
-resource_name = "camera_zoom_in"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwj2s"]
+_data = {
+"RESET": SubResource("Animation_h8415"),
+"cancel": SubResource("Animation_rjqnw"),
+"yippie": SubResource("Animation_ftha7")
+}
+
+[sub_resource type="Animation" id="Animation_2jomx"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t5xej"]
+resource_name = "zoom_in"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -61,57 +115,58 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(3, 3)]
 }
 
-[sub_resource type="Animation" id="Animation_h8415"]
-resource_name = "RESET"
-
-[sub_resource type="Animation" id="Animation_rjqnw"]
-resource_name = "cancel"
-length = 0.001
+[sub_resource type="Animation" id="Animation_anqil"]
+resource_name = "zoom_out"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [18.8496]
+"values": [Vector2(3, 3), Vector2(1, 1)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [{
+"args": [],
+"method": &"play_cutscene"
+}]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwj2s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjkud"]
 _data = {
-"RESET": SubResource("Animation_h8415"),
-"camera_zoom_in": SubResource("Animation_145q2"),
-"cancel": SubResource("Animation_rjqnw"),
-"yippie": SubResource("Animation_ftha7")
+"RESET": SubResource("Animation_2jomx"),
+"zoom_in": SubResource("Animation_t5xej"),
+"zoom_out": SubResource("Animation_anqil")
 }
 
 [node name="ExampleCutscene" type="Node2D"]
 script = ExtResource("1_auhh7")
-TimeToStartCutscene = 1.05
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mwj2s")
 }
 
+[node name="CameraAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjkud")
+}
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-rotation = 18.8496
 texture = ExtResource("2_rj7i3")
 
 [node name="Camera2D" type="Camera2D" parent="."]

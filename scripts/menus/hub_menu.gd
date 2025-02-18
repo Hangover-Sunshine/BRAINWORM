@@ -31,12 +31,6 @@ func _ready():
 	handle_signals()
 ##
 
-func _process(_delta):
-	if animplayer.is_playing():
-		print(animplayer.current_animation)
-	##
-##
-
 # manages page flipping for any button press. Keeps MenuTimer in mind to delay instant flipping #
 func _input(event):
 	if event.is_pressed() and menu_splash.visible == true and menu_disclaimer.visible == false and ready_to_click == true:

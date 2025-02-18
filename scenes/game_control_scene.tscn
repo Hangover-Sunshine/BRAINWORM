@@ -1,9 +1,47 @@
-[gd_scene load_steps=8 format=3 uid="uid://b82wbqhe3bm8g"]
+[gd_scene load_steps=12 format=3 uid="uid://b82wbqhe3bm8g"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_controller.gd" id="1_1jlle"]
 [ext_resource type="PackedScene" uid="uid://bbu36oi204on1" path="res://scenes/cutscenes/example_cutscene.tscn" id="2_mmsog"]
 [ext_resource type="PackedScene" uid="uid://dv4v38ahvej5j" path="res://scenes/game_scene.tscn" id="3_8gbgv"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="4_r4oe0"]
+[ext_resource type="PackedScene" uid="uid://dgrchpsdeaxdt" path="res://scenes/menus/menu_gameover.tscn" id="5_61x2s"]
+
+[sub_resource type="Animation" id="Animation_1rbkd"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuGameover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8u5di"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuGameover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0mowf"]
+_data = {
+"RESET": SubResource("Animation_1rbkd"),
+"fade": SubResource("Animation_8u5di")
+}
 
 [sub_resource type="Animation" id="Animation_n6hay"]
 resource_name = "fade_in"
@@ -67,6 +105,24 @@ visible = false
 
 [node name="HubPause" parent="PauseMenu" instance=ExtResource("4_r4oe0")]
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.0352941, 0.0901961, 0.635294)
+
+[node name="MenuGameover" parent="GameOver" instance=ExtResource("5_61x2s")]
+
+[node name="GameOverAnimPlayer" type="AnimationPlayer" parent="GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_0mowf")
+}
+
 [node name="Fade" type="CanvasLayer" parent="."]
 layer = 128
 
@@ -77,12 +133,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.037647, 0.037647, 0.037647, 0.7)
 
 [node name="InternalFadeController" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gsc2k")
 }
 
-[node name="MainCamera" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+[connection signal="gameover_to_game" from="GameOver/MenuGameover" to="." method="_on_menu_gameover_gameover_to_game"]
+[connection signal="gameover_to_main" from="GameOver/MenuGameover" to="." method="_on_menu_gameover_gameover_to_main"]
