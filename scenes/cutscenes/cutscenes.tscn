@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://bai18wlbx1eho"]
+
+[ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_4nw8e"]
+
+[sub_resource type="Animation" id="Animation_h8415"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_rjqnw"]
+resource_name = "cancel"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ftha7"]
+resource_name = "yippie"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319, 9.42478, 12.5664, 15.708, 18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.561742, 0.974473, 1), Color(0.689493, 0.537176, 1, 1), Color(1, 0.616651, 0.596774, 1), Color(0.525277, 1, 0.102306, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwj2s"]
+_data = {
+"RESET": SubResource("Animation_h8415"),
+"cancel": SubResource("Animation_rjqnw"),
+"yippie": SubResource("Animation_ftha7")
+}
+
+[sub_resource type="Animation" id="Animation_2jomx"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t5xej"]
+resource_name = "zoom_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_anqil"]
+resource_name = "zoom_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjkud"]
+_data = {
+"RESET": SubResource("Animation_2jomx"),
+"zoom_in": SubResource("Animation_t5xej"),
+"zoom_out": SubResource("Animation_anqil")
+}
+
+[node name="Cutscenes" type="Node2D"]
+
+[node name="AP_Manager" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mwj2s")
+}
+autoplay = "yippie"
+
+[node name="AP_Camera" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjkud")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_4nw8e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
