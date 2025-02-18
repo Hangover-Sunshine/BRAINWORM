@@ -269,7 +269,21 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jgprp")
 theme_override_font_sizes/font_size = 50
-text = "4) Depiction of brain decline (hypochondria),"
+text = "4) Depiction of cognitive decline (dementophobia),"
+horizontal_alignment = 1
+
+[node name="Paragraph5_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
+theme_override_font_sizes/font_size = 50
+text = "5) Depiction of hateful rhetoric (including xenophobia, ableism,"
+horizontal_alignment = 1
+
+[node name="Paragraph6_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox/Header_VBox2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jgprp")
+theme_override_font_sizes/font_size = 50
+text = "anti-science sentiment, general misinformation, etc.)"
 horizontal_alignment = 1
 
 [node name="GameIcon" type="TextureRect" parent="Disclaimer_MC/Disclaimer_VBox"]
