@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bqmwc3nqlu56v"]
 
-[ext_resource type="Script" path="res://prefabs/art/art_mac.gd" id="1_k7ga4"]
+[ext_resource type="Script" path="res://scripts/art/art_mac.gd" id="1_k7ga4"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_yoqno"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="2_i1ee7"]
 [ext_resource type="Texture2D" uid="uid://ypya1wi0nvfs" path="res://assets/character/Mac_Brow.png" id="3_icqg6"]
