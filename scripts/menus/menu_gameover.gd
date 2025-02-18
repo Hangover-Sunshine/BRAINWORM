@@ -12,7 +12,7 @@ signal gameover_to_main
 func to_lose():
 	$Background.visible = false
 	lose_title.visible = true
-	fail_text.visible = true
+	fail_text.visible = false #keeping off since player can lose a lot
 	win_title.visible = false
 	win_text.visible = false
 

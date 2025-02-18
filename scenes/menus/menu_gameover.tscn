@@ -70,7 +70,6 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Win_Title" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
@@ -78,6 +77,7 @@ text = "CONGRATS!"
 horizontal_alignment = 1
 
 [node name="Lose_Title" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
@@ -85,10 +85,17 @@ text = "FAILURE!"
 horizontal_alignment = 1
 
 [node name="Divider1" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 custom_minimum_size = Vector2(1250, 10)
 layout_mode = 2
 size_flags_horizontal = 4
-color = Color(0.921569, 0.670588, 0.72549, 1)
+color = Color(1, 1, 1, 0)
+
+[node name="Line2D" type="Line2D" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Divider1"]
+position = Vector2(0, 5)
+points = PackedVector2Array(0, 0, 1250, 0, 1250, 1, 0, 1)
+closed = true
+joint_mode = 2
 
 [node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
 layout_mode = 2
@@ -143,6 +150,7 @@ text = "other worms would be more successful?"
 horizontal_alignment = 1
 
 [node name="Divider2" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 custom_minimum_size = Vector2(1000, 10)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -222,6 +230,7 @@ text = "###"
 horizontal_alignment = 1
 
 [node name="Divider3" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 custom_minimum_size = Vector2(1250, 10)
 layout_mode = 2
 size_flags_horizontal = 4
