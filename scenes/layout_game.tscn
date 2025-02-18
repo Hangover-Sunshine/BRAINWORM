@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=24 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
@@ -82,6 +82,20 @@ width = 1100
 height = 1036
 noise = SubResource("FastNoiseLite_2p82t")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sxfs"]
+
+[sub_resource type="Gradient" id="Gradient_oqvp6"]
+offsets = PackedFloat32Array(0.753247, 1)
+colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qscsr"]
+gradient = SubResource("Gradient_oqvp6")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.816514, 0.169725)
+
 [node name="Layout_Game" type="Node2D"]
 script = ExtResource("1_cruol")
 
@@ -89,9 +103,9 @@ script = ExtResource("1_cruol")
 
 [node name="Background" type="ColorRect" parent="Background"]
 material = SubResource("ShaderMaterial_miqr3")
-custom_minimum_size = Vector2(1920, 1080)
+offset_top = -371.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1549.0
 
 [node name="Environment" type="TileMap" parent="Background"]
 material = SubResource("ShaderMaterial_1peyr")
@@ -123,10 +137,14 @@ material = SubResource("ShaderMaterial_k6im5")
 position = Vector2(954, 538)
 texture = SubResource("NoiseTexture2D_vldpw")
 
-[node name="Filter_Vignette_All" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_y27p0")
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="Filter_Vignette_Overall" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_6sxfs")
+offset_left = -42.0
+offset_top = -423.0
+offset_right = 1958.0
+offset_bottom = 1577.0
+pivot_offset = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_qscsr")
 
 [node name="Placeholder_Worm" type="Sprite2D" parent="."]
 visible = false
@@ -134,7 +152,6 @@ position = Vector2(672, 351)
 texture = ExtResource("2_ta1vs")
 
 [node name="GUI" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("7_wkiok")
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
