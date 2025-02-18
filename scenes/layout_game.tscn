@@ -84,12 +84,12 @@ noise = SubResource("FastNoiseLite_2p82t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6sxfs"]
 
-[sub_resource type="Gradient" id="Gradient_oqvp6"]
+[sub_resource type="Gradient" id="Gradient_846uu"]
 offsets = PackedFloat32Array(0.753247, 1)
 colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qscsr"]
-gradient = SubResource("Gradient_oqvp6")
+gradient = SubResource("Gradient_846uu")
 width = 2000
 height = 2000
 fill = 1
@@ -155,7 +155,6 @@ texture = ExtResource("2_ta1vs")
 script = ExtResource("7_wkiok")
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
-visible = false
 position = Vector2(1643, 109)
 
 [node name="Title_Time" type="Label" parent="GUI/GUI_Time"]
@@ -187,10 +186,10 @@ theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
 text = "HH:MM:SS"
 
-[node name="GUI_Flesh" type="Node2D" parent="GUI"]
+[node name="GUI_Neuron" type="Node2D" parent="GUI"]
 position = Vector2(1643, 755)
 
-[node name="Title_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+[node name="Title_Neuron" type="Label" parent="GUI/GUI_Neuron"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -204,10 +203,10 @@ grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_b4rxw")
 theme_override_font_sizes/font_size = 40
-text = "Flesh"
+text = "Neurons"
 vertical_alignment = 2
 
-[node name="Number_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+[node name="Number_Neuron" type="Label" parent="GUI/GUI_Neuron"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

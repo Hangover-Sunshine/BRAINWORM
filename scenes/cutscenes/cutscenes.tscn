@@ -125,6 +125,40 @@ _data = {
 
 [node name="Cutscenes" type="Node2D"]
 
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0947538, 0.119963, 0.211595, 1)
+
+[node name="Background2" type="ColorRect" parent="."]
+offset_left = 610.0
+offset_top = 126.0
+offset_right = 1310.0
+offset_bottom = 1078.78
+color = Color(0.417854, 0.155361, 0.18349, 1)
+
+[node name="Desk" type="Node2D" parent="."]
+position = Vector2(-14, 24)
+
+[node name="Background2" type="ColorRect" parent="Desk"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_left = 702.0
+offset_top = 686.0
+offset_right = 2622.0
+offset_bottom = 1766.0
+scale = Vector2(0.28, 0.555483)
+color = Color(0.188148, 0.132458, 0.120817, 1)
+
+[node name="Background3" type="ColorRect" parent="Desk"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_left = 665.0
+offset_top = 641.0
+offset_right = 2585.0
+offset_bottom = 1721.0
+scale = Vector2(0.326973, 0.0658165)
+color = Color(0.312294, 0.229458, 0.212127, 1)
+
 [node name="AP_Manager" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mwj2s")
@@ -135,6 +169,7 @@ autoplay = "yippie"
 libraries = {
 "": SubResource("AnimationLibrary_pjkud")
 }
+autoplay = "RESET"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

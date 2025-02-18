@@ -176,17 +176,17 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="VBox_Flesh" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
+[node name="VBox_Neuron" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
 layout_mode = 2
 
-[node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Flesh"]
+[node name="Title_Neuron" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Neuron"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 50
-text = "Flesh"
+text = "Neurons"
 horizontal_alignment = 1
 
-[node name="Number_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Flesh"]
+[node name="Number_Neuron" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Neuron"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 40
@@ -226,6 +226,9 @@ theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 40
 text = "###"
 horizontal_alignment = 1
+
+[node name="Empty" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
+layout_mode = 2
 
 [node name="Divider3" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
 visible = false
