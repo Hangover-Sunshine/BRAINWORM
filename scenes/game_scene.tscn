@@ -114,7 +114,7 @@ offset_left = -3926.0
 offset_top = -2410.0
 offset_right = 2074.0
 offset_bottom = 3590.0
-color = Color(0.129729, 0.0255367, 0.0527574, 1)
+color = Color(0.172549, 0.0352941, 0.0901961, 1)
 
 [node name="GameControl" type="Node" parent="."]
 script = ExtResource("2_r1gp1")
@@ -123,6 +123,11 @@ script = ExtResource("2_r1gp1")
 
 [node name="MoveTimer" type="Timer" parent="GameControl"]
 wait_time = 0.15
+
+[node name="TissueTimer" type="Timer" parent="GameControl"]
+wait_time = 4.0
+
+[node name="MacTimer" type="Timer" parent="GameControl"]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -133,3 +138,4 @@ libraries = {
 }
 
 [connection signal="timeout" from="GameControl/MoveTimer" to="GameControl" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]

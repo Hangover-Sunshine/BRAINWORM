@@ -1,6 +1,7 @@
 extends Node
 
 const SNAKE_SEGMENT = preload("res://prefabs/snake/snake_segment.tscn")
+const BRAINWALL = preload("res://prefabs/snake/brainwall.tscn")
 
 const GRID_WIDTH_COUNT:int = 15
 const GRID_HEIGHT_COUNT:int = 14
@@ -27,31 +28,33 @@ var neuron_pos:Vector2i
 var macs:Array
 var mac_positions:Array
 
-var brainfold_positions:Array[Vector2i]
+var brainfold_spawns:int
+var brainfolds:Array
 
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	add_child(neuron)
-	#brainfold_positions.push_back(Vector2i(4, 4))
-	#game_board.add_brainfold(Vector2i(4, 4), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(5, 4))
-	#game_board.add_brainfold(Vector2i(5, 4), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(4, 5))
-	#game_board.add_brainfold(Vector2i(4, 5), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(3, 4))
-	#game_board.add_brainfold(Vector2i(3, 4), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(4, 3))
-	#game_board.add_brainfold(Vector2i(4, 3), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(3, 3))
-	#game_board.add_brainfold(Vector2i(3, 3), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(3, 5))
-	#game_board.add_brainfold(Vector2i(3, 5), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(5, 5))
-	#game_board.add_brainfold(Vector2i(5, 5), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(5, 3))
-	#game_board.add_brainfold(Vector2i(5, 3), brainfold_positions)
-	#brainfold_positions.push_back(Vector2i(8,4))
-	#game_board.add_brainfold(Vector2i(8, 4), brainfold_positions)
+	$TissueTimer.start()
+	#brainfolds.push_back(Vector2i(4, 4))
+	#game_board.add_brainfold(Vector2i(4, 4), brainfolds)
+	#brainfolds.push_back(Vector2i(5, 4))
+	#game_board.add_brainfold(Vector2i(5, 4), brainfolds)
+	#brainfolds.push_back(Vector2i(4, 5))
+	#game_board.add_brainfold(Vector2i(4, 5), brainfolds)
+	#brainfolds.push_back(Vector2i(3, 4))
+	#game_board.add_brainfold(Vector2i(3, 4), brainfolds)
+	#brainfolds.push_back(Vector2i(4, 3))
+	#game_board.add_brainfold(Vector2i(4, 3), brainfolds)
+	#brainfolds.push_back(Vector2i(3, 3))
+	#game_board.add_brainfold(Vector2i(3, 3), brainfolds)
+	#brainfolds.push_back(Vector2i(3, 5))
+	#game_board.add_brainfold(Vector2i(3, 5), brainfolds)
+	#brainfolds.push_back(Vector2i(5, 5))
+	#game_board.add_brainfold(Vector2i(5, 5), brainfolds)
+	#brainfolds.push_back(Vector2i(5, 3))
+	#game_board.add_brainfold(Vector2i(5, 3), brainfolds)
+	#brainfolds.push_back(Vector2i(8,4))
+	#game_board.add_brainfold(Vector2i(8, 4), brainfolds)
 ##
 
 func initialize_ui(game_data:Dictionary, stage:int):
@@ -144,6 +147,7 @@ func _on_timer_timeout():
 	check_for_self()
 	check_for_enemy()
 	check_for_neuron()
+	#check_for_tissue_eating_neuron()
 ##
 
 func check_for_edge():
@@ -168,7 +172,14 @@ func check_for_self():
 ##
 
 func check_for_enemy():
-	pass
+	for tissue in brainfolds:
+		if curr_positions[0] in tissue.positions:
+			GlobalSignals.emit_signal("player_died")
+			set_process(false)
+			$MoveTimer.stop()
+			_known_loss = true
+		##
+	##
 ##
 
 func check_for_neuron():
@@ -192,9 +203,42 @@ func generate_neuron():
 			##
 		##
 		
-		# TODO: Check if it is overlapped by a tissue
+		for tissue in brainfolds:
+			if position in tissue.positions:
+				regen_food = true
+				break
+			##
+		##
 	##
 	
 	neuron_pos = position
 	neuron.global_position = game_board.get_world_position_at(position)
+##
+
+func _on_tissue_timer_timeout():
+	var rand:int = (randi() % 100) + 1
+	
+	if rand <= 100 / (1 + brainfold_spawns):
+		var inst:Brainwall = Brainwall.new()
+		brainfolds.push_back(inst)
+		
+		var position:Vector2i = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		
+		# TODO: Guarantees about spawn
+		
+		inst.positions.push_back(position)
+		game_board.add_brainfold(position, inst.positions)
+		
+		brainfold_spawns += 1
+	else:
+		# NOTE: Pick a random one and grow
+		rand = randi() % len(brainfolds)
+		var inst:Brainwall = brainfolds[rand]
+		
+		var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT, GRID_HEIGHT_COUNT)
+		var position:Vector2i = valid_positions[randi() % len(valid_positions)]
+		
+		inst.positions.push_back(position)
+		game_board.add_brainfold(position, inst.positions)
+	##
 ##

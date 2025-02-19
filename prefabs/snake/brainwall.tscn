@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmru3ljl2ilqq"]
+
+[ext_resource type="Script" path="res://scripts/game/snake/brainwall.gd" id="1_tln2u"]
+
+[node name="Brainwall" type="Node2D"]
+script = ExtResource("1_tln2u")
