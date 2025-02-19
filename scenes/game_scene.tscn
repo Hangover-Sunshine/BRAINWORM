@@ -139,3 +139,4 @@ libraries = {
 
 [connection signal="timeout" from="GameControl/MoveTimer" to="GameControl" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
+[connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]

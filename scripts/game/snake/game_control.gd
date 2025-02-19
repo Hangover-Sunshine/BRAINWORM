@@ -28,33 +28,14 @@ var neuron_pos:Vector2i
 var macs:Array
 var mac_positions:Array
 
-var brainfold_spawns:int
-var brainfolds:Array
+var brainfold_spawns:int = 0
+var brainfolds:Array[Brainwall]
+var growable_folds:Array[Brainwall]
 
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	add_child(neuron)
 	$TissueTimer.start()
-	#brainfolds.push_back(Vector2i(4, 4))
-	#game_board.add_brainfold(Vector2i(4, 4), brainfolds)
-	#brainfolds.push_back(Vector2i(5, 4))
-	#game_board.add_brainfold(Vector2i(5, 4), brainfolds)
-	#brainfolds.push_back(Vector2i(4, 5))
-	#game_board.add_brainfold(Vector2i(4, 5), brainfolds)
-	#brainfolds.push_back(Vector2i(3, 4))
-	#game_board.add_brainfold(Vector2i(3, 4), brainfolds)
-	#brainfolds.push_back(Vector2i(4, 3))
-	#game_board.add_brainfold(Vector2i(4, 3), brainfolds)
-	#brainfolds.push_back(Vector2i(3, 3))
-	#game_board.add_brainfold(Vector2i(3, 3), brainfolds)
-	#brainfolds.push_back(Vector2i(3, 5))
-	#game_board.add_brainfold(Vector2i(3, 5), brainfolds)
-	#brainfolds.push_back(Vector2i(5, 5))
-	#game_board.add_brainfold(Vector2i(5, 5), brainfolds)
-	#brainfolds.push_back(Vector2i(5, 3))
-	#game_board.add_brainfold(Vector2i(5, 3), brainfolds)
-	#brainfolds.push_back(Vector2i(8,4))
-	#game_board.add_brainfold(Vector2i(8, 4), brainfolds)
 ##
 
 func initialize_ui(game_data:Dictionary, stage:int):
@@ -71,9 +52,7 @@ func initialize_board(game_data:Dictionary):
 	if game_data["snake"].size() == 0:
 		game_data["snake"] = [StartPosition,
 								StartPosition - Vector2i(1, 0),
-								StartPosition - Vector2i(2, 0),
-								StartPosition - Vector2i(3, 0),
-								StartPosition - Vector2i(4, 0)]
+								StartPosition - Vector2i(2, 0)]
 	##
 	
 	# Put all snake in the current position
@@ -229,7 +208,9 @@ func _on_tissue_timer_timeout():
 	if rand <= 100 / (1 + brainfold_spawns):
 		var inst:Brainwall = Brainwall.new()
 		brainfolds.push_back(inst)
+		growable_folds.push_back(inst)
 		
+		inst.max_number_growths = 5
 		var position:Vector2i = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 		
 		# TODO: Guarantees about spawn
@@ -240,13 +221,25 @@ func _on_tissue_timer_timeout():
 		brainfold_spawns += 1
 	else:
 		# NOTE: Pick a random one and grow
-		rand = randi() % len(brainfolds)
-		var inst:Brainwall = brainfolds[rand]
+		rand = randi() % len(growable_folds)
+		var inst:Brainwall = growable_folds[rand]
 		
-		var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT, GRID_HEIGHT_COUNT)
+		var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT,
+																		GRID_HEIGHT_COUNT,
+																		brainfolds)
 		var position:Vector2i = valid_positions[randi() % len(valid_positions)]
 		
 		inst.positions.push_back(position)
+		inst.max_number_growths -= 1
+		
+		if inst.max_number_growths == 0:
+			growable_folds.remove_at(rand)
+		##
+		
 		game_board.add_brainfold(position, inst.positions)
 	##
+##
+
+func _on_mac_timer_timeout():
+	pass # Replace with function body.
 ##
