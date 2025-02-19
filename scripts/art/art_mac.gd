@@ -10,7 +10,7 @@ extends Node2D
 @onready var face = $Skeleton/Face
 
 # 0 = N/A, 1 = Left, 2 = Up, 3 = Right, 4 = Down
-@onready var direction = 0
+var direction = 0
 
 # Declaring variables to hold the marker and its parts
 var marker

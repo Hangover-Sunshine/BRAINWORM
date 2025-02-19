@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuj26ibvbfjxn"]
+
+[ext_resource type="Script" path="res://scripts/game/snake/mac.gd" id="1_1nphn"]
+[ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="1_o0jnn"]
+
+[node name="Mac" type="Node2D"]
+script = ExtResource("1_1nphn")
+
+[node name="Art_Mac" parent="." instance=ExtResource("1_o0jnn")]
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

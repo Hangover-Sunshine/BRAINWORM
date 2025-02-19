@@ -1,7 +1,7 @@
 extends Node
 
 const SNAKE_SEGMENT = preload("res://prefabs/snake/snake_segment.tscn")
-const BRAINWALL = preload("res://prefabs/snake/brainwall.tscn")
+const MAC = preload("res://prefabs/snake/mac.tscn")
 
 const GRID_WIDTH_COUNT:int = 15
 const GRID_HEIGHT_COUNT:int = 14
@@ -30,7 +30,6 @@ var move_dir:Vector2i
 var neuron
 var neuron_pos:Vector2i
 var macs:Array
-var mac_positions:Array
 
 var brainfold_spawns:int = 0
 var brainfolds:Array[Brainwall]
@@ -40,6 +39,7 @@ func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	add_child(neuron)
 	$TissueTimer.start()
+	$MacTimer.start()
 ##
 
 func initialize_ui(game_data:Dictionary, stage:int):
@@ -245,5 +245,9 @@ func _on_tissue_timer_timeout():
 ##
 
 func _on_mac_timer_timeout():
-	pass # Replace with function body.
+	var new_mac = MAC.instantiate()
+	var board_pos = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+	new_mac.global_position = game_board.get_world_position_at(board_pos)
+	macs.push_back(new_mac)
+	add_child(new_mac)
 ##
