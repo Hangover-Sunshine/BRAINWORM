@@ -35,7 +35,6 @@ func add_brainfold(fold_pos:Vector2i, folds:Array[Vector2i]):
 	# Update local tiles
 	var next_tile_pos:Vector2i = fold_pos + Vector2i(0, -1)
 	if cardinals & 0b1000:
-		print("here!")
 		var curr_coords = environment.get_cell_atlas_coords(1, next_tile_pos)
 		var local_cardinals = _surrounding_tile_check(next_tile_pos, folds)
 		var new_coords = TILES[local_cardinals]

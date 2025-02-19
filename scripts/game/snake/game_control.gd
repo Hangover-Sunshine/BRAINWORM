@@ -147,7 +147,7 @@ func _on_timer_timeout():
 	check_for_self()
 	check_for_enemy()
 	check_for_neuron()
-	#check_for_tissue_eating_neuron()
+	check_for_tissue_eating_neuron()
 ##
 
 func check_for_edge():
@@ -186,6 +186,14 @@ func check_for_neuron():
 	if neuron_pos == curr_positions[0]:
 		add_segment(curr_positions[-1])
 		generate_neuron()
+	##
+##
+
+func check_for_tissue_eating_neuron():
+	for tissue in brainfolds:
+		if neuron_pos in tissue.positions:
+			generate_neuron()
+		##
 	##
 ##
 
