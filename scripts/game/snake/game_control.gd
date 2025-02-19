@@ -155,13 +155,25 @@ func check_for_self():
 ##
 
 func check_for_enemy():
+	var gameover:bool = false
+	
 	for tissue in brainfolds:
 		if curr_positions[0] in tissue.positions:
-			GlobalSignals.emit_signal("player_died")
-			set_process(false)
-			$MoveTimer.stop()
-			_known_loss = true
+			gameover = true
 		##
+	##
+	
+	for mak in macs:
+		if curr_positions[0] == mak.curr_position:
+			gameover = true
+		##
+	##
+	
+	if gameover:
+		GlobalSignals.emit_signal("player_died")
+		set_process(false)
+		$MoveTimer.stop()
+		_known_loss = true
 	##
 ##
 
@@ -175,6 +187,12 @@ func check_for_neuron():
 func check_for_tissue_eating_neuron():
 	for tissue in brainfolds:
 		if neuron_pos in tissue.positions:
+			generate_neuron()
+		##
+	##
+	
+	for mak in macs:
+		if neuron_pos == mak.curr_position:
 			generate_neuron()
 		##
 	##
@@ -245,9 +263,17 @@ func _on_tissue_timer_timeout():
 ##
 
 func _on_mac_timer_timeout():
-	var new_mac = MAC.instantiate()
+	var new_mac:Mak = MAC.instantiate()
+	new_mac.max_width = GRID_WIDTH_COUNT
+	new_mac.max_height = GRID_HEIGHT_COUNT
 	var board_pos = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+	new_mac.curr_position = board_pos
 	new_mac.global_position = game_board.get_world_position_at(board_pos)
+	new_mac.connect("please_move_me", _listen_for_mak_movement)
 	macs.push_back(new_mac)
 	add_child(new_mac)
+##
+
+func _listen_for_mak_movement(mak:Mak):
+	mak.global_position = game_board.get_world_position_at(mak.curr_position)
 ##

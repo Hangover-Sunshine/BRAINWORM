@@ -52,6 +52,7 @@ func _on_movement_timer_timeout():
 		art_mac.remove_marker()
 		_indicate = true
 	##
+	$MovementTimer.start(_indicate_moving)
 ##
 
 func _pick_direction():
@@ -68,12 +69,12 @@ func _pick_direction():
 	##
 	
 	var east = curr_position + Vector2i(1, 0)
-	if east.x > 0:
+	if east.x < max_width:
 		directions.push_back(Vector2i(1, 0))
 	##
 	
 	var west = curr_position + Vector2i(-1, 0)
-	if west.x < max_width:
+	if west.x > 0:
 		directions.push_back(Vector2i(-1, 0))
 	##
 	

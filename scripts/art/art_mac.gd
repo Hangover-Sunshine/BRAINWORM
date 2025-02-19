@@ -123,6 +123,6 @@ func point_marker():
 ## Marker will move with Mac if triggered late.
 func remove_marker():
 	marker.position = Vector2(0,0)
-	marker.direction = 0
+	direction = 0
 	marker.visible = false
 ##
