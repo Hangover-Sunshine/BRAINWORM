@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bai18wlbx1eho"]
+[gd_scene load_steps=37 format=3 uid="uid://bai18wlbx1eho"]
 
 [ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_4nw8e"]
 [ext_resource type="Texture2D" uid="uid://3sran41n53iv" path="res://assets/character/politician/NPC_Suit.png" id="2_merjl"]
+[ext_resource type="Script" path="res://scripts/art/art_politician.gd" id="3_efo2r"]
 [ext_resource type="Texture2D" uid="uid://bptmsj0eoh22s" path="res://assets/character/politician/NPC_Mouth.png" id="3_ux0vh"]
 [ext_resource type="Texture2D" uid="uid://mhfcnpvfoo3l" path="res://assets/character/politician/NPC_Jaw.png" id="4_bp75p"]
 [ext_resource type="Texture2D" uid="uid://cclc311klkhn5" path="res://assets/character/politician/NPC_Head.png" id="5_e2so0"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c17yyqlxn2o6c" path="res://assets/character/politician/NPC_Eyebrow.png" id="7_gi1bi"]
 [ext_resource type="Texture2D" uid="uid://4k83ravh37m5" path="res://assets/character/politician/Prop_Backdrop.png" id="8_otddw"]
 [ext_resource type="Texture2D" uid="uid://cej54fh6p0sya" path="res://assets/character/politician/Prop_Desk.png" id="9_3sbrk"]
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="10_k6v4o"]
 
 [sub_resource type="Animation" id="Animation_h8415"]
 resource_name = "RESET"
@@ -41,39 +43,10 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ftha7"]
-resource_name = "yippie"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4, 6, 8, 9, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 3.14159, 6.28319, 9.42478, 12.5664, 15.708, 18.8496]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0.561742, 0.974473, 1), Color(0.689493, 0.537176, 1, 1), Color(1, 0.616651, 0.596774, 1), Color(0.525277, 1, 0.102306, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mwj2s"]
 _data = {
 "RESET": SubResource("Animation_h8415"),
-"cancel": SubResource("Animation_rjqnw"),
-"yippie": SubResource("Animation_ftha7")
+"cancel": SubResource("Animation_rjqnw")
 }
 
 [sub_resource type="Animation" id="Animation_2jomx"]
@@ -91,6 +64,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
 
 [sub_resource type="Animation" id="Animation_t5xej"]
 resource_name = "zoom_in"
@@ -106,6 +91,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(960, 378)]
 }
 
 [sub_resource type="Animation" id="Animation_anqil"]
@@ -131,53 +128,624 @@ _data = {
 "zoom_out": SubResource("Animation_anqil")
 }
 
+[sub_resource type="Animation" id="Animation_paaim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Suit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Suit:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -153)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton/Body:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_45yii"]
+resource_name = "Idle"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Suit:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5.5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.025, 1.02), Vector2(1.025, 1.02), Vector2(1, 1), Vector2(1.025, 1.02), Vector2(1.025, 1.02), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Suit:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.00872665, 0.0, -0.00872665, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 4.0001, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, -159), Vector2(-3, -155), Vector2(-3, -159), Vector2(-3, -159), Vector2(-3, -155), Vector2(-3, -159)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0261799, 0.0, 0.0261799, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton/Body:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.99), Vector2(1, 1), Vector2(1, 0.99), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3as5q"]
+_data = {
+"Idle": SubResource("Animation_45yii"),
+"RESET": SubResource("Animation_paaim")
+}
+
+[sub_resource type="Animation" id="Animation_w7yps"]
+resource_name = "Resting"
+length = 12.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.1, 2.3, 3.3, 4.2, 5.2, 5.9, 6, 6.2, 7.2, 8.1, 9.1, 10.1, 10.2, 10.4, 11.4, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.1, 2.3, 3.3, 4.2, 5.2, 6, 6.1, 6.3, 7.2, 8.1, 9.1, 10, 10.1, 10.3, 11.4, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1.025, 1.05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 2.1, 2.3, 5.9, 6, 6.2, 10.1, 10.2, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 0, 1, 0, 0, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.1, 2.3, 6, 6.1, 6.3, 10, 10.1, 10.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 0, 1, 0, 0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_31q2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4sa05"]
+resource_name = "Ouch1"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s18nq"]
+resource_name = "Ouch2"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e2nkr"]
+resource_name = "Ouch3"
+length = 1.2
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_L:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton/Body/Head/Face/Head/Eye_R:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1), Vector2(1.05, 1.025), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_secxn"]
+_data = {
+"Ouch1": SubResource("Animation_4sa05"),
+"Ouch2": SubResource("Animation_s18nq"),
+"Ouch3": SubResource("Animation_e2nkr"),
+"RESET": SubResource("Animation_31q2f"),
+"Resting": SubResource("Animation_w7yps")
+}
+
+[sub_resource type="Animation" id="Animation_sqx6c"]
+resource_name = "Talking"
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Jaw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.25, 128), Vector2(1.25, 147), Vector2(1.25, 147), Vector2(1.25, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_ywbcw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Jaw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_627a0"]
+_data = {
+"RESET": SubResource("Animation_ywbcw"),
+"Talking": SubResource("Animation_sqx6c")
+}
+
+[sub_resource type="Animation" id="Animation_ddhtt"]
+resource_name = "Resting"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_L:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0698132, 0.0, 0.0698132, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_R:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0698132, 0.0, -0.0698132, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uvau8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_L:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_R:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0698132]
+}
+
+[sub_resource type="Animation" id="Animation_jocrv"]
+resource_name = "Ouch1"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_L:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, -0.331613, -0.261799, -0.331613, -0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_R:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.261799, 0.331613, 0.261799, 0.331613, 0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_d8dij"]
+resource_name = "Ouch2"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_L:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0698132, 0.0, 0.0698132, 0.0, 0.0698132]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_R:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.261799, 0.331613, 0.261799, 0.331613, 0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_gjn8n"]
+resource_name = "Ouch3"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_L:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, -0.331613, -0.261799, -0.331613, -0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Head/Face/Head/Brow_R:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0698132, 0.0, -0.0698132, 0.0, -0.0698132]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtdfj"]
+_data = {
+"Ouch1": SubResource("Animation_jocrv"),
+"Ouch2": SubResource("Animation_d8dij"),
+"Ouch3": SubResource("Animation_gjn8n"),
+"RESET": SubResource("Animation_uvau8"),
+"Resting": SubResource("Animation_ddhtt")
+}
+
 [node name="Cutscenes" type="Node2D"]
 
 [node name="Background" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
+custom_minimum_size = Vector2(1920, 1920)
+offset_top = -371.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1549.0
 color = Color(0.0947538, 0.119963, 0.211595, 1)
-
-[node name="Background2" type="ColorRect" parent="."]
-offset_left = 610.0
-offset_top = 126.0
-offset_right = 1310.0
-offset_bottom = 1078.78
-color = Color(0.417854, 0.155361, 0.18349, 1)
-
-[node name="Desk" type="Node2D" parent="."]
-position = Vector2(-14, 24)
-
-[node name="Background2" type="ColorRect" parent="Desk"]
-custom_minimum_size = Vector2(1920, 1080)
-offset_left = 702.0
-offset_top = 686.0
-offset_right = 2622.0
-offset_bottom = 1766.0
-scale = Vector2(0.28, 0.555483)
-color = Color(0.188148, 0.132458, 0.120817, 1)
-
-[node name="Background3" type="ColorRect" parent="Desk"]
-custom_minimum_size = Vector2(1920, 1080)
-offset_left = 665.0
-offset_top = 641.0
-offset_right = 2585.0
-offset_bottom = 1721.0
-scale = Vector2(0.326973, 0.0658165)
-color = Color(0.312294, 0.229458, 0.212127, 1)
 
 [node name="AP_Manager" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mwj2s")
 }
-autoplay = "yippie"
 
 [node name="AP_Camera" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pjkud")
 }
-autoplay = "RESET"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -186,57 +754,136 @@ texture = ExtResource("2_4nw8e")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="Politician" type="Node2D" parent="."]
-
-[node name="Skeleton" type="Node2D" parent="Politician"]
-
-[node name="Suit" type="Sprite2D" parent="Politician/Skeleton"]
-texture = ExtResource("2_merjl")
-offset = Vector2(-5, 0)
-
-[node name="Head" type="Node2D" parent="Politician/Skeleton"]
-position = Vector2(-2, -153)
-
-[node name="Face" type="Node2D" parent="Politician/Skeleton/Head"]
-position = Vector2(0, -112)
-
-[node name="Mouth" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
-position = Vector2(2, 107)
-texture = ExtResource("3_ux0vh")
-
-[node name="Jaw" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
-position = Vector2(1.25, 128)
-texture = ExtResource("4_bp75p")
-
-[node name="Head" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
-texture = ExtResource("5_e2so0")
-
-[node name="Eye_L" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
-position = Vector2(-47, 12)
-texture = ExtResource("6_wur38")
-hframes = 3
-
-[node name="Brow_L" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
-position = Vector2(-29, -20)
-texture = ExtResource("7_gi1bi")
-offset = Vector2(-21, -2.19)
-
-[node name="Eye_R" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
-position = Vector2(51, 12)
-texture = ExtResource("6_wur38")
-flip_h = true
-hframes = 3
-
-[node name="Brow_L2" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
-position = Vector2(72, -20)
-texture = ExtResource("7_gi1bi")
-offset = Vector2(-21, -2.19)
-flip_h = true
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 606.0
+offset_top = 124.0
+offset_right = 1308.0
+offset_bottom = 1354.06
+color = Color(0.478431, 0.188235, 0.219608, 1)
 
 [node name="PropBackdrop" type="Sprite2D" parent="."]
 position = Vector2(960, 603)
 texture = ExtResource("8_otddw")
 
-[node name="Desk2" type="Sprite2D" parent="."]
+[node name="Politician" type="Node2D" parent="."]
+position = Vector2(960, 643)
+script = ExtResource("3_efo2r")
+
+[node name="Skeleton" type="Node2D" parent="Politician"]
+
+[node name="Body" type="Node2D" parent="Politician/Skeleton"]
+
+[node name="Suit" type="Sprite2D" parent="Politician/Skeleton/Body"]
+position = Vector2(0, 125)
+texture = ExtResource("2_merjl")
+offset = Vector2(-5, -125)
+
+[node name="Head" type="Node2D" parent="Politician/Skeleton/Body"]
+position = Vector2(-2, -153)
+
+[node name="Face" type="Node2D" parent="Politician/Skeleton/Body/Head"]
+position = Vector2(0, -112)
+
+[node name="Mouth" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face"]
+position = Vector2(2, 107)
+texture = ExtResource("3_ux0vh")
+
+[node name="Jaw" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face"]
+position = Vector2(1.25, 128)
+texture = ExtResource("4_bp75p")
+
+[node name="Head" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face"]
+texture = ExtResource("5_e2so0")
+
+[node name="Eye_L" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face/Head"]
+position = Vector2(-47, 12)
+texture = ExtResource("6_wur38")
+hframes = 4
+
+[node name="Brow_L" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face/Head"]
+position = Vector2(-70.73, -23)
+rotation = 0.0698132
+texture = ExtResource("7_gi1bi")
+offset = Vector2(21, 0.2)
+
+[node name="Eye_R" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face/Head"]
+position = Vector2(51, 12)
+texture = ExtResource("6_wur38")
+flip_h = true
+hframes = 4
+
+[node name="Brow_R" type="Sprite2D" parent="Politician/Skeleton/Body/Head/Face/Head"]
+position = Vector2(73, -23)
+rotation = -0.0698132
+texture = ExtResource("7_gi1bi")
+offset = Vector2(-21, 0.2)
+flip_h = true
+
+[node name="AP_Idle" type="AnimationPlayer" parent="Politician"]
+libraries = {
+"": SubResource("AnimationLibrary_3as5q")
+}
+autoplay = "Idle"
+
+[node name="AP_Eyes" type="AnimationPlayer" parent="Politician"]
+libraries = {
+"": SubResource("AnimationLibrary_secxn")
+}
+autoplay = "Resting"
+
+[node name="AP_Mouth" type="AnimationPlayer" parent="Politician"]
+libraries = {
+"": SubResource("AnimationLibrary_627a0")
+}
+
+[node name="AP_Brows" type="AnimationPlayer" parent="Politician"]
+libraries = {
+"": SubResource("AnimationLibrary_xtdfj")
+}
+autoplay = "Resting"
+
+[node name="Desk" type="Sprite2D" parent="."]
 position = Vector2(960, 769)
 texture = ExtResource("9_3sbrk")
+
+[node name="Desk_Extension" type="ColorRect" parent="Desk"]
+show_behind_parent = true
+offset_left = -265.0
+offset_top = 287.0
+offset_right = 271.29
+offset_bottom = 587.0
+color = Color(0.482353, 0.278431, 0.278431, 1)
+
+[node name="Subtitles" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 606.0
+offset_top = 173.0
+offset_right = 1306.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Text_Subtitles" type="Label" parent="Subtitles"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_right = 350.0
+offset_bottom = 38.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("10_k6v4o")
+theme_override_font_sizes/font_size = 30
+text = "Hello my fellow americans..."
+horizontal_alignment = 1
+vertical_alignment = 1
