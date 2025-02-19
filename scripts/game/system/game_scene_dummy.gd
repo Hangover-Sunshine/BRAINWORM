@@ -23,18 +23,6 @@ func _ready():
 	game_control.initialize_board(game_data)
 ##
 
-func _input(event):
-	# NOTE: Test win
-	if event.is_action_pressed("cutscene_skip"):
-		$ZoomControl.play("zoom_out")
-	##
-	
-	# NOTE: Test lose
-	if event.is_action_pressed("dummy_lose"):
-		GlobalSignals.emit_signal("player_died")
-	##
-##
-
 func hide_ui():
 	game_board.hide_ui()
 ##

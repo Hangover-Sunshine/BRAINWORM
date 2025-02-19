@@ -14,6 +14,7 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 @export var StartPosition:Vector2i = Vector2(6, 7)
 @export var Countdown:int = 5
 @export var SecondsPerSegment:float = 1.5
+@export var CheckForPowerupInterval:float = 1.5
 
 @export_category("Tissue Spawn Info")
 @export var MinRangeOfGrowth:int = 4
@@ -49,10 +50,13 @@ var growable_folds:Array[Brainwall]
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
-	powerup.global_position = game_board.get_world_position_at(Vector2i(2, 2))
-	powerup_pos = Vector2i(2, 2)
+	powerup.global_position = game_board.get_world_position_at(Vector2i(-100, -100))
+	powerup_pos = Vector2i(-100, -100)
 	add_child(neuron)
 	add_child(powerup)
+	
+	$InvulnTimer.one_shot = false
+	$InvulnTimer.start(CheckForPowerupInterval)
 	
 	$TissueTimer.start()
 	$MacTimer.start()
@@ -235,8 +239,10 @@ func check_for_neuron():
 func check_for_powerup():
 	if powerup_pos == curr_positions[0]:
 		invuln = true
-		$InvulnTimer.start(SecondsPerSegment * (len(curr_positions) - 3))
-		print("here")
+		$InvulnTimer.one_shot = true
+		$InvulnTimer.start(SecondsPerSegment * (len(curr_positions) - 2))
+		powerup_pos = Vector2i(-100, -100)
+		powerup.global_position = game_board.get_world_position_at(powerup_pos)
 	##
 ##
 
@@ -371,5 +377,41 @@ func _listen_for_mak_movement(mak:Mak):
 ##
 
 func _on_invuln_timer_timeout():
-	invuln = false
+	if invuln:
+		invuln = false
+		$InvulnTimer.one_shot = false
+		$InvulnTimer.start(CheckForPowerupInterval)
+	else:
+		var r = randi() % 100
+		if len(curr_positions) > 3 and r <= 50:
+			$InvulnTimer.stop()
+			generate_powerup()
+		##
+	##
+##
+
+func generate_powerup():
+	var position:Vector2i
+	var regen_food:bool = true
+	while regen_food:
+		regen_food = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		
+		for pos in curr_positions:
+			if pos == position:
+				regen_food = true
+				break
+			##
+		##
+		
+		for tissue in brainfolds:
+			if position in tissue.positions:
+				regen_food = true
+				break
+			##
+		##
+	##
+	
+	powerup_pos = position
+	powerup.global_position = game_board.get_world_position_at(position)
 ##
