@@ -114,7 +114,7 @@ offset_left = -3926.0
 offset_top = -2410.0
 offset_right = 2074.0
 offset_bottom = 3590.0
-color = Color(0.172549, 0.0352941, 0.0901961, 1)
+color = Color(0.129729, 0.0255367, 0.0527574, 1)
 
 [node name="GameControl" type="Node" parent="."]
 script = ExtResource("2_r1gp1")

@@ -1,6 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bai18wlbx1eho"]
+[gd_scene load_steps=18 format=3 uid="uid://bai18wlbx1eho"]
 
 [ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_4nw8e"]
+[ext_resource type="Texture2D" uid="uid://3sran41n53iv" path="res://assets/character/politician/NPC_Suit.png" id="2_merjl"]
+[ext_resource type="Texture2D" uid="uid://bptmsj0eoh22s" path="res://assets/character/politician/NPC_Mouth.png" id="3_ux0vh"]
+[ext_resource type="Texture2D" uid="uid://mhfcnpvfoo3l" path="res://assets/character/politician/NPC_Jaw.png" id="4_bp75p"]
+[ext_resource type="Texture2D" uid="uid://cclc311klkhn5" path="res://assets/character/politician/NPC_Head.png" id="5_e2so0"]
+[ext_resource type="Texture2D" uid="uid://cg6a23d76xkw3" path="res://assets/character/politician/NPC_Eyeball.png" id="6_wur38"]
+[ext_resource type="Texture2D" uid="uid://c17yyqlxn2o6c" path="res://assets/character/politician/NPC_Eyebrow.png" id="7_gi1bi"]
+[ext_resource type="Texture2D" uid="uid://4k83ravh37m5" path="res://assets/character/politician/Prop_Backdrop.png" id="8_otddw"]
+[ext_resource type="Texture2D" uid="uid://cej54fh6p0sya" path="res://assets/character/politician/Prop_Desk.png" id="9_3sbrk"]
 
 [sub_resource type="Animation" id="Animation_h8415"]
 resource_name = "RESET"
@@ -177,3 +185,58 @@ texture = ExtResource("2_4nw8e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="Politician" type="Node2D" parent="."]
+
+[node name="Skeleton" type="Node2D" parent="Politician"]
+
+[node name="Suit" type="Sprite2D" parent="Politician/Skeleton"]
+texture = ExtResource("2_merjl")
+offset = Vector2(-5, 0)
+
+[node name="Head" type="Node2D" parent="Politician/Skeleton"]
+position = Vector2(-2, -153)
+
+[node name="Face" type="Node2D" parent="Politician/Skeleton/Head"]
+position = Vector2(0, -112)
+
+[node name="Mouth" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
+position = Vector2(2, 107)
+texture = ExtResource("3_ux0vh")
+
+[node name="Jaw" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
+position = Vector2(1.25, 128)
+texture = ExtResource("4_bp75p")
+
+[node name="Head" type="Sprite2D" parent="Politician/Skeleton/Head/Face"]
+texture = ExtResource("5_e2so0")
+
+[node name="Eye_L" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
+position = Vector2(-47, 12)
+texture = ExtResource("6_wur38")
+hframes = 3
+
+[node name="Brow_L" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
+position = Vector2(-29, -20)
+texture = ExtResource("7_gi1bi")
+offset = Vector2(-21, -2.19)
+
+[node name="Eye_R" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
+position = Vector2(51, 12)
+texture = ExtResource("6_wur38")
+flip_h = true
+hframes = 3
+
+[node name="Brow_L2" type="Sprite2D" parent="Politician/Skeleton/Head/Face/Head"]
+position = Vector2(72, -20)
+texture = ExtResource("7_gi1bi")
+offset = Vector2(-21, -2.19)
+flip_h = true
+
+[node name="PropBackdrop" type="Sprite2D" parent="."]
+position = Vector2(960, 603)
+texture = ExtResource("8_otddw")
+
+[node name="Desk2" type="Sprite2D" parent="."]
+position = Vector2(960, 769)
+texture = ExtResource("9_3sbrk")
