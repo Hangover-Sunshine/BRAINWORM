@@ -13,10 +13,16 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 
 @export var StartPosition:Vector2i = Vector2(6, 7)
 @export var Countdown:int = 5
+@export var SecondsPerSegment:float = 1.5
 
 @export_category("Tissue Spawn Info")
 @export var MinRangeOfGrowth:int = 4
 @export var MaxRangeOfGrowth:int = 8
+@export var PlayerSafetySquare:int = 2
+
+@export_category("Mak Spawning Info")
+@export var MaxAtATime:int = 8
+@export var PlayerSpawnSafetySquare:int = 4
 
 @onready var game_board = $Layout_Game
 
@@ -26,9 +32,14 @@ var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
 var segments:Array
 var move_dir:Vector2i
+var invuln:bool = false
 
 var neuron
 var neuron_pos:Vector2i
+
+var powerup
+var powerup_pos:Vector2i
+
 var macs:Array
 
 var brainfold_spawns:int = 0
@@ -37,7 +48,12 @@ var growable_folds:Array[Brainwall]
 
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
+	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
+	powerup.global_position = game_board.get_world_position_at(Vector2i(2, 2))
+	powerup_pos = Vector2i(2, 2)
 	add_child(neuron)
+	add_child(powerup)
+	
 	$TissueTimer.start()
 	$MacTimer.start()
 ##
@@ -130,6 +146,7 @@ func _on_timer_timeout():
 	check_for_self()
 	check_for_enemy()
 	check_for_neuron()
+	check_for_powerup()
 	check_for_tissue_eating_neuron()
 ##
 
@@ -157,6 +174,37 @@ func check_for_self():
 func check_for_enemy():
 	var gameover:bool = false
 	
+	if invuln:
+		var remove = []
+		for tissue in brainfolds:
+			if curr_positions[0] in tissue.positions:
+				tissue.remove_at(curr_positions[0])
+				game_board.remove_brainfold_at(curr_positions[0], tissue.positions)
+				if len(tissue.positions) == 0:
+					remove.push_back(brainfolds.find(tissue))
+				##
+			##
+		##
+		
+		for t in remove:
+			brainfolds.remove_at(t)
+		##
+		
+		remove.clear()
+		for makIndx in range(len(macs)):
+			if curr_positions[0] == macs[makIndx].curr_position:
+				macs[makIndx].kill_it()
+				remove.push_back(makIndx)
+			##
+		##
+		
+		for m in remove:
+			macs.remove_at(m)
+		##
+		
+		return
+	##
+	
 	for tissue in brainfolds:
 		if curr_positions[0] in tissue.positions:
 			gameover = true
@@ -181,6 +229,14 @@ func check_for_neuron():
 	if neuron_pos == curr_positions[0]:
 		add_segment(curr_positions[-1])
 		generate_neuron()
+	##
+##
+
+func check_for_powerup():
+	if powerup_pos == curr_positions[0]:
+		invuln = true
+		$InvulnTimer.start(SecondsPerSegment * (len(curr_positions) - 3))
+		print("here")
 	##
 ##
 
@@ -229,13 +285,34 @@ func _on_tissue_timer_timeout():
 	
 	if rand <= 100 / (1 + brainfold_spawns):
 		var inst:Brainwall = Brainwall.new()
+		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
+		var position:Vector2i
+		var find_position:bool = true
+		
+		while find_position:
+			find_position = false
+			
+			position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+			
+			if (position - curr_positions[0]).length() <= PlayerSafetySquare or position in curr_positions:
+				find_position = true
+			##
+			
+			for existing_walls in brainfolds:
+				# Take over dead walls
+				if existing_walls.is_alive == false:
+					continue
+				##
+				
+				# Otherwise, wall is alive, can't touch it or be near it
+				if position in existing_walls.positions or (position - existing_walls.get_root()).length() <= 2:
+					find_position = true
+				##
+			##
+		##
+		
 		brainfolds.push_back(inst)
 		growable_folds.push_back(inst)
-		
-		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
-		var position:Vector2i = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
-		
-		# TODO: Guarantees about spawn
 		
 		inst.positions.push_back(position)
 		game_board.add_brainfold(position, inst.positions)
@@ -263,12 +340,27 @@ func _on_tissue_timer_timeout():
 ##
 
 func _on_mac_timer_timeout():
+	if len(macs) >= MaxAtATime:
+		return
+	##
+	
 	var new_mac:Mak = MAC.instantiate()
 	new_mac.max_width = GRID_WIDTH_COUNT
 	new_mac.max_height = GRID_HEIGHT_COUNT
-	var board_pos = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
-	new_mac.curr_position = board_pos
-	new_mac.global_position = game_board.get_world_position_at(board_pos)
+	var find_pos:bool = true
+	var position:Vector2i
+	
+	while find_pos:
+		find_pos = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		
+		if position in curr_positions or (position - curr_positions[0]).length() <= PlayerSpawnSafetySquare:
+			find_pos = true
+		##
+	##
+	
+	new_mac.curr_position = position
+	new_mac.global_position = game_board.get_world_position_at(position)
 	new_mac.connect("please_move_me", _listen_for_mak_movement)
 	macs.push_back(new_mac)
 	add_child(new_mac)
@@ -276,4 +368,8 @@ func _on_mac_timer_timeout():
 
 func _listen_for_mak_movement(mak:Mak):
 	mak.global_position = game_board.get_world_position_at(mak.curr_position)
+##
+
+func _on_invuln_timer_timeout():
+	invuln = false
 ##

@@ -6,6 +6,10 @@ var is_alive:bool = true
 var positions:Array[Vector2i]
 
 func get_valid_positions(board_width:int, board_height:int, other_walls:Array[Brainwall]) -> Array[Vector2i]:
+	if len(positions) == 0:
+		return []
+	##
+	
 	var valid_positions:Array[Vector2i] = []
 	var curr_pos:Vector2i = positions[-1]
 	
@@ -85,4 +89,12 @@ func remove_at(pos:Vector2i):
 	##
 	
 	max_number_growths += 1
+##
+
+func get_root():
+	if is_alive:
+		return positions[0]
+	else:
+		return Vector2i(-1, -1)
+	##
 ##

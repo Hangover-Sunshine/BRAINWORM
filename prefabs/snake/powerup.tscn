@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci6top25nmde1"]
+
+[ext_resource type="PackedScene" path="res://prefabs/art/art_ram.tscn" id="1_hbt4v"]
+
+[node name="Powerup" type="Node2D"]
+
+[node name="Art_Ram" parent="." instance=ExtResource("1_hbt4v")]

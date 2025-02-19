@@ -25,13 +25,20 @@ const TILES:Dictionary = {
 }
 
 func add_brainfold(fold_pos:Vector2i, folds:Array[Vector2i]):
-	var tile:Vector2i
-	
 	#								NORTH, EAST, SOUTH, WEST
 	var cardinals:int = _surrounding_tile_check(fold_pos, folds)
-	
 	environment.set_cell(1, fold_pos + GRID_OFFSET, 2, TILES[cardinals])
-	
+	_update_nearby_tiles(cardinals, fold_pos, folds)
+##
+
+func remove_brainfold_at(fold_pos:Vector2i, folds:Array[Vector2i]):
+	#								NORTH, EAST, SOUTH, WEST
+	var cardinals:int = _surrounding_tile_check(fold_pos, folds)
+	environment.set_cell(1, fold_pos + GRID_OFFSET)
+	_update_nearby_tiles(cardinals, fold_pos, folds)
+##
+
+func _update_nearby_tiles(cardinals, fold_pos:Vector2i, folds:Array[Vector2i]):
 	# Update local tiles
 	var next_tile_pos:Vector2i = fold_pos + Vector2i(0, -1)
 	if cardinals & 0b1000:

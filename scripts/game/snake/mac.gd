@@ -12,6 +12,7 @@ var _waiting:bool = true
 var _indicate:bool = true
 var _indicate_moving:float
 
+var is_alive:bool = true
 var max_width:int
 var max_height:int
 
@@ -79,4 +80,13 @@ func _pick_direction():
 	##
 	
 	direction = directions[randi() % len(directions)]
+##
+
+func kill_it():
+	if is_alive == false:
+		return
+	##
+	
+	is_alive = false
+	queue_free()
 ##

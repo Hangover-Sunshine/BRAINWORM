@@ -118,6 +118,7 @@ color = Color(0.129729, 0.0255367, 0.0527574, 1)
 
 [node name="GameControl" type="Node" parent="."]
 script = ExtResource("2_r1gp1")
+SecondsPerSegment = 5.0
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
 
@@ -130,6 +131,9 @@ wait_time = 4.0
 [node name="MacTimer" type="Timer" parent="GameControl"]
 wait_time = 2.5
 
+[node name="InvulnTimer" type="Timer" parent="GameControl"]
+one_shot = true
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
@@ -141,3 +145,4 @@ libraries = {
 [connection signal="timeout" from="GameControl/MoveTimer" to="GameControl" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
+[connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]

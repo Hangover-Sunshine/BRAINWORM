@@ -35,14 +35,6 @@ func _input(event):
 	##
 ##
 
-func _save():
-	pass
-##
-
-func _load():
-	pass
-##
-
 func hide_ui():
 	game_board.hide_ui()
 ##
