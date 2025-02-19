@@ -31,6 +31,18 @@ func _on_movement_timer_timeout():
 	##
 	
 	if _indicate:
+		_pick_direction()
+		
+		# 0 = N/A, 1 = Left, 2 = Up, 3 = Right, 4 = Down
+		if direction == Vector2i(0, -1):
+			art_mac.direction = 2
+		elif direction == Vector2i(0, 1):
+			art_mac.direction = 4
+		elif direction == Vector2i(1, 0):
+			art_mac.direction = 3
+		elif direction == Vector2i(-1, 0):
+			art_mac.direction = 1
+		##
 		
 		art_mac.point_marker()
 		_indicate = false
@@ -45,4 +57,25 @@ func _on_movement_timer_timeout():
 func _pick_direction():
 	var directions:Array[Vector2i] = []
 	
+	var north = curr_position + Vector2i(0, -1)
+	if north.y > 0:
+		directions.push_back(Vector2i(0, -1))
+	##
+	
+	var south = curr_position + Vector2i(0, 1)
+	if south.y < max_height:
+		directions.push_back(Vector2i(0, 1))
+	##
+	
+	var east = curr_position + Vector2i(1, 0)
+	if east.x > 0:
+		directions.push_back(Vector2i(1, 0))
+	##
+	
+	var west = curr_position + Vector2i(-1, 0)
+	if west.x < max_width:
+		directions.push_back(Vector2i(-1, 0))
+	##
+	
+	direction = directions[randi() % len(directions)]
 ##

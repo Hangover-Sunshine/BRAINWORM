@@ -111,6 +111,6 @@ func _on_menu_gameover_gameover_to_game():
 ##
 
 func _on_menu_gameover_gameover_to_main():
-	Verho.change_scene("menus/hub_menu", "", "BlackFade")
+	Verho.change_scene("scenes/menus/hub_menu", "", "BlackFade")
 	# NOTE: let the menu take care of unpausing
 ##
