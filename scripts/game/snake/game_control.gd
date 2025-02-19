@@ -14,6 +14,10 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 @export var StartPosition:Vector2i = Vector2(6, 7)
 @export var Countdown:int = 5
 
+@export_category("Tissue Spawn Info")
+@export var MinRangeOfGrowth:int = 4
+@export var MaxRangeOfGrowth:int = 8
+
 @onready var game_board = $Layout_Game
 
 var _known_loss:bool = false
@@ -210,7 +214,7 @@ func _on_tissue_timer_timeout():
 		brainfolds.push_back(inst)
 		growable_folds.push_back(inst)
 		
-		inst.max_number_growths = 5
+		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
 		var position:Vector2i = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 		
 		# TODO: Guarantees about spawn
