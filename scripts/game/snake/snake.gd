@@ -61,6 +61,7 @@ func _on_player_died():
 	$MovementTimer.stop()
 	$RemoveSegmentTimer.stop()
 	$InvulnTimer.stop()
+	set_process(false)
 ##
 
 func initialize(game_board:GameBoard, start_position:Vector2i):
@@ -92,23 +93,17 @@ func add_segment():
 ##
 
 func _process(_delta):
-	if can_move:
-		if Input.is_action_just_pressed("down") and move_dir != MOVE_UP:
-			move_dir = MOVE_DOWN
-			can_move = false
-		##
-		if Input.is_action_just_pressed("up") and move_dir != MOVE_DOWN:
-			move_dir = MOVE_UP
-			can_move = false
-		##
-		if Input.is_action_just_pressed("left") and move_dir != MOVE_RIGHT:
-			move_dir = MOVE_LEFT
-			can_move = false
-		##
-		if Input.is_action_just_pressed("right") and move_dir != MOVE_LEFT:
-			move_dir = MOVE_RIGHT
-			can_move = false
-		##
+	if Input.is_action_just_pressed("down") and Head + MOVE_DOWN != curr_positions[1]:
+		move_dir = MOVE_DOWN
+	##
+	if Input.is_action_just_pressed("up") and (Head + MOVE_UP)!= curr_positions[1]:
+		move_dir = MOVE_UP
+	##
+	if Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
+		move_dir = MOVE_LEFT
+	##
+	if Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
+		move_dir = MOVE_RIGHT
 	##
 ##
 
