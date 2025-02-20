@@ -7,6 +7,7 @@ extends Node2D
 @onready var face = $AP_Face
 @onready var hit = $AP_Hit
 @onready var textbox = $Skeleton/Body/Suit/TextBox
+@onready var bubble = $AP_Bubble
 
 ## @onready var testing_timer = $Testing_Timer
 
@@ -23,12 +24,11 @@ var line1
 var line2
 var line3 
 var can_skip:bool = false
-var is_done:bool = false
+signal is_done
 var script_size = 10 # I had to manually set this. I couldn't figure out why.
 @onready var lines_to_read = 0
 
 func _ready():
-	is_done = false
 	game_lines = $Skeleton/Body/Suit/TextBox
 	script_vbox = $Skeleton/Body/Suit/TextBox/Control/Margin1/Margin2/VBox
 	line1 = script_vbox.find_child("Line1")
@@ -42,7 +42,6 @@ func anim_relaxed():
 	mouth.play("Not_Talking")
 	brows.play("Resting")
 	face.play("Not_Talking")
-	textbox.visible = false
 
 ## Trigger for gameplay, default idle animation during gameplay
 func anim_relaxed_ramble():
@@ -55,7 +54,6 @@ func anim_relaxed_ramble():
 	random_time = randf() * animation_length
 	face.play("Normal")
 	face.seek(random_time)
-	textbox.visible = false
 
 ## Trigger for cutscene, everytime he says a line
 func anim_relaxed_talking():
@@ -64,7 +62,6 @@ func anim_relaxed_talking():
 	eyes.play("Resting")
 	mouth.play("Talking")
 	brows.play("Resting")
-	textbox.visible = true
 	
 	animation_length = face.get_animation("Normal").length
 	random_time = randf() * animation_length
@@ -78,6 +75,8 @@ func anim_relaxed_talking():
 	else:
 		line2.visible = false
 	line3.visible = false
+	if lines_to_read == 0:
+		bubble.play("Spawn")
 
 ## Trigger everytime a Mac or Tissue dies, but not on neuron grabs.
 func anim_ouch():
@@ -132,5 +131,7 @@ func _on_ap_mouth_animation_finished(anim_name):
 			lines_to_read += 1
 			can_skip = true
 		else:
+			bubble.play("Despawn")
+			is_done.emit()
 			can_skip = true
-			is_done = true
+			

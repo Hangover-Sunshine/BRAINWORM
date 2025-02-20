@@ -11,6 +11,14 @@ var politician
 func _ready():
 	politician = $Politician
 	politician.anim_relaxed()
+	handle_signals()
+
+func handle_signals():
+	politician.is_done.connect(is_done)
+
+func is_done():
+	politician.anim_relaxed_ramble()
+	cutscene_finished()
 
 func initialize():
 	if start_close:
@@ -34,10 +42,10 @@ func _on_cutscene_interrupted():
 	_emit_cutscene_finished()
 	camera_anims.play("zoom_in")
 ##
-
+	
 func _input(event):
-	if event.is_pressed() and has_start == true and politician.can_skip == true and politician.is_done == false:
+	if event.is_pressed() and has_start == true and politician.can_skip == true:
 		politician.anim_relaxed_talking()
-	elif event.is_pressed() and has_start == true and politician.can_skip == true and politician.is_done == true:
-		politician.anim_relaxed_ramble()
-		cutscene_finished()
+	##elif event.is_pressed() and has_start == true and politician.can_skip == true and politician.is_done == true:
+		##politician.anim_relaxed_ramble()
+		##cutscene_finished()

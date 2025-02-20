@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://1qn63raxgjo7"]
+[gd_scene load_steps=42 format=3 uid="uid://1qn63raxgjo7"]
 
 [ext_resource type="Script" path="res://scripts/art/art_politician.gd" id="1_f7ng8"]
 [ext_resource type="Texture2D" uid="uid://3sran41n53iv" path="res://assets/character/politician/NPC_Suit.png" id="2_bqb7b"]
@@ -443,7 +443,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -813,6 +813,96 @@ _data = {
 "RESET": SubResource("Animation_x1l2w")
 }
 
+[sub_resource type="Animation" id="Animation_wirtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Suit/TextBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Suit/TextBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_16q6t"]
+resource_name = "Spawn"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Suit/TextBox:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Suit/TextBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b7txt"]
+resource_name = "Despawn"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Body/Suit/TextBox:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Body/Suit/TextBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51fbo"]
+_data = {
+"Despawn": SubResource("Animation_b7txt"),
+"RESET": SubResource("Animation_wirtg"),
+"Spawn": SubResource("Animation_16q6t")
+}
+
 [node name="Politician" type="Node2D"]
 script = ExtResource("1_f7ng8")
 
@@ -826,6 +916,7 @@ texture = ExtResource("2_bqb7b")
 offset = Vector2(-5, -125)
 
 [node name="TextBox" parent="Skeleton/Body/Suit" instance=ExtResource("9_ywuiu")]
+visible = false
 position = Vector2(-6, -570)
 
 [node name="Head" type="Node2D" parent="Skeleton/Body"]
@@ -900,6 +991,11 @@ libraries = {
 [node name="AP_Hit" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5qui1")
+}
+
+[node name="AP_Bubble" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_51fbo")
 }
 
 [node name="Label" type="Label" parent="."]
