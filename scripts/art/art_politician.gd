@@ -44,7 +44,7 @@ func anim_relaxed():
 	face.play("Not_Talking")
 	textbox.visible = false
 
-## Trigger for gameplay, when he is doing his speech
+## Trigger for gameplay, default idle animation during gameplay
 func anim_relaxed_ramble():
 	idle.play("Idle")
 	eyes.play("Resting")
@@ -79,7 +79,7 @@ func anim_relaxed_talking():
 		line2.visible = false
 	line3.visible = false
 
-## Trigger everytime something dies (i.e., neuron, maks, tissue).
+## Trigger everytime a Mac or Tissue dies, but not on neuron grabs.
 func anim_ouch():
 	ouch_eye = randi() % 2 + 1
 	ouch_brow = randi() % 3 + 1
@@ -95,7 +95,7 @@ func anim_ouch():
 	face.seek(random_time)
 	mouth.play("Not_Talking")
 
-## Trigger when he grabs a neuron
+## Trigger when worm grabs a neuron
 func anim_ouch_blurb():
 	ouch_eye = randi() % 2 + 1
 	ouch_brow = randi() % 3 + 1
