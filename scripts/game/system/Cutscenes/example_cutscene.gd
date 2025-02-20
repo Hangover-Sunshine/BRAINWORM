@@ -6,6 +6,7 @@ extends CutsceneManager
 var start_close:bool = false
 
 var has_start:bool = false
+var leave_cut:bool = false
 var politician
 
 func _ready():
@@ -17,8 +18,9 @@ func handle_signals():
 	politician.is_done.connect(is_done)
 
 func is_done():
-	politician.anim_relaxed_ramble()
-	cutscene_finished()
+	leave_cut = true
+	##politician.anim_relaxed_ramble()
+	##cutscene_finished()
 
 func initialize():
 	if start_close:
@@ -44,8 +46,9 @@ func _on_cutscene_interrupted():
 ##
 	
 func _input(event):
-	if event.is_pressed() and has_start == true and politician.can_skip == true:
+	if event.is_pressed() and has_start == true and politician.can_skip == true and leave_cut == false:
 		politician.anim_relaxed_talking()
-	##elif event.is_pressed() and has_start == true and politician.can_skip == true and politician.is_done == true:
-		##politician.anim_relaxed_ramble()
-		##cutscene_finished()
+	elif event.is_pressed() and has_start == true and politician.can_skip == true and leave_cut == true:
+		politician.anim_relaxed_ramble()
+		politician.bubble.play("Despawn")
+		cutscene_finished()

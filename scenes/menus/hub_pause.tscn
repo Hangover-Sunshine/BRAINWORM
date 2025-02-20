@@ -103,9 +103,13 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.490196)
 
 [node name="MenuPause" parent="." instance=ExtResource("1_lmxmo")]
+offset_left = -130.0
+offset_right = -130.0
 
 [node name="MenuSettings" parent="." instance=ExtResource("3_e0kcy")]
 visible = false
+offset_left = -130.0
+offset_right = -130.0
 
 [node name="HubPause_AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {

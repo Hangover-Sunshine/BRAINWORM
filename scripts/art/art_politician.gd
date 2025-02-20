@@ -127,11 +127,10 @@ func _on_ap_hit_animation_finished(anim_name):
 
 func _on_ap_mouth_animation_finished(anim_name):
 	if anim_name == "Talking":
-		if lines_to_read != script_size:
+		if lines_to_read <= script_size:
 			lines_to_read += 1
+			if lines_to_read > script_size:
+				is_done.emit()
 			can_skip = true
-		else:
-			bubble.play("Despawn")
-			is_done.emit()
-			can_skip = true
+			
 			
