@@ -108,6 +108,10 @@ func update_time(milliseconds:int):
 	$GUI.populate_game_time(("%02d" % minutes) + ":" + ("%02d" % seconds) + "." + strms)
 ##
 
+func update_health(value:int):
+	$GUI/GUI_Health.set_healthbar_value(value)
+##
+
 func hide_ui():
 	$GUI.visible = false
 ##

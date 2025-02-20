@@ -44,6 +44,7 @@ script = ExtResource("1_8tecl")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_c8kyo")
+layout_mode = 0
 offset_top = -371.0
 offset_right = 1920.0
 offset_bottom = 1549.0
@@ -261,6 +262,7 @@ text = "Leave"
 
 [node name="Filter_Vignette_Overall" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_760r8")
+layout_mode = 0
 offset_left = -42.0
 offset_top = -423.0
 offset_right = 1958.0

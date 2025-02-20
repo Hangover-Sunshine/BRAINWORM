@@ -9,6 +9,14 @@ signal gameover_to_main
 @onready var fail_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox
 @onready var background = $Background
 @onready var vignette = $Filter_Vignette_Overall
+@onready var number_stage = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/Number_Stage
+@onready var number_neuron = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Neuron/Number_Neuron
+@onready var number_macs = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Macs/Number_Macs
+@onready var number_tissue = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Tissue/Number_Tissue
+
+func _ready():
+	GlobalSignals.connect("game_scores", _on_recv_game_scores)
+##
 
 func to_lose():
 	background.visible = false
@@ -33,4 +41,21 @@ func _on_again_button_pressed():
 
 func _on_leave_button_pressed():
 	gameover_to_main.emit()
+##
+
+func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
+	var score:int = neurons + macs * 2 + tissue * 5
+	
+	# NOTE: Magic number -- 3 minutes or 180,000 ms
+	var past_time_lose_bonus:int = 3 * 60 * 1000
+	var time_modifier:int = past_time_lose_bonus / time
+	
+	if background.visible:
+		score += 1000000 * time_modifier
+	##
+	
+	number_stage.text = "%011d" % score
+	number_neuron.text = "%03d" % neurons
+	number_macs.text = "%03d" % macs
+	number_tissue.text = "%03d" % tissue
 ##

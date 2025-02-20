@@ -50,6 +50,8 @@ var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
 
+var jerry_health:int
+
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
@@ -58,7 +60,7 @@ func _ready():
 	add_child(neuron)
 	add_child(powerup)
 	
-	$InvulnTimer.start(CheckForPowerupInterval)
+	jerry_health = BrainHealth
 	
 	#$TissueTimer.start()
 	#$MacTimer.start()
@@ -74,6 +76,7 @@ func initialize_ui():
 	game_board.initialize_ui()
 	snake.start_timers()
 	start_time = Time.get_ticks_msec()
+	$InvulnTimer.start(CheckForPowerupInterval)
 	set_process(true)
 ##
 
@@ -102,6 +105,7 @@ func _on_player_move():
 	
 	if update_score:
 		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
+		game_board.update_health(floori(jerry_health / float(BrainHealth) * 100))
 		update_score = false
 	##
 ##
@@ -110,6 +114,9 @@ func check_for_edge():
 	if snake.X < 0 or snake.X > GRID_WIDTH_COUNT or\
 		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT:
 		GlobalSignals.emit_signal("player_died")
+		GlobalSignals.emit_signal("game_scores",
+									neurons_consumed, macs_killed, tissue_destroyed,
+									Time.get_ticks_msec() - start_time)
 	##
 ##
 
@@ -138,6 +145,7 @@ func check_for_enemy():
 			brainfolds.remove_at(t)
 			brainfold_spawns -= 1
 			tissue_destroyed += 1
+			jerry_health -= CostOfTissue
 			update_score = true
 		##
 		
@@ -179,6 +187,7 @@ func check_for_enemy():
 
 func check_for_neuron():
 	if neuron_pos == snake.Head:
+		jerry_health -= CostOfNeuron
 		snake.add_segment()
 		generate_neuron()
 		update_score = true
