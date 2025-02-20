@@ -17,5 +17,9 @@ func populate_stage(stage:int):
 ##
 
 func populate_score(score:int):
-	$GUI_Score/Number_Score.text = "00000"
+	$GUI_Score/Number_Score.text = "%09d" % score
+##
+
+func populate_game_time(time):
+	$GUI_Time/Number_Time.text = time
 ##

@@ -6,8 +6,11 @@ const MAC = preload("res://prefabs/snake/mac.tscn")
 const GRID_WIDTH_COUNT:int = 15
 const GRID_HEIGHT_COUNT:int = 14
 
-@export var StartPosition:Vector2i = Vector2(6, 7)
+@export_category("Starting Game Conditions")
 @export var Countdown:int = 5
+@export var StartPosition:Vector2i = Vector2(6, 7)
+
+@export_category("Player Conditions")
 @export var SecondsPerSegment:float = 1.5
 @export var CheckForPowerupInterval:float = 1.5
 @export var InvulnMinNumber:int = 5
@@ -20,6 +23,11 @@ const GRID_HEIGHT_COUNT:int = 14
 @export_category("Mak Spawning Info")
 @export var MaxAtATime:int = 8
 @export var PlayerSpawnSafetySquare:int = 4
+
+@export_category("Win Conditions")
+@export var BrainHealth:int = 200
+@export var CostOfNeuron:int = 2
+@export var CostOfTissue:int = 5
 
 @onready var game_board = $Layout_Game
 @onready var snake = $Snake
@@ -36,6 +44,12 @@ var brainfold_spawns:int = 0
 var brainfolds:Array[Brainwall]
 var growable_folds:Array[Brainwall]
 
+var update_score:bool = false
+var neurons_consumed:int = 0
+var tissue_destroyed:int = 0
+var macs_killed:int = 0
+var start_time:int
+
 func _ready():
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
@@ -48,18 +62,26 @@ func _ready():
 	
 	#$TissueTimer.start()
 	#$MacTimer.start()
+	start_time = 0
+	set_process(false)
 ##
 
-func initialize_ui(game_data:Dictionary, stage:int):
-	game_board.initialize_ui(game_data, stage)
+func _process(_delta):
+	game_board.update_time(Time.get_ticks_msec() - start_time)
+##
+
+func initialize_ui():
+	game_board.initialize_ui()
 	snake.start_timers()
+	start_time = Time.get_ticks_msec()
+	set_process(true)
 ##
 
 func hide_ui():
 	game_board.hide_ui()
 ##
 
-func initialize_board(game_data:Dictionary):
+func initialize_board():
 	snake.initialize(game_board, StartPosition)
 	snake.connect("move", _on_player_move)
 	snake.connect("invuln_over", _on_invuln_timer_timeout)
@@ -77,6 +99,11 @@ func _on_player_move():
 	check_for_neuron()
 	check_for_powerup()
 	check_for_tissue_eating_neuron()
+	
+	if update_score:
+		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
+		update_score = false
+	##
 ##
 
 func check_for_edge():
@@ -110,6 +137,8 @@ func check_for_enemy():
 		for t in remove:
 			brainfolds.remove_at(t)
 			brainfold_spawns -= 1
+			tissue_destroyed += 1
+			update_score = true
 		##
 		
 		remove.clear()
@@ -122,6 +151,8 @@ func check_for_enemy():
 		
 		for m in remove:
 			macs.remove_at(m)
+			macs_killed += 1
+			update_score = true
 		##
 		
 		return
@@ -150,6 +181,8 @@ func check_for_neuron():
 	if neuron_pos == snake.Head:
 		snake.add_segment()
 		generate_neuron()
+		update_score = true
+		neurons_consumed += 1
 	##
 ##
 

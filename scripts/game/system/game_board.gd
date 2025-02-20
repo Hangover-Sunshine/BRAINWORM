@@ -79,12 +79,33 @@ func _update_nearby_tiles(cardinals, fold_pos:Vector2i, folds:Array[Vector2i]):
 	##
 ##
 
-func initialize_ui(game_data:Dictionary, stage:int):
+func initialize_ui():
 	$GUI.visible = true
-	$GUI.populate_flesh(game_data["flesh"])
-	$GUI.populate_macs(game_data["macs"])
-	$GUI.populate_tissue(game_data["tissue"])
+	$GUI.populate_flesh(0)
+	$GUI.populate_macs(0)
+	$GUI.populate_tissue(0)
 	$GUI.populate_score(0)
+##
+
+func update_score(flesh:int, macs:int, tissue:int):
+	$GUI.populate_flesh(flesh)
+	$GUI.populate_macs(macs)
+	$GUI.populate_tissue(tissue)
+	$GUI.populate_score(flesh + macs * 2 + tissue * 5)
+##
+
+func update_time(milliseconds:int):
+	var seconds:int = milliseconds / 1000
+	var minutes:int = seconds / 60
+	if seconds > 60:
+		seconds -= minutes * 60
+	##
+	var millis:int = milliseconds % 1000 # remainder
+	var strms:String = ("%02d" % millis)
+	if strms.length() > 2:
+		strms = strms.erase(strms.length() - 1, 1)
+	##
+	$GUI.populate_game_time(("%02d" % minutes) + ":" + ("%02d" % seconds) + "." + strms)
 ##
 
 func hide_ui():
