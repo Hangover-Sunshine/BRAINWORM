@@ -192,6 +192,7 @@ func check_for_enemy():
 		
 		for t in remove:
 			brainfolds.remove_at(t)
+			brainfold_spawns -= 1
 		##
 		
 		remove.clear()
@@ -243,6 +244,7 @@ func check_for_powerup():
 		$InvulnTimer.start(SecondsPerSegment * (len(curr_positions) - 2))
 		powerup_pos = Vector2i(-100, -100)
 		powerup.global_position = game_board.get_world_position_at(powerup_pos)
+		$RemoveSegmentTimer.start()
 	##
 ##
 
@@ -414,4 +416,13 @@ func generate_powerup():
 	
 	powerup_pos = position
 	powerup.global_position = game_board.get_world_position_at(position)
+##
+
+func _on_remove_segment_timer_timeout():
+	if len(curr_positions) > 4:
+		$RemoveSegmentTimer.start()
+	##
+	segments[-1].queue_free()
+	segments.remove_at(len(segments) - 1)
+	curr_positions.remove_at(len(curr_positions) - 1)
 ##

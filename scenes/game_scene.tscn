@@ -134,6 +134,10 @@ wait_time = 2.5
 [node name="InvulnTimer" type="Timer" parent="GameControl"]
 one_shot = true
 
+[node name="RemoveSegmentTimer" type="Timer" parent="GameControl"]
+wait_time = 0.1
+one_shot = true
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
@@ -146,3 +150,4 @@ libraries = {
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
+[connection signal="timeout" from="GameControl/RemoveSegmentTimer" to="GameControl" method="_on_remove_segment_timer_timeout"]
