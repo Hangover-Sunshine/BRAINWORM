@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm2pa21ra2su3"]
+
+[ext_resource type="Script" path="res://scripts/game/snake/snake.gd" id="1_cg4ub"]
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("1_cg4ub")
+
+[node name="RemoveSegmentTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="InvulnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="RemoveSegmentTimer" to="." method="_on_remove_segment_timer_timeout"]
+[connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

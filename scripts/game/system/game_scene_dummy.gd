@@ -30,7 +30,6 @@ func hide_ui():
 func camera_in_place():
 	GlobalSignals.emit_signal("game_status", false)
 	game_control.initialize_ui(game_data, stage)
-	game_control.can_move = true
 ##
 
 func game_won():

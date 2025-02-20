@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameBoard
 
 const CELL_SIZE:float = 64
 const GRID_OFFSET:Vector2i = Vector2i(5,1)

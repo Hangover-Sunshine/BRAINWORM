@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=10 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
 [ext_resource type="Script" path="res://scripts/game/snake/game_control.gd" id="2_r1gp1"]
+[ext_resource type="PackedScene" uid="uid://dm2pa21ra2su3" path="res://prefabs/snake/snake.tscn" id="4_sees7"]
 
 [sub_resource type="Animation" id="Animation_0a1rh"]
 resource_name = "RESET"
@@ -118,12 +119,8 @@ color = Color(0.129729, 0.0255367, 0.0527574, 1)
 
 [node name="GameControl" type="Node" parent="."]
 script = ExtResource("2_r1gp1")
-SecondsPerSegment = 5.0
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
-
-[node name="MoveTimer" type="Timer" parent="GameControl"]
-wait_time = 0.15
 
 [node name="TissueTimer" type="Timer" parent="GameControl"]
 wait_time = 4.0
@@ -132,11 +129,8 @@ wait_time = 4.0
 wait_time = 2.5
 
 [node name="InvulnTimer" type="Timer" parent="GameControl"]
-one_shot = true
 
-[node name="RemoveSegmentTimer" type="Timer" parent="GameControl"]
-wait_time = 0.1
-one_shot = true
+[node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -146,8 +140,6 @@ libraries = {
 "": SubResource("AnimationLibrary_kijkm")
 }
 
-[connection signal="timeout" from="GameControl/MoveTimer" to="GameControl" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
-[connection signal="timeout" from="GameControl/RemoveSegmentTimer" to="GameControl" method="_on_remove_segment_timer_timeout"]

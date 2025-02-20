@@ -6,15 +6,11 @@ const MAC = preload("res://prefabs/snake/mac.tscn")
 const GRID_WIDTH_COUNT:int = 15
 const GRID_HEIGHT_COUNT:int = 14
 
-const MOVE_UP:Vector2i = Vector2i(0, -1)
-const MOVE_DOWN:Vector2i = Vector2i(0, 1)
-const MOVE_LEFT:Vector2i = Vector2i(-1, 0)
-const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
-
 @export var StartPosition:Vector2i = Vector2(6, 7)
 @export var Countdown:int = 5
 @export var SecondsPerSegment:float = 1.5
 @export var CheckForPowerupInterval:float = 1.5
+@export var InvulnMinNumber:int = 5
 
 @export_category("Tissue Spawn Info")
 @export var MinRangeOfGrowth:int = 4
@@ -26,14 +22,7 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 @export var PlayerSpawnSafetySquare:int = 4
 
 @onready var game_board = $Layout_Game
-
-var _known_loss:bool = false
-var can_move:bool = false
-var prev_positions:Array[Vector2i]
-var curr_positions:Array[Vector2i]
-var segments:Array
-var move_dir:Vector2i
-var invuln:bool = false
+@onready var snake = $Snake
 
 var neuron
 var neuron_pos:Vector2i
@@ -55,16 +44,15 @@ func _ready():
 	add_child(neuron)
 	add_child(powerup)
 	
-	$InvulnTimer.one_shot = false
 	$InvulnTimer.start(CheckForPowerupInterval)
 	
-	$TissueTimer.start()
-	$MacTimer.start()
+	#$TissueTimer.start()
+	#$MacTimer.start()
 ##
 
 func initialize_ui(game_data:Dictionary, stage:int):
 	game_board.initialize_ui(game_data, stage)
-	$MoveTimer.start()
+	snake.start_timers()
 ##
 
 func hide_ui():
@@ -72,80 +60,17 @@ func hide_ui():
 ##
 
 func initialize_board(game_data:Dictionary):
-	# If no data exists, then make some!
-	if game_data["snake"].size() == 0:
-		game_data["snake"] = [StartPosition,
-								StartPosition - Vector2i(1, 0),
-								StartPosition - Vector2i(2, 0)]
-	##
-	
-	# Put all snake in the current position
-	for segment in range(len(game_data["snake"])):
-		curr_positions.push_back(game_data["snake"][segment])
-		
-		var snake_seg = SNAKE_SEGMENT.instantiate()
-		add_child(snake_seg)
-		segments.push_back(snake_seg)
-		segments[segment].global_position = game_board.get_world_position_at(curr_positions[segment])
-	##
-	
-	#segments[0].is_head = true
-	#segments[-1].is_tail = true
-	
-	# Which way were they going last?
-	move_dir = game_data["dir"]
+	snake.initialize(game_board, StartPosition)
+	snake.connect("move", _on_player_move)
+	snake.connect("invuln_over", _on_invuln_timer_timeout)
+	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	generate_neuron()
 	
 	# TODO: Begin count down
 ##
 
-func add_segment(position:Vector2i):
-	curr_positions.push_back(position)
-	
-	var snake_seg = SNAKE_SEGMENT.instantiate()
-	snake_seg.global_position = game_board.get_world_position_at(position)
-	add_child(snake_seg)
-	segments.push_back(snake_seg)
-##
-
-func _process(_delta):
-	if can_move:
-		if Input.is_action_just_pressed("down") and move_dir != MOVE_UP:
-			move_dir = MOVE_DOWN
-			can_move = false
-		##
-		if Input.is_action_just_pressed("up") and move_dir != MOVE_DOWN:
-			move_dir = MOVE_UP
-			can_move = false
-		##
-		if Input.is_action_just_pressed("left") and move_dir != MOVE_RIGHT:
-			move_dir = MOVE_LEFT
-			can_move = false
-		##
-		if Input.is_action_just_pressed("right") and move_dir != MOVE_LEFT:
-			move_dir = MOVE_RIGHT
-			can_move = false
-		##
-	##
-##
-
-func _on_timer_timeout():
-	if _known_loss:
-		return
-	##
-	
-	can_move = true
-	
-	prev_positions = curr_positions.duplicate()
-	curr_positions[0] += move_dir
-	segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
-	
-	for i in range(1, len(curr_positions)):
-		curr_positions[i] = prev_positions[i - 1]
-		segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
-	##
-	
+func _on_player_move():
 	check_for_edge()
 	check_for_self()
 	check_for_enemy()
@@ -155,35 +80,27 @@ func _on_timer_timeout():
 ##
 
 func check_for_edge():
-	if curr_positions[0].x < 0 or curr_positions[0].x > GRID_WIDTH_COUNT or\
-		curr_positions[0].y < 0 or curr_positions[0].y > GRID_HEIGHT_COUNT:
+	if snake.X < 0 or snake.X > GRID_WIDTH_COUNT or\
+		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT:
 		GlobalSignals.emit_signal("player_died")
-		set_process(false)
-		$MoveTimer.stop()
-		_known_loss = true
 	##
 ##
 
 func check_for_self():
-	for i in range(1, len(curr_positions)):
-		if curr_positions[0] == curr_positions[i]:
-			GlobalSignals.emit_signal("player_died")
-			set_process(false)
-			$MoveTimer.stop()
-			_known_loss = true
-		##
+	if snake.self_overlaps():
+		GlobalSignals.emit_signal("player_died")
 	##
 ##
 
 func check_for_enemy():
 	var gameover:bool = false
 	
-	if invuln:
+	if snake.Invulnerable:
 		var remove = []
 		for tissue in brainfolds:
-			if curr_positions[0] in tissue.positions:
-				tissue.remove_at(curr_positions[0])
-				game_board.remove_brainfold_at(curr_positions[0], tissue.positions)
+			if snake.Head in tissue.positions:
+				tissue.remove_at(snake.Head)
+				game_board.remove_brainfold_at(snake.Head, tissue.positions)
 				if len(tissue.positions) == 0:
 					remove.push_back(brainfolds.find(tissue))
 				##
@@ -197,7 +114,7 @@ func check_for_enemy():
 		
 		remove.clear()
 		for makIndx in range(len(macs)):
-			if curr_positions[0] == macs[makIndx].curr_position:
+			if snake.Head == macs[makIndx].curr_position:
 				macs[makIndx].kill_it()
 				remove.push_back(makIndx)
 			##
@@ -211,40 +128,38 @@ func check_for_enemy():
 	##
 	
 	for tissue in brainfolds:
-		if curr_positions[0] in tissue.positions:
+		if snake.Head in tissue.positions:
 			gameover = true
 		##
 	##
 	
-	for mak in macs:
-		if curr_positions[0] == mak.curr_position:
-			gameover = true
+	if gameover == false:
+		for mak in macs:
+			if snake.Head == mak.curr_position:
+				gameover = true
+			##
 		##
 	##
 	
 	if gameover:
 		GlobalSignals.emit_signal("player_died")
-		set_process(false)
-		$MoveTimer.stop()
-		_known_loss = true
 	##
 ##
 
 func check_for_neuron():
-	if neuron_pos == curr_positions[0]:
-		add_segment(curr_positions[-1])
+	if neuron_pos == snake.Head:
+		snake.add_segment()
 		generate_neuron()
 	##
 ##
 
 func check_for_powerup():
-	if powerup_pos == curr_positions[0]:
-		invuln = true
+	if powerup_pos == snake.Head:
+		snake.Invulnerable = true
 		$InvulnTimer.one_shot = true
-		$InvulnTimer.start(SecondsPerSegment * (len(curr_positions) - 2))
+		$InvulnTimer.start(SecondsPerSegment * (snake.Length - 2))
 		powerup_pos = Vector2i(-100, -100)
 		powerup.global_position = game_board.get_world_position_at(powerup_pos)
-		$RemoveSegmentTimer.start()
 	##
 ##
 
@@ -269,7 +184,7 @@ func generate_neuron():
 		regen_food = false
 		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 		
-		for pos in curr_positions:
+		for pos in snake.curr_positions:
 			if pos == position:
 				regen_food = true
 				break
@@ -302,7 +217,7 @@ func _on_tissue_timer_timeout():
 			
 			position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 			
-			if (position - curr_positions[0]).length() <= PlayerSafetySquare or position in curr_positions:
+			if (position - snake.Head).length() <= PlayerSafetySquare or position in snake.curr_positions:
 				find_position = true
 			##
 			
@@ -334,6 +249,10 @@ func _on_tissue_timer_timeout():
 		var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT,
 																		GRID_HEIGHT_COUNT,
 																		brainfolds)
+		if len(valid_positions) == 0:
+			return
+		##
+		
 		var position:Vector2i = valid_positions[randi() % len(valid_positions)]
 		
 		inst.positions.push_back(position)
@@ -362,7 +281,8 @@ func _on_mac_timer_timeout():
 		find_pos = false
 		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 		
-		if position in curr_positions or (position - curr_positions[0]).length() <= PlayerSpawnSafetySquare:
+		if position in snake.curr_positions or \
+			(position - snake.Head).length() <= PlayerSpawnSafetySquare:
 			find_pos = true
 		##
 	##
@@ -379,17 +299,11 @@ func _listen_for_mak_movement(mak:Mak):
 ##
 
 func _on_invuln_timer_timeout():
-	if invuln:
-		invuln = false
-		$InvulnTimer.one_shot = false
-		$InvulnTimer.start(CheckForPowerupInterval)
-	else:
-		var r = randi() % 100
-		if len(curr_positions) > 3 and r <= 50:
-			$InvulnTimer.stop()
-			generate_powerup()
-		##
+	var r = randi() % 100
+	if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
+		generate_powerup()
 	##
+	$InvulnTimer.start(CheckForPowerupInterval)
 ##
 
 func generate_powerup():
@@ -399,7 +313,7 @@ func generate_powerup():
 		regen_food = false
 		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
 		
-		for pos in curr_positions:
+		for pos in snake.curr_positions:
 			if pos == position:
 				regen_food = true
 				break
@@ -416,13 +330,4 @@ func generate_powerup():
 	
 	powerup_pos = position
 	powerup.global_position = game_board.get_world_position_at(position)
-##
-
-func _on_remove_segment_timer_timeout():
-	if len(curr_positions) > 4:
-		$RemoveSegmentTimer.start()
-	##
-	segments[-1].queue_free()
-	segments.remove_at(len(segments) - 1)
-	curr_positions.remove_at(len(curr_positions) - 1)
 ##
