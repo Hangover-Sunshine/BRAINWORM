@@ -1,7 +1,7 @@
 extends Node2D
 
 const CELL_SIZE:float = 64
-const GRID_OFFSET:Vector2i = Vector2i(7,1)
+const GRID_OFFSET:Vector2i = Vector2i(5,1)
 
 @onready var environment:TileMap = $Background/Environment
 
