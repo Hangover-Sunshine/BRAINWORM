@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgk1r1j1sl8x4"
-path="res://.godot/imported/PC_Tilesheet.png-37d8d4eafae7ef5e2cb803641b9380be.ctex"
+uid="uid://bq5bgo3371gnd"
+path="res://.godot/imported/PC_Tilesheet.png-5f5670f349d56431b5f522cab5c5f721.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pc/PC_Tilesheet.png"
-dest_files=["res://.godot/imported/PC_Tilesheet.png-37d8d4eafae7ef5e2cb803641b9380be.ctex"]
+source_file="res://assets/PC_Tilesheet.png"
+dest_files=["res://.godot/imported/PC_Tilesheet.png-5f5670f349d56431b5f522cab5c5f721.ctex"]
 
 [params]
 

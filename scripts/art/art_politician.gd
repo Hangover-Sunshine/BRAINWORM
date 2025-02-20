@@ -32,7 +32,6 @@ func _ready():
 	line1 = script_vbox.find_child("Line1")
 	line2 = script_vbox.find_child("Line2")
 	line3 = script_vbox.find_child("Line3")
-	anim_relaxed_talking()
 
 ## Trigger only at beginning of cutscene / when not talking
 func anim_relaxed():
@@ -58,6 +57,7 @@ func anim_relaxed_ramble():
 
 ## Trigger for cutscene, everytime he says a line
 func anim_relaxed_talking():
+	can_skip = false
 	idle.play("Idle")
 	eyes.play("Resting")
 	mouth.play("Talking")
@@ -127,7 +127,7 @@ func _on_ap_mouth_animation_finished(anim_name):
 	if anim_name == "Talking":
 		if lines_to_read != script_size:
 			lines_to_read += 1
-			anim_relaxed_talking()
+			can_skip = true
 		else:
 			anim_relaxed_ramble()
 			print("Transition")
