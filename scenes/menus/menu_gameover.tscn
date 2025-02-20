@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=11 format=3 uid="uid://dgrchpsdeaxdt"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_gameover.gd" id="1_8tecl"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_3u58w"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_hr3v5"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
+[ext_resource type="Script" path="res://scripts/art/funfacts.gd" id="5_1reb6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8kyo"]
 shader = ExtResource("2_3u58w")
@@ -83,20 +84,8 @@ theme_override_font_sizes/font_size = 150
 text = "FAILURE!"
 horizontal_alignment = 1
 
-[node name="Divider1" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
-custom_minimum_size = Vector2(1250, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-color = Color(1, 1, 1, 0)
-
-[node name="Line2D" type="Line2D" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Divider1"]
-position = Vector2(0, 5)
-points = PackedVector2Array(0, 0, 1250, 0, 1250, 1, 0, 1)
-closed = true
-joint_mode = 2
-
 [node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 layout_mode = 2
 
 [node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox"]
@@ -123,37 +112,40 @@ text = "Nothing can go wrong from this!
 horizontal_alignment = 1
 
 [node name="Fail_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
 layout_mode = 2
+script = ExtResource("5_1reb6")
 
-[node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+[node name="Caption0" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
-text = "You have failed to consume all traces of your"
 horizontal_alignment = 1
 
-[node name="Caption_GameOver2" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+[node name="Caption1" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
-text = "victim's memories and cognitive functions. Maybe
+horizontal_alignment = 1
+
+[node name="Caption2" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+text = "
 "
 horizontal_alignment = 1
 
-[node name="Caption_GameOver3" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+[node name="Caption3" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
-text = "other worms would be more successful?"
 horizontal_alignment = 1
 
-[node name="Divider2" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
-custom_minimum_size = Vector2(1000, 10)
+[node name="Caption4" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
 layout_mode = 2
-size_flags_horizontal = 4
-color = Color(0.921569, 0.670588, 0.72549, 1)
+theme_override_fonts/font = ExtResource("2_hr3v5")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
 
 [node name="Stats_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
 layout_mode = 2
@@ -230,13 +222,6 @@ horizontal_alignment = 1
 
 [node name="Empty" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats"]
 layout_mode = 2
-
-[node name="Divider3" type="ColorRect" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
-custom_minimum_size = Vector2(1250, 10)
-layout_mode = 2
-size_flags_horizontal = 4
-color = Color(0.921569, 0.670588, 0.72549, 1)
 
 [node name="Button_HBox" type="HBoxContainer" parent="GameOver_MC/GameOver_VBox"]
 layout_mode = 2

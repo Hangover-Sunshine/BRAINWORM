@@ -164,7 +164,6 @@ theme_override_font_sizes/font_size = 50
 text = " > "
 
 [node name="Full_HBox2" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 20
@@ -173,7 +172,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_3dp5g")
 theme_override_font_sizes/font_size = 50
-text = "Enable ENDLESS MODE"
+text = "Skip Intro Cutscene"
 
 [node name="Endless_Check" type="CheckBox" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/Full_HBox2"]
 layout_mode = 2

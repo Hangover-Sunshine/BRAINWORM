@@ -48,7 +48,7 @@ func _new_scene_loaded(new_scene:String):
 
 func _player_died():
 	_game_scene.freeze()
-	_game_scene.hide_ui()
+	#_game_scene.hide_ui()
 	#_game_scene.clear_game()
 	_can_pause = false
 	game_over.visible = true

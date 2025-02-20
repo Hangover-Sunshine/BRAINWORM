@@ -22,11 +22,13 @@ var script_vbox
 var line1
 var line2
 var line3 
-var can_skip = false
+var can_skip:bool = false
+var is_done:bool = false
 var script_size = 10 # I had to manually set this. I couldn't figure out why.
 @onready var lines_to_read = 0
 
 func _ready():
+	is_done = false
 	game_lines = $Skeleton/Body/Suit/TextBox
 	script_vbox = $Skeleton/Body/Suit/TextBox/Control/Margin1/Margin2/VBox
 	line1 = script_vbox.find_child("Line1")
@@ -62,6 +64,7 @@ func anim_relaxed_talking():
 	eyes.play("Resting")
 	mouth.play("Talking")
 	brows.play("Resting")
+	textbox.visible = true
 	
 	animation_length = face.get_animation("Normal").length
 	random_time = randf() * animation_length
@@ -106,7 +109,7 @@ func anim_ouch_blurb():
 	face.play("Ouch")
 	face.seek(random_time)
 	mouth.play("Ouch")
-	lines_to_read = randi() % game_lines.game_line1.size()-1
+	lines_to_read = randi() % game_lines.game_line1.size() + 1 # this might be going one off the array
 	line1.text = game_lines.game_line1[lines_to_read]
 	if game_lines.game_line2[lines_to_read] != "_":
 		line2.text = game_lines.game_line2[lines_to_read]
@@ -129,5 +132,5 @@ func _on_ap_mouth_animation_finished(anim_name):
 			lines_to_read += 1
 			can_skip = true
 		else:
-			anim_relaxed_ramble()
-			print("Transition")
+			can_skip = true
+			is_done = true

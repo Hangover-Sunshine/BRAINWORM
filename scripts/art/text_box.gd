@@ -30,4 +30,4 @@ var cut_line1: Array = ["My fellow Americans!","It is with great honor that I...
 
 var cut_line2: Array = ["_","Jerry Atrick","Red, White, and Blue Land...,","for U.S. Presidency!",
 "needs new legislation.","to bringing freedom...","democratic republic.","founding fathers...",
-"in the face of adversity.","brought the nation into a disarray!","thus I am here to fulfill my civil duty!"]
+"in the face of adversity.","brought this nation into turmoil!","and thus I am here to fulfill that civil duty!"]
