@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var Cutscenes:Array[PackedScene]
+@export var Cutscene:PackedScene
 @export var GameScene:PackedScene
 
 @onready var internal_fade_controller = $InternalFadeController
@@ -22,7 +22,7 @@ func _ready():
 	$PauseMenu/HubPause.connect("unpause", _unpause_game)
 	
 	# Load the cut scene
-	_curr_cutscene = Cutscenes[_curr_level].instantiate()
+	_curr_cutscene = Cutscene.instantiate()
 	add_child(_curr_cutscene)
 	_curr_cutscene.initialize()
 	internal_fade_controller.play("fade_in")
@@ -85,13 +85,9 @@ func fade_out_finished():
 	else:
 		_in_cutscene = true
 		_game_scene.queue_free()
-		_curr_cutscene = Cutscenes[_curr_level].instantiate()
-		add_child(_curr_cutscene)
-		if _curr_level == 0:
-			_curr_cutscene.start_close = false
-		else:
-			_curr_cutscene.start_close = true
-		_curr_cutscene.initialize()
+		await get_tree().create_timer(1.5).timeout
+		_game_scene = GameScene.instantiate()
+		add_child(_game_scene)
 		##
 	##
 	internal_fade_controller.play("fade_in")
