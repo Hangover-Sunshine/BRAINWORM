@@ -8,26 +8,31 @@ extends Node2D
 @onready var hit = $AP_Hit
 @onready var textbox = $Skeleton/Body/Suit/TextBox
 
-@onready var testing_timer = $Testing_Timer
+## @onready var testing_timer = $Testing_Timer
 
+## Stuff I need to provide variation to when he gets hit. #
 var animation_length
 var random_time
 var ouch_eye
 var ouch_brow
 
+## Stuff I need to grab his stupid lines #
 var game_lines
 var script_vbox
 var line1
 var line2
 var line3 
+var can_skip = false
+var script_size = 10 # I had to manually set this. I couldn't figure out why.
+@onready var lines_to_read = 0
 
 func _ready():
-	anim_relaxed_ramble()
 	game_lines = $Skeleton/Body/Suit/TextBox
 	script_vbox = $Skeleton/Body/Suit/TextBox/Control/Margin1/Margin2/VBox
 	line1 = script_vbox.find_child("Line1")
 	line2 = script_vbox.find_child("Line2")
 	line3 = script_vbox.find_child("Line3")
+	anim_relaxed_talking()
 
 ## Trigger only at beginning of cutscene / when not talking
 func anim_relaxed():
@@ -62,15 +67,24 @@ func anim_relaxed_talking():
 	random_time = randf() * animation_length
 	face.play("Normal")
 	face.seek(random_time)
+	line1.text = game_lines.cut_line1[lines_to_read]
+	line1.visible = true
+	if game_lines.cut_line2[lines_to_read] != "_":
+		line2.text = game_lines.cut_line2[lines_to_read]
+		line2.visible = true
+	else:
+		line2.visible = false
+	line3.visible = false
 
 ## Trigger everytime something dies (i.e., neuron, maks, tissue).
 func anim_ouch():
-	ouch_eye = randi() % 3 + 1
+	ouch_eye = randi() % 2 + 1
 	ouch_brow = randi() % 3 + 1
 	hit.play("Hit")
 	idle.play("Idle")
 	eyes.play("Ouch"+str(ouch_eye))
 	brows.play("Ouch"+str(ouch_brow))
+	print(ouch_eye)
 	
 	animation_length = face.get_animation("Ouch").length
 	random_time = randf() * animation_length
@@ -80,7 +94,7 @@ func anim_ouch():
 
 ## Trigger when he grabs a neuron
 func anim_ouch_blurb():
-	ouch_eye = randi() % 3 + 1
+	ouch_eye = randi() % 2 + 1
 	ouch_brow = randi() % 3 + 1
 	hit.play("Hit")
 	idle.play("Idle")
@@ -92,7 +106,7 @@ func anim_ouch_blurb():
 	face.play("Ouch")
 	face.seek(random_time)
 	mouth.play("Ouch")
-	var lines_to_read = randi() % game_lines.game_line1.size()-1
+	lines_to_read = randi() % game_lines.game_line1.size()-1
 	line1.text = game_lines.game_line1[lines_to_read]
 	if game_lines.game_line2[lines_to_read] != "_":
 		line2.text = game_lines.game_line2[lines_to_read]
@@ -108,8 +122,12 @@ func anim_ouch_blurb():
 func _on_ap_hit_animation_finished(anim_name):
 	if anim_name == "Hit":
 		anim_relaxed_ramble()
-		testing_timer.start
 
-func _on_testing_timer_timeout():
-	anim_ouch_blurb()
-	testing_timer.stop
+func _on_ap_mouth_animation_finished(anim_name):
+	if anim_name == "Talking":
+		if lines_to_read != script_size:
+			lines_to_read += 1
+			anim_relaxed_talking()
+		else:
+			anim_relaxed_ramble()
+			print("Transition")
