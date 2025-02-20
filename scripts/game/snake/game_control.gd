@@ -117,12 +117,17 @@ func check_for_edge():
 		GlobalSignals.emit_signal("game_scores",
 									neurons_consumed, macs_killed, tissue_destroyed,
 									Time.get_ticks_msec() - start_time)
+		set_process(false)
 	##
 ##
 
 func check_for_self():
 	if snake.self_overlaps():
 		GlobalSignals.emit_signal("player_died")
+		GlobalSignals.emit_signal("game_scores",
+									neurons_consumed, macs_killed, tissue_destroyed,
+									Time.get_ticks_msec() - start_time)
+		set_process(false)
 	##
 ##
 
@@ -182,6 +187,10 @@ func check_for_enemy():
 	
 	if gameover:
 		GlobalSignals.emit_signal("player_died")
+		GlobalSignals.emit_signal("game_scores",
+									neurons_consumed, macs_killed, tissue_destroyed,
+									Time.get_ticks_msec() - start_time)
+		set_process(false)
 	##
 ##
 
