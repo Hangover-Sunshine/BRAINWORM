@@ -6,12 +6,14 @@ extends Node2D
 @onready var brows = $AP_Brows
 @onready var face = $AP_Face
 @onready var hit = $AP_Hit
-@onready var testing_timer = $"../Testing_Timer"
 
 var animation_length
 var random_time
 var ouch_eye
 var ouch_brow
+
+func _ready():
+	anim_relaxed_ramble()
 
 ## Trigger only at beginning of cutscene / when not talking
 func anim_relaxed():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brjvabus1pl45"
-path="res://.godot/imported/Checkbox_Tic.png-ff87d495778961f5c4dbe1fd1e0151f1.ctex"
+uid="uid://b8i4xtvr8jlpr"
+path="res://.godot/imported/HS_Logo_Noface.png-6313fc93af862bd65bdfe0388f21ae07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/Checkbox_Tic.png"
-dest_files=["res://.godot/imported/Checkbox_Tic.png-ff87d495778961f5c4dbe1fd1e0151f1.ctex"]
+source_file="res://assets/ui/HS_Logo_Noface.png"
+dest_files=["res://.godot/imported/HS_Logo_Noface.png-6313fc93af862bd65bdfe0388f21ae07.ctex"]
 
 [params]
 

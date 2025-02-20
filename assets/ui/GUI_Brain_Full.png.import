@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ssom2u1kvv7"
-path="res://.godot/imported/HS_Logo.png-db03883130682c47ebf301ff2f0b076e.ctex"
+uid="uid://bviisl0bl6al1"
+path="res://.godot/imported/GUI_Brain_Full.png-606a1b8340df75b1f9c649b65a15d539.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/HS_Logo.png"
-dest_files=["res://.godot/imported/HS_Logo.png-db03883130682c47ebf301ff2f0b076e.ctex"]
+source_file="res://assets/ui/GUI_Brain_Full.png"
+dest_files=["res://.godot/imported/GUI_Brain_Full.png-606a1b8340df75b1f9c649b65a15d539.ctex"]
 
 [params]
 

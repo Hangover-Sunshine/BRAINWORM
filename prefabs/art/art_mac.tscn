@@ -5,13 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c77nox0m4vny8" path="res://prefabs/art/art_marker.tscn" id="2_7r8nm"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="2_i1ee7"]
 [ext_resource type="Texture2D" uid="uid://ypya1wi0nvfs" path="res://assets/character/Mac_Brow.png" id="3_icqg6"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="4_2j43k"]
 [ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="4_etgak"]
-
-[sub_resource type="Curve" id="Curve_evjai"]
-_data = [Vector2(0, 0), 0.0, 5.34652, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.74588, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 2
 
 [sub_resource type="Curve" id="Curve_ok6sb"]
 _data = [Vector2(0, 0), 0.0, 5.72841, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.74588, 0.0, 0, 0]
@@ -458,7 +453,7 @@ initial_velocity_max = 50.0
 angle_max = 180.0
 scale_amount_min = 0.1
 scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_evjai")
+scale_amount_curve = ExtResource("4_2j43k")
 color = Color(0.917647, 0.678431, 0.929412, 1)
 
 [node name="Skeleton" type="Node2D" parent="."]

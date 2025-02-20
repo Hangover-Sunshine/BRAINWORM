@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gdf7b4undcvg"
-path="res://.godot/imported/Jet_Warning.png-11ec122bc82ff54a0096cf054da81508.ctex"
+uid="uid://wmuxu4qsyelx"
+path="res://.godot/imported/Slider_Nuke.png-8d1ead0eb331334682d1ab008236ed11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/Jet_Warning.png"
-dest_files=["res://.godot/imported/Jet_Warning.png-11ec122bc82ff54a0096cf054da81508.ctex"]
+source_file="res://assets/ui/Slider_Nuke.png"
+dest_files=["res://.godot/imported/Slider_Nuke.png-8d1ead0eb331334682d1ab008236ed11.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8i4xtvr8jlpr"
-path="res://.godot/imported/HS_Logo_Noface.png-d869c8b6c42e98d9c3750cd311a8e3a4.ctex"
+uid="uid://cdm8au2qqd2n4"
+path="res://.godot/imported/Checkbox_Untic.png-c8bae2c4c7439f1d1fbdefa139204622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/HS_Logo_Noface.png"
-dest_files=["res://.godot/imported/HS_Logo_Noface.png-d869c8b6c42e98d9c3750cd311a8e3a4.ctex"]
+source_file="res://assets/ui/Checkbox_Untic.png"
+dest_files=["res://.godot/imported/Checkbox_Untic.png-c8bae2c4c7439f1d1fbdefa139204622.ctex"]
 
 [params]
 

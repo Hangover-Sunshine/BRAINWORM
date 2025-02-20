@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wmuxu4qsyelx"
-path="res://.godot/imported/Slider_Nuke.png-f2d376c0e318cdb19bb0d70a0cdf3d73.ctex"
+uid="uid://c3rkgo18l3esc"
+path="res://.godot/imported/Checkbox_Full.png-ef3ef5b4cdd76a0cf2b68b9bdd8b9f30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/Slider_Nuke.png"
-dest_files=["res://.godot/imported/Slider_Nuke.png-f2d376c0e318cdb19bb0d70a0cdf3d73.ctex"]
+source_file="res://assets/ui/Checkbox_Full.png"
+dest_files=["res://.godot/imported/Checkbox_Full.png-ef3ef5b4cdd76a0cf2b68b9bdd8b9f30.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bai18wlbx1eho"]
 
 [ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="2_4nw8e"]
-[ext_resource type="PackedScene" uid="uid://166xgjjuqrcy" path="res://prefabs/art/art_politician.tscn" id="5_hl5u1"]
+[ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="5_hl5u1"]
 [ext_resource type="Texture2D" uid="uid://4k83ravh37m5" path="res://assets/character/politician/Prop_Backdrop.png" id="8_otddw"]
 [ext_resource type="Texture2D" uid="uid://cej54fh6p0sya" path="res://assets/character/politician/Prop_Desk.png" id="9_3sbrk"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="10_k6v4o"]

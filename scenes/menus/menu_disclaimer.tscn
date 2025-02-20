@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/menu_disclaimer.gd" id="1_dqqjv"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_ihan8"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="3_jgprp"]
-[ext_resource type="Texture2D" uid="uid://7ssom2u1kvv7" path="res://assets/particle/HS_Logo.png" id="4_4x0pm"]
+[ext_resource type="Texture2D" uid="uid://7ssom2u1kvv7" path="res://assets/ui/HS_Logo.png" id="4_6b4lh"]
 
 [sub_resource type="Animation" id="Animation_ps85c"]
 resource_name = "Flash"
@@ -281,7 +281,7 @@ horizontal_alignment = 1
 
 [node name="GameIcon" type="TextureRect" parent="Disclaimer_MC/Disclaimer_VBox"]
 layout_mode = 2
-texture = ExtResource("4_4x0pm")
+texture = ExtResource("4_6b4lh")
 stretch_mode = 3
 
 [node name="Press_Label" type="Label" parent="Disclaimer_MC/Disclaimer_VBox"]

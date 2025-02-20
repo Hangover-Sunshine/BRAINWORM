@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqcuw8vcq561k"]
+[gd_scene load_steps=25 format=3 uid="uid://cqcuw8vcq561k"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_pyb6w"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="3_by6kh"]
@@ -6,11 +6,13 @@
 [ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="5_3yyo0"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="6_16pc0"]
 [ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="7_m2roh"]
+[ext_resource type="PackedScene" uid="uid://b2rmfgilxygvt" path="res://prefabs/gui/gui_health.tscn" id="8_es0vs"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="9_j3quk"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_65wud"]
+[ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="10_o6y5o"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="11_g5xqt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqr3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q3ck"]
 shader = ExtResource("2_pyb6w")
 shader_parameter/OCTAVE = 2
 shader_parameter/mulscale = 5.0
@@ -22,6 +24,20 @@ shader_parameter/waterdeep = 0.3
 shader_parameter/WATER_COL = Color(0.129729, 0.0255367, 0.0527574, 1)
 shader_parameter/WATER2_COL = Color(0.210706, 0.0444339, 0.109765, 1)
 shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmy1n"]
+
+[sub_resource type="Gradient" id="Gradient_oqvp6"]
+offsets = PackedFloat32Array(0.753247, 1)
+colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nyt4o"]
+gradient = SubResource("Gradient_oqvp6")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.816514, 0.169725)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
 
@@ -81,13 +97,24 @@ noise = SubResource("FastNoiseLite_2p82t")
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Background" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_miqr3")
-custom_minimum_size = Vector2(1920, 1080)
+material = SubResource("ShaderMaterial_2q3ck")
+offset_top = -371.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1549.0
+
+[node name="Filter_Vignette_Overall" type="TextureRect" parent="Background/Background"]
+material = SubResource("ShaderMaterial_hmy1n")
+layout_mode = 0
+offset_left = -42.0
+offset_top = -52.0
+offset_right = 1958.0
+offset_bottom = 1948.0
+pivot_offset = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_nyt4o")
 
 [node name="Environment" type="TileMap" parent="Background"]
 material = SubResource("ShaderMaterial_1peyr")
+position = Vector2(-133, 0)
 tile_set = SubResource("TileSet_na48k")
 format = 2
 layer_0/name = "Background"
@@ -97,14 +124,14 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="Filter_Vignette_Env" type="ColorRect" parent="Background"]
 material = SubResource("ShaderMaterial_y27p0")
-offset_left = 437.0
+offset_left = 304.0
 offset_top = 58.0
-offset_right = 1477.0
+offset_right = 1344.0
 offset_bottom = 1028.0
 
 [node name="Border" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_wp177")
-position = Vector2(438, 59)
+position = Vector2(305, 59)
 points = PackedVector2Array(0, 0, 1044, 0, 1044, 970, 0, 970)
 closed = true
 width = 20.0
@@ -113,35 +140,22 @@ joint_mode = 2
 [node name="Filter_Distortion" type="Sprite2D" parent="Background"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_k6im5")
-position = Vector2(954, 538)
+position = Vector2(821, 538)
 texture = SubResource("NoiseTexture2D_vldpw")
-
-[node name="Filter_Vignette_All" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_y27p0")
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="Placeholder_Worm" type="Sprite2D" parent="."]
-position = Vector2(672, 351)
-texture = ExtResource("7_m2roh")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
-visible = false
-position = Vector2(1643, 109)
+position = Vector2(1375, 902)
 
 [node name="Title_Time" type="Label" parent="GUI/GUI_Time"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -134.0
-offset_top = -69.0
-offset_right = 134.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 95.0
+offset_bottom = 25.0
+grow_vertical = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("9_j3quk")
 theme_override_font_sizes/font_size = 40
@@ -149,21 +163,16 @@ text = "Time"
 vertical_alignment = 2
 
 [node name="Number_Time" type="Label" parent="GUI/GUI_Time"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -134.0
-offset_right = 134.0
-offset_bottom = 69.0
-grow_horizontal = 2
+offset_right = 416.0
+offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("10_65wud")
-theme_override_font_sizes/font_size = 40
-text = "HH:MM:SS"
+theme_override_font_sizes/font_size = 115
+text = "MM:SS:ss"
 
-[node name="GUI_Flesh" type="Node2D" parent="GUI"]
-position = Vector2(1643, 755)
+[node name="GUI_Neuron" type="Node2D" parent="GUI"]
+position = Vector2(135, 639)
 
-[node name="Title_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+[node name="Title_Neurons" type="Label" parent="GUI/GUI_Neuron"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -177,10 +186,11 @@ grow_vertical = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("9_j3quk")
 theme_override_font_sizes/font_size = 40
-text = "Flesh"
+text = "Neurons"
+horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Number_Flesh" type="Label" parent="GUI/GUI_Flesh"]
+[node name="Number_Flesh" type="Label" parent="GUI/GUI_Neuron"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -191,9 +201,10 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("10_65wud")
 theme_override_font_sizes/font_size = 40
 text = "###"
+horizontal_alignment = 2
 
 [node name="GUI_Macs" type="Node2D" parent="GUI"]
-position = Vector2(1643, 858)
+position = Vector2(135, 742)
 
 [node name="Title_Macs" type="Label" parent="GUI/GUI_Macs"]
 anchors_preset = 7
@@ -210,6 +221,7 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("9_j3quk")
 theme_override_font_sizes/font_size = 40
 text = "Macs"
+horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Number_Macs" type="Label" parent="GUI/GUI_Macs"]
@@ -223,9 +235,10 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("10_65wud")
 theme_override_font_sizes/font_size = 40
 text = "###"
+horizontal_alignment = 2
 
 [node name="GUI_Tissue" type="Node2D" parent="GUI"]
-position = Vector2(1643, 959)
+position = Vector2(135, 843)
 
 [node name="Title_Tissue" type="Label" parent="GUI/GUI_Tissue"]
 anchors_preset = 7
@@ -242,6 +255,7 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("9_j3quk")
 theme_override_font_sizes/font_size = 40
 text = "Tissue"
+horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Number_Tissue" type="Label" parent="GUI/GUI_Tissue"]
@@ -255,43 +269,13 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("10_65wud")
 theme_override_font_sizes/font_size = 40
 text = "###"
-
-[node name="GUI_Stage" type="Node2D" parent="GUI"]
-position = Vector2(273, 109)
-
-[node name="Title_Stage" type="Label" parent="GUI/GUI_Stage"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -134.0
-offset_top = -69.0
-offset_right = 134.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("9_j3quk")
-theme_override_font_sizes/font_size = 40
-text = "Stage"
 horizontal_alignment = 2
-vertical_alignment = 2
 
-[node name="Number_Stage" type="Label" parent="GUI/GUI_Stage"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -134.0
-offset_right = 134.0
-offset_bottom = 69.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("10_65wud")
-theme_override_font_sizes/font_size = 40
-text = "1"
-horizontal_alignment = 2
+[node name="GUI_Health" parent="GUI" instance=ExtResource("8_es0vs")]
+position = Vector2(73, 56)
 
 [node name="GUI_Score" type="Node2D" parent="GUI"]
-position = Vector2(273, 959)
+position = Vector2(140, 959)
 
 [node name="Title_Score" type="Label" parent="GUI/GUI_Score"]
 anchors_preset = 7
@@ -324,23 +308,50 @@ theme_override_font_sizes/font_size = 40
 text = "999999999"
 horizontal_alignment = 2
 
-[node name="Art_Mac" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(1150, 286)
+[node name="Politician" parent="." instance=ExtResource("10_o6y5o")]
+position = Vector2(1643, 602)
+scale = Vector2(0.725, 0.725)
 
-[node name="Art_Mac2" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(972, 383)
+[node name="Subtitles" type="Control" parent="Politician"]
+clip_contents = true
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -339.31
+offset_top = -584.828
+offset_right = 360.69
+offset_bottom = -484.828
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
-[node name="Art_Mac3" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(1294, 411)
+[node name="Text_Subtitles" type="Label" parent="Politician/Subtitles"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 49.3103
+offset_right = 350.0
+offset_bottom = 99.3103
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("9_j3quk")
+theme_override_font_sizes/font_size = 40
+text = "Hello my fellow americans..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Art_Mac4" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(1150, 485)
+[node name="Placeholders" type="Node2D" parent="."]
 
-[node name="Art_Mac5" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(980, 598)
+[node name="Placeholder_Worm" type="Sprite2D" parent="Placeholders"]
+position = Vector2(539, 351)
+texture = ExtResource("7_m2roh")
 
-[node name="Art_Mac6" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(1286, 608)
-
-[node name="Art_Mac7" parent="." instance=ExtResource("11_g5xqt")]
-position = Vector2(1120, 699)
+[node name="Art_Mac" parent="Placeholders" instance=ExtResource("11_g5xqt")]
+position = Vector2(1017, 286)

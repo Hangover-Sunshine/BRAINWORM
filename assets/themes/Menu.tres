@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://c78dis4b15gte"]
 
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="1_soy6o"]
-[ext_resource type="Texture2D" uid="uid://dfow4dp04gofq" path="res://assets/particle/Slider_Dot.png" id="2_28jhq"]
+[ext_resource type="Texture2D" uid="uid://dfow4dp04gofq" path="res://assets/ui/Slider_Dot.png" id="2_28jhq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6tqo"]
 bg_color = Color(0.921569, 0.670588, 0.72549, 1)

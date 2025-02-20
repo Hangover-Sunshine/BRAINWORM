@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdm8au2qqd2n4"
-path="res://.godot/imported/Checkbox_Untic.png-f04b97369b41f51bbd28a269e49c063d.ctex"
+uid="uid://gdf7b4undcvg"
+path="res://.godot/imported/Jet_Warning.png-d11fb7e2a390f17ce818bdcdd3ff7ac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particle/Checkbox_Untic.png"
-dest_files=["res://.godot/imported/Checkbox_Untic.png-f04b97369b41f51bbd28a269e49c063d.ctex"]
+source_file="res://assets/ui/Jet_Warning.png"
+dest_files=["res://.godot/imported/Jet_Warning.png-d11fb7e2a390f17ce818bdcdd3ff7ac0.ctex"]
 
 [params]
 

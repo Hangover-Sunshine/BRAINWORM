@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/menus/menu_settings.gd" id="1_1ptlj"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_8piho"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="2_aif0l"]
-[ext_resource type="Texture2D" uid="uid://brjvabus1pl45" path="res://assets/particle/Checkbox_Tic.png" id="3_utkml"]
-[ext_resource type="Texture2D" uid="uid://cdm8au2qqd2n4" path="res://assets/particle/Checkbox_Untic.png" id="4_8jjmw"]
+[ext_resource type="Texture2D" uid="uid://brjvabus1pl45" path="res://assets/ui/Checkbox_Tic.png" id="3_utkml"]
+[ext_resource type="Texture2D" uid="uid://cdm8au2qqd2n4" path="res://assets/ui/Checkbox_Untic.png" id="4_8jjmw"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="5_lqfax"]
 
 [node name="MenuSettings" type="Control"]
