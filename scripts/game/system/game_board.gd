@@ -83,7 +83,6 @@ func initialize_ui(game_data:Dictionary, stage:int):
 	$GUI.populate_flesh(game_data["flesh"])
 	$GUI.populate_macs(game_data["macs"])
 	$GUI.populate_tissue(game_data["tissue"])
-	$GUI.populate_stage(stage)
 	$GUI.populate_score(0)
 ##
 

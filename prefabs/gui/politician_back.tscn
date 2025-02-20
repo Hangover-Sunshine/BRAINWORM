@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://5d7jj8vksl70"]
+
+[ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_ahi58"]
+[ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="2_3hk3x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmqsi"]
+texture = ExtResource("1_ahi58")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmqef"]
+texture = ExtResource("2_3hk3x")
+texture_region_size = Vector2i(64, 64)
+0:2/animation_columns = 2
+0:2/animation_separation = Vector2i(5, 0)
+0:2/0 = 0
+3:2/0 = 0
+3:0/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+2:1/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_na48k"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_dmqsi")
+sources/2 = SubResource("TileSetAtlasSource_rmqef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp177"]
+
+[node name="Politician_Back" type="Node2D"]
+
+[node name="Environment" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_1peyr")
+tile_set = SubResource("TileSet_na48k")
+format = 2
+layer_0/name = "Background"
+layer_0/tile_data = PackedInt32Array(0, 65537, 0, 65536, 1, 0, 131072, 65537, 0, 196608, 1, 0, 262144, 65537, 0, 327680, 1, 0, 393216, 65537, 0, 1, 1, 0, 65537, 65537, 0, 131073, 1, 0, 196609, 65537, 0, 262145, 1, 0, 327681, 65537, 0, 393217, 1, 0, 2, 65537, 0, 65538, 1, 0, 131074, 65537, 0, 196610, 1, 0, 262146, 65537, 0, 327682, 1, 0, 393218, 65537, 0, 3, 1, 0, 65539, 65537, 0, 131075, 1, 0, 196611, 65537, 0, 262147, 1, 0, 327683, 65537, 0, 393219, 1, 0, 4, 65537, 0, 65540, 1, 0, 131076, 65537, 0, 196612, 1, 0, 262148, 65537, 0, 327684, 1, 0, 393220, 65537, 0, 5, 1, 0, 65541, 65537, 0, 131077, 1, 0, 196613, 65537, 0, 262149, 1, 0, 327685, 65537, 0, 393221, 1, 0, 6, 65537, 0, 65542, 1, 0, 131078, 65537, 0, 196614, 1, 0, 262150, 65537, 0, 327686, 1, 0, 393222, 65537, 0)
+layer_1/name = "Tissue"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Border" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_wp177")
+points = PackedVector2Array(0, 0, 446, 0, 446, 446, 0, 446)
+closed = true
+width = 15.0
+joint_mode = 2

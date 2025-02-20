@@ -1,9 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://cqcuw8vcq561k"]
+[gd_scene load_steps=20 format=3 uid="uid://cqcuw8vcq561k"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_pyb6w"]
-[ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="3_by6kh"]
-[ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="4_pvn58"]
-[ext_resource type="Shader" path="res://scenes/vignette.gdshader" id="5_3yyo0"]
 [ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="6_16pc0"]
 [ext_resource type="Texture2D" uid="uid://b5b8a3jjdqwpv" path="res://assets/temporary/Worm_64.png" id="7_m2roh"]
 [ext_resource type="PackedScene" uid="uid://b2rmfgilxygvt" path="res://prefabs/gui/gui_health.tscn" id="8_es0vs"]
@@ -11,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_65wud"]
 [ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="10_o6y5o"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="11_g5xqt"]
+[ext_resource type="PackedScene" uid="uid://c7fyugqxjymoo" path="res://prefabs/gui/text_box.tscn" id="11_r8htx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2q3ck"]
 shader = ExtResource("2_pyb6w")
@@ -41,55 +39,22 @@ fill_to = Vector2(0.816514, 0.169725)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1peyr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmqsi"]
-texture = ExtResource("3_by6kh")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmqef"]
-texture = ExtResource("4_pvn58")
-texture_region_size = Vector2i(64, 64)
-0:2/animation_columns = 2
-0:2/animation_separation = Vector2i(5, 0)
-0:2/0 = 0
-3:2/0 = 0
-3:0/0 = 0
-3:4/0 = 0
-3:3/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-5:2/0 = 0
-2:1/0 = 0
-2:3/0 = 0
-4:3/0 = 0
-4:1/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_na48k"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_dmqsi")
-sources/2 = SubResource("TileSetAtlasSource_rmqef")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y27p0"]
-shader = ExtResource("5_3yyo0")
-shader_parameter/player_position = Vector2(0.5, 0.5)
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/MULTIPLIER = 0.5
-shader_parameter/SCALE = 1.5
-shader_parameter/SOFTNESS = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wp177"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6im5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj20b"]
 shader = ExtResource("6_16pc0")
 shader_parameter/scrollAmount = Vector2(0.05, 0.05)
 shader_parameter/multiplierAmount = 0.002
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2p82t"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vldpw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2w8w0"]
 width = 1100
 height = 1036
+seamless = true
 noise = SubResource("FastNoiseLite_2p82t")
 
 [node name="Layout_Game" type="Node2D"]
@@ -105,10 +70,10 @@ offset_bottom = 1549.0
 [node name="Filter_Vignette_Overall" type="TextureRect" parent="Background/Background"]
 material = SubResource("ShaderMaterial_hmy1n")
 layout_mode = 0
-offset_left = -42.0
-offset_top = -52.0
-offset_right = 1958.0
-offset_bottom = 1948.0
+offset_left = -47.0
+offset_top = -36.0
+offset_right = 1953.0
+offset_bottom = 1964.0
 pivot_offset = Vector2(1000, 1000)
 texture = SubResource("GradientTexture2D_nyt4o")
 
@@ -122,13 +87,6 @@ layer_0/tile_data = PackedInt32Array(131080, 65537, 0, 65544, 1, 0, 65543, 65537
 layer_1/name = "Tissue"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="Filter_Vignette_Env" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_y27p0")
-offset_left = 304.0
-offset_top = 58.0
-offset_right = 1344.0
-offset_bottom = 1028.0
-
 [node name="Border" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_wp177")
 position = Vector2(305, 59)
@@ -139,14 +97,14 @@ joint_mode = 2
 
 [node name="Filter_Distortion" type="Sprite2D" parent="Background"]
 texture_repeat = 2
-material = SubResource("ShaderMaterial_k6im5")
-position = Vector2(821, 538)
-texture = SubResource("NoiseTexture2D_vldpw")
+material = SubResource("ShaderMaterial_jj20b")
+position = Vector2(825, 553)
+texture = SubResource("NoiseTexture2D_2w8w0")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="GUI_Time" type="Node2D" parent="GUI"]
-position = Vector2(1375, 902)
+position = Vector2(1374, 886)
 
 [node name="Title_Time" type="Label" parent="GUI/GUI_Time"]
 anchors_preset = 4
@@ -312,41 +270,6 @@ horizontal_alignment = 2
 position = Vector2(1643, 602)
 scale = Vector2(0.725, 0.725)
 
-[node name="Subtitles" type="Control" parent="Politician"]
-clip_contents = true
-custom_minimum_size = Vector2(700, 100)
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -339.31
-offset_top = -584.828
-offset_right = 360.69
-offset_bottom = -484.828
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Text_Subtitles" type="Label" parent="Politician/Subtitles"]
-custom_minimum_size = Vector2(700, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -350.0
-offset_top = 49.3103
-offset_right = 350.0
-offset_bottom = 99.3103
-grow_horizontal = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("9_j3quk")
-theme_override_font_sizes/font_size = 40
-text = "Hello my fellow americans..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Placeholders" type="Node2D" parent="."]
 
 [node name="Placeholder_Worm" type="Sprite2D" parent="Placeholders"]
@@ -355,3 +278,9 @@ texture = ExtResource("7_m2roh")
 
 [node name="Art_Mac" parent="Placeholders" instance=ExtResource("11_g5xqt")]
 position = Vector2(1017, 286)
+
+[node name="TextBox" parent="." instance=ExtResource("11_r8htx")]
+offset_left = 1384.0
+offset_top = 164.0
+offset_right = 1898.0
+offset_bottom = 292.0
