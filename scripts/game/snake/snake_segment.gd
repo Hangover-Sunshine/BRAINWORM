@@ -1,6 +1,7 @@
-extends Sprite2D
+extends Node2D
 
-@onready var label = $Timer_Ram/Label_Ram # Mica, use this label to track ram time
+# commenting out for now
+#@onready var label = $Timer_Ram/Label_Ram # Mica, use this label to track ram time
 
 func lose_parts():
 	$AP_Worm.play("Despawn")
@@ -10,3 +11,7 @@ func is_ramming():
 
 func not_ramming():
 	$AP_Ram.play("No_Ram")
+
+func set_rect(rect:Rect2):
+	$SegmentSprite.region_rect = rect
+##
