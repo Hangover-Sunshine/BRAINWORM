@@ -46,7 +46,6 @@ func _input(event):
 	##
 	
 	if _in_cutscene and event.is_action_pressed("cutscene_skip"):
-		print("going")
 		$CutsceneSkipTimer.start(3)
 	elif _in_cutscene and event.is_action_released("cutscene_skip"):
 		$CutsceneSkipTimer.stop()
@@ -96,6 +95,7 @@ func fade_out_finished():
 		_game_scene.queue_free()
 		await get_tree().create_timer(1.5).timeout
 		add_child(_win_scene)
+		_win_scene.to_win()
 		_win_scene.connect("gameover_to_game", _on_gameover_to_game)
 		_win_scene.connect("gameover_to_main", _on_menu_gameover_gameover_to_main)
 	##

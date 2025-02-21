@@ -181,8 +181,8 @@ func _update_nearby_tiles(cardinals, posOffset:Vector2i, fold_pos:Vector2i):
 
 func _change_sprite(next_tile_pos:Vector2i):
 	var indx = positions.find(next_tile_pos)
-	var curr_coords = Vector2i(segments[indx].region_rect.position.x,
-		segments[indx].region_rect.position.y)
+	var curr_coords = Vector2i(segments[indx].region_rect.position.x / 64,
+		segments[indx].region_rect.position.y / 64)
 	var local_cardinals = _surrounding_tile_check(next_tile_pos)
 	var new_coords = TILES[local_cardinals]
 	if new_coords != curr_coords:
