@@ -8,7 +8,7 @@ func play_grow_animation(rect:Rect2):
 	# Once your animation is done, you have the tile rect stuff here
 	
 	# TODO: REPLACE THIS WITH AP CALL!
-	swap_to_actual()
+	$AP.play("Spawn")
 ##
 
 # NOTE: Brian -- in your animation player, call this function once you're done!
@@ -24,6 +24,6 @@ func change_texture_to(rect:Rect2):
 func kill():
 	# NOTE: You're responsible for cleaning this segment up
 	#	The tissue parent has already forgotten you by this point.
-	queue_free()
 	# TODO: REPLACE THIS WITH AN ANIM, THEN QUEUE FREE
+	$AP.play("Despawn")
 ##
