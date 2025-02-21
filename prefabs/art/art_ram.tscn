@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drvg5jrhktmd8"]
+[gd_scene load_steps=13 format=3 uid="uid://drvg5jrhktmd8"]
 
 [ext_resource type="Script" path="res://scripts/art/art_neuron.gd" id="1_otocj"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_m3j2d"]
@@ -133,6 +133,68 @@ _data = {
 "Spawn": SubResource("Animation_fy7qs")
 }
 
+[sub_resource type="Animation" id="Animation_2kkk6"]
+resource_name = "Rainbow"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Ram_Core:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.764706, 0.141176, 0.329412, 1), Color(0.870589, 0.37451, 0.32353, 1), Color(0.976471, 0.607843, 0.317647, 1), Color(0.117647, 0.737255, 0.45098, 1), Color(0.301961, 0.607843, 0.901961, 1), Color(0.564706, 0.368627, 0.662745, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Ram_Back:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.94902, 0.458824, 0.584314, 1), Color(0.97451, 0.603922, 0.566667, 1), Color(1, 0.74902, 0.54902, 1), Color(0.611765, 0.952941, 0.780392, 1), Color(0.576927, 0.769932, 0.968836, 1), Color(0.917647, 0.678431, 0.929412, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oivl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton/Ram_Core:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.764706, 0.141176, 0.329412, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton/Ram_Back:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.94902, 0.458824, 0.584314, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckwvq"]
+_data = {
+"RESET": SubResource("Animation_oivl4"),
+"Rainbow": SubResource("Animation_2kkk6")
+}
+
 [node name="Art_Ram" type="Node2D"]
 script = ExtResource("1_otocj")
 
@@ -169,3 +231,9 @@ color = Color(0.764706, 0.141176, 0.329412, 1)
 libraries = {
 "": SubResource("AnimationLibrary_dbnye")
 }
+
+[node name="AP_Rainbow" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ckwvq")
+}
+autoplay = "Rainbow"
