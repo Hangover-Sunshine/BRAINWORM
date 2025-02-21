@@ -153,8 +153,7 @@ func check_for_enemy():
 		var remove = []
 		for tissue in brainfolds:
 			if snake.Head in tissue.positions:
-				tissue.remove_at(snake.Head)
-				game_board.remove_brainfold_at(snake.Head, tissue.positions)
+				tissue.remove_wall_at(snake.Head)
 				if len(tissue.positions) == 0:
 					remove.push_back(brainfolds.find(tissue))
 				##
@@ -321,9 +320,6 @@ func _on_tissue_timer_timeout():
 		brainfolds.push_back(inst)
 		growable_folds.push_back(inst)
 		
-		#inst.positions.push_back(position)
-		#game_board.add_brainfold(position, inst.positions)
-		
 		brainfold_spawns += 1
 	else:
 		# NOTE: Pick a random one and grow
@@ -335,24 +331,6 @@ func _on_tissue_timer_timeout():
 		if inst.grow_wall(brainfolds) == false:
 			growable_folds.remove_at(rand)
 		##
-		
-		#var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT,
-																		#GRID_HEIGHT_COUNT,
-																		#brainfolds)
-		#if len(valid_positions) == 0:
-			#return
-		###
-		#
-		#var position:Vector2i = valid_positions[randi() % len(valid_positions)]
-		#
-		#inst.positions.push_back(position)
-		#inst.max_number_growths -= 1
-		#
-		#if inst.max_number_growths == 0:
-			#growable_folds.remove_at(rand)
-		###
-		#
-		#game_board.add_brainfold(position, inst.positions)
 	##
 ##
 

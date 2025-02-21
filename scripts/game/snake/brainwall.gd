@@ -64,6 +64,22 @@ func grow_wall(others:Array[Brainwall]) -> bool:
 	return !(max_number_growths == 0)
 ##
 
+func remove_wall_at(pos:Vector2i):
+	var indx = positions.find(pos)
+	positions.remove_at(indx)
+	
+	_update_nearby_tiles(_surrounding_tile_check(pos), segments[indx].region_rect.position, pos)
+	
+	segments[indx].kill()
+	segments.remove_at(indx)
+	
+	max_number_growths += 1
+	
+	if indx == 0:
+		is_alive = false
+	##
+##
+
 func get_valid_positions(board_width:int, board_height:int, other_walls:Array[Brainwall]) -> Array[Vector2i]:
 	if len(positions) == 0:
 		return []
@@ -135,17 +151,6 @@ func get_valid_positions(board_width:int, board_height:int, other_walls:Array[Br
 	return valid_positions
 ##
 
-func remove_at(pos:Vector2i):
-	var indx:int = positions.find(pos)
-	positions.remove_at(indx)
-	
-	if indx == 0:
-		is_alive = false
-	##
-	
-	max_number_growths += 1
-##
-
 func get_root():
 	if is_alive:
 		return positions[0]
@@ -158,47 +163,30 @@ func _update_nearby_tiles(cardinals, posOffset:Vector2i, fold_pos:Vector2i):
 	# Update local tiles
 	var next_tile_pos:Vector2i = fold_pos + Vector2i(0, -1)
 	if cardinals & 0b1000:
-		var indx = positions.find(next_tile_pos)
-		var curr_coords = Vector2i(segments[indx].region_rect.position.x,
-			segments[indx].region_rect.position.y)
-		var local_cardinals = _surrounding_tile_check(next_tile_pos)
-		var new_coords = TILES[local_cardinals]
-		if new_coords != curr_coords:
-			segments[indx].change_texture_to(Rect2(64 * new_coords.x, 64 * new_coords.y, 64, 64))
-		##
+		_change_sprite(next_tile_pos)
 	##
 	next_tile_pos = fold_pos + Vector2i(1, 0)
 	if cardinals & 0b0100:
-		var indx = positions.find(next_tile_pos)
-		var curr_coords = Vector2i(segments[indx].region_rect.position.x,
-			segments[indx].region_rect.position.y)
-		var local_cardinals = _surrounding_tile_check(next_tile_pos)
-		var new_coords = TILES[local_cardinals]
-		if new_coords != curr_coords:
-			segments[indx].change_texture_to(Rect2(64 * new_coords.x, 64 * new_coords.y, 64, 64))
-		##
+		_change_sprite(next_tile_pos)
 	##
 	next_tile_pos = fold_pos + Vector2i(0, 1)
 	if cardinals & 0b0010:
-		var indx = positions.find(next_tile_pos)
-		var curr_coords = Vector2i(segments[indx].region_rect.position.x,
-			segments[indx].region_rect.position.y)
-		var local_cardinals = _surrounding_tile_check(next_tile_pos)
-		var new_coords = TILES[local_cardinals]
-		if new_coords != curr_coords:
-			segments[indx].change_texture_to(Rect2(64 * new_coords.x, 64 * new_coords.y, 64, 64))
-		##
+		_change_sprite(next_tile_pos)
 	##
 	next_tile_pos = fold_pos + Vector2i(-1, 0)
 	if cardinals & 0b0001:
-		var indx = positions.find(next_tile_pos)
-		var curr_coords = Vector2i(segments[indx].region_rect.position.x,
-			segments[indx].region_rect.position.y)
-		var local_cardinals = _surrounding_tile_check(next_tile_pos)
-		var new_coords = TILES[local_cardinals]
-		if new_coords != curr_coords:
-			segments[indx].change_texture_to(Rect2(64 * new_coords.x, 64 * new_coords.y, 64, 64))
-		##
+		_change_sprite(next_tile_pos)
+	##
+##
+
+func _change_sprite(next_tile_pos:Vector2i):
+	var indx = positions.find(next_tile_pos)
+	var curr_coords = Vector2i(segments[indx].region_rect.position.x,
+		segments[indx].region_rect.position.y)
+	var local_cardinals = _surrounding_tile_check(next_tile_pos)
+	var new_coords = TILES[local_cardinals]
+	if new_coords != curr_coords:
+		segments[indx].change_texture_to(Rect2(64 * new_coords.x, 64 * new_coords.y, 64, 64))
 	##
 ##
 

@@ -20,3 +20,10 @@ func swap_to_actual():
 func change_texture_to(rect:Rect2):
 	region_rect = rect
 ##
+
+func kill():
+	# NOTE: You're responsible for cleaning this segment up
+	#	The tissue parent has already forgotten you by this point.
+	queue_free()
+	# TODO: REPLACE THIS WITH AN ANIM, THEN QUEUE FREE
+##
