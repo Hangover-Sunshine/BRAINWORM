@@ -175,12 +175,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.12549, 0.12549, 0.12549, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="InternalFadeController" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gsc2k")
 }
 
+[node name="CutsceneSkipTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="gameover_to_game" from="GameOver/MenuGameover" to="." method="_on_menu_gameover_gameover_to_game"]
 [connection signal="gameover_to_main" from="GameOver/MenuGameover" to="." method="_on_menu_gameover_gameover_to_main"]
+[connection signal="timeout" from="CutsceneSkipTimer" to="." method="_on_cutscene_skip_timer_timeout"]

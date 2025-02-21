@@ -13,7 +13,7 @@ func _ready():
 	politician = $Politician
 	politician.anim_relaxed()
 	handle_signals()
-	
+	GlobalSignals.connect("cutscene_interrupted", _on_cutscene_interrupted)
 
 func handle_signals():
 	politician.is_done.connect(is_done)

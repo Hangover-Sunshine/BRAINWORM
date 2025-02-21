@@ -10,7 +10,7 @@ var _game_scene
 var _win_scene
 
 var _curr_cutscene:CutsceneManager
-var _in_cutscene:bool = true
+var _in_cutscene:bool = false
 var _can_pause:bool = false
 var restart:bool = false
 
@@ -27,6 +27,9 @@ func _ready():
 	add_child(_curr_cutscene)
 	_curr_cutscene.initialize()
 	internal_fade_controller.play("fade_in")
+	
+	await get_tree().create_timer(3).timeout
+	_in_cutscene = true
 ##
 
 func _input(event):
@@ -36,8 +39,10 @@ func _input(event):
 	##
 	
 	if _in_cutscene and event.is_action_pressed("cutscene_skip"):
-		GlobalSignals.emit_signal("cutscene_interrupted")
-		_in_cutscene = false
+		print("going")
+		$CutsceneSkipTimer.start(3)
+	elif _in_cutscene and event.is_action_released("cutscene_skip"):
+		$CutsceneSkipTimer.stop()
 	##
 ##
 
@@ -112,4 +117,9 @@ func _on_menu_gameover_gameover_to_main():
 func _on_game_won():
 	_win_scene = load("res://scenes/menus/menu_gameover.tscn").instantiate()
 	internal_fade_controller.play("fade_out")
+##
+
+func _on_cutscene_skip_timer_timeout():
+	GlobalSignals.emit_signal("cutscene_interrupted")
+	_in_cutscene = false
 ##
