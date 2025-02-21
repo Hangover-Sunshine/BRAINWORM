@@ -40,6 +40,10 @@ func initialize(base_pos):
 ##
 
 func grow_wall(others:Array[Brainwall]) -> bool:
+	if is_alive == false:
+		return false
+	##
+	
 	var valid_positions:Array[Vector2i] =\
 			get_valid_positions(GameControl.GRID_WIDTH_COUNT, GameControl.GRID_HEIGHT_COUNT, others)
 	
@@ -66,10 +70,11 @@ func grow_wall(others:Array[Brainwall]) -> bool:
 
 func remove_wall_at(pos:Vector2i):
 	var indx = positions.find(pos)
-	positions.remove_at(indx)
 	
+	positions[indx] = Vector2i(-1, -1)
 	_update_nearby_tiles(_surrounding_tile_check(pos), segments[indx].region_rect.position, pos)
 	
+	positions.remove_at(indx)
 	segments[indx].kill()
 	segments.remove_at(indx)
 	
