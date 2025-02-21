@@ -4,7 +4,7 @@ const SAVE_LOCATION = "user://game_settings.config"
 
 var config:ConfigFile
 
-var MasterVolume:float = 1
+var MasterVolume:float = 0.3
 
 var MusicVolume:float = 1.0
 
@@ -13,6 +13,7 @@ var UiSFXVolume:float = 1.0
 var GameSFXVolume:float = 1.0
 
 var FullScreen:bool = false
+var ScreenEffects:bool = true
 
 var WasDisclaimed:bool = false
 
