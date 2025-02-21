@@ -30,4 +30,4 @@ var cut_line1: Array = ["My fellow Americans!","It is with great honor that I...
 
 var cut_line2: Array = ["_","Jerry Atrick","Red, White, and Blue Land,...","for U.S. Presidency!",
 "needs to be replaced.","to bringing freedom...","great nation.","founding fathers...",
-"in the face of evil.","brought nothing but turmoil!","and I will take up this mantle!"]
+"in the face of evil.","brought nothing but tyranny!","and I will take up this mantle!"]
