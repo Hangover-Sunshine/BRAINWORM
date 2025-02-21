@@ -13,6 +13,7 @@ const GRID_HEIGHT_COUNT:int = 14
 @export_category("Player Conditions")
 @export var SecondsPerSegment:float = 1.5
 @export var CheckForPowerupInterval:float = 1.5
+@export var MovePowerupInterval:float = 3
 @export var InvulnMinNumber:int = 5
 
 @export_category("Tissue Spawn Info")
@@ -350,11 +351,18 @@ func _listen_for_mak_movement(mak:Mak):
 ##
 
 func _on_invuln_timer_timeout():
-	var r = randi() % 100
-	if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
-		generate_powerup()
+	if powerup_pos == Vector2i(-100, -100):
+		var r = randi() % 100
+		if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
+			generate_powerup()
+		##
+		$InvulnTimer.start(CheckForPowerupInterval)
+	else:
+		if (powerup_pos - snake.Head).length() > 10:
+			generate_powerup()
+		##
+		$InvulnTimer.start(MovePowerupInterval)
 	##
-	$InvulnTimer.start(CheckForPowerupInterval)
 ##
 
 func generate_powerup():
