@@ -14,6 +14,7 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 var can_move:bool = false
 var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
+var old_segments:Array
 var segments:Array
 var move_dir:Vector2i
 var invuln_time_per_segment:float
@@ -53,6 +54,15 @@ var Invulnerable:bool:
 		if val:
 			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
 			$RemoveSegmentTimer.start()
+			var sid = len(curr_positions) - 1
+			
+			while sid > 2:
+				old_segments.push_front(segments[sid])
+				segments.remove_at(sid)
+				curr_positions.remove_at(sid)
+				prev_positions.remove_at(sid)
+				sid -= 1
+			##
 		##
 	##
 ##
@@ -93,10 +103,10 @@ func add_segment():
 ##
 
 func _process(_delta):
-	if Input.is_action_just_pressed("down") and Head + MOVE_DOWN != curr_positions[1]:
+	if Input.is_action_just_pressed("down") and (Head + MOVE_DOWN) != curr_positions[1]:
 		move_dir = MOVE_DOWN
 	##
-	if Input.is_action_just_pressed("up") and (Head + MOVE_UP)!= curr_positions[1]:
+	if Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
 		move_dir = MOVE_UP
 	##
 	if Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
@@ -137,12 +147,13 @@ func meets_requirements_for_invuln(min_length:int) -> bool:
 ##
 
 func _on_remove_segment_timer_timeout():
-	if len(curr_positions) > 4:
+	if len(old_segments) > 0:
 		$RemoveSegmentTimer.start()
+	else:
+		return
 	##
-	segments[-1].queue_free()
-	segments.remove_at(len(segments) - 1)
-	curr_positions.remove_at(len(curr_positions) - 1)
+	old_segments[-1].queue_free()
+	old_segments.remove_at(len(old_segments) - 1)
 ##
 
 func _on_invuln_timer_timeout():
