@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=2 format=3 uid="uid://6vqekqvxjoat"]
 
-[ext_resource type="Texture2D" uid="uid://b2yciopdo7x34" path="res://assets/temporary/Tile_64.png" id="1_wwq15"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
 
-[node name="SnakeSegment" type="Node2D"]
-
-[node name="UnderneathVisualizer" type="Sprite2D" parent="."]
-texture = ExtResource("1_wwq15")
-region_rect = Rect2(128, 0, 64, 64)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SnakeSegment" type="Sprite2D"]
 texture = ExtResource("2_pddsj")
 region_enabled = true
 region_rect = Rect2(192, 0, 64, 64)

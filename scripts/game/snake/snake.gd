@@ -4,6 +4,33 @@ class_name Snake
 signal move
 signal invuln_over
 
+const HEAD_RECTS:Dictionary = {
+	MOVE_UP: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	MOVE_DOWN: Rect2(SEG_WIDTH * 1, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	MOVE_LEFT: Rect2(SEG_WIDTH * 2, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+	MOVE_RIGHT: Rect2(SEG_WIDTH * 3, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+}
+
+const BODY_SEGMENTS:Dictionary = {
+	[MOVE_UP, MOVE_DOWN]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_DOWN, MOVE_UP]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+	
+	[MOVE_UP, MOVE_LEFT]: Rect2(SEG_WIDTH * 1, SEG_HEIGHT * 2, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_LEFT, MOVE_UP]: Rect2(SEG_WIDTH * 1, SEG_HEIGHT * 2, SEG_WIDTH, SEG_HEIGHT),
+	
+	[MOVE_UP, MOVE_RIGHT]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 2, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_RIGHT, MOVE_UP]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 2, SEG_WIDTH, SEG_HEIGHT),
+	
+	[MOVE_RIGHT, MOVE_DOWN]: Rect2(SEG_WIDTH * 2, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_DOWN, MOVE_RIGHT]: Rect2(SEG_WIDTH * 2, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	
+	[MOVE_LEFT, MOVE_DOWN]: Rect2(SEG_WIDTH * 3, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_DOWN, MOVE_LEFT]: Rect2(SEG_WIDTH * 3, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
+	
+	[MOVE_RIGHT, MOVE_LEFT]: Rect2(SEG_WIDTH * 1, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+	[MOVE_LEFT, MOVE_RIGHT]: Rect2(SEG_WIDTH * 1, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
+}
+
 const SNAKE_SEGMENT = preload("res://prefabs/snake/snake_segment.tscn")
 
 const MOVE_UP:Vector2i = Vector2i(0, -1)
@@ -11,13 +38,18 @@ const MOVE_DOWN:Vector2i = Vector2i(0, 1)
 const MOVE_LEFT:Vector2i = Vector2i(-1, 0)
 const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 
+const SEG_WIDTH:int = 64
+const SEG_HEIGHT:int = 64
+
 var can_move:bool = false
 var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
 var old_segments:Array
 var segments:Array
-var move_dir:Vector2i
 var invuln_time_per_segment:float
+
+var prev_move_dir:Vector2i
+var move_dir:Vector2i
 
 var game_board:GameBoard
 
@@ -128,6 +160,20 @@ func _on_movement_timer_timeout():
 		curr_positions[i] = prev_positions[i - 1]
 		segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
 	##
+	
+	if prev_move_dir != move_dir:
+		segments[0].region_rect = HEAD_RECTS[move_dir]
+	##
+	
+	prev_move_dir = move_dir
+	
+	for sid in range(1, len(segments) - 1):
+		var ahead = curr_positions[sid - 1] - curr_positions[sid]
+		var behind = curr_positions[sid + 1] - curr_positions[sid]
+		segments[sid].region_rect = BODY_SEGMENTS[[ahead, behind]]
+	##
+	
+	segments[-1].region_rect = HEAD_RECTS[curr_positions[-1] - curr_positions[-2]]
 	
 	move.emit()
 ##
