@@ -35,6 +35,7 @@ func _ready():
 	line1 = script_vbox.find_child("Line1")
 	line2 = script_vbox.find_child("Line2")
 	line3 = script_vbox.find_child("Line3")
+	GlobalSignals.connect("player_got_damage", anim_ouch_blurb)
 
 ## Trigger only at beginning of cutscene / when not talking
 func anim_relaxed():
@@ -109,7 +110,7 @@ func anim_ouch_blurb():
 	face.play("Ouch")
 	face.seek(random_time)
 	mouth.play("Ouch")
-	lines_to_read = randi() % game_lines.game_line1.size() + 1 # this might be going one off the array
+	lines_to_read = randi() % game_lines.game_line1.size()
 	line1.text = game_lines.game_line1[lines_to_read]
 	if game_lines.game_line2[lines_to_read] != "_":
 		line2.text = game_lines.game_line2[lines_to_read]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=11 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
 [ext_resource type="Script" path="res://scripts/game/snake/game_control.gd" id="2_r1gp1"]
 [ext_resource type="PackedScene" uid="uid://dm2pa21ra2su3" path="res://prefabs/snake/snake.tscn" id="4_sees7"]
+[ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="5_1r75v"]
 
 [sub_resource type="Animation" id="Animation_0a1rh"]
 resource_name = "RESET"
@@ -132,6 +133,10 @@ wait_time = 2.5
 
 [node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
 
+[node name="JumblingJerryTimer" type="Timer" parent="GameControl"]
+wait_time = 0.5
+one_shot = true
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
@@ -140,6 +145,11 @@ libraries = {
 "": SubResource("AnimationLibrary_kijkm")
 }
 
+[node name="Politician" parent="." instance=ExtResource("5_1r75v")]
+z_index = 10
+position = Vector2(1645, 639)
+
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
+[connection signal="timeout" from="GameControl/JumblingJerryTimer" to="GameControl" method="_on_jumbling_jerry_timer_timeout"]
