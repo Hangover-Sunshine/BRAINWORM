@@ -77,8 +77,8 @@ func _ready():
 	
 	jerry_health = BrainHealth
 	
-	$TissueTimer.start()
-	#$MacTimer.start()
+	#$TissueTimer.start()
+	$MacTimer.start()
 	start_time = 0
 	set_process(false)
 ##
@@ -375,7 +375,8 @@ func _on_mac_timer_timeout():
 ##
 
 func _listen_for_mak_movement(mak:Mak):
-	mak.global_position = game_board.get_world_position_at(mak.curr_position)
+	#mak.global_position = game_board.get_world_position_at(mak.curr_position)
+	mak.move(game_board.get_world_position_at(mak.curr_position))
 ##
 
 func _on_invuln_timer_timeout():
