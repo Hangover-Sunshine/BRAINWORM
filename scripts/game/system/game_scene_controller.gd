@@ -22,14 +22,21 @@ func _ready():
 	GlobalSignals.connect("player_died", _player_died)
 	$PauseMenu/HubPause.connect("unpause", _unpause_game)
 	
-	# Load the cut scene
-	_curr_cutscene = Cutscene.instantiate()
-	add_child(_curr_cutscene)
-	_curr_cutscene.initialize()
-	internal_fade_controller.play("fade_in")
-	
-	await get_tree().create_timer(3).timeout
-	_in_cutscene = true
+	if GlobalSettings.SkipCutscene:
+		_game_scene = GameScene.instantiate()
+		add_child(_game_scene)
+		GlobalSettings.SkipCutscene = false
+		internal_fade_controller.play("fade_in")
+	else:
+		# Load the cut scene
+		_curr_cutscene = Cutscene.instantiate()
+		add_child(_curr_cutscene)
+		_curr_cutscene.initialize()
+		internal_fade_controller.play("fade_in")
+		
+		await get_tree().create_timer(3).timeout
+		_in_cutscene = true
+	##
 ##
 
 func _input(event):

@@ -25,3 +25,7 @@ func _on_decrease_button_pressed():
 		pg.frame -= 1
 	else:
 		pg.frame = pg.sprite_frames.get_frame_count("default") - 1
+
+func _on_skip_check_toggled(toggled_on):
+	GlobalSettings.SkipCutscene = toggled_on
+##

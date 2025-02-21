@@ -190,3 +190,4 @@ sprite_frames = SubResource("SpriteFrames_oc7ri")
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Skip_Button" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Decrease_Button" to="." method="_on_decrease_button_pressed"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Increase_Button" to="." method="_on_increase_button_pressed"]
+[connection signal="toggled" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/Full_HBox2/Endless_Check" to="." method="_on_skip_check_toggled"]

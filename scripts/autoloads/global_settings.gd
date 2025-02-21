@@ -16,6 +16,7 @@ var FullScreen:bool = false
 var ScreenEffects:bool = true
 
 var WasDisclaimed:bool = false
+var SkipCutscene:bool = false
 
 var os_type:String
 
