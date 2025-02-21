@@ -46,7 +46,6 @@ var neuron
 var neuron_pos:Vector2i
 
 var powerup
-var powerup_pos:Vector2i
 
 var macs:Array
 
@@ -69,9 +68,9 @@ func _ready():
 	GlobalSignals.emit_signal("speed_up", curr_time)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
-	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
+	powerup = load("res://prefabs/snake/powerup.tscn").instantiate()
 	powerup.global_position = game_board.get_world_position_at(Vector2i(-100, -100))
-	powerup_pos = Vector2i(-100, -100)
+	powerup.curr_position = Vector2i(-100, -100)
 	add_child(neuron)
 	add_child(powerup)
 	
@@ -242,12 +241,11 @@ func check_for_neuron():
 ##
 
 func check_for_powerup():
-	if powerup_pos == snake.Head:
+	if powerup.curr_position == snake.Head:
 		snake.Invulnerable = true
 		$InvulnTimer.one_shot = true
 		$InvulnTimer.start(SecondsPerSegment * (snake.Length - 2))
-		powerup_pos = Vector2i(-100, -100)
-		powerup.global_position = game_board.get_world_position_at(powerup_pos)
+		powerup.kill()
 	##
 ##
 
@@ -286,7 +284,7 @@ func generate_neuron():
 			##
 		##
 		
-		if position == powerup_pos:
+		if position == powerup.curr_position:
 			regen_food = true
 		##
 	##
@@ -380,14 +378,14 @@ func _listen_for_mak_movement(mak:Mak):
 ##
 
 func _on_invuln_timer_timeout():
-	if powerup_pos == Vector2i(-100, -100):
+	if powerup.curr_position == Vector2i(-100, -100):
 		var r = randi() % 100 - (snake.Length - 3)
 		if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
 			generate_powerup()
 		##
 		$InvulnTimer.start(CheckForPowerupInterval)
 	else:
-		if (powerup_pos - snake.Head).length() > 10:
+		if (powerup.curr_position - snake.Head).length() > 10:
 			generate_powerup()
 		##
 		$InvulnTimer.start(MovePowerupInterval)
@@ -415,13 +413,14 @@ func generate_powerup():
 			##
 		##
 		
-		if position == powerup_pos:
+		if position == powerup.curr_position:
 			regen_food = true
 		##
 	##
 	
-	powerup_pos = position
-	powerup.global_position = game_board.get_world_position_at(position)
+	powerup.curr_position = position
+	powerup.global_position = game_board.get_world_position_at(powerup.curr_position)
+	powerup.spawn()
 ##
 
 func _on_jumbling_jerry_timer_timeout():
