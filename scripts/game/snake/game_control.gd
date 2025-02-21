@@ -4,7 +4,7 @@ class_name GameControl
 const MAC = preload("res://prefabs/snake/mac.tscn")
 
 static var GRID_WIDTH_COUNT:int = 15
-static var GRID_HEIGHT_COUNT:int = 14
+static var GRID_HEIGHT_COUNT:int = 15
 
 @export_category("Starting Game Conditions")
 @export var Countdown:int = 5
@@ -270,7 +270,7 @@ func generate_neuron():
 	var regen_food:bool = true
 	while regen_food:
 		regen_food = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
 		
 		for pos in snake.curr_positions:
 			if pos == position:
@@ -308,7 +308,7 @@ func _on_tissue_timer_timeout():
 		while find_position:
 			find_position = false
 			
-			position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+			position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
 			
 			if (position - snake.Head).length() <= PlayerSafetySquare or position in snake.curr_positions:
 				find_position = true
@@ -359,7 +359,7 @@ func _on_mac_timer_timeout():
 	
 	while find_pos:
 		find_pos = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
 		
 		if position in snake.curr_positions or \
 			(position - snake.Head).length() <= PlayerSpawnSafetySquare:
@@ -398,7 +398,7 @@ func generate_powerup():
 	var regen_food:bool = true
 	while regen_food:
 		regen_food = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT))
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
 		
 		for pos in snake.curr_positions:
 			if pos == position:
