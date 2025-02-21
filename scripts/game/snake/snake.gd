@@ -119,6 +119,8 @@ func initialize(game_board:GameBoard, start_position:Vector2i):
 		segments.push_back(snake_seg)
 		segments[-1].global_position = game_board.get_world_position_at(seg_pos)
 	##
+	
+	draw_snake()
 ##
 
 func start_timers():
@@ -161,11 +163,16 @@ func _on_movement_timer_timeout():
 		segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
 	##
 	
+	draw_snake()
+	prev_move_dir = move_dir
+	
+	move.emit()
+##
+
+func draw_snake():
 	if prev_move_dir != move_dir:
 		segments[0].region_rect = HEAD_RECTS[move_dir]
 	##
-	
-	prev_move_dir = move_dir
 	
 	for sid in range(1, len(segments) - 1):
 		var ahead = curr_positions[sid - 1] - curr_positions[sid]
@@ -174,8 +181,6 @@ func _on_movement_timer_timeout():
 	##
 	
 	segments[-1].region_rect = HEAD_RECTS[curr_positions[-1] - curr_positions[-2]]
-	
-	move.emit()
 ##
 
 func self_overlaps():
