@@ -6,7 +6,9 @@ signal gameover_to_main
 @onready var win_title = $GameOver_MC/GameOver_VBox/Text_Vbox/Win_Title
 @onready var lose_title = $GameOver_MC/GameOver_VBox/Text_Vbox/Lose_Title
 @onready var win_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox
-@onready var fail_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox
+@onready var lose_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox
+@onready var stats_vbox = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox
+
 @onready var caption0 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption0
 @onready var caption1 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption1
 @onready var caption2 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption2
@@ -20,7 +22,7 @@ signal gameover_to_main
 @onready var number_neuron = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Neuron/Number_Neuron
 @onready var number_macs = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Macs/Number_Macs
 @onready var number_tissue = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Tissue/Number_Tissue
-@onready var stats_vbox = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox
+
 
 var curr_fact
 var curr_intro = 4 #I'm to lazy to figure out a better way to write this
@@ -29,7 +31,6 @@ var fact_start: Array = ["Fun fact: ","Did you know...","Hey, guess what?","Fun 
 
 func _ready():
 	GlobalSignals.connect("game_scores", _on_recv_game_scores)
-	to_win()
 ##
 
 func to_lose():
@@ -39,24 +40,25 @@ func to_lose():
 	vignette.visible = false
 	lose_title.visible = true
 	caption0.text = fact_start[randi() % curr_intro]
-	caption1.text = fail_text.fact_start[curr_fact]
-	caption2.text = fail_text.fact_mid[curr_fact]
-	caption3.text = fail_text.fact_end[curr_fact]
-	caption4.text = fail_text.fact_sources[curr_fact]
-	fail_text.visible = true
+	caption1.text = lose_text.fact_start[curr_fact]
+	caption2.text = lose_text.fact_mid[curr_fact]
+	caption3.text = lose_text.fact_end[curr_fact]
+	caption4.text = lose_text.fact_sources[curr_fact]
+	lose_text.visible = true
 	win_title.visible = false
 	win_text.visible = false
 	stats_vbox.visible = false
 ##
 
 func to_win():
+	$AP_Newspaper.play("Newspaper")
 	mc.add_theme_constant_override("margin_left", 60)
 	background.visible = true
 	vignette.visible = true
 	win_title.visible = true
 	win_text.visible = true
 	lose_title.visible = false
-	fail_text.visible = false
+	lose_text.visible = false
 	stats_vbox.visible = true
 ##
 

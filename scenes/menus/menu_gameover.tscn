@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=15 format=3 uid="uid://dgrchpsdeaxdt"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_gameover.gd" id="1_8tecl"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_3u58w"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_igy8s"]
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
 [ext_resource type="Script" path="res://scripts/art/funfacts.gd" id="5_1reb6"]
+[ext_resource type="Texture2D" uid="uid://coovro6g4hutm" path="res://assets/character/Newspaper.png" id="7_xllsr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8kyo"]
 shader = ExtResource("2_3u58w")
@@ -33,6 +34,163 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.816514, 0.169725)
+
+[sub_resource type="Animation" id="Animation_qy3kp"]
+resource_name = "Newspaper"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Newspaper:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1008, -1020), Vector2(1008, 750), Vector2(1008, 750)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Newspaper:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523599, 0.0523599, 0.0523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Newspaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Newspaper:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0cirn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Newspaper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1008, -805)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Newspaper:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Newspaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Newspaper:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m41fu"]
+_data = {
+"Newspaper": SubResource("Animation_qy3kp"),
+"RESET": SubResource("Animation_0cirn")
+}
 
 [node name="MenuGameover" type="Control"]
 layout_mode = 3
@@ -85,7 +243,6 @@ text = "FAILURE!"
 horizontal_alignment = 1
 
 [node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
 layout_mode = 2
 
 [node name="Caption_GameOver" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox"]
@@ -112,6 +269,7 @@ text = "Nothing can go wrong from this!
 horizontal_alignment = 1
 
 [node name="Fail_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
+visible = false
 layout_mode = 2
 script = ExtResource("5_1reb6")
 
@@ -148,7 +306,6 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
 [node name="Stats_Vbox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
-visible = false
 layout_mode = 2
 
 [node name="Title_Stage" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox"]
@@ -256,6 +413,24 @@ offset_bottom = 1577.0
 pivot_offset = Vector2(1000, 1000)
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_rbqe2")
+
+[node name="AP_Newspaper" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m41fu")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0766, 0.0500817, 0.0788136, 1)
+
+[node name="Newspaper" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1008, -805)
+texture = ExtResource("7_xllsr")
 
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Again_Button" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]
