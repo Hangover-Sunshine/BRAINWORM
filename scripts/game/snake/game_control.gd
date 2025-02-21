@@ -352,7 +352,7 @@ func _listen_for_mak_movement(mak:Mak):
 
 func _on_invuln_timer_timeout():
 	if powerup_pos == Vector2i(-100, -100):
-		var r = randi() % 100
+		var r = randi() % 100 - (snake.Length - 3)
 		if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
 			generate_powerup()
 		##
