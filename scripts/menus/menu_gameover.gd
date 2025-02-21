@@ -57,6 +57,7 @@ func to_win():
 	win_text.visible = true
 	lose_title.visible = false
 	fail_text.visible = false
+	stats_vbox.visible = true
 ##
 
 func _on_again_button_pressed():

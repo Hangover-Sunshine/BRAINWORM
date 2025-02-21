@@ -194,7 +194,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 50
-text = "Maks"
+text = "Macs"
 horizontal_alignment = 1
 
 [node name="Number_Macs" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Macs"]
