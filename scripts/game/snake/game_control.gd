@@ -47,7 +47,7 @@ var neuron_pos:Vector2i
 
 var powerup
 
-var macs:Array
+var macs:Array[Mak]
 
 var brainfold_spawns:int = 0
 var brainfolds:Array[Brainwall]
@@ -58,14 +58,14 @@ var neurons_consumed:int = 0
 var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
-var curr_time:float
+var curr_timer_time:float
 
 var jumble_jerry:bool = true
 var jerry_health:int
 
 func _ready():
-	curr_time = MovementTimeChanges[100]
-	GlobalSignals.emit_signal("speed_up", curr_time)
+	curr_timer_time = MovementTimeChanges[100]
+	GlobalSignals.emit_signal("speed_up", curr_timer_time)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/snake/powerup.tscn").instantiate()
@@ -291,6 +291,7 @@ func generate_neuron():
 	
 	neuron_pos = position
 	neuron.global_position = game_board.get_world_position_at(position)
+	neuron.spawn_ram()
 ##
 
 func _on_tissue_timer_timeout():
