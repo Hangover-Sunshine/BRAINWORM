@@ -147,7 +147,8 @@ libraries = {
 
 [node name="Politician" parent="." instance=ExtResource("5_1r75v")]
 z_index = 10
-position = Vector2(1645, 639)
+position = Vector2(1643, 602)
+scale = Vector2(0.725, 0.725)
 
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
