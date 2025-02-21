@@ -25,12 +25,12 @@ shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qatow"]
 
-[sub_resource type="Gradient" id="Gradient_oqvp6"]
+[sub_resource type="Gradient" id="Gradient_h2ij5"]
 offsets = PackedFloat32Array(0.753247, 1)
 colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a6khg"]
-gradient = SubResource("Gradient_oqvp6")
+gradient = SubResource("Gradient_h2ij5")
 width = 2000
 height = 2000
 fill = 1

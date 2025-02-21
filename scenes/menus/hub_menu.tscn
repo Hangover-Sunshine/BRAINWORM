@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d136umhx2ffrh"]
+[gd_scene load_steps=19 format=3 uid="uid://d136umhx2ffrh"]
 
 [ext_resource type="PackedScene" uid="uid://88fivnqio2ad" path="res://scenes/menus/menu_splash.tscn" id="1_5dhbp"]
 [ext_resource type="Script" path="res://scripts/menus/hub_menu.gd" id="1_eqpse"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdx15nqmqr1cu" path="res://scenes/menus/menu_pregame.tscn" id="3_36hlv"]
 [ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="4_dii0o"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri3na"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxgc4"]
 shader = ExtResource("2_coqv2")
 shader_parameter/OCTAVE = 2
 shader_parameter/mulscale = 5.0
@@ -20,6 +20,20 @@ shader_parameter/waterdeep = 0.3
 shader_parameter/WATER_COL = Color(0.129729, 0.0255367, 0.0527574, 1)
 shader_parameter/WATER2_COL = Color(0.210706, 0.0444339, 0.109765, 1)
 shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2o86"]
+
+[sub_resource type="Gradient" id="Gradient_oqvp6"]
+offsets = PackedFloat32Array(0.753247, 1)
+colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.129729, 0.0255367, 0.0527574, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1rrf"]
+gradient = SubResource("Gradient_oqvp6")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.816514, 0.169725)
 
 [sub_resource type="Animation" id="Animation_xv0je"]
 length = 0.001
@@ -392,11 +406,20 @@ _data = {
 [node name="HubMenu" type="Node2D"]
 script = ExtResource("1_eqpse")
 
-[node name="Background" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_ri3na")
-custom_minimum_size = Vector2(1920, 1080)
+[node name="Background2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yxgc4")
+offset_top = -371.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1549.0
+
+[node name="Filter_Vignette_Overall" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_p2o86")
+offset_left = -42.0
+offset_top = -423.0
+offset_right = 1958.0
+offset_bottom = 1577.0
+pivot_offset = Vector2(1000, 1000)
+texture = SubResource("GradientTexture2D_o1rrf")
 
 [node name="MenuDisclaimer" parent="." instance=ExtResource("2_1n5cx")]
 
