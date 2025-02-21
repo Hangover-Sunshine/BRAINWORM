@@ -51,6 +51,7 @@ var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
 
+var jumble_jerry:bool = true
 var jerry_health:int
 
 func _ready():
@@ -144,6 +145,11 @@ func check_for_enemy():
 				if len(tissue.positions) == 0:
 					remove.push_back(brainfolds.find(tissue))
 				##
+				if jumble_jerry:
+					$JumblingJerryTimer.start()
+					GlobalSignals.player_got_damage.emit()
+					jumble_jerry = false
+				##
 			##
 		##
 		
@@ -202,6 +208,12 @@ func check_for_neuron():
 		generate_neuron()
 		update_score = true
 		neurons_consumed += 1
+		
+		if jumble_jerry:
+			$JumblingJerryTimer.start()
+			GlobalSignals.player_got_damage.emit()
+			jumble_jerry = false
+		##
 	##
 ##
 
@@ -397,4 +409,8 @@ func generate_powerup():
 	
 	powerup_pos = position
 	powerup.global_position = game_board.get_world_position_at(position)
+##
+
+func _on_jumbling_jerry_timer_timeout():
+	jumble_jerry = true
 ##
