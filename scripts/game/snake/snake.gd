@@ -178,16 +178,16 @@ func _on_movement_timer_timeout():
 
 func draw_snake():
 	if prev_move_dir != move_dir:
-		segments[0].set_rect(HEAD_RECTS[move_dir])
+		segments[0].region_rect = HEAD_RECTS[move_dir]
 	##
 	
 	for sid in range(1, len(segments) - 1):
 		var ahead = curr_positions[sid - 1] - curr_positions[sid]
 		var behind = curr_positions[sid + 1] - curr_positions[sid]
-		segments[sid].set_rect(BODY_SEGMENTS[[ahead, behind]])
+		segments[sid].region_rect = BODY_SEGMENTS[[ahead, behind]]
 	##
 	
-	segments[-1].set_rect(HEAD_RECTS[curr_positions[-1] - curr_positions[-2]])
+	segments[-1].region_rect = HEAD_RECTS[curr_positions[-1] - curr_positions[-2]]
 ##
 
 func self_overlaps():

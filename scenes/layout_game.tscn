@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
-[ext_resource type="Shader" path="res://assets/shaders/distort.gdshader" id="2_j7ggh"]
 [ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="3_wku17"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 [ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="7_wkiok"]
+[ext_resource type="Shader" path="res://assets/shaders/distort_vertex.gdshader" id="9_ewnjh"]
 [ext_resource type="PackedScene" uid="uid://b2rmfgilxygvt" path="res://prefabs/gui/gui_health.tscn" id="10_f7kyj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evubc"]
@@ -81,7 +81,7 @@ seamless_blend_skirt = 0.5
 noise = SubResource("FastNoiseLite_oi0j3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0ymo"]
-shader = ExtResource("2_j7ggh")
+shader = ExtResource("9_ewnjh")
 shader_parameter/refraction_stretch = Vector2(0.1, 0.1)
 shader_parameter/refraction_strength = 0.002
 shader_parameter/water_tint = Color(0.2, 0.6, 1, 0)

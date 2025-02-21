@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=17 format=3 uid="uid://6vqekqvxjoat"]
 
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_7muqm"]
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
 [ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="4_6ikhg"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="5_iyq4i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
 [sub_resource type="Animation" id="Animation_04863"]
 resource_name = "Despawn"
@@ -44,10 +46,9 @@ _data = {
 "RESET": SubResource("Animation_s1a8c")
 }
 
-[sub_resource type="Animation" id="Animation_tvh2w"]
-resource_name = "Ram"
-length = 1.5
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_qtmno"]
+resource_name = "No_Ram"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -55,10 +56,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.917115, 0.451351, 0.446758, 1), Color(0.976471, 0.607843, 0.317647, 1), Color(1, 0.74902, 0.54902, 1), Color(0.611765, 0.952941, 0.780392, 1), Color(0.576927, 0.769932, 0.968836, 1), Color(0.917647, 0.678431, 0.929412, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,7 +71,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_tvf24"]
@@ -100,9 +101,10 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_qtmno"]
-resource_name = "No_Ram"
-length = 0.001
+[sub_resource type="Animation" id="Animation_tvh2w"]
+resource_name = "Ram"
+length = 1.5
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,10 +112,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.917115, 0.451351, 0.446758, 1), Color(0.976471, 0.607843, 0.317647, 1), Color(1, 0.74902, 0.54902, 1), Color(0.611765, 0.952941, 0.780392, 1), Color(0.576927, 0.769932, 0.968836, 1), Color(0.917647, 0.678431, 0.929412, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -125,7 +127,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wiofs"]
@@ -198,6 +200,7 @@ _data = {
 }
 
 [node name="SnakeSegment" type="Sprite2D"]
+material = SubResource("ShaderMaterial_o64fk")
 texture = ExtResource("2_pddsj")
 region_enabled = true
 region_rect = Rect2(128.566, 128.621, 63.4342, 63.3793)

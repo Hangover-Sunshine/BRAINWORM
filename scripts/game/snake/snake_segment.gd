@@ -11,7 +11,3 @@ func is_ramming():
 
 func not_ramming():
 	$AP_Ram.play("No_Ram")
-
-func set_rect(rect:Rect2):
-	$SegmentSprite.region_rect = rect
-##
