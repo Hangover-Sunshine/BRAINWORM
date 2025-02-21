@@ -11,4 +11,6 @@ signal game_won
 signal player_died
 signal player_got_damage
 signal game_scores(neurons:int, macs:int, tissue:int, time:int)
+
+signal speed_up(new_time:float)
 # GAMEPLAY ###############################

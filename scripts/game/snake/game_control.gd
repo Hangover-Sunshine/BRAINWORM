@@ -31,6 +31,14 @@ static var GRID_HEIGHT_COUNT:int = 14
 @export var CostOfNeuron:int = 2
 @export var CostOfTissue:int = 5
 
+@export_category("Game Conditions")
+@export var MovementTimeChanges:Dictionary = {
+	100: 0.16,
+	75: 0.14,
+	50: 0.12,
+	25: 0.10
+}
+
 @onready var game_board = $Layout_Game
 @onready var snake = $Snake
 
@@ -51,11 +59,15 @@ var neurons_consumed:int = 0
 var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
+var curr_time:float
 
 var jumble_jerry:bool = true
 var jerry_health:int
 
 func _ready():
+	curr_time = MovementTimeChanges[100]
+	GlobalSignals.emit_signal("speed_up", curr_time)
+	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/art/art_ram.tscn").instantiate()
 	powerup.global_position = game_board.get_world_position_at(Vector2i(-100, -100))

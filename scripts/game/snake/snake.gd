@@ -156,6 +156,13 @@ func _on_movement_timer_timeout():
 	
 	prev_positions = curr_positions.duplicate()
 	curr_positions[0] += move_dir
+	
+	# Prevent the player from being drawn out of the scene
+	if X < 0 or X > GameControl.GRID_WIDTH_COUNT or Y < 0 or Y > GameControl.GRID_HEIGHT_COUNT - 1:
+		move.emit()
+		return
+	##
+	
 	segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
 	
 	for i in range(1, len(curr_positions)):
