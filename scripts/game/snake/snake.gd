@@ -106,11 +106,11 @@ func _on_player_died():
 	set_process(false)
 ##
 
-func initialize(game_board:GameBoard, start_position:Vector2i):
+func initialize(gb:GameBoard, start_position:Vector2i):
 	GlobalSignals.connect("player_died", _on_player_died)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
 	move_dir = Vector2i(1, 0)
-	self.game_board = game_board
+	game_board = gb
 	
 	# Put all snake in the current position
 	for seg_pos in curr_positions:

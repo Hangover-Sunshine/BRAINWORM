@@ -72,6 +72,12 @@ func _ready():
 
 func _process(_delta):
 	game_board.update_time(Time.get_ticks_msec() - start_time)
+	
+	if jerry_health <= 0:
+		snake._on_player_died()
+		GlobalSignals.emit_signal("game_won")
+		set_process(false)
+	##
 ##
 
 func initialize_ui():
@@ -93,6 +99,8 @@ func initialize_board():
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	generate_neuron()
+	
+	GlobalSignals.emit_signal("game_status", false)
 	
 	# TODO: Begin count down
 ##
@@ -126,11 +134,15 @@ func check_for_edge():
 func check_for_self():
 	if snake.self_overlaps():
 		GlobalSignals.emit_signal("player_died")
-		GlobalSignals.emit_signal("game_scores",
-									neurons_consumed, macs_killed, tissue_destroyed,
-									Time.get_ticks_msec() - start_time)
+		emit_scores()
 		set_process(false)
 	##
+##
+
+func emit_scores():
+	GlobalSignals.emit_signal("game_scores",
+									neurons_consumed, macs_killed, tissue_destroyed,
+									Time.get_ticks_msec() - start_time)
 ##
 
 func check_for_enemy():

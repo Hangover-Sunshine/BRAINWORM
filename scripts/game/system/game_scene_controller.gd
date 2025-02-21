@@ -7,17 +7,18 @@ extends Node2D
 @onready var game_over = $GameOver
 
 var _game_scene
-
-var _curr_level:int = 0
+var _win_scene
 
 var _curr_cutscene:CutsceneManager
 var _in_cutscene:bool = true
 var _can_pause:bool = false
+var restart:bool = false
 
 func _ready():
 	Verho.connect("loaded_scene", _new_scene_loaded)
 	GlobalSignals.connect("cutscene_finished", _on_cutscene_finished)
 	GlobalSignals.connect("game_status", _recv_game_status)
+	GlobalSignals.connect("game_won", _on_game_won)
 	GlobalSignals.connect("player_died", _player_died)
 	$PauseMenu/HubPause.connect("unpause", _unpause_game)
 	
@@ -48,8 +49,6 @@ func _new_scene_loaded(new_scene:String):
 
 func _player_died():
 	_game_scene.freeze()
-	#_game_scene.hide_ui()
-	#_game_scene.clear_game()
 	_can_pause = false
 	game_over.visible = true
 	$GameOver/MenuGameover.to_lose()
@@ -68,39 +67,39 @@ func _on_cutscene_finished():
 
 func _recv_game_status(is_over:bool):
 	_can_pause = !is_over # True means the game is done, False means it's beginning
-	
-	if is_over:
-		_curr_level += 1
-		internal_fade_controller.play("fade_out")
-	else:
-		pass
-	##
 ##
 
 func fade_out_finished():
-	if _curr_cutscene != null:
+	if _curr_cutscene != null and restart == false:
 		_curr_cutscene.queue_free()
 		_game_scene = GameScene.instantiate()
 		add_child(_game_scene)
-	else:
+	elif _curr_cutscene == null and _win_scene == null:
 		_in_cutscene = true
 		_game_scene.queue_free()
 		await get_tree().create_timer(1.5).timeout
 		_game_scene = GameScene.instantiate()
 		add_child(_game_scene)
-		##
+	elif _curr_cutscene == null and _win_scene != null:
+		_game_scene.queue_free()
+		await get_tree().create_timer(1.5).timeout
+		add_child(_win_scene)
+		_win_scene.connect("gameover_to_game", _on_gameover_to_game)
+		_win_scene.connect("gameover_to_main", _on_menu_gameover_gameover_to_main)
 	##
 	internal_fade_controller.play("fade_in")
+	if restart:
+		restart = false
+	##
 ##
 
-func fade_in_finished():
-	pass
+func _on_gameover_to_game():
+	Verho.change_scene("scenes/game_control_scene", "", "BlackFade")
 ##
 
 func _on_menu_gameover_gameover_to_game():
 	_game_scene.game_restarting()
 	game_over.visible = false
-	_curr_level = 0
 	internal_fade_controller.play("fade_out")
 	$GameOver/ColorRect.color = Color("2c0917", 0)
 	$GameOver/MenuGameover.modulate = Color("ffffff", 0)
@@ -108,5 +107,9 @@ func _on_menu_gameover_gameover_to_game():
 
 func _on_menu_gameover_gameover_to_main():
 	Verho.change_scene("scenes/menus/hub_menu", "", "BlackFade")
-	# NOTE: let the menu take care of unpausing
+##
+
+func _on_game_won():
+	_win_scene = load("res://scenes/menus/menu_gameover.tscn").instantiate()
+	internal_fade_controller.play("fade_out")
 ##

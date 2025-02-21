@@ -26,9 +26,10 @@ var curr_fact
 var curr_intro = 4 #I'm to lazy to figure out a better way to write this
 var total_fact = 30
 var fact_start: Array = ["Fun fact: ","Did you know...","Hey, guess what?","Fun factoid: "]
+
 func _ready():
 	GlobalSignals.connect("game_scores", _on_recv_game_scores)
-	to_lose()
+	to_win()
 ##
 
 func to_lose():
@@ -60,6 +61,7 @@ func to_win():
 
 func _on_again_button_pressed():
 	gameover_to_game.emit()
+##
 
 func _on_leave_button_pressed():
 	gameover_to_main.emit()

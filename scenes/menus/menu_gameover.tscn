@@ -254,6 +254,7 @@ offset_top = -423.0
 offset_right = 1958.0
 offset_bottom = 1577.0
 pivot_offset = Vector2(1000, 1000)
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_rbqe2")
 
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Again_Button" to="." method="_on_again_button_pressed"]

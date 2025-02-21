@@ -19,10 +19,6 @@ func camera_in_place():
 	game_control.initialize_ui()
 ##
 
-func game_won():
-	GlobalSignals.emit_signal("game_status", true)
-##
-
 func game_restarting():
 	get_tree().paused = false
 	$ZoomControl.play("zoom_out_go")
