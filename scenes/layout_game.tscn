@@ -154,7 +154,7 @@ offset_right = 416.0
 offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 115
-text = "MM:SS:ss"
+text = "00:00:00"
 
 [node name="GUI_Flesh" type="Node2D" parent="GUI"]
 position = Vector2(135, 639)
@@ -187,7 +187,7 @@ offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
-text = "###"
+text = "000"
 horizontal_alignment = 2
 
 [node name="GUI_Macs" type="Node2D" parent="GUI"]
@@ -221,7 +221,7 @@ offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
-text = "###"
+text = "000"
 horizontal_alignment = 2
 
 [node name="GUI_Tissue" type="Node2D" parent="GUI"]
@@ -255,7 +255,7 @@ offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
-text = "###"
+text = "000"
 horizontal_alignment = 2
 
 [node name="GUI_Health" parent="GUI" instance=ExtResource("10_f7kyj")]
@@ -292,5 +292,5 @@ offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_qqtgp")
 theme_override_font_sizes/font_size = 40
-text = "999999999"
+text = "000000000"
 horizontal_alignment = 2
