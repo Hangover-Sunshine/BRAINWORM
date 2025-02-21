@@ -25,6 +25,7 @@ var line2
 var line3 
 var can_skip:bool = false
 signal is_done
+signal show_prompt
 var script_size = 10 # I had to manually set this. I couldn't figure out why.
 @onready var lines_to_read = 0
 
@@ -127,6 +128,7 @@ func _on_ap_hit_animation_finished(anim_name):
 
 func _on_ap_mouth_animation_finished(anim_name):
 	if anim_name == "Talking":
+		show_prompt.emit()
 		if lines_to_read <= script_size:
 			lines_to_read += 1
 			if lines_to_read > script_size:

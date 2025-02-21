@@ -13,9 +13,15 @@ func _ready():
 	politician = $Politician
 	politician.anim_relaxed()
 	handle_signals()
+	
 
 func handle_signals():
 	politician.is_done.connect(is_done)
+	politician.show_prompt.connect(will_prompt)
+
+func will_prompt():
+	$Prompt/AP_Flash.play("Flash")
+	$Prompt.visible = true
 
 func is_done():
 	leave_cut = true
@@ -26,7 +32,7 @@ func initialize():
 	if start_close:
 		camera_anims.play("zoom_out")
 	else:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(7.5).timeout
 		play_cutscene()
 	##
 ##
@@ -48,7 +54,11 @@ func _on_cutscene_interrupted():
 func _input(event):
 	if event.is_pressed() and has_start == true and politician.can_skip == true and leave_cut == false:
 		politician.anim_relaxed_talking()
+		$Prompt.visible = false
+		$Prompt/AP_Flash.stop()
 	elif event.is_pressed() and has_start == true and politician.can_skip == true and leave_cut == true:
 		politician.anim_relaxed_ramble()
 		politician.bubble.play("Despawn")
+		$Prompt.visible = false
+		$Prompt/AP_Flash.stop()
 		cutscene_finished()
