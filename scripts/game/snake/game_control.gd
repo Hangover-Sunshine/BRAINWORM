@@ -1,6 +1,5 @@
 extends Node
 
-const SNAKE_SEGMENT = preload("res://prefabs/snake/snake_segment.tscn")
 const MAC = preload("res://prefabs/snake/mac.tscn")
 
 const GRID_WIDTH_COUNT:int = 15
@@ -17,6 +16,7 @@ const GRID_HEIGHT_COUNT:int = 14
 @export var InvulnMinNumber:int = 5
 
 @export_category("Tissue Spawn Info")
+@export var MaxTissueNodes:int = 4
 @export var MinRangeOfGrowth:int = 4
 @export var MaxRangeOfGrowth:int = 8
 @export var PlayerSafetySquare:int = 2
@@ -64,8 +64,8 @@ func _ready():
 	
 	jerry_health = BrainHealth
 	
-	#$TissueTimer.start()
-	#$MacTimer.start()
+	$TissueTimer.start()
+	$MacTimer.start()
 	start_time = 0
 	set_process(false)
 ##
@@ -274,7 +274,7 @@ func generate_neuron():
 func _on_tissue_timer_timeout():
 	var rand:int = (randi() % 100) + 1
 	
-	if rand <= 100 / (1 + brainfold_spawns):
+	if rand <= 100 / (1 + brainfold_spawns) and len(brainfolds) < MaxTissueNodes:
 		var inst:Brainwall = Brainwall.new()
 		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
 		var position:Vector2i
