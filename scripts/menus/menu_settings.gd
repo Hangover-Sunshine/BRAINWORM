@@ -10,7 +10,6 @@ signal settings_to_main
 @onready var sfx_slider = $Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/SFX_HBox/SFX_Slider
 @onready var music_slider = $Settings_MC/Settings_VBox/Tab_Vbox/Settings_Tab_Hbox/Audio_HBox/Audio_VBox/Music_HBox/Music_Slider
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	sfx_slider.value = GlobalSettings.UiSFXVolume * 100
 	sfx_percent.text = str(sfx_slider.value) + "%"
@@ -44,4 +43,18 @@ func _on_overall_slider_value_changed(value):
 	GlobalSettings.MasterVolume = value / 100
 	var sfx = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MasterVolume))
+##
+
+func _on_sfx_slider_value_changed(value):
+	sfx_percent.text = str(value) + "%"
+	GlobalSettings.UiSFXVolume = value / 100
+	var sfx = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.UiSFXVolume))
+##
+
+func _on_music_slider_value_changed(value):
+	music_percent.text = str(value) + "%"
+	GlobalSettings.MusicVolume = value / 100
+	var sfx = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MusicVolume))
 ##
