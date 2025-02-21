@@ -210,7 +210,7 @@ func _on_remove_segment_timer_timeout():
 	else:
 		return
 	##
-	old_segments[-1].queue_free()
+	old_segments[-1].kill()
 	old_segments.remove_at(len(old_segments) - 1)
 ##
 

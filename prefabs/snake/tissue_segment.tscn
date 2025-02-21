@@ -89,20 +89,18 @@ _data = {
 "Spawn": SubResource("Animation_6jmju")
 }
 
-[node name="TissueSegment" type="Node2D"]
-script = ExtResource("2_4np4l")
-
-[node name="TissueSegment" type="Sprite2D" parent="."]
+[node name="TissueSegment" type="Sprite2D"]
 texture = ExtResource("1_l0vqi")
 region_enabled = true
 region_rect = Rect2(0, 128.675, 64, 63.325)
+script = ExtResource("2_4np4l")
 
-[node name="AP" type="AnimationPlayer" parent="TissueSegment"]
+[node name="AP" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kqaap")
 }
 
-[node name="FX_Splatter" type="CPUParticles2D" parent="TissueSegment"]
+[node name="FX_Splatter" type="CPUParticles2D" parent="."]
 emitting = false
 one_shot = true
 explosiveness = 0.9
