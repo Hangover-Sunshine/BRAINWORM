@@ -8,7 +8,7 @@ const GRID_OFFSET:Vector2i = Vector2i(5,1)
 
 const TILES:Dictionary = {
 	0b0000:Vector2i(0,2), # nothing
-	0b1111: Vector2i(3, 2), # all
+	0b1111:Vector2i(3, 2), # all
 	0b0100:Vector2i(1,2), # east
 	0b0001:Vector2i(5,2), # west
 	0b0101:Vector2i(2,2), # east_west

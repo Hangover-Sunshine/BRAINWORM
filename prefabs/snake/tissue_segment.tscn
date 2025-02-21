@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5rchq4vqupu4"]
+
+[ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="1_l0vqi"]
+[ext_resource type="Script" path="res://scripts/game/snake/tissue_segment.gd" id="2_4np4l"]
+
+[node name="TissueSegment" type="Sprite2D"]
+texture = ExtResource("1_l0vqi")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+script = ExtResource("2_4np4l")

@@ -1,9 +1,10 @@
 extends Node
+class_name GameControl
 
 const MAC = preload("res://prefabs/snake/mac.tscn")
 
-const GRID_WIDTH_COUNT:int = 15
-const GRID_HEIGHT_COUNT:int = 14
+static var GRID_WIDTH_COUNT:int = 15
+static var GRID_HEIGHT_COUNT:int = 14
 
 @export_category("Starting Game Conditions")
 @export var Countdown:int = 5
@@ -65,7 +66,7 @@ func _ready():
 	jerry_health = BrainHealth
 	
 	$TissueTimer.start()
-	$MacTimer.start()
+	#$MacTimer.start()
 	start_time = 0
 	set_process(false)
 ##
@@ -288,6 +289,7 @@ func _on_tissue_timer_timeout():
 	
 	if rand <= 100 / (1 + brainfold_spawns) and len(brainfolds) < MaxTissueNodes:
 		var inst:Brainwall = Brainwall.new()
+		inst.game_board = game_board
 		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
 		var position:Vector2i
 		var find_position:bool = true
@@ -314,11 +316,13 @@ func _on_tissue_timer_timeout():
 			##
 		##
 		
+		add_child(inst)
+		inst.initialize(position)
 		brainfolds.push_back(inst)
 		growable_folds.push_back(inst)
 		
-		inst.positions.push_back(position)
-		game_board.add_brainfold(position, inst.positions)
+		#inst.positions.push_back(position)
+		#game_board.add_brainfold(position, inst.positions)
 		
 		brainfold_spawns += 1
 	else:
@@ -326,23 +330,29 @@ func _on_tissue_timer_timeout():
 		rand = randi() % len(growable_folds)
 		var inst:Brainwall = growable_folds[rand]
 		
-		var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT,
-																		GRID_HEIGHT_COUNT,
-																		brainfolds)
-		if len(valid_positions) == 0:
-			return
-		##
-		
-		var position:Vector2i = valid_positions[randi() % len(valid_positions)]
-		
-		inst.positions.push_back(position)
-		inst.max_number_growths -= 1
-		
-		if inst.max_number_growths == 0:
+		# Grow the wall, if it comes back false for any reason,
+		#	remove the fold
+		if inst.grow_wall(brainfolds) == false:
 			growable_folds.remove_at(rand)
 		##
 		
-		game_board.add_brainfold(position, inst.positions)
+		#var valid_positions:Array[Vector2i] = inst.get_valid_positions(GRID_WIDTH_COUNT,
+																		#GRID_HEIGHT_COUNT,
+																		#brainfolds)
+		#if len(valid_positions) == 0:
+			#return
+		###
+		#
+		#var position:Vector2i = valid_positions[randi() % len(valid_positions)]
+		#
+		#inst.positions.push_back(position)
+		#inst.max_number_growths -= 1
+		#
+		#if inst.max_number_growths == 0:
+			#growable_folds.remove_at(rand)
+		###
+		#
+		#game_board.add_brainfold(position, inst.positions)
 	##
 ##
 
