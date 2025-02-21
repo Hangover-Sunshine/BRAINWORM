@@ -124,6 +124,7 @@ width = 20.0
 joint_mode = 2
 
 [node name="Filter_Distortion" type="Sprite2D" parent="Background"]
+z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_k6im5")
 position = Vector2(832, 546)
