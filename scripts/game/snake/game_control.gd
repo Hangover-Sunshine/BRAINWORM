@@ -249,6 +249,10 @@ func generate_neuron():
 				break
 			##
 		##
+		
+		if position == powerup_pos:
+			regen_food = true
+		##
 	##
 	
 	neuron_pos = position
@@ -384,6 +388,10 @@ func generate_powerup():
 				regen_food = true
 				break
 			##
+		##
+		
+		if position == powerup_pos:
+			regen_food = true
 		##
 	##
 	
