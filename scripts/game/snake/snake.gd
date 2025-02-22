@@ -41,7 +41,7 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 const SEG_WIDTH:int = 64
 const SEG_HEIGHT:int = 64
 
-var can_move:bool = false
+var can_change_dir:bool = true
 var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
 var old_segments:Array
@@ -144,16 +144,16 @@ func add_segment():
 ##
 
 func _process(_delta):
-	if Input.is_action_just_pressed("down") and (Head + MOVE_DOWN) != curr_positions[1]:
+	if can_change_dir and Input.is_action_just_pressed("down") and (Head + MOVE_DOWN) != curr_positions[1]:
 		move_dir = MOVE_DOWN
 	##
-	if Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
+	if can_change_dir and Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
 		move_dir = MOVE_UP
 	##
-	if Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
+	if can_change_dir and Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
 		move_dir = MOVE_LEFT
 	##
-	if Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
+	if can_change_dir and Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
 		move_dir = MOVE_RIGHT
 	##
 	
@@ -166,7 +166,7 @@ func _process(_delta):
 ##
 
 func _on_movement_timer_timeout():
-	can_move = true
+	can_change_dir = false
 	
 	prev_positions = curr_positions.duplicate()
 	curr_positions[0] += move_dir
@@ -178,18 +178,19 @@ func _on_movement_timer_timeout():
 	##
 	
 	#segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
-	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), 0.08)
+	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), 0.05)
 	
 	for i in range(1, len(curr_positions)):
 		curr_positions[i] = prev_positions[i - 1]
 		#segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
-		segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), 0.08)
+		segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), 0.05)
 	##
 	
 	draw_snake()
 	prev_move_dir = move_dir
 	
 	move.emit()
+	can_change_dir = true
 ##
 
 func draw_snake():
