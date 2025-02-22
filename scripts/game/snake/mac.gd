@@ -11,6 +11,7 @@ signal please_move_me(mak:Mak)
 var _waiting:bool = true
 var _indicate:bool = true
 var _indicate_moving:float
+var _delay_indicate_moving:float = 0
 
 var is_alive:bool = true
 var max_width:int
@@ -24,12 +25,28 @@ var last_global_position:Vector2
 var tween:Tween
 
 func _ready():
-	$MovementTimer.start(MovementTime)
-	_indicate_moving = MovementTime / 2
+	GlobalSignals.connect("player_died", _on_player_died)
+	GlobalSignals.connect("speed_up_macs", _on_mac_movespeed_changed)
 	$Art_Mac.spawn_mac()
 ##
 
+func _on_player_died():
+	$MovementTimer.stop()
+	art_mac.remove_marker()
+	set_process(false)
+	is_alive = false
+##
+
+func initialize(movement_time:float):
+	_indicate_moving = movement_time / 2
+	$MovementTimer.start(MovementTime)
+##
+
 func _on_movement_timer_timeout():
+	if is_alive == false:
+		return
+	##
+	
 	if _waiting:
 		$MovementTimer.start(_indicate_moving)
 		_waiting = false
@@ -58,6 +75,10 @@ func _on_movement_timer_timeout():
 		please_move_me.emit(self)
 		art_mac.remove_marker()
 		_indicate = true
+		if _delay_indicate_moving != 0:
+			_indicate_moving = _delay_indicate_moving
+			_delay_indicate_moving = 0
+		##
 	##
 	$MovementTimer.start(_indicate_moving)
 ##
@@ -110,4 +131,12 @@ func kill_it():
 	$MovementTimer.start(1.5)
 	await $MovementTimer.timeout
 	queue_free()
+##
+
+func _on_mac_movespeed_changed(new_time:float):
+	if _indicate:
+		_delay_indicate_moving = new_time / 2
+	else:
+		_indicate_moving = new_time / 2
+	##
 ##

@@ -59,6 +59,9 @@ var prev_move_dir:Vector2i
 var move_dir:Vector2i
 
 var game_board:GameBoard
+var curr_move_time:float
+
+var is_dead:bool = false
 
 var Head : Vector2i :
 	get:
@@ -95,6 +98,13 @@ var Invulnerable:bool:
 			$RemoveSegmentTimer.start()
 			var sid = len(curr_positions) - 1
 			
+			# Guarantee to clear the screen of old parts
+			if len(old_segments) > 0:
+				for seg in old_segments:
+					seg.lose_parts()
+				##
+			##
+			
 			while sid > 2:
 				old_segments.push_front(segments[sid])
 				segments.remove_at(sid)
@@ -115,13 +125,16 @@ func _on_player_died():
 	$RemoveSegmentTimer.stop()
 	$InvulnTimer.stop()
 	set_process(false)
+	is_dead = true
 ##
 
-func initialize(gb:GameBoard, start_position:Vector2i):
+func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	GlobalSignals.connect("player_died", _on_player_died)
+	GlobalSignals.connect("speed_up", _on_speed_up)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
 	move_dir = Vector2i(1, 0)
 	game_board = gb
+	curr_move_time = start_time_timer
 	
 	# Put all snake in the current position
 	for seg_pos in curr_positions:
@@ -175,6 +188,9 @@ func _process(_delta):
 ##
 
 func _on_movement_timer_timeout():
+	if is_dead:
+		return
+	##
 	can_change_dir = false
 	
 	prev_positions = curr_positions.duplicate()
@@ -187,13 +203,13 @@ func _on_movement_timer_timeout():
 	##
 	
 	#segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
-	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), 0.05)
+	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), curr_move_time / 2)
 	segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
 	
 	for i in range(1, len(curr_positions)):
 		curr_positions[i] = prev_positions[i - 1]
 		#segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
-		segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), 0.05)
+		segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), curr_move_time / 2)
 	##
 	
 	draw_snake()
@@ -201,6 +217,7 @@ func _on_movement_timer_timeout():
 	
 	move.emit()
 	can_change_dir = true
+	$MovementTimer.start(curr_move_time)
 ##
 
 func draw_snake():
@@ -247,4 +264,8 @@ func _on_invuln_timer_timeout():
 	for i in range(len(curr_positions)):
 		segments[i].not_ramming()
 	##
+##
+
+func _on_speed_up(new_speed):
+	curr_move_time = new_speed
 ##

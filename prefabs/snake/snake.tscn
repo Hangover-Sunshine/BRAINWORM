@@ -29,6 +29,7 @@ one_shot = true
 
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="RemoveSegmentTimer" to="." method="_on_remove_segment_timer_timeout"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]

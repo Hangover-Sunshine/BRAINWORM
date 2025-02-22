@@ -38,6 +38,12 @@ static var GRID_HEIGHT_COUNT:int = 15
 	50: 0.12,
 	25: 0.10
 }
+@export var MacMovementTimeChanges:Dictionary = {
+	100: 1.8,
+	75: 1.6,
+	50: 1.5,
+	25: 1.3,
+}
 
 @onready var game_board = $Layout_Game
 @onready var snake = $Snake
@@ -59,12 +65,15 @@ var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
 var curr_timer_time:float
+var curr_mac_timer_time:float
 
 var jumble_jerry:bool = true
 var jerry_health:int
+var threshold:int = 100
 
 func _ready():
 	curr_timer_time = MovementTimeChanges[100]
+	curr_mac_timer_time = MacMovementTimeChanges[100]
 	GlobalSignals.emit_signal("speed_up", curr_timer_time)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
@@ -84,6 +93,25 @@ func _ready():
 
 func _process(_delta):
 	game_board.update_time(Time.get_ticks_msec() - start_time)
+	
+	threshold = floori(jerry_health / float(BrainHealth) * 100)
+	var timer_time = curr_timer_time
+	if threshold > 50 and threshold <= 75:
+		timer_time = MovementTimeChanges[75]
+		curr_mac_timer_time = MacMovementTimeChanges[75]
+	elif threshold > 25 and threshold <= 50:
+		timer_time = MovementTimeChanges[50]
+		curr_mac_timer_time = MacMovementTimeChanges[50]
+	elif threshold < 25:
+		timer_time = MovementTimeChanges[25]
+		curr_mac_timer_time = MacMovementTimeChanges[25]
+	##
+	
+	if timer_time != curr_timer_time:
+		curr_timer_time = timer_time
+		GlobalSignals.emit_signal("speed_up", curr_timer_time)
+		GlobalSignals.emit_signal("speed_up_macs", curr_mac_timer_time)
+	##
 	
 	if jerry_health <= 0:
 		snake._on_player_died()
@@ -105,7 +133,7 @@ func hide_ui():
 ##
 
 func initialize_board():
-	snake.initialize(game_board, StartPosition)
+	snake.initialize(game_board, StartPosition, curr_timer_time)
 	snake.connect("move", _on_player_move)
 	snake.connect("invuln_over", _on_invuln_timer_timeout)
 	snake.invuln_time_per_segment = SecondsPerSegment
@@ -134,7 +162,7 @@ func _on_player_move():
 
 func check_for_edge():
 	if snake.X < 0 or snake.X > GRID_WIDTH_COUNT or\
-		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT:
+		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT - 1:
 		GlobalSignals.emit_signal("player_died")
 		GlobalSignals.emit_signal("game_scores",
 									neurons_consumed, macs_killed, tissue_destroyed,
@@ -374,6 +402,7 @@ func _on_mac_timer_timeout():
 	new_mac.connect("please_move_me", _listen_for_mak_movement)
 	macs.push_back(new_mac)
 	add_child(new_mac)
+	new_mac.initialize(curr_mac_timer_time)
 ##
 
 func _listen_for_mak_movement(mak:Mak):
@@ -384,7 +413,8 @@ func _listen_for_mak_movement(mak:Mak):
 func _on_invuln_timer_timeout():
 	if powerup.curr_position == Vector2i(-100, -100):
 		var r = randi() % 100 - (snake.Length - 3)
-		if snake.meets_requirements_for_invuln(InvulnMinNumber) and r <= 30:
+		if snake.Invulnerable == false and snake.meets_requirements_for_invuln(InvulnMinNumber)\
+			and r <= 30:
 			generate_powerup()
 		##
 		$InvulnTimer.start(CheckForPowerupInterval)

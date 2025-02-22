@@ -136,6 +136,7 @@ wait_time = 2.5
 [node name="InvulnTimer" type="Timer" parent="GameControl"]
 
 [node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
+z_index = 2
 
 [node name="JumblingJerryTimer" type="Timer" parent="GameControl"]
 wait_time = 0.7
