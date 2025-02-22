@@ -62,6 +62,7 @@ var game_board:GameBoard
 var curr_move_time:float
 
 var is_dead:bool = false
+var invuln_time_left:float = 0
 
 var Head : Vector2i :
 	get:
@@ -150,8 +151,9 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 
 func start_timers():
 	$MovementTimer.start(curr_move_time)
-	if Invulnerable:
-		$InvulnTimer.start()
+	if invuln_time_left > 0:
+		$InvulnTimer.start(invuln_time_left)
+		invuln_time_left = 0
 	##
 	if len(old_segments) > 0:
 		$RemoveSegmentTimer.start()
@@ -160,6 +162,7 @@ func start_timers():
 
 func stop_timers():
 	$MovementTimer.stop()
+	invuln_time_left = $InvulnTimer.time_left
 	$InvulnTimer.stop()
 	$RemoveSegmentTimer.stop()
 ##

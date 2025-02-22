@@ -201,12 +201,10 @@ func check_for_self():
 
 func player_has_died():
 	set_process(false)
+	turn_off_all_timers()
 	$"../StabilityStatus".death_worm()
 	await get_tree().create_timer(2).timeout
 	GlobalSignals.emit_signal("player_died")
-	$InvulnTimer.stop()
-	$MacTimer.stop()
-	$TissueTimer.stop()
 	GlobalSignals.emit_signal("game_scores",
 									neurons_consumed, macs_killed, tissue_destroyed,
 									Time.get_ticks_msec() - start_time)
