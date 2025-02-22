@@ -51,6 +51,7 @@ func to_lose():
 ##
 
 func to_win():
+	_on_recv_game_scores(PlayerPrefs.Neurons, PlayerPrefs.Macs, PlayerPrefs.Tissue, PlayerPrefs.GameTime)
 	$AP_Newspaper.play("Newspaper")
 	mc.add_theme_constant_override("margin_left", 60)
 	background.visible = true
@@ -73,8 +74,8 @@ func _on_leave_button_pressed():
 func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
 	var score:int = neurons + macs * 2 + tissue * 5
 	
-	# NOTE: Magic number -- 3 minutes or 180,000 ms
-	var past_time_lose_bonus:int = 3 * 60 * 1000
+	# NOTE: Magic number -- 2 minutes or 120,000 ms
+	var past_time_lose_bonus:int = 2 * 60 * 1000
 	var time_modifier:int = past_time_lose_bonus / time
 	
 	if background.visible:
