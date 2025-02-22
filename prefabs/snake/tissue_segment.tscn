@@ -101,6 +101,7 @@ libraries = {
 }
 
 [node name="FX_Splatter" type="CPUParticles2D" parent="."]
+show_behind_parent = true
 emitting = false
 one_shot = true
 explosiveness = 0.9
