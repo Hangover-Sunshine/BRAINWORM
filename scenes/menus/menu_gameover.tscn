@@ -289,7 +289,7 @@ visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
-text = "FAILURE!"
+text = "GAME OVER!"
 horizontal_alignment = 1
 
 [node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
@@ -321,21 +321,26 @@ horizontal_alignment = 1
 [node name="Fail_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
 visible = false
 layout_mode = 2
+theme_override_constants/separation = -30
 script = ExtResource("5_1reb6")
 
 [node name="Caption0" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+text = "\"Better luck next time!\""
 horizontal_alignment = 1
 
 [node name="Caption1" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hr3v5")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("8_m21ru")
+theme_override_font_sizes/font_size = 100
+text = "-"
 horizontal_alignment = 1
 
 [node name="Caption2" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
@@ -344,12 +349,14 @@ text = "
 horizontal_alignment = 1
 
 [node name="Caption3" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
 [node name="Caption4" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hr3v5")
 theme_override_font_sizes/font_size = 50

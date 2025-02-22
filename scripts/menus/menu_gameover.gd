@@ -11,9 +11,9 @@ signal gameover_to_main
 
 @onready var caption0 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption0
 @onready var caption1 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption1
-@onready var caption2 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption2
-@onready var caption3 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption3
-@onready var caption4 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption4
+##@onready var caption2 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption2
+##@onready var caption3 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption3
+##@onready var caption4 = $GameOver_MC/GameOver_VBox/Text_Vbox/Fail_VBox/Caption4
 
 @onready var mc = $GameOver_MC
 @onready var background = $Background
@@ -24,10 +24,22 @@ signal gameover_to_main
 @onready var number_tissue = $GameOver_MC/GameOver_VBox/Text_Vbox/Stats_Vbox/HBox_Stats/VBox_Tissue/Number_Tissue
 
 
-var curr_fact
-var curr_intro = 4 #I'm to lazy to figure out a better way to write this
-var total_fact = 30
-var fact_start: Array = ["Fun fact: ","Did you know...","Hey, guess what?","Fun factoid: "]
+##var curr_fact
+##var curr_intro = 4 #I'm to lazy to figure out a better way to write this
+##var total_fact = 30
+##var fact_start: Array = ["Fun fact: ","Did you know...","Hey, guess what?","Fun factoid: "]
+var encourage: Array = [
+	"Don't let this worm its way into your head!",
+	"Shake off those brain bugs and try again!",
+	"Wriggle your way to victory next time!",
+	"No brain freeze, just brain tease—try again!",
+	"This worm's got nothing on you—go again!",
+	"Keep digging—you're close!",
+	"Don't let this one burrow too deep—go again!",
+	"One more try to outsmart the squirmy foe!",
+	"A little brain squiggle won't stop you!",
+	"Stay sharp! You'll outwit it next time!"
+]
 
 func _ready():
 	GlobalSignals.connect("game_scores", _on_recv_game_scores)
@@ -35,16 +47,17 @@ func _ready():
 
 func to_lose():
 	mc.add_theme_constant_override("margin_left", -180)
-	curr_fact = randi() % total_fact
+	##curr_fact = randi() % total_fact
 	background.visible = false
 	vignette.visible = false
 	lose_title.visible = true
-	caption0.text = fact_start[randi() % curr_intro]
-	caption1.text = lose_text.fact_start[curr_fact]
-	caption2.text = lose_text.fact_mid[curr_fact]
-	caption3.text = lose_text.fact_end[curr_fact]
-	caption4.text = lose_text.fact_sources[curr_fact]
 	lose_text.visible = true
+	caption0.visible = true
+	caption0.text = encourage[randi() % encourage.size()]
+	##caption1.text = lose_text.fact_start[curr_fact]
+	##caption2.text = lose_text.fact_mid[curr_fact]
+	##caption3.text = lose_text.fact_end[curr_fact]
+	##caption4.text = lose_text.fact_sources[curr_fact]
 	win_title.visible = false
 	win_text.visible = false
 	stats_vbox.visible = false
@@ -60,6 +73,7 @@ func to_win():
 	win_text.visible = true
 	lose_title.visible = false
 	lose_text.visible = false
+	caption0.visible = false
 	stats_vbox.visible = true
 ##
 
