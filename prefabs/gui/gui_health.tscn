@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2rmfgilxygvt"]
+[gd_scene load_steps=13 format=3 uid="uid://b2rmfgilxygvt"]
 
 [ext_resource type="Script" path="res://scripts/art/gui_health.gd" id="1_352pu"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="1_tu18b"]
@@ -14,6 +14,97 @@ gradient = SubResource("Gradient_2uca2")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_8bxtu"]
+resource_name = "25%"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.939798, 0.281563, 0.44871, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y5qtt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e07pq"]
+resource_name = "50%"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.97135, 0.429369, 0.53869, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qtlh1"]
+resource_name = "75%"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.984961, 0.572127, 0.639695, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uqyoo"]
+resource_name = "100%"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.987109, 0.614536, 0.672064, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkv63"]
+_data = {
+"100%": SubResource("Animation_uqyoo"),
+"25%": SubResource("Animation_8bxtu"),
+"50%": SubResource("Animation_e07pq"),
+"75%": SubResource("Animation_qtlh1"),
+"RESET": SubResource("Animation_y5qtt")
+}
 
 [node name="GUI_Health" type="Node2D"]
 script = ExtResource("1_352pu")
@@ -72,5 +163,11 @@ points = PackedVector2Array(0, 0, 192, 0, 192, 192, 0, 192)
 closed = true
 width = 11.0
 joint_mode = 2
+
+[node name="AP_Flash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gkv63")
+}
+autoplay = "100%"
 
 [connection signal="value_changed" from="GUI_Health_Bar" to="." method="_on_gui_health_bar_value_changed"]
