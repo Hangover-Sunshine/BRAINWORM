@@ -82,6 +82,7 @@ var need_to_countdown:bool = false
 func _ready():
 	curr_timer_time = MovementTimeChanges[100]
 	curr_mac_timer_time = MacMovementTimeChanges[100]
+	MaxAtATime = MaxMacSpawn[100]
 	GlobalSignals.emit_signal("speed_up", curr_timer_time)
 	GlobalSignals.connect("start_game", _on_game_start)
 	
@@ -124,12 +125,15 @@ func _process(_delta):
 	if threshold > 50 and threshold <= 75:
 		timer_time = MovementTimeChanges[75]
 		curr_mac_timer_time = MacMovementTimeChanges[75]
+		MaxAtATime = MaxMacSpawn[75]
 	elif threshold > 25 and threshold <= 50:
 		timer_time = MovementTimeChanges[50]
 		curr_mac_timer_time = MacMovementTimeChanges[50]
+		MaxAtATime = MaxMacSpawn[50]
 	elif threshold < 25:
 		timer_time = MovementTimeChanges[25]
 		curr_mac_timer_time = MacMovementTimeChanges[25]
+		MaxAtATime = MaxMacSpawn[25]
 	##
 	
 	if timer_time != curr_timer_time:
