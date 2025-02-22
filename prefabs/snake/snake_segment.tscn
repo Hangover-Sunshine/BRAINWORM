@@ -1,12 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=17 format=3 uid="uid://6vqekqvxjoat"]
 
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_7muqm"]
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
 [ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="4_6ikhg"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="5_iyq4i"]
-[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="6_puwnf"]
-[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="7_lbpkt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
@@ -261,19 +259,3 @@ libraries = {
 "": SubResource("AnimationLibrary_5rybp")
 }
 autoplay = "Blink"
-
-[node name="FX_Splatter" type="CPUParticles2D" parent="."]
-show_behind_parent = true
-emitting = false
-one_shot = true
-explosiveness = 0.9
-randomness = 0.9
-texture = ExtResource("6_puwnf")
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 90.0
-scale_amount_min = 0.2
-scale_amount_max = 0.2
-scale_amount_curve = ExtResource("7_lbpkt")
-color = Color(0.929412, 0.501961, 0.6, 1)

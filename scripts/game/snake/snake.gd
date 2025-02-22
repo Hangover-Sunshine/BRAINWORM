@@ -106,6 +106,7 @@ var Invulnerable:bool:
 			##
 			
 			while sid > 2:
+				segments[sid].region_rect = Rect2(64 * 2, 64 * 2, 64, 64)
 				old_segments.push_front(segments[sid])
 				segments.remove_at(sid)
 				curr_positions.remove_at(sid)
