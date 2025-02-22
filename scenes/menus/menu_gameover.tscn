@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgrchpsdeaxdt"]
+[gd_scene load_steps=16 format=3 uid="uid://dgrchpsdeaxdt"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_gameover.gd" id="1_8tecl"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_3u58w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://c78dis4b15gte" path="res://assets/themes/Menu.tres" id="3_bkwce"]
 [ext_resource type="Script" path="res://scripts/art/funfacts.gd" id="5_1reb6"]
 [ext_resource type="Texture2D" uid="uid://coovro6g4hutm" path="res://assets/character/Newspaper.png" id="7_xllsr"]
+[ext_resource type="FontFile" uid="uid://dlvrmq0ebswy1" path="res://assets/fonts/tfonts/quicksand/Quicksand-Light.ttf" id="8_m21ru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8kyo"]
 shader = ExtResource("2_3u58w")
@@ -37,7 +38,8 @@ fill_to = Vector2(0.816514, 0.169725)
 
 [sub_resource type="Animation" id="Animation_qy3kp"]
 resource_name = "Newspaper"
-length = 7.0
+length = 13.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,7 +47,7 @@ tracks/0/path = NodePath("Newspaper:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 2, 2.5),
+"times": PackedFloat32Array(6.5, 8, 8.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1008, -1020), Vector2(1008, 750), Vector2(1008, 750)]
@@ -57,7 +59,7 @@ tracks/1/path = NodePath("Newspaper:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 2, 2.5),
+"times": PackedFloat32Array(6.5, 8, 8.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.523599, 0.0523599, 0.0523599]
@@ -69,7 +71,7 @@ tracks/2/path = NodePath("ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 7),
+"times": PackedFloat32Array(0, 13.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -81,7 +83,7 @@ tracks/3/path = NodePath("Newspaper:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(6, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -93,7 +95,7 @@ tracks/4/path = NodePath("Newspaper:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5, 6),
+"times": PackedFloat32Array(6, 11, 12),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -105,10 +107,34 @@ tracks/5/path = NodePath("ColorRect:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 6, 7),
+"times": PackedFloat32Array(6, 12.5, 13.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MC_Cutscene:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 5.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MC_Cutscene:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 2.75, 4.25, 5.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0cirn"]
@@ -184,6 +210,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MC_Cutscene:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MC_Cutscene:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m41fu"]
@@ -431,6 +481,44 @@ color = Color(0.0766, 0.0500817, 0.0788136, 1)
 visible = false
 position = Vector2(1008, -805)
 texture = ExtResource("7_xllsr")
+
+[node name="MC_Cutscene" type="MarginContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC_Cutscene"]
+layout_mode = 2
+theme_override_constants/separation = -30
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC_Cutscene/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC_Cutscene/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 70
+text = "Many many unfortunate"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MC_Cutscene/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igy8s")
+theme_override_font_sizes/font_size = 70
+text = "months later..."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MC_Cutscene/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_m21ru")
+theme_override_font_sizes/font_size = 100
+text = "-"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Again_Button" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver_MC/GameOver_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]
