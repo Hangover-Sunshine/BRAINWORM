@@ -177,6 +177,7 @@ func _on_player_move():
 	check_for_neuron()
 	check_for_powerup()
 	check_for_tissue_eating_neuron()
+	check_for_tissue_eating_powerup()
 	
 	if update_score:
 		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
@@ -201,6 +202,7 @@ func check_for_self():
 func player_has_died():
 	set_process(false)
 	$"../StabilityStatus".death_worm()
+	await get_tree().create_timer(2).timeout
 	GlobalSignals.emit_signal("player_died")
 	$InvulnTimer.stop()
 	$MacTimer.stop()
@@ -311,6 +313,14 @@ func check_for_tissue_eating_neuron():
 	
 	for mak in macs:
 		if neuron_pos == mak.curr_position:
+			generate_neuron()
+		##
+	##
+##
+
+func check_for_tissue_eating_powerup():
+	for tissue in brainfolds:
+		if powerup.curr_position in tissue.positions:
 			generate_neuron()
 		##
 	##
