@@ -79,6 +79,12 @@ func anim_relaxed_talking():
 	line3.visible = false
 	if lines_to_read == 0:
 		bubble.play("Spawn")
+	if lines_to_read == 4:
+		$AP_Worm.play("Pos1")
+	elif lines_to_read == 6:
+		$AP_Worm.play("Pos2")
+	elif lines_to_read == 8:
+		$AP_Worm.play("Pos3")
 
 ## Trigger everytime a Mac or Tissue dies, but not on neuron grabs.
 func anim_ouch():

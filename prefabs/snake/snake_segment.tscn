@@ -203,7 +203,7 @@ _data = {
 material = SubResource("ShaderMaterial_o64fk")
 texture = ExtResource("2_pddsj")
 region_enabled = true
-region_rect = Rect2(128.566, 128.621, 63.4342, 63.3793)
+region_rect = Rect2(128, 128, 64.0002, 64.0003)
 script = ExtResource("2_kxqpr")
 
 [node name="AP_Worm" type="AnimationPlayer" parent="."]

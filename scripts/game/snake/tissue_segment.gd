@@ -2,6 +2,10 @@ extends Sprite2D
 
 var texture_rect:Rect2
 
+func _ready():
+	self.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+##
+
 func play_grow_animation(rect:Rect2):
 	texture_rect = rect
 	$AP.play("Spawn")

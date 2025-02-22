@@ -92,7 +92,7 @@ _data = {
 [node name="TissueSegment" type="Sprite2D"]
 texture = ExtResource("1_l0vqi")
 region_enabled = true
-region_rect = Rect2(0, 128.675, 64, 63.325)
+region_rect = Rect2(0, 128, 64, 64)
 script = ExtResource("2_4np4l")
 
 [node name="AP" type="AnimationPlayer" parent="."]

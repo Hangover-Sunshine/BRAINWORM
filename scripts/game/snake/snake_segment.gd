@@ -5,6 +5,10 @@ extends Node2D
 
 var tween:Tween
 
+func _ready():
+	self.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+##
+
 func lose_parts():
 	$AP_Worm.play("Despawn")
 
