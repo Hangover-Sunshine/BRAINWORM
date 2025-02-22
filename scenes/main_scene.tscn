@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://5mpw8kapddme"]
+[gd_scene load_steps=8 format=3 uid="uid://5mpw8kapddme"]
 
 [ext_resource type="Script" path="res://scripts/system/main_scene.gd" id="1_8uaxr"]
 [ext_resource type="Script" path="res://addons/verho/resources/TransitionBank.gd" id="1_aeq3o"]
 [ext_resource type="Resource" uid="uid://cokyxyvryfnhm" path="res://prefabs/transitions/black_fade.tres" id="2_wd62i"]
 [ext_resource type="PackedScene" uid="uid://d136umhx2ffrh" path="res://scenes/menus/hub_menu.tscn" id="4_ei6xp"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="5_bgjg3"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="6_p52gh"]
+
+[sub_resource type="Resource" id="Resource_libk2"]
+script = ExtResource("6_p52gh")
+name = "click"
+bus = "UISFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([null])
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_8uaxr")
@@ -13,3 +23,9 @@ script = ExtResource("1_aeq3o")
 TRANSITIONS = Array[Resource("res://addons/verho/resources/TransitionResource.gd")]([ExtResource("2_wd62i")])
 
 [node name="HubMenu" parent="." instance=ExtResource("4_ei6xp")]
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("5_bgjg3")
+label = "ui"
+bus = "UISFX"
+events = Array[ExtResource("6_p52gh")]([SubResource("Resource_libk2")])

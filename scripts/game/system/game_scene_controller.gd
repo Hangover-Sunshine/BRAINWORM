@@ -14,6 +14,8 @@ var _in_cutscene:bool = false
 var _can_pause:bool = false
 var restart:bool = false
 
+var bus:int = -1
+
 func _ready():
 	Verho.connect("loaded_scene", _new_scene_loaded)
 	GlobalSignals.connect("cutscene_finished", _on_cutscene_finished)
@@ -21,6 +23,8 @@ func _ready():
 	GlobalSignals.connect("game_won", _on_game_won)
 	GlobalSignals.connect("player_died", _player_died)
 	$PauseMenu/HubPause.connect("unpause", _unpause_game)
+	
+	bus = AudioServer.get_bus_index("Music")
 	
 	if GlobalSettings.SkipCutscene:
 		_game_scene = GameScene.instantiate()
@@ -47,6 +51,14 @@ func _input(event):
 		if get_tree().paused == false:
 			_game_scene.countdown()
 			_can_pause = false
+		##
+		
+		if get_tree().paused:
+			# apply filter
+			AudioServer.add_bus_effect(bus, AudioEffectLowPassFilter.new())
+		else:
+			# remove filter
+			AudioServer.remove_bus_effect(bus, 0)
 		##
 	##
 	
@@ -77,6 +89,7 @@ func _unpause_game():
 	
 	get_tree().paused = false
 	$PauseMenu.visible = false
+	AudioServer.remove_bus_effect(bus, 0)
 ##
 
 func _on_cutscene_finished():
