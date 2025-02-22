@@ -114,6 +114,9 @@ func _process(_delta):
 	##
 	
 	if jerry_health <= 0:
+		$InvulnTimer.stop()
+		$MacTimer.stop()
+		$TissueTimer.stop()
 		snake._on_player_died()
 		GlobalSignals.emit_signal("game_won")
 		set_process(false)
@@ -164,9 +167,10 @@ func check_for_edge():
 	if snake.X < 0 or snake.X > GRID_WIDTH_COUNT or\
 		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT - 1:
 		GlobalSignals.emit_signal("player_died")
-		GlobalSignals.emit_signal("game_scores",
-									neurons_consumed, macs_killed, tissue_destroyed,
-									Time.get_ticks_msec() - start_time)
+		emit_scores()
+		$InvulnTimer.stop()
+		$MacTimer.stop()
+		$TissueTimer.stop()
 		set_process(false)
 	##
 ##
@@ -174,6 +178,9 @@ func check_for_edge():
 func check_for_self():
 	if snake.self_overlaps():
 		GlobalSignals.emit_signal("player_died")
+		$InvulnTimer.stop()
+		$MacTimer.stop()
+		$TissueTimer.stop()
 		emit_scores()
 		set_process(false)
 	##
@@ -252,6 +259,9 @@ func check_for_enemy():
 									neurons_consumed, macs_killed, tissue_destroyed,
 									Time.get_ticks_msec() - start_time)
 		set_process(false)
+		$InvulnTimer.stop()
+		$MacTimer.stop()
+		$TissueTimer.stop()
 	##
 ##
 
