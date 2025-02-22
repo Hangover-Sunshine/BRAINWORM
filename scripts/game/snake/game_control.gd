@@ -75,6 +75,7 @@ func _ready():
 	curr_timer_time = MovementTimeChanges[100]
 	curr_mac_timer_time = MacMovementTimeChanges[100]
 	GlobalSignals.emit_signal("speed_up", curr_timer_time)
+	GlobalSignals.connect("start_game", _on_game_start)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/snake/powerup.tscn").instantiate()
@@ -86,9 +87,17 @@ func _ready():
 	jerry_health = BrainHealth
 	
 	#$TissueTimer.start()
-	$MacTimer.start()
+	#$MacTimer.start()
 	start_time = 0
 	set_process(false)
+##
+
+func _on_game_start():
+	GlobalSignals.emit_signal("game_status", false)
+	snake.start_timers()
+	start_time = Time.get_ticks_msec()
+	$InvulnTimer.start(CheckForPowerupInterval)
+	set_process(true)
 ##
 
 func _process(_delta):
@@ -109,6 +118,7 @@ func _process(_delta):
 	
 	if timer_time != curr_timer_time:
 		curr_timer_time = timer_time
+		$"../StabilityStatus".regular_shake()
 		GlobalSignals.emit_signal("speed_up", curr_timer_time)
 		GlobalSignals.emit_signal("speed_up_macs", curr_mac_timer_time)
 	##
@@ -118,6 +128,7 @@ func _process(_delta):
 		$MacTimer.stop()
 		$TissueTimer.stop()
 		snake._on_player_died()
+		$"../StabilityStatus".death_politician()
 		GlobalSignals.emit_signal("game_won")
 		set_process(false)
 	##
@@ -125,10 +136,7 @@ func _process(_delta):
 
 func initialize_ui():
 	game_board.initialize_ui()
-	snake.start_timers()
-	start_time = Time.get_ticks_msec()
-	$InvulnTimer.start(CheckForPowerupInterval)
-	set_process(true)
+	$"../StabilityStatus".delay_gamestart()
 ##
 
 func hide_ui():
@@ -142,9 +150,6 @@ func initialize_board():
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	generate_neuron()
-	
-	GlobalSignals.emit_signal("game_status", false)
-	
 	# TODO: Begin count down
 ##
 
@@ -166,27 +171,23 @@ func _on_player_move():
 func check_for_edge():
 	if snake.X < 0 or snake.X > GRID_WIDTH_COUNT or\
 		snake.Y < 0 or snake.Y > GRID_HEIGHT_COUNT - 1:
-		GlobalSignals.emit_signal("player_died")
-		emit_scores()
-		$InvulnTimer.stop()
-		$MacTimer.stop()
-		$TissueTimer.stop()
-		set_process(false)
+		player_has_died()
 	##
 ##
 
 func check_for_self():
 	if snake.self_overlaps():
-		GlobalSignals.emit_signal("player_died")
-		$InvulnTimer.stop()
-		$MacTimer.stop()
-		$TissueTimer.stop()
-		emit_scores()
-		set_process(false)
+		player_has_died()
 	##
 ##
 
-func emit_scores():
+func player_has_died():
+	set_process(false)
+	$"../StabilityStatus".death_worm()
+	GlobalSignals.emit_signal("player_died")
+	$InvulnTimer.stop()
+	$MacTimer.stop()
+	$TissueTimer.stop()
 	GlobalSignals.emit_signal("game_scores",
 									neurons_consumed, macs_killed, tissue_destroyed,
 									Time.get_ticks_msec() - start_time)
@@ -254,14 +255,7 @@ func check_for_enemy():
 	##
 	
 	if gameover:
-		GlobalSignals.emit_signal("player_died")
-		GlobalSignals.emit_signal("game_scores",
-									neurons_consumed, macs_killed, tissue_destroyed,
-									Time.get_ticks_msec() - start_time)
-		set_process(false)
-		$InvulnTimer.stop()
-		$MacTimer.stop()
-		$TissueTimer.stop()
+		player_has_died()
 	##
 ##
 
@@ -416,7 +410,6 @@ func _on_mac_timer_timeout():
 ##
 
 func _listen_for_mak_movement(mak:Mak):
-	#mak.global_position = game_board.get_world_position_at(mak.curr_position)
 	mak.move(game_board.get_world_position_at(mak.curr_position))
 ##
 

@@ -14,4 +14,6 @@ signal game_scores(neurons:int, macs:int, tissue:int, time:int)
 
 signal speed_up(new_time:float)
 signal speed_up_macs(new_time:float)
+
+signal start_game
 # GAMEPLAY ###############################

@@ -151,6 +151,9 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 
 func start_timers():
 	$MovementTimer.start()
+	if Invulnerable:
+		$InvulnTimer.start()
+	##
 ##
 
 func add_segment():

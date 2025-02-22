@@ -1,19 +1,15 @@
 extends CanvasLayer
 
 func populate_flesh(flesh:int):
-	$GUI_Flesh/Number_Flesh.text = str(flesh)
+	$GUI_Flesh/Number_Flesh.text = "%03d" % flesh
 ##
 
 func populate_macs(macs:int):
-	$GUI_Macs/Number_Macs.text = str(macs)
+	$GUI_Macs/Number_Macs.text = "%03d" % macs
 ##
 
 func populate_tissue(tissue:int):
-	$GUI_Tissue/Number_Tissue.text = str(tissue)
-##
-
-func populate_stage(stage:int):
-	$GUI_Macs/Number_Macs.text = str(stage)
+	$GUI_Tissue/Number_Tissue.text = "%03d" % tissue
 ##
 
 func populate_score(score:int):

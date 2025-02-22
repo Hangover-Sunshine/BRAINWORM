@@ -21,3 +21,7 @@ func death_worm():
 func shake():
 	$"../Camera".apply_shake()
 ##
+
+func start_game():
+	GlobalSignals.start_game.emit()
+##
