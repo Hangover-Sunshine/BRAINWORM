@@ -281,7 +281,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
-text = "CONGRATS!"
+text = "CONGRATS"
 horizontal_alignment = 1
 
 [node name="Lose_Title" type="Label" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]
@@ -289,7 +289,7 @@ visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igy8s")
 theme_override_font_sizes/font_size = 150
-text = "GAME OVER!"
+text = "GAME OVER"
 horizontal_alignment = 1
 
 [node name="Win_VBox" type="VBoxContainer" parent="GameOver_MC/GameOver_VBox/Text_Vbox"]

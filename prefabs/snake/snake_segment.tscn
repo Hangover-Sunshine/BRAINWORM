@@ -1,17 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=20 format=3 uid="uid://6vqekqvxjoat"]
 
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_7muqm"]
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
 [ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="4_6ikhg"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="5_iyq4i"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="6_sy3ai"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="7_raijf"]
+[ext_resource type="Script" path="res://prefabs/snake/FX_Splatter.gd" id="8_fen8w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
 [sub_resource type="Animation" id="Animation_04863"]
 resource_name = "Despawn"
 length = 0.3
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,6 +26,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.07),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s1a8c"]
@@ -38,6 +53,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v1yfp"]
@@ -259,3 +286,27 @@ libraries = {
 "": SubResource("AnimationLibrary_5rybp")
 }
 autoplay = "Blink"
+
+[node name="FX_Splatter" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.5
+texture = ExtResource("6_sy3ai")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 90.0
+scale_amount_min = 0.35
+scale_amount_max = 0.35
+scale_amount_curve = ExtResource("7_raijf")
+color = Color(0.929412, 0.501961, 0.6, 1)
+script = ExtResource("8_fen8w")
+
+[node name="Timer" type="Timer" parent="FX_Splatter"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="tree_entered" from="FX_Splatter" to="FX_Splatter" method="_on_tree_entered"]
+[connection signal="timeout" from="FX_Splatter/Timer" to="FX_Splatter" method="_on_timer_timeout"]

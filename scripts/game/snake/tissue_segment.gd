@@ -6,6 +6,18 @@ func _ready():
 	self.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 ##
 
+func explode():
+	var splatter = $FX_Splatter
+	var timer = splatter.get_node("Timer")
+	timer.start()
+	splatter.emitting = true
+	var global_position = splatter.global_position
+	var game_scene = get_tree().current_scene.get_node("GameControlScene/GameScene")
+	var game_control = game_scene.get_node("GameControl")
+	splatter.get_parent().remove_child(splatter)
+	game_control.add_child(splatter)
+	splatter.global_position = global_position
+
 func play_grow_animation(rect:Rect2):
 	texture_rect = rect
 	$AP.play("Spawn")
@@ -21,4 +33,5 @@ func change_texture_to(rect:Rect2):
 
 func kill():
 	$AP.play("Despawn")
+	##explode()
 ##

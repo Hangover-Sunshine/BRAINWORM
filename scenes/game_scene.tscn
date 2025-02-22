@@ -118,7 +118,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:visible")
+tracks/0/path = NodePath("312Go:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:scale")
+tracks/1/path = NodePath("312Go:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -142,7 +142,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/path = NodePath("312Go:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -154,7 +154,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Label:text")
+tracks/3/path = NodePath("312Go/Label:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -166,7 +166,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D:rotation")
+tracks/4/path = NodePath("312Go:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -189,10 +189,34 @@ tracks/5/keys = {
 "method": &"start_game"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.35, 0.6, 0.7, 0.8, 1.05, 1.3, 1.4, 1.5, 1.75, 2, 2.1, 2.2, 2.4, 2.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_leuvx"]
 resource_name = "Death_Politician"
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -291,6 +315,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.392157)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5uyxl"]
 resource_name = "Death_Worm"
@@ -344,6 +392,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [8.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FX_Blood:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.74902, 0.141176, 0.32549, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_triaw"]
@@ -411,7 +495,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D:visible")
+tracks/5/path = NodePath("312Go:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -423,7 +507,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Node2D:scale")
+tracks/6/path = NodePath("312Go:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -435,7 +519,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Node2D:modulate")
+tracks/7/path = NodePath("312Go:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -447,7 +531,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Node2D:rotation")
+tracks/8/path = NodePath("312Go:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -480,10 +564,33 @@ tracks/10/keys = {
 "update": 0,
 "values": [0.5]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.74902, 0.141176, 0.32549, 0.294118)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_83phn"]
 resource_name = "Regular"
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -582,6 +689,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.5]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.392157), Color(0.74902, 0.141176, 0.32549, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54e0m"]
 _data = {
@@ -653,19 +784,29 @@ scale = Vector2(0.725, 0.725)
 layer = 2
 script = ExtResource("7_7ose1")
 
+[node name="ColorRect" type="ColorRect" parent="StabilityStatus"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.74902, 0.141176, 0.32549, 0.294118)
+
 [node name="AP_Stability" type="AnimationPlayer" parent="StabilityStatus"]
 libraries = {
 "": SubResource("AnimationLibrary_54e0m")
 }
 autoplay = "RESET"
 
-[node name="Node2D" type="Node2D" parent="StabilityStatus"]
+[node name="312Go" type="Node2D" parent="StabilityStatus"]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(827, 540)
 rotation = -0.261799
 
-[node name="MarginContainer" type="MarginContainer" parent="StabilityStatus/Node2D"]
+[node name="MarginContainer" type="MarginContainer" parent="StabilityStatus/312Go"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -680,7 +821,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="StabilityStatus/Node2D"]
+[node name="Label" type="Label" parent="StabilityStatus/312Go"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -696,6 +837,43 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("8_lldiq")
 theme_override_font_sizes/font_size = 175
 text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PercentRemaining" type="Node2D" parent="StabilityStatus"]
+position = Vector2(827, 540)
+
+[node name="MarginContainer" type="MarginContainer" parent="StabilityStatus/PercentRemaining"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="StabilityStatus/PercentRemaining"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_lldiq")
+theme_override_font_sizes/font_size = 175
+text = "%%%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
