@@ -186,8 +186,11 @@ func check_for_enemy():
 		
 		remove.clear()
 		for makIndx in range(len(macs)):
-			if snake.Head == macs[makIndx].curr_position:
+			if macs[makIndx] != null and snake.Head == macs[makIndx].curr_position:
 				macs[makIndx].kill_it()
+				remove.push_back(makIndx)
+			##
+			if macs[makIndx] == null and not(makIndx in remove):
 				remove.push_back(makIndx)
 			##
 		##

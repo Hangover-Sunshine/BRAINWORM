@@ -103,7 +103,8 @@ func kill_it():
 	
 	is_alive = false
 	
-	$Art_Mac.kill_mac()
+	art_mac.remove_marker()
+	art_mac.kill_mac()
 	$MovementTimer.stop()
 	$MovementTimer.disconnect("timeout", _on_movement_timer_timeout)
 	$MovementTimer.start(1.5)

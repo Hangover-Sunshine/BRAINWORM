@@ -95,6 +95,10 @@ var Invulnerable:bool:
 				prev_positions.remove_at(sid)
 				sid -= 1
 			##
+			
+			for i in range(0, 3):
+				segments[i].is_ramming(0)
+			##
 		##
 	##
 ##
@@ -133,6 +137,9 @@ func add_segment():
 	var snake_seg = SNAKE_SEGMENT.instantiate()
 	snake_seg.global_position = game_board.get_world_position_at(curr_positions[-1])
 	add_child(snake_seg)
+	if Invulnerable:
+		snake_seg.is_ramming(segments[0].get_time_in_ap())
+	##
 	segments.push_back(snake_seg)
 ##
 
@@ -149,6 +156,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
 		move_dir = MOVE_RIGHT
 	##
+	
+	if Invulnerable:
+		var time_left = "%02d" % $InvulnTimer.time_left
+		for seg in segments:
+			seg.update_text(time_left)
+		##
+	##
 ##
 
 func _on_movement_timer_timeout():
@@ -163,11 +177,13 @@ func _on_movement_timer_timeout():
 		return
 	##
 	
-	segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
+	#segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
+	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), 0.08)
 	
 	for i in range(1, len(curr_positions)):
 		curr_positions[i] = prev_positions[i - 1]
-		segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
+		#segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
+		segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), 0.08)
 	##
 	
 	draw_snake()
@@ -210,11 +226,14 @@ func _on_remove_segment_timer_timeout():
 	else:
 		return
 	##
-	old_segments[-1].kill()
+	old_segments[-1].lose_parts()
 	old_segments.remove_at(len(old_segments) - 1)
 ##
 
 func _on_invuln_timer_timeout():
 	invuln_over.emit()
 	_invuln = false
+	for i in range(len(curr_positions)):
+		segments[i].not_ramming()
+	##
 ##
