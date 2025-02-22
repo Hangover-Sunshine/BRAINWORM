@@ -61,7 +61,6 @@ var powerup
 
 var macs:Array[Mak]
 
-var brainfold_spawns:int = 0
 var brainfolds:Array[Brainwall]
 var growable_folds:Array[Brainwall]
 
@@ -202,6 +201,7 @@ func check_for_self():
 func player_has_died():
 	set_process(false)
 	turn_off_all_timers()
+	snake._on_player_died()
 	$"../StabilityStatus".death_worm()
 	await get_tree().create_timer(2).timeout
 	GlobalSignals.emit_signal("player_died")
@@ -232,7 +232,6 @@ func check_for_enemy():
 		
 		for t in remove:
 			brainfolds.remove_at(t)
-			brainfold_spawns -= 1
 			tissue_destroyed += 2
 			jerry_health -= CostOfTissue
 			update_score = true
@@ -358,7 +357,7 @@ func generate_neuron():
 func _on_tissue_timer_timeout():
 	var rand:int = (randi() % 100) + 1
 	
-	if rand <= 100 / (1 + brainfold_spawns) and len(brainfolds) < MaxTissueNodes:
+	if len(brainfolds) == 0 or (rand <= 100 / (1 + len(brainfolds)) and len(brainfolds) < MaxTissueNodes):
 		var inst:Brainwall = Brainwall.new()
 		inst.game_board = game_board
 		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
@@ -391,8 +390,6 @@ func _on_tissue_timer_timeout():
 		inst.initialize(position)
 		brainfolds.push_back(inst)
 		growable_folds.push_back(inst)
-		
-		brainfold_spawns += 1
 	else:
 		# NOTE: Pick a random one and grow
 		rand = randi() % len(growable_folds)
