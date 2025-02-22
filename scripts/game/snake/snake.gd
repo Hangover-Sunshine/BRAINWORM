@@ -194,8 +194,7 @@ func _on_movement_timer_timeout():
 	##
 	
 	#segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
-	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), curr_move_time / 2)
-	segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
+	segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), 0.05)
 	
 	for i in range(1, len(curr_positions)):
 		curr_positions[i] = prev_positions[i - 1]
