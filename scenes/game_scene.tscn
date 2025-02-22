@@ -540,7 +540,7 @@ script = ExtResource("2_r1gp1")
 MaxTissueNodes = 6
 MinRangeOfGrowth = 6
 MaxRangeOfGrowth = 10
-BrainHealth = 50
+BrainHealth = 10
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
 

@@ -93,12 +93,14 @@ func fade_out_finished():
 		_curr_cutscene.queue_free()
 		_game_scene = GameScene.instantiate()
 		add_child(_game_scene)
+		internal_fade_controller.play("fade_in")
 	elif _curr_cutscene == null and _win_scene == null:
 		_in_cutscene = true
 		_game_scene.queue_free()
 		await get_tree().create_timer(1.5).timeout
 		_game_scene = GameScene.instantiate()
 		add_child(_game_scene)
+		internal_fade_controller.play("fade_in")
 	elif _curr_cutscene == null and _win_scene != null:
 		_game_scene.queue_free()
 		await get_tree().create_timer(1.5).timeout
@@ -106,8 +108,8 @@ func fade_out_finished():
 		_win_scene.to_win()
 		_win_scene.connect("gameover_to_game", _on_gameover_to_game)
 		_win_scene.connect("gameover_to_main", _on_menu_gameover_gameover_to_main)
+		internal_fade_controller.play("fade_in_white")
 	##
-	internal_fade_controller.play("fade_in")
 	if restart:
 		restart = false
 	##
@@ -130,8 +132,8 @@ func _on_menu_gameover_gameover_to_main():
 ##
 
 func _on_game_won():
+	internal_fade_controller.play("fade_out_white")
 	_win_scene = load("res://scenes/menus/menu_gameover.tscn").instantiate()
-	internal_fade_controller.play("fade_out")
 ##
 
 func _on_cutscene_skip_timer_timeout():

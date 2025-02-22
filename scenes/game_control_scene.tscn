@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b82wbqhe3bm8g"]
+[gd_scene load_steps=15 format=3 uid="uid://b82wbqhe3bm8g"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_controller.gd" id="1_1jlle"]
 [ext_resource type="PackedScene" uid="uid://bbu36oi204on1" path="res://scenes/cutscenes/example_cutscene.tscn" id="2_mmsog"]
@@ -126,11 +126,59 @@ tracks/0/keys = {
 "values": [Color(0.12549, 0.12549, 0.12549, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_oefvr"]
+resource_name = "fade_out_white"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_out_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_quyp7"]
+resource_name = "fade_in_white"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade/FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsc2k"]
 _data = {
 "fade_in": SubResource("Animation_n6hay"),
+"fade_in_white": SubResource("Animation_quyp7"),
 "fade_out": SubResource("Animation_kcquc"),
-"fade_out_no_call": SubResource("Animation_mke2h")
+"fade_out_no_call": SubResource("Animation_mke2h"),
+"fade_out_white": SubResource("Animation_oefvr")
 }
 
 [node name="GameControlScene" type="Node2D"]
@@ -175,7 +223,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.12549, 0.12549, 0.12549, 0)
 
 [node name="InternalFadeController" type="AnimationPlayer" parent="."]
 libraries = {
