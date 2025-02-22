@@ -841,6 +841,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PercentRemaining" type="Node2D" parent="StabilityStatus"]
+visible = false
 position = Vector2(827, 540)
 
 [node name="MarginContainer" type="MarginContainer" parent="StabilityStatus/PercentRemaining"]

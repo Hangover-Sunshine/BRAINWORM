@@ -15,11 +15,14 @@ func explode():
 	timer.start()
 	splatter.emitting = true
 	var global_position = splatter.global_position
-	var game_scene = get_tree().current_scene.get_node("GameControlScene/GameScene")
-	var game_control = game_scene.get_node("GameControl")
-	splatter.get_parent().remove_child(splatter)
-	game_control.add_child(splatter)
-	splatter.global_position = global_position
+	var game_scene = get_tree().root.find_child("GameScene", true, false)
+	if game_scene:
+		var game_control = game_scene.find_child("GameControl", true, false)
+		if game_control:
+			splatter.get_parent().remove_child(splatter)
+			game_control.add_child(splatter)
+			splatter.global_position = global_position
+
 
 func lose_parts():
 	explode()
