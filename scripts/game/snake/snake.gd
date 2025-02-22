@@ -11,13 +11,6 @@ const HEAD_RECTS:Dictionary = {
 	MOVE_RIGHT: Rect2(SEG_WIDTH * 3, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
 }
 
-const FACE_DIRECTIONS:Dictionary = {
-	MOVE_UP: 180,
-	MOVE_DOWN: 0,
-	MOVE_LEFT: 90,
-	MOVE_RIGHT: 270
-}
-
 const BODY_SEGMENTS:Dictionary = {
 	[MOVE_UP, MOVE_DOWN]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
 	[MOVE_DOWN, MOVE_UP]: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 0, SEG_WIDTH, SEG_HEIGHT),
@@ -145,8 +138,6 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	##
 	
 	draw_snake()
-	segments[0].turn_on_face()
-	segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
 ##
 
 func start_timers():
