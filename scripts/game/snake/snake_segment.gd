@@ -23,6 +23,15 @@ func get_time_in_ap():
 	return $AP_Ram.current_animation_position
 ##
 
+func turn_on_face():
+	$Face.visible = true
+	$Face/AP_Face.play("Blink")
+##
+
+func rotate_face(look:float):
+	$Face.rotation_degrees = look
+##
+
 func move_segment(target_position, offseted):
 	if offseted <= 0:
 		offseted = 0.05
