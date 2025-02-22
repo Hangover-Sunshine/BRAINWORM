@@ -44,6 +44,12 @@ static var GRID_HEIGHT_COUNT:int = 15
 	50: 1.5,
 	25: 1.3,
 }
+@export var MaxMacSpawn:Dictionary = {
+	100: 2,
+	75: 4,
+	50: 8,
+	25: 10
+}
 
 @onready var game_board = $Layout_Game
 @onready var snake = $Snake
@@ -384,6 +390,8 @@ func _on_tissue_timer_timeout():
 			growable_folds.remove_at(rand)
 		##
 	##
+	
+	$TissueTimer.start(4)
 ##
 
 func _on_mac_timer_timeout():
@@ -413,6 +421,7 @@ func _on_mac_timer_timeout():
 	macs.push_back(new_mac)
 	add_child(new_mac)
 	new_mac.initialize(curr_mac_timer_time)
+	$MacTimer.start(3)
 ##
 
 func _listen_for_mak_movement(mak:Mak):
@@ -472,20 +481,26 @@ func _on_jumbling_jerry_timer_timeout():
 
 func turn_on_all_timers():
 	$InvulnTimer.start()
-	#$MacTimer.start()
-	#$TissueTimer.start()
+	$MacTimer.start(12)
+	$TissueTimer.start(10)
+	
 	snake.start_timers()
-	# TODO: Tissues
-	# TODO: Macs
+	
+	for mac in macs:
+		mac.start_timer()
+	##
 ##
 
 func turn_off_all_timers():
 	$InvulnTimer.stop()
 	$MacTimer.stop()
 	$TissueTimer.stop()
+	
 	snake.stop_timers()
-	# TODO: Tissues
-	# TODO: Macs
+	
+	for mac in macs:
+		mac.stop_timer()
+	##
 ##
 
 func countdown():

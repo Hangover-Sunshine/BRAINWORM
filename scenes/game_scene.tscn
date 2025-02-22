@@ -546,9 +546,11 @@ BrainHealth = 50
 
 [node name="TissueTimer" type="Timer" parent="GameControl"]
 wait_time = 4.0
+one_shot = true
 
 [node name="MacTimer" type="Timer" parent="GameControl"]
 wait_time = 2.5
+one_shot = true
 
 [node name="InvulnTimer" type="Timer" parent="GameControl"]
 

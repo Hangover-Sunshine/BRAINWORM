@@ -140,3 +140,11 @@ func _on_mac_movespeed_changed(new_time:float):
 		_indicate_moving = new_time / 2
 	##
 ##
+
+func start_timer():
+	$MovementTimer.start()
+##
+
+func stop_timer():
+	$MovementTimer.stop()
+##
