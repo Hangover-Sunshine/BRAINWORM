@@ -31,6 +31,7 @@ func move_segment(target_position, offseted):
 		tween.kill() # Abort the previous animation
 	##
 	tween = create_tween()
-	tween.tween_property(self, "global_position", target_position, offseted)\
-			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "global_position", target_position, offseted)
+	#tween.tween_property(self, "global_position", target_position, offseted)\
+			#.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 ##
