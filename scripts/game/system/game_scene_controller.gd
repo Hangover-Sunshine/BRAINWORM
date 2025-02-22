@@ -43,10 +43,15 @@ func _input(event):
 	if _can_pause and event.is_action_pressed("pause"):
 		get_tree().paused = !get_tree().paused
 		$PauseMenu.visible = get_tree().paused
+		
+		if get_tree().paused == false:
+			_game_scene.countdown()
+			_can_pause = false
+		##
 	##
 	
 	if _in_cutscene and event.is_action_pressed("cutscene_skip"):
-		$CutsceneSkipTimer.start(3)
+		$CutsceneSkipTimer.start(1.5)
 	elif _in_cutscene and event.is_action_released("cutscene_skip"):
 		$CutsceneSkipTimer.stop()
 	##
@@ -67,8 +72,11 @@ func _player_died():
 ##
 
 func _unpause_game():
+	_can_pause = false
+	_game_scene.countdown()
+	
 	get_tree().paused = false
-	$PauseMenu.visible = get_tree().paused
+	$PauseMenu.visible = false
 ##
 
 func _on_cutscene_finished():

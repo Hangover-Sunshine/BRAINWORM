@@ -27,3 +27,7 @@ func game_restarting():
 func freeze():
 	get_tree().paused = true
 ##
+
+func countdown():
+	game_control.countdown()
+##

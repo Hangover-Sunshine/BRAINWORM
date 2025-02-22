@@ -121,9 +121,7 @@ var Invulnerable:bool:
 ##
 
 func _on_player_died():
-	$MovementTimer.stop()
-	$RemoveSegmentTimer.stop()
-	$InvulnTimer.stop()
+	stop_timers()
 	set_process(false)
 	is_dead = true
 ##
@@ -150,10 +148,19 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 ##
 
 func start_timers():
-	$MovementTimer.start()
+	$MovementTimer.start(curr_move_time)
 	if Invulnerable:
 		$InvulnTimer.start()
 	##
+	if len(old_segments) > 0:
+		$RemoveSegmentTimer.start()
+	##
+##
+
+func stop_timers():
+	$MovementTimer.stop()
+	$InvulnTimer.stop()
+	$RemoveSegmentTimer.stop()
 ##
 
 func add_segment():

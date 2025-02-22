@@ -71,6 +71,8 @@ var jumble_jerry:bool = true
 var jerry_health:int
 var threshold:int = 100
 
+var need_to_countdown:bool = false
+
 func _ready():
 	curr_timer_time = MovementTimeChanges[100]
 	curr_mac_timer_time = MacMovementTimeChanges[100]
@@ -93,14 +95,22 @@ func _ready():
 ##
 
 func _on_game_start():
+	print("here!")
 	GlobalSignals.emit_signal("game_status", false)
-	snake.start_timers()
+	turn_on_all_timers()
 	start_time = Time.get_ticks_msec()
 	$InvulnTimer.start(CheckForPowerupInterval)
+	need_to_countdown = false
 	set_process(true)
 ##
 
 func _process(_delta):
+	if need_to_countdown:
+		$"../StabilityStatus".delay_gamestart()
+		set_process(false)
+		return
+	##
+	
 	game_board.update_time(Time.get_ticks_msec() - start_time)
 	
 	threshold = floori(jerry_health / float(BrainHealth) * 100)
@@ -124,10 +134,7 @@ func _process(_delta):
 	##
 	
 	if jerry_health <= 0:
-		$InvulnTimer.stop()
-		$MacTimer.stop()
-		$TissueTimer.stop()
-		snake._on_player_died()
+		turn_off_all_timers()
 		$"../StabilityStatus".death_politician()
 		GlobalSignals.emit_signal("game_won")
 		set_process(false)
@@ -150,7 +157,6 @@ func initialize_board():
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	generate_neuron()
-	# TODO: Begin count down
 ##
 
 func _on_player_move():
@@ -462,4 +468,27 @@ func generate_powerup():
 
 func _on_jumbling_jerry_timer_timeout():
 	jumble_jerry = true
+##
+
+func turn_on_all_timers():
+	$InvulnTimer.start()
+	#$MacTimer.start()
+	#$TissueTimer.start()
+	snake.start_timers()
+	# TODO: Tissues
+	# TODO: Macs
+##
+
+func turn_off_all_timers():
+	$InvulnTimer.stop()
+	$MacTimer.stop()
+	$TissueTimer.stop()
+	snake.stop_timers()
+	# TODO: Tissues
+	# TODO: Macs
+##
+
+func countdown():
+	turn_off_all_timers()
+	need_to_countdown = true
 ##
