@@ -95,14 +95,11 @@ func _ready():
 	
 	jerry_health = BrainHealth
 	
-	#$TissueTimer.start()
-	#$MacTimer.start()
 	start_time = 0
 	set_process(false)
 ##
 
 func _on_game_start():
-	print("here!")
 	GlobalSignals.emit_signal("game_status", false)
 	turn_on_all_timers()
 	start_time = Time.get_ticks_msec()
@@ -147,6 +144,10 @@ func _process(_delta):
 		turn_off_all_timers()
 		$"../StabilityStatus".death_politician()
 		GlobalSignals.emit_signal("game_won")
+		PlayerPrefs.Neurons = neurons_consumed
+		PlayerPrefs.Tissue = tissue_destroyed
+		PlayerPrefs.Macs = macs_killed
+		PlayerPrefs.GameTime = Time.get_ticks_msec() - start_time
 		set_process(false)
 	##
 ##
@@ -217,6 +218,7 @@ func check_for_enemy():
 		for tissue in brainfolds:
 			if snake.Head in tissue.positions:
 				tissue.remove_wall_at(snake.Head)
+				tissue_destroyed += 1
 				if len(tissue.positions) == 0:
 					remove.push_back(brainfolds.find(tissue))
 				##
@@ -231,7 +233,7 @@ func check_for_enemy():
 		for t in remove:
 			brainfolds.remove_at(t)
 			brainfold_spawns -= 1
-			tissue_destroyed += 1
+			tissue_destroyed += 2
 			jerry_health -= CostOfTissue
 			update_score = true
 		##

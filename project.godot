@@ -34,6 +34,7 @@ GlobalSettings="*res://scripts/autoloads/global_settings.gd"
 SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
 MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 Verho="*res://addons/verho/transition_manager/verho.tscn"
+PlayerPrefs="*res://scripts/autoloads/player_prefs.gd"
 
 [display]
 
