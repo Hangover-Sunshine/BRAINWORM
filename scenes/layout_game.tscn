@@ -1,17 +1,72 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=23 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
-[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_gki5t"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
 [ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="3_wku17"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="4_b4rxw"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="5_qqtgp"]
 [ext_resource type="Script" path="res://scripts/game/gui/GUI.gd" id="7_wkiok"]
-[ext_resource type="Shader" path="res://assets/shaders/distort_vertex.gdshader" id="9_ewnjh"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="9_g3w7r"]
 [ext_resource type="PackedScene" uid="uid://b2rmfgilxygvt" path="res://prefabs/gui/gui_health.tscn" id="10_f7kyj"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="10_sk0h5"]
+
+[sub_resource type="Shader" id="Shader_84wlj"]
+code = "shader_type canvas_item;
+uniform int OCTAVE = 6;
+uniform float mulscale = 5.0;
+uniform float height = 0.6;
+uniform float tide = 0.1;
+uniform float foamthickness = 0.1;
+uniform float timescale = 1.0;
+uniform float waterdeep = 0.3;
+uniform vec4 WATER_COL : source_color =  vec4(0.04, 0.38, 0.88, 1.0);
+uniform vec4 WATER2_COL : source_color =  vec4(0.04, 0.35, 0.78, 1.0);
+uniform vec4 FOAM_COL : source_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
+
+
+float rand(vec2 input){
+	return fract(sin(dot(input,vec2(23.53,44.0)))*42350.45);
+}
+
+float perlin(vec2 input){
+	vec2 i = floor(input);
+	vec2 j = fract(input);
+	vec2 coord = smoothstep(0.,1.,j);
+	
+	float a = rand(i);
+	float b = rand(i+vec2(1.0,0.0));
+	float c = rand(i+vec2(0.0,1.0));
+	float d = rand(i+vec2(1.0,1.0));
+
+	return mix(mix(a,b,coord.x),mix(c,d,coord.x),coord.y);
+}
+
+float fbm(vec2 input){
+	float value = 0.0;
+	float scale = 0.5;
+	
+	for(int i = 0; i < OCTAVE; i++){
+		value += perlin(input)*scale;
+		input*=2.0;
+		scale*=0.5;
+	}
+	return value;
+}
+
+void fragment(){
+	float newtime = TIME*timescale;
+	float fbmval = fbm(vec2(UV.x*mulscale+0.2*sin(0.3*newtime)+0.15*newtime,-0.05*newtime+UV.y*mulscale+0.1*cos(0.68*newtime)));
+	float fbmvalshadow = fbm(vec2(UV.x*mulscale+0.2*sin(-0.6*newtime + 25.0 * UV.y)+0.15*newtime+3.0,-0.05*newtime+UV.y*mulscale+0.13*cos(-0.68*newtime))-7.0+0.1*sin(0.43*newtime));
+	float myheight = height+tide*sin(newtime+5.0*UV.x-8.0*UV.y);
+	float shadowheight = height+tide*1.3*cos(newtime+2.0*UV.x-2.0*UV.y);
+	float withinFoam = step(myheight, fbmval)*step(fbmval, myheight + foamthickness);
+	float shadow = (1.0-withinFoam)*step(shadowheight, fbmvalshadow)*step(fbmvalshadow, shadowheight + foamthickness * 0.7);
+	COLOR = withinFoam*FOAM_COL + shadow*WATER2_COL + ((1.0-withinFoam)*(1.0-shadow))*WATER_COL;
+	//COLOR = vec4(1.0,1.0,1.0,fbmval);
+}"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evubc"]
-shader = ExtResource("1_gki5t")
+shader = SubResource("Shader_84wlj")
 shader_parameter/OCTAVE = 2
 shader_parameter/mulscale = 5.0
 shader_parameter/height = 0.4
@@ -70,23 +125,85 @@ tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_dmqsi")
 sources/2 = SubResource("TileSetAtlasSource_rmqef")
 
+[sub_resource type="Gradient" id="Gradient_ugrly"]
+offsets = PackedFloat32Array(0.644809, 1)
+colors = PackedColorArray(0.172549, 0.0352941, 0.0901961, 0, 0.172549, 0.0352941, 0.0901961, 0.294118)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxy5y"]
+gradient = SubResource("Gradient_ugrly")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0angk"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_oi0j3"]
-frequency = 0.1
+[sub_resource type="Shader" id="Shader_xkm3u"]
+code = "shader_type canvas_item;
+uniform int OCTAVE = 6;
+uniform float mulscale = 5.0;
+uniform float height = 0.6;
+uniform float tide = 0.1;
+uniform float foamthickness = 0.1;
+uniform float timescale = 1.0;
+uniform float waterdeep = 0.3;
+uniform vec4 WATER_COL : source_color =  vec4(0.04, 0.38, 0.88, 1.0);
+uniform vec4 WATER2_COL : source_color =  vec4(0.04, 0.35, 0.78, 1.0);
+uniform vec4 FOAM_COL : source_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_26hhd"]
-seamless = true
-seamless_blend_skirt = 0.5
-noise = SubResource("FastNoiseLite_oi0j3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0ymo"]
-shader = ExtResource("9_ewnjh")
-shader_parameter/refraction_stretch = Vector2(0.1, 0.1)
-shader_parameter/refraction_strength = 0.002
-shader_parameter/water_tint = Color(0.2, 0.6, 1, 0)
-shader_parameter/speed = 0.01
-shader_parameter/refraction_map = SubResource("NoiseTexture2D_26hhd")
+float rand(vec2 input){
+	return fract(sin(dot(input,vec2(23.53,44.0)))*42350.45);
+}
+
+float perlin(vec2 input){
+	vec2 i = floor(input);
+	vec2 j = fract(input);
+	vec2 coord = smoothstep(0.,1.,j);
+	
+	float a = rand(i);
+	float b = rand(i+vec2(1.0,0.0));
+	float c = rand(i+vec2(0.0,1.0));
+	float d = rand(i+vec2(1.0,1.0));
+
+	return mix(mix(a,b,coord.x),mix(c,d,coord.x),coord.y);
+}
+
+float fbm(vec2 input){
+	float value = 0.0;
+	float scale = 0.5;
+	
+	for(int i = 0; i < OCTAVE; i++){
+		value += perlin(input)*scale;
+		input*=2.0;
+		scale*=0.5;
+	}
+	return value;
+}
+
+void fragment(){
+	float newtime = TIME*timescale;
+	float fbmval = fbm(vec2(UV.x*mulscale+0.2*sin(0.3*newtime)+0.15*newtime,-0.05*newtime+UV.y*mulscale+0.1*cos(0.68*newtime)));
+	float fbmvalshadow = fbm(vec2(UV.x*mulscale+0.2*sin(-0.6*newtime + 25.0 * UV.y)+0.15*newtime+3.0,-0.05*newtime+UV.y*mulscale+0.13*cos(-0.68*newtime))-7.0+0.1*sin(0.43*newtime));
+	float myheight = height+tide*sin(newtime+5.0*UV.x-8.0*UV.y);
+	float shadowheight = height+tide*1.3*cos(newtime+2.0*UV.x-2.0*UV.y);
+	float withinFoam = step(myheight, fbmval)*step(fbmval, myheight + foamthickness);
+	float shadow = (1.0-withinFoam)*step(shadowheight, fbmvalshadow)*step(fbmvalshadow, shadowheight + foamthickness * 0.7);
+	COLOR = withinFoam*FOAM_COL + shadow*WATER2_COL + ((1.0-withinFoam)*(1.0-shadow))*WATER_COL;
+	//COLOR = vec4(1.0,1.0,1.0,fbmval);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bunaq"]
+shader = SubResource("Shader_xkm3u")
+shader_parameter/OCTAVE = 2
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.4
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 0.5
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0.129412, 0.027451, 0.0509804, 0)
+shader_parameter/WATER2_COL = Color(0.211765, 0.0431373, 0.109804, 0.0392157)
+shader_parameter/FOAM_COL = Color(0.415686, 0.141176, 0.258824, 0.0392157)
 
 [node name="Layout_Game" type="Node2D"]
 script = ExtResource("1_cruol")
@@ -96,6 +213,49 @@ material = SubResource("ShaderMaterial_evubc")
 offset_top = -371.0
 offset_right = 1920.0
 offset_bottom = 1549.0
+
+[node name="FX_Background1" type="CPUParticles2D" parent="."]
+position = Vector2(-118, 570)
+amount = 25
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("9_g3w7r")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("10_sk0h5")
+color = Color(0.929412, 0.501961, 0.6, 0.458824)
+
+[node name="FX_Background2" type="CPUParticles2D" parent="."]
+position = Vector2(2044, 570)
+amount = 25
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("9_g3w7r")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("10_sk0h5")
+color = Color(0.921569, 0.670588, 0.72549, 0.45098)
 
 [node name="Filter_Vignette_Overall" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_qatow")
@@ -116,6 +276,13 @@ layer_0/tile_data = PackedInt32Array(131080, 65537, 0, 65544, 1, 0, 65543, 65537
 layer_1/name = "Tissue"
 layer_1/tile_data = PackedInt32Array()
 
+[node name="Filter_Vignette_Map" type="TextureRect" parent="Background"]
+offset_left = 316.0
+offset_top = 67.0
+offset_right = 1346.0
+offset_bottom = 1027.0
+texture = SubResource("GradientTexture2D_yxy5y")
+
 [node name="Border" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_0angk")
 position = Vector2(305, 59)
@@ -123,6 +290,51 @@ points = PackedVector2Array(11, 0, 1044, 0, 1044, 970, 11, 970)
 closed = true
 width = 20.0
 joint_mode = 2
+
+[node name="FX_Foreground1" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-118, 570)
+amount = 25
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("9_g3w7r")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("10_sk0h5")
+color = Color(0.929412, 0.501961, 0.6, 0.458824)
+
+[node name="FX_Foreground2" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(2044, 570)
+amount = 25
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("9_g3w7r")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("10_sk0h5")
+color = Color(0.921569, 0.670588, 0.72549, 0.45098)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 script = ExtResource("7_wkiok")
@@ -290,10 +502,9 @@ theme_override_font_sizes/font_size = 40
 text = "000000000"
 horizontal_alignment = 2
 
-[node name="Distortion" type="ColorRect" parent="GUI"]
-material = SubResource("ShaderMaterial_a0ymo")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background3" type="ColorRect" parent="GUI"]
+material = SubResource("ShaderMaterial_bunaq")
+offset_top = -371.0
+offset_right = 1920.0
+offset_bottom = 1549.0
+mouse_filter = 2

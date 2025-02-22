@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://d136umhx2ffrh"]
+[gd_scene load_steps=21 format=3 uid="uid://d136umhx2ffrh"]
 
 [ext_resource type="PackedScene" uid="uid://88fivnqio2ad" path="res://scenes/menus/menu_splash.tscn" id="1_5dhbp"]
 [ext_resource type="Script" path="res://scripts/menus/hub_menu.gd" id="1_eqpse"]
 [ext_resource type="PackedScene" uid="uid://p6rcqo7jdo2r" path="res://scenes/menus/menu_disclaimer.tscn" id="2_1n5cx"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_coqv2"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_rtvv7"]
 [ext_resource type="PackedScene" uid="uid://craw6cydplqpm" path="res://scenes/menus/menu_main.tscn" id="2_urtgt"]
 [ext_resource type="PackedScene" uid="uid://cdx15nqmqr1cu" path="res://scenes/menus/menu_pregame.tscn" id="3_36hlv"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="3_g6nef"]
 [ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="4_dii0o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yxgc4"]
@@ -411,6 +413,49 @@ material = SubResource("ShaderMaterial_yxgc4")
 offset_top = -371.0
 offset_right = 1920.0
 offset_bottom = 1549.0
+
+[node name="FX_Background1" type="CPUParticles2D" parent="."]
+position = Vector2(-118, 570)
+amount = 50
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("2_rtvv7")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("3_g6nef")
+color = Color(0.929412, 0.501961, 0.6, 0.458824)
+
+[node name="FX_Background2" type="CPUParticles2D" parent="."]
+position = Vector2(2044, 570)
+amount = 50
+lifetime = 5.0
+preprocess = 100.0
+speed_scale = 0.25
+randomness = 1.0
+texture = ExtResource("2_rtvv7")
+emission_shape = 3
+emission_rect_extents = Vector2(0, 1000)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = ExtResource("3_g6nef")
+color = Color(0.921569, 0.670588, 0.72549, 0.45098)
 
 [node name="Filter_Vignette_Overall" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_p2o86")
