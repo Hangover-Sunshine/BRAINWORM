@@ -191,6 +191,9 @@ func _on_player_move():
 	for elem in range(len(brainfolds)):
 		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
 			remove.push_back(elem)
+			if brainfolds[elem] != null:
+				brainfolds[elem].queue_free()
+			##
 		##
 	##
 	
@@ -202,6 +205,9 @@ func _on_player_move():
 	for elem in range(len(macs)):
 		if macs[elem] == null or macs[elem].is_alive == false:
 			remove.push_back(elem)
+			if macs[elem] != null:
+				macs[elem].queue_free()
+			##
 		##
 	##
 	
@@ -490,7 +496,7 @@ func _on_tissue_timer_timeout():
 		
 		# Grow the wall, if it comes back false for any reason,
 		#	remove the fold
-		if inst.grow_wall(brainfolds) == false:
+		if inst != null and inst.grow_wall(brainfolds) == false:
 			growable_folds.remove_at(rand)
 		##
 	##
@@ -619,6 +625,9 @@ func _on_clean_up_timer_timeout():
 	for elem in range(len(brainfolds)):
 		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
 			remove.push_back(elem)
+			if brainfolds[elem] != null:
+				brainfolds[elem].queue_free()
+			##
 		##
 	##
 	
@@ -630,6 +639,9 @@ func _on_clean_up_timer_timeout():
 	for elem in range(len(macs)):
 		if macs[elem] == null or macs[elem].is_alive == false:
 			remove.push_back(elem)
+			if macs[elem] != null:
+				macs[elem].queue_free()
+			##
 		##
 	##
 	
