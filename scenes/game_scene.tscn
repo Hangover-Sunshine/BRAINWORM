@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=48 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
@@ -11,6 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="8_s42b6"]
 [ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="9_umb08"]
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_kltvy"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_xyvoe"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_rb0vq"]
+[ext_resource type="AudioStream" uid="uid://cqm3i8kk1rvaf" path="res://assets/audio/sfx/meat-move1.ogg" id="14_1tob5"]
+[ext_resource type="AudioStream" uid="uid://sfstcn7q3wte" path="res://assets/audio/sfx/meat-move2.ogg" id="15_tfh5q"]
+[ext_resource type="AudioStream" uid="uid://dqh0wvvel0o6m" path="res://assets/audio/sfx/meat-move3.ogg" id="16_ej6lx"]
+[ext_resource type="AudioStream" uid="uid://v8ywdr3s62m3" path="res://assets/audio/sfx/splat1.ogg" id="17_0pcla"]
+[ext_resource type="AudioStream" uid="uid://d4en2xhq8hdrt" path="res://assets/audio/sfx/splat2.ogg" id="18_eewga"]
+[ext_resource type="AudioStream" uid="uid://byovn0e7vgcog" path="res://assets/audio/sfx/tissue_tear1.ogg" id="19_lcrf7"]
+[ext_resource type="AudioStream" uid="uid://bln1j7bchjmys" path="res://assets/audio/sfx/tissue_tear2.ogg" id="20_pk17p"]
+[ext_resource type="AudioStream" uid="uid://dfbilpg4rt6eo" path="res://assets/audio/sfx/tissue_tear3.ogg" id="21_561tp"]
+[ext_resource type="AudioStream" uid="uid://cgqhnji08edil" path="res://assets/audio/sfx/StandardRumble.ogg" id="22_i1j7a"]
+[ext_resource type="AudioStream" uid="uid://bpu1b30tuiosa" path="res://assets/audio/sfx/PlayerDeath.ogg" id="23_idclo"]
+[ext_resource type="AudioStream" uid="uid://cpsbt1hfgjau1" path="res://assets/audio/sfx/PoliticianDeath.ogg" id="24_o0gx4"]
+[ext_resource type="AudioStream" uid="uid://bf3nbx8w8sp4p" path="res://assets/audio/sfx/flat_line.ogg" id="25_1qt4m"]
+[ext_resource type="AudioStream" uid="uid://86vewpwkbiod" path="res://assets/audio/sfx/nom.ogg" id="26_0qbk1"]
 
 [sub_resource type="Animation" id="Animation_0a1rh"]
 resource_name = "RESET"
@@ -1071,6 +1086,70 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_63t6d"]
 colors = PackedColorArray(0.764706, 0.141176, 0.329412, 1, 0.210706, 0.0444339, 0.109765, 1)
 
+[sub_resource type="Resource" id="Resource_bm5mo"]
+script = ExtResource("13_rb0vq")
+name = "move"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("14_1tob5"), ExtResource("15_tfh5q"), ExtResource("16_ej6lx")])
+
+[sub_resource type="Resource" id="Resource_8w05v"]
+script = ExtResource("13_rb0vq")
+name = "splat"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("17_0pcla"), ExtResource("18_eewga")])
+
+[sub_resource type="Resource" id="Resource_0uc1s"]
+script = ExtResource("13_rb0vq")
+name = "tear"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("19_lcrf7"), ExtResource("20_pk17p"), ExtResource("21_561tp")])
+
+[sub_resource type="Resource" id="Resource_3n45t"]
+script = ExtResource("13_rb0vq")
+name = "rumble"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("22_i1j7a")])
+
+[sub_resource type="Resource" id="Resource_sjii5"]
+script = ExtResource("13_rb0vq")
+name = "player_dead"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("23_idclo")])
+
+[sub_resource type="Resource" id="Resource_0mjpo"]
+script = ExtResource("13_rb0vq")
+name = "jerry_dead"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("24_o0gx4")])
+
+[sub_resource type="Resource" id="Resource_kd4so"]
+script = ExtResource("13_rb0vq")
+name = "flat_line"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("25_1qt4m"), ExtResource("25_1qt4m")])
+
+[sub_resource type="Resource" id="Resource_fgfds"]
+script = ExtResource("13_rb0vq")
+name = "nom"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("26_0qbk1"), ExtResource("26_0qbk1"), ExtResource("26_0qbk1")])
+
 [node name="GameScene" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ymqpa")
@@ -1287,6 +1366,12 @@ scale_amount_min = 0.3
 scale_amount_max = 0.5
 scale_amount_curve = ExtResource("9_umb08")
 color_initial_ramp = SubResource("Gradient_63t6d")
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("12_xyvoe")
+label = "game"
+bus = "GameSFX"
+events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_bm5mo"), SubResource("Resource_8w05v"), SubResource("Resource_0uc1s"), SubResource("Resource_3n45t"), SubResource("Resource_sjii5"), SubResource("Resource_0mjpo"), SubResource("Resource_kd4so"), SubResource("Resource_fgfds")])
 
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]

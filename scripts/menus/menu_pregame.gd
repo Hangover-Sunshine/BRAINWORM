@@ -29,3 +29,7 @@ func _on_decrease_button_pressed():
 func _on_skip_check_toggled(toggled_on):
 	GlobalSettings.SkipCutscene = toggled_on
 ##
+
+func _on_mouse_entered():
+	SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
+##

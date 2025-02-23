@@ -185,9 +185,15 @@ show_behind_parent = true
 position = Vector2(950, 569)
 sprite_frames = SubResource("SpriteFrames_oc7ri")
 
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Back_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Skip_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Skip_Button" to="." method="_on_skip_button_pressed"]
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Decrease_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Decrease_Button" to="." method="_on_decrease_button_pressed"]
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Increase_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG/Increase_Button" to="." method="_on_increase_button_pressed"]
+[connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/Full_HBox2/Endless_Check" to="." method="_on_mouse_entered"]
 [connection signal="toggled" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/Full_HBox2/Endless_Check" to="." method="_on_skip_check_toggled"]

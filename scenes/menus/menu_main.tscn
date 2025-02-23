@@ -84,6 +84,9 @@ theme = ExtResource("3_meo0q")
 theme_override_font_sizes/font_size = 50
 text = "EXIT"
 
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_exit_button_pressed"]
