@@ -1218,7 +1218,6 @@ MaxTissueNodes = 20
 MinRangeOfGrowth = 8
 MaxRangeOfGrowth = 20
 MaxAtATime = 10
-BrainHealth = 2
 MaxMacSpawn = {
 25: 14,
 50: 10,
