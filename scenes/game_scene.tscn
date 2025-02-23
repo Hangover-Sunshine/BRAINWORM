@@ -1210,9 +1210,16 @@ color = Color(0.129729, 0.0255367, 0.0527574, 1)
 
 [node name="GameControl" type="Node" parent="."]
 script = ExtResource("2_r1gp1")
-MaxTissueNodes = 6
-MinRangeOfGrowth = 6
-MaxRangeOfGrowth = 10
+MaxTissueNodes = 20
+MinRangeOfGrowth = 8
+MaxRangeOfGrowth = 20
+MaxAtATime = 10
+MaxMacSpawn = {
+25: 14,
+50: 10,
+75: 6,
+100: 4
+}
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
 

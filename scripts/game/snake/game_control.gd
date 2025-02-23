@@ -7,7 +7,6 @@ static var GRID_WIDTH_COUNT:int = 15
 static var GRID_HEIGHT_COUNT:int = 15
 
 @export_category("Starting Game Conditions")
-@export var Countdown:int = 5
 @export var StartPosition:Vector2i = Vector2(6, 7)
 
 @export_category("Player Conditions")
@@ -46,9 +45,9 @@ static var GRID_HEIGHT_COUNT:int = 15
 }
 @export var MaxMacSpawn:Dictionary = {
 	100: 2,
-	75: 4,
-	50: 8,
-	25: 10
+	75: 6,
+	50: 10,
+	25: 14
 }
 
 @onready var game_board = $Layout_Game
@@ -77,6 +76,9 @@ var jerry_health:int
 var threshold:int = 100
 
 var need_to_countdown:bool = false
+
+var mac_spawn_time:float
+var tissue_spawn_time:float
 
 func _ready():
 	curr_timer_time = MovementTimeChanges[100]
@@ -410,7 +412,7 @@ func _on_tissue_timer_timeout():
 		##
 	##
 	
-	$TissueTimer.start(4)
+	$TissueTimer.start(2.5)
 ##
 
 func _on_mac_timer_timeout():
@@ -440,7 +442,7 @@ func _on_mac_timer_timeout():
 	macs.push_back(new_mac)
 	add_child(new_mac)
 	new_mac.initialize(curr_mac_timer_time)
-	$MacTimer.start(3)
+	$MacTimer.start(2)
 ##
 
 func _listen_for_mak_movement(mak:Mak):
@@ -451,7 +453,7 @@ func _on_invuln_timer_timeout():
 	if powerup.curr_position == Vector2i(-100, -100):
 		var r = randi() % 100 - (snake.Length - 3)
 		if snake.Invulnerable == false and snake.meets_requirements_for_invuln(InvulnMinNumber)\
-			and r <= 30:
+			and r <= 45:
 			generate_powerup()
 		##
 		$InvulnTimer.start(CheckForPowerupInterval)
@@ -499,9 +501,9 @@ func _on_jumbling_jerry_timer_timeout():
 ##
 
 func turn_on_all_timers():
-	$InvulnTimer.start()
-	$MacTimer.start(12)
-	$TissueTimer.start(10)
+	$InvulnTimer.start(CheckForPowerupInterval)
+	$MacTimer.start(mac_spawn_time)
+	$TissueTimer.start(tissue_spawn_time)
 	
 	snake.start_timers()
 	
@@ -511,6 +513,8 @@ func turn_on_all_timers():
 ##
 
 func turn_off_all_timers():
+	mac_spawn_time = $MacTimer.time_left
+	tissue_spawn_time = $TissueTimer.time_left
 	$InvulnTimer.stop()
 	$MacTimer.stop()
 	$TissueTimer.stop()
