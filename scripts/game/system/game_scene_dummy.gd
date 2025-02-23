@@ -7,6 +7,10 @@ func _ready():
 	$Camera.zoom = Vector2(0.2, 0.2)
 	$ZoomControl.play("zoom_in")
 	
+	if MusicManager.is_playing("OST", "space_jazz") == false:
+		MusicManager.play("OST", "space_jazz")
+	##
+	
 	game_control.initialize_board()
 ##
 

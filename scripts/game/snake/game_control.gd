@@ -143,6 +143,7 @@ func _process(_delta):
 	##
 	
 	if jerry_health <= 0:
+		MusicManager.stop(3)
 		turn_off_all_timers()
 		$"../StabilityStatus".death_politician()
 		GlobalSignals.emit_signal("game_won")

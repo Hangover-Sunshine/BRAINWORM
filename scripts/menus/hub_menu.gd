@@ -72,7 +72,9 @@ func to_exit():
 	get_tree().quit()
 
 func to_load():
-	MusicManager.stop(10)
+	if GlobalSettings.SkipCutscene == false:
+		MusicManager.stop(3)
+	##
 	Verho.change_scene("scenes/game_control_scene", "", "BlackFade")
 ##
 
