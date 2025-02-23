@@ -189,7 +189,7 @@ func _on_player_move():
 	
 	var remove = []
 	for elem in range(len(brainfolds)):
-		if brainfolds[elem] == null:
+		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
 			remove.push_back(elem)
 		##
 	##
@@ -200,7 +200,7 @@ func _on_player_move():
 	
 	remove = []
 	for elem in range(len(macs)):
-		if macs[elem] == null:
+		if macs[elem] == null or macs[elem].is_alive == false:
 			remove.push_back(elem)
 		##
 	##
@@ -612,4 +612,28 @@ func turn_off_all_timers():
 func countdown():
 	turn_off_all_timers()
 	need_to_countdown = true
+##
+
+func _on_clean_up_timer_timeout():
+	var remove = []
+	for elem in range(len(brainfolds)):
+		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
+			remove.push_back(elem)
+		##
+	##
+	
+	for id in remove:
+		brainfolds.remove_at(id)
+	##
+	
+	remove = []
+	for elem in range(len(macs)):
+		if macs[elem] == null or macs[elem].is_alive == false:
+			remove.push_back(elem)
+		##
+	##
+	
+	for id in remove:
+		macs.remove_at(id)
+	##
 ##

@@ -1244,6 +1244,9 @@ z_index = 2
 wait_time = 0.7
 one_shot = true
 
+[node name="CleanUpTimer" type="Timer" parent="GameControl"]
+wait_time = 10.0
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(954.963, 537.333)
 script = ExtResource("6_gjvbh")
@@ -1443,3 +1446,4 @@ events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_257qe"), SubResou
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
 [connection signal="timeout" from="GameControl/JumblingJerryTimer" to="GameControl" method="_on_jumbling_jerry_timer_timeout"]
+[connection signal="timeout" from="GameControl/CleanUpTimer" to="GameControl" method="_on_clean_up_timer_timeout"]
