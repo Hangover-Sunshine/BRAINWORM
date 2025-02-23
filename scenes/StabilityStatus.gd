@@ -25,3 +25,9 @@ func shake():
 func start_game():
 	GlobalSignals.start_game.emit()
 ##
+
+func change_percent():
+	$PercentRemaining.rotation_degrees = randf_range(-15, 15)
+	var percent_stability = floori((float($"../GameControl".jerry_health) / float($"../GameControl".BrainHealth))*100)
+	$PercentRemaining/MarginContainer/VBoxContainer/Percent_Label.text = str(percent_stability)+"%"
+	##

@@ -15,6 +15,23 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="Animation" id="Animation_uqyoo"]
+resource_name = "100%"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUI_Health_Bar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.987109, 0.614536, 0.672064, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_8bxtu"]
 resource_name = "25%"
 loop_mode = 2
@@ -29,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.939798, 0.281563, 0.44871, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_y5qtt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GUI_Health_Bar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_e07pq"]
@@ -80,10 +82,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0.984961, 0.572127, 0.639695, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_uqyoo"]
-resource_name = "100%"
-length = 4.0
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_y5qtt"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,10 +91,10 @@ tracks/0/path = NodePath("GUI_Health_Bar:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.987109, 0.614536, 0.672064, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gkv63"]

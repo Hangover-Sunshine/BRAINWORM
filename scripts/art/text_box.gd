@@ -26,8 +26,8 @@ var game_line3: Array = ["_","_","_","_","_","_","_","_","_","_","_","_","_","_"
 var cut_line1: Array = ["My fellow Americans!","It is with great honor that I...",
 "Senator from the great state of","...formally announce my bid","The current administration",
 "I am the hope America needs","...to our oh-so once ","It is by decree from our",
-"...that freedom shall prevail","And these past 4 years have","We must elect a new president,"]
+"...that freedom shall prevail","And these past 4 years have","We must elect a new president,","And now, it's time for my"]
 
 var cut_line2: Array = ["_","Jerry Atrick","Red, White, and Blue Land,...","for U.S. Presidency!",
 "needs to be replaced.","to bringing freedom...","great nation.","founding fathers...",
-"in the face of evil.","brought nothing but tyranny!","and I will take up this mantle!"]
+"in the face of evil.","brought nothing but tyranny!","and I will take up this mantle!","uninterrupted speech..."]
