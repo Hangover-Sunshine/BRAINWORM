@@ -87,6 +87,7 @@ func anim_relaxed_talking():
 		$AP_Worm.play("Pos3")
 	elif lines_to_read == 10:
 		$AP_Worm.play("Pos4")
+	SoundManager.play_varied("politician", "talk", randf_range(0.9, 1.1))
 
 ## Trigger everytime a Mac or Tissue dies, but not on neuron grabs.
 func anim_ouch():
@@ -103,6 +104,7 @@ func anim_ouch():
 	face.play("Ouch")
 	face.seek(random_time)
 	mouth.play("Not_Talking")
+	#SoundManager.play_varied("politician", "durr", randf_range(0.7, 1.2))
 
 ## Trigger when worm grabs a neuron
 func anim_ouch_blurb():
@@ -130,6 +132,7 @@ func anim_ouch_blurb():
 		line3.visible = true
 	else:
 		line3.visible = false
+	#SoundManager.play_varied("politician", "durr", randf_range(0.7, 1.2))
 
 func _on_ap_hit_animation_finished(anim_name):
 	if anim_name == "Hit":
@@ -143,5 +146,7 @@ func _on_ap_mouth_animation_finished(anim_name):
 			if lines_to_read > script_size:
 				is_done.emit()
 			can_skip = true
-			
-			
+
+func talk_sfx():
+	SoundManager.play_varied("politician", "talk", randf_range(0.9, 1.1))
+##

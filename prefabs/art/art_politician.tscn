@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://1qn63raxgjo7"]
+[gd_scene load_steps=56 format=3 uid="uid://1qn63raxgjo7"]
 
 [ext_resource type="Script" path="res://scripts/art/art_politician.gd" id="1_f7ng8"]
 [ext_resource type="Texture2D" uid="uid://3sran41n53iv" path="res://assets/character/politician/NPC_Suit.png" id="2_bqb7b"]
@@ -10,6 +10,11 @@
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="8_e66kw"]
 [ext_resource type="Texture2D" uid="uid://7xm61n7bcitq" path="res://assets/character/politician/Cutscene_Worm.png" id="9_vqphm"]
 [ext_resource type="PackedScene" uid="uid://c7fyugqxjymoo" path="res://prefabs/gui/text_box.tscn" id="9_ywuiu"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="11_7aau6"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="12_jm0ia"]
+[ext_resource type="AudioStream" uid="uid://c112dpqp62gnh" path="res://assets/audio/sfx/talk1.ogg" id="13_5436j"]
+[ext_resource type="AudioStream" uid="uid://dduje3pi7w13x" path="res://assets/audio/sfx/Talk2.ogg" id="14_qnpkd"]
+[ext_resource type="AudioStream" uid="uid://damfg1tsuy7kk" path="res://assets/audio/sfx/Talk3.ogg" id="15_pq7ty"]
 
 [sub_resource type="Animation" id="Animation_45yii"]
 resource_name = "Idle"
@@ -1356,6 +1361,22 @@ _data = {
 "RESET": SubResource("Animation_2thg0")
 }
 
+[sub_resource type="Resource" id="Resource_edelr"]
+script = ExtResource("12_jm0ia")
+name = "talk"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("13_5436j"), ExtResource("14_qnpkd"), ExtResource("14_qnpkd"), ExtResource("13_5436j")])
+
+[sub_resource type="Resource" id="Resource_ul132"]
+script = ExtResource("12_jm0ia")
+name = "durr"
+bus = "GameSFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("15_pq7ty"), ExtResource("15_pq7ty"), ExtResource("15_pq7ty")])
+
 [node name="Politician" type="Node2D"]
 script = ExtResource("1_f7ng8")
 
@@ -1481,6 +1502,12 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_pexgj")
 }
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("11_7aau6")
+label = "politician"
+bus = "GaneSFX"
+events = Array[ExtResource("12_jm0ia")]([SubResource("Resource_edelr"), SubResource("Resource_ul132")])
 
 [connection signal="animation_finished" from="AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="AP_Hit" to="." method="_on_ap_hit_animation_finished"]
