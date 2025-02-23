@@ -476,7 +476,7 @@ func generate_powerup():
 			##
 		##
 		
-		if position == powerup.curr_position:
+		if position == neuron_pos:
 			regen_food = true
 		##
 	##

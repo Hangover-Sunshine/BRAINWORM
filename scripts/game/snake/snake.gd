@@ -182,15 +182,19 @@ func add_segment():
 func _process(_delta):
 	if can_change_dir and Input.is_action_just_pressed("down") and (Head + MOVE_DOWN) != curr_positions[1]:
 		move_dir = MOVE_DOWN
+		SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
 	##
 	if can_change_dir and Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
 		move_dir = MOVE_UP
+		SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
 	##
 	if can_change_dir and Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
 		move_dir = MOVE_LEFT
+		SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
 	##
 	if can_change_dir and Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
 		move_dir = MOVE_RIGHT
+		SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
 	##
 	
 	if Invulnerable:
@@ -228,7 +232,6 @@ func _on_movement_timer_timeout():
 	
 	draw_snake()
 	prev_move_dir = move_dir
-	
 	move.emit()
 	can_change_dir = true
 	$MovementTimer.start(curr_move_time)
