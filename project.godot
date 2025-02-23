@@ -15,7 +15,7 @@ config/version="1.0"
 config/tags=PackedStringArray("hangover_sunshine")
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://_SYSTEM/HS_DesktopIcon.png"
+config/icon="res://_SYSTEM/HS_Logo256.png"
 
 [audio]
 
