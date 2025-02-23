@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=54 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
@@ -13,9 +13,7 @@
 [ext_resource type="FontFile" uid="uid://boc2gl1a4g052" path="res://assets/fonts/tfonts/quicksand/Quicksand-Medium.ttf" id="10_kltvy"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_xyvoe"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_rb0vq"]
-[ext_resource type="AudioStream" uid="uid://cqm3i8kk1rvaf" path="res://assets/audio/sfx/meat-move1.ogg" id="14_1tob5"]
 [ext_resource type="AudioStream" uid="uid://sfstcn7q3wte" path="res://assets/audio/sfx/meat-move2.ogg" id="15_tfh5q"]
-[ext_resource type="AudioStream" uid="uid://dqh0wvvel0o6m" path="res://assets/audio/sfx/meat-move3.ogg" id="16_ej6lx"]
 [ext_resource type="AudioStream" uid="uid://v8ywdr3s62m3" path="res://assets/audio/sfx/splat1.ogg" id="17_0pcla"]
 [ext_resource type="AudioStream" uid="uid://d4en2xhq8hdrt" path="res://assets/audio/sfx/splat2.ogg" id="18_eewga"]
 [ext_resource type="AudioStream" uid="uid://byovn0e7vgcog" path="res://assets/audio/sfx/tissue_tear1.ogg" id="19_lcrf7"]
@@ -26,6 +24,10 @@
 [ext_resource type="AudioStream" uid="uid://cpsbt1hfgjau1" path="res://assets/audio/sfx/PoliticianDeath.ogg" id="24_o0gx4"]
 [ext_resource type="AudioStream" uid="uid://bf3nbx8w8sp4p" path="res://assets/audio/sfx/flat_line.ogg" id="25_1qt4m"]
 [ext_resource type="AudioStream" uid="uid://86vewpwkbiod" path="res://assets/audio/sfx/nom.ogg" id="26_0qbk1"]
+[ext_resource type="AudioStream" uid="uid://cm1nots2mpus7" path="res://assets/audio/sfx/pause/THREE.ogg" id="27_4d5lj"]
+[ext_resource type="AudioStream" uid="uid://dov7c5njwwimx" path="res://assets/audio/sfx/pause/TWO.ogg" id="28_dixih"]
+[ext_resource type="AudioStream" uid="uid://bfg5waletlx08" path="res://assets/audio/sfx/pause/ONE.ogg" id="29_skyeu"]
+[ext_resource type="AudioStream" uid="uid://miiyd7c1fsgv" path="res://assets/audio/sfx/pause/GO-2.ogg" id="30_pejyu"]
 
 [sub_resource type="Animation" id="Animation_0a1rh"]
 resource_name = "RESET"
@@ -202,9 +204,21 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.75),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.2, 0.8, 1.5, 2.2, 2.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"play_three"
+}, {
+"args": [],
+"method": &"play_two"
+}, {
+"args": [],
+"method": &"play_one"
+}, {
+"args": [],
+"method": &"play_go"
+}, {
 "args": [],
 "method": &"start_game"
 }]
@@ -1092,7 +1106,7 @@ name = "move"
 bus = "GameSFX"
 volume = 0.0
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("14_1tob5"), ExtResource("15_tfh5q"), ExtResource("16_ej6lx")])
+streams = Array[AudioStream]([ExtResource("15_tfh5q"), ExtResource("15_tfh5q"), ExtResource("15_tfh5q")])
 
 [sub_resource type="Resource" id="Resource_8w05v"]
 script = ExtResource("13_rb0vq")
@@ -1149,6 +1163,38 @@ bus = "GameSFX"
 volume = 0.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("26_0qbk1"), ExtResource("26_0qbk1"), ExtResource("26_0qbk1")])
+
+[sub_resource type="Resource" id="Resource_257qe"]
+script = ExtResource("13_rb0vq")
+name = "3"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("27_4d5lj")])
+
+[sub_resource type="Resource" id="Resource_qtd5q"]
+script = ExtResource("13_rb0vq")
+name = "2"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("28_dixih")])
+
+[sub_resource type="Resource" id="Resource_byhb0"]
+script = ExtResource("13_rb0vq")
+name = "1"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("29_skyeu")])
+
+[sub_resource type="Resource" id="Resource_p0jmt"]
+script = ExtResource("13_rb0vq")
+name = "go"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("30_pejyu")])
 
 [node name="GameScene" type="Node2D"]
 process_mode = 1
@@ -1372,6 +1418,13 @@ script = ExtResource("12_xyvoe")
 label = "game"
 bus = "GameSFX"
 events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_bm5mo"), SubResource("Resource_8w05v"), SubResource("Resource_0uc1s"), SubResource("Resource_3n45t"), SubResource("Resource_sjii5"), SubResource("Resource_0mjpo"), SubResource("Resource_kd4so"), SubResource("Resource_fgfds")])
+
+[node name="321GO" type="Node" parent="."]
+script = ExtResource("12_xyvoe")
+label = "countdown"
+bus = "GameSFX"
+mode = 3
+events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_257qe"), SubResource("Resource_qtd5q"), SubResource("Resource_byhb0"), SubResource("Resource_p0jmt")])
 
 [connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]

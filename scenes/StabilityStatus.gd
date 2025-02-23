@@ -31,3 +31,19 @@ func change_percent():
 	var percent_stability = floori((float($"../GameControl".jerry_health) / float($"../GameControl".BrainHealth))*100)
 	$PercentRemaining/MarginContainer/VBoxContainer/Percent_Label.text = str(percent_stability)+"%"
 	##
+
+func play_three():
+	SoundManager.play_varied("countdown", "3", randf_range(0.8, 1.1))
+##
+
+func play_two():
+	SoundManager.play_varied("countdown", "2", randf_range(0.8, 1.1))
+##
+
+func play_one():
+	SoundManager.play_varied("countdown", "1", randf_range(0.8, 1.1))
+##
+
+func play_go():
+	SoundManager.play_varied("countdown", "go", randf_range(0.8, 1.1))
+##
