@@ -135,6 +135,7 @@ func _process(_delta):
 	if timer_time != curr_timer_time:
 		curr_timer_time = timer_time
 		$"../StabilityStatus".regular_shake()
+		SoundManager.play_varied("game", "rumble", randf_range(0.9, 1.1))
 		GlobalSignals.emit_signal("speed_up", curr_timer_time)
 		GlobalSignals.emit_signal("speed_up_macs", curr_mac_timer_time)
 	##
@@ -143,6 +144,7 @@ func _process(_delta):
 		turn_off_all_timers()
 		$"../StabilityStatus".death_politician()
 		GlobalSignals.emit_signal("game_won")
+		SoundManager.play("game", "jerry_dead")
 		PlayerPrefs.Neurons = neurons_consumed
 		PlayerPrefs.Tissue = tissue_destroyed
 		PlayerPrefs.Macs = macs_killed
@@ -199,6 +201,7 @@ func check_for_self():
 ##
 
 func player_has_died():
+	SoundManager.play_varied("game", "player_dead", randf_range(0.8, 1.1))
 	set_process(false)
 	turn_off_all_timers()
 	snake._on_player_died()
