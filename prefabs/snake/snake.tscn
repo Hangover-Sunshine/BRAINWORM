@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm2pa21ra2su3"]
+[gd_scene load_steps=8 format=3 uid="uid://dm2pa21ra2su3"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake.gd" id="1_cg4ub"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_t6qk3"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="3_v71j5"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="4_j2u2r"]
+[ext_resource type="AudioStream" uid="uid://bf3nbx8w8sp4p" path="res://assets/audio/sfx/flat_line.ogg" id="5_gpivl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oww7b"]
 shader = ExtResource("1_t6qk3")
@@ -20,11 +21,11 @@ shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 
 [sub_resource type="Resource" id="Resource_66ipr"]
 script = ExtResource("4_j2u2r")
-name = ""
+name = "invuln"
 bus = ""
 volume = 0.0
 pitch = 1.0
-streams = Array[AudioStream]([])
+streams = Array[AudioStream]([ExtResource("5_gpivl")])
 
 [node name="Snake" type="Node2D"]
 material = SubResource("ShaderMaterial_oww7b")
@@ -45,6 +46,7 @@ one_shot = true
 script = ExtResource("3_v71j5")
 label = "snake"
 bus = "GameSFX"
+mode = 1
 events = Array[ExtResource("4_j2u2r")]([SubResource("Resource_66ipr")])
 
 [connection signal="timeout" from="RemoveSegmentTimer" to="." method="_on_remove_segment_timer_timeout"]

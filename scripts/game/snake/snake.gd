@@ -64,6 +64,9 @@ var curr_move_time:float
 var is_dead:bool = false
 var invuln_time_left:float = 0
 
+var invuln_sfx
+var not_triggered:bool = true
+
 var Head : Vector2i :
 	get:
 		return curr_positions[0]
@@ -99,6 +102,8 @@ var Invulnerable:bool:
 			$RemoveSegmentTimer.start()
 			var sid = len(curr_positions) - 1
 			
+			not_triggered = true
+			
 			# Guarantee to clear the screen of old parts
 			if len(old_segments) > 0:
 				for seg in old_segments:
@@ -126,9 +131,11 @@ func _on_player_died():
 	stop_timers()
 	set_process(false)
 	is_dead = true
+	invuln_sfx.release()
 ##
 
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
+	invuln_sfx = SoundManager.instance("snake", "invuln")
 	GlobalSignals.connect("player_died", _on_player_died)
 	GlobalSignals.connect("speed_up", _on_speed_up)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
@@ -147,6 +154,7 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	draw_snake()
 	segments[0].turn_on_face()
 	segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
+	set_process(false)
 ##
 
 func start_timers():
@@ -154,17 +162,20 @@ func start_timers():
 	if invuln_time_left > 0:
 		$InvulnTimer.start(invuln_time_left)
 		invuln_time_left = 0
+		invuln_sfx.process_mode = PROCESS_MODE_INHERIT
 	##
 	if len(old_segments) > 0:
 		$RemoveSegmentTimer.start()
 	##
+	set_process(true)
 ##
 
 func stop_timers():
+	set_process(false)
 	$MovementTimer.stop()
 	invuln_time_left = $InvulnTimer.time_left
 	$InvulnTimer.stop()
-	$RemoveSegmentTimer.stop()
+	invuln_sfx.process_mode = PROCESS_MODE_DISABLED
 ##
 
 func add_segment():
@@ -182,25 +193,37 @@ func add_segment():
 func _process(_delta):
 	if can_change_dir and Input.is_action_just_pressed("down") and (Head + MOVE_DOWN) != curr_positions[1]:
 		move_dir = MOVE_DOWN
-		SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		if prev_move_dir != move_dir:
+			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		##
 	##
 	if can_change_dir and Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
 		move_dir = MOVE_UP
-		SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		if prev_move_dir != move_dir:
+			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		##
 	##
 	if can_change_dir and Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
 		move_dir = MOVE_LEFT
-		SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		if prev_move_dir != move_dir:
+			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		##
 	##
 	if can_change_dir and Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
 		move_dir = MOVE_RIGHT
-		SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		if prev_move_dir != move_dir:
+			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
+		##
 	##
 	
 	if Invulnerable:
 		var time_left = "%02d" % $InvulnTimer.time_left
 		for seg in segments:
 			seg.update_text(time_left)
+		##
+		if not_triggered and $InvulnTimer.time_left <= 3:
+			invuln_sfx.trigger()
+			not_triggered = false
 		##
 	##
 ##
@@ -221,13 +244,11 @@ func _on_movement_timer_timeout():
 	##
 	
 	segments[0].global_position = game_board.get_world_position_at(curr_positions[0])
-	#segments[0].move_segment(game_board.get_world_position_at(curr_positions[0]), curr_move_time / 2)
 	segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
 	
 	for i in range(1, len(curr_positions)):
 		curr_positions[i] = prev_positions[i - 1]
 		segments[i].global_position = game_board.get_world_position_at(curr_positions[i])
-		#segments[i].move_segment(game_board.get_world_position_at(curr_positions[i]), curr_move_time / 2)
 	##
 	
 	draw_snake()
