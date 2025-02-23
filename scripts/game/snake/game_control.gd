@@ -179,9 +179,32 @@ func _on_player_move():
 	check_for_self()
 	check_for_neuron()
 	check_for_powerup()
+	check_for_enemy()
+	
+	var remove = []
+	for elem in range(len(brainfolds)):
+		if brainfolds[elem] == null:
+			remove.push_back(elem)
+		##
+	##
+	
+	for id in remove:
+		brainfolds.remove_at(id)
+	##
+	
+	remove = []
+	for elem in range(len(macs)):
+		if macs[elem] == null:
+			remove.push_back(elem)
+		##
+	##
+	
+	for id in remove:
+		macs.remove_at(id)
+	##
+	
 	check_for_tissue_eating_neuron()
 	check_for_tissue_eating_powerup()
-	check_for_enemy()
 	
 	if update_score:
 		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
