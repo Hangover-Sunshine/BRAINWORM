@@ -1100,7 +1100,7 @@ name = "splat"
 bus = "GameSFX"
 volume = 0.0
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("17_0pcla"), ExtResource("18_eewga")])
+streams = Array[AudioStream]([ExtResource("17_0pcla"), ExtResource("18_eewga"), ExtResource("17_0pcla"), ExtResource("18_eewga")])
 
 [sub_resource type="Resource" id="Resource_0uc1s"]
 script = ExtResource("13_rb0vq")

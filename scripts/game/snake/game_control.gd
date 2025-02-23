@@ -219,6 +219,7 @@ func check_for_enemy():
 			if snake.Head in tissue.positions:
 				tissue.remove_wall_at(snake.Head)
 				tissue_destroyed += 1
+				SoundManager.play_varied("game", "tear", randf_range(0.8, 1.1))
 				if len(tissue.positions) == 0:
 					remove.push_back(brainfolds.find(tissue))
 				##
@@ -249,6 +250,7 @@ func check_for_enemy():
 		##
 		
 		for m in remove:
+			SoundManager.play_varied("game", "splat", randf_range(0.8, 1.1))
 			macs.remove_at(m)
 			macs_killed += 1
 			update_score = true

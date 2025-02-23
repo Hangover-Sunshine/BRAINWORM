@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm2pa21ra2su3"]
+[gd_scene load_steps=7 format=3 uid="uid://dm2pa21ra2su3"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake.gd" id="1_cg4ub"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_t6qk3"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="3_v71j5"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="4_j2u2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oww7b"]
 shader = ExtResource("1_t6qk3")
@@ -15,6 +17,14 @@ shader_parameter/waterdeep = 0.3
 shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
 shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+
+[sub_resource type="Resource" id="Resource_66ipr"]
+script = ExtResource("4_j2u2r")
+name = ""
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([])
 
 [node name="Snake" type="Node2D"]
 material = SubResource("ShaderMaterial_oww7b")
@@ -30,6 +40,12 @@ one_shot = true
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("3_v71j5")
+label = "snake"
+bus = "GameSFX"
+events = Array[ExtResource("4_j2u2r")]([SubResource("Resource_66ipr")])
 
 [connection signal="timeout" from="RemoveSegmentTimer" to="." method="_on_remove_segment_timer_timeout"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]
