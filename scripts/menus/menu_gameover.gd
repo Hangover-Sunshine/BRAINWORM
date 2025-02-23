@@ -111,3 +111,11 @@ func _on_mouse_entered():
 func play_newspaper_sound():
 	SoundManager.play("ui", "newspaper")
 ##
+
+func play_win_song():
+	MusicManager.play("OST", "drunk_elephants")
+##
+
+func play_norm_song():
+	MusicManager.play("OST", "space_jazz")
+##

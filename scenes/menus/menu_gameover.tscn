@@ -143,11 +143,17 @@ tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(8.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 8.2, 13.55),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
+"method": &"play_win_song"
+}, {
+"args": [],
 "method": &"play_newspaper_sound"
+}, {
+"args": [],
+"method": &"play_norm_song"
 }]
 }
 
