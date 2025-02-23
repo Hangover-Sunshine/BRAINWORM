@@ -57,6 +57,7 @@ func disclaimed():
 
 func to_splash():
 	animplayer.play("ToSplash")
+	MusicManager.play("OST", "space_jazz")
 
 func to_main():
 	animplayer.play("ToMain")
@@ -71,6 +72,7 @@ func to_exit():
 	get_tree().quit()
 
 func to_load():
+	MusicManager.stop(10)
 	Verho.change_scene("scenes/game_control_scene", "", "BlackFade")
 ##
 

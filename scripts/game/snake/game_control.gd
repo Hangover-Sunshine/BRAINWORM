@@ -176,11 +176,11 @@ func initialize_board():
 func _on_player_move():
 	check_for_edge()
 	check_for_self()
-	check_for_enemy()
 	check_for_neuron()
 	check_for_powerup()
 	check_for_tissue_eating_neuron()
 	check_for_tissue_eating_powerup()
+	check_for_enemy()
 	
 	if update_score:
 		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
@@ -453,7 +453,7 @@ func _on_invuln_timer_timeout():
 	if powerup.curr_position == Vector2i(-100, -100):
 		var r = randi() % 100 - snake.Length
 		if snake.Invulnerable == false and snake.meets_requirements_for_invuln(InvulnMinNumber)\
-			and r <= 45:
+			and r <= 35:
 			generate_powerup()
 		##
 		$InvulnTimer.start(CheckForPowerupInterval)

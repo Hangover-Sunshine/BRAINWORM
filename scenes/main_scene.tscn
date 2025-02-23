@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://5mpw8kapddme"]
+[gd_scene load_steps=22 format=3 uid="uid://5mpw8kapddme"]
 
 [ext_resource type="Script" path="res://scripts/system/main_scene.gd" id="1_8uaxr"]
 [ext_resource type="Script" path="res://addons/verho/resources/TransitionBank.gd" id="1_aeq3o"]
@@ -10,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://cqm3i8kk1rvaf" path="res://assets/audio/sfx/meat-move1.ogg" id="8_7fboa"]
 [ext_resource type="AudioStream" uid="uid://sfstcn7q3wte" path="res://assets/audio/sfx/meat-move2.ogg" id="9_hr3nx"]
 [ext_resource type="AudioStream" uid="uid://doia8rgvhnikp" path="res://assets/audio/sfx/newspaper.ogg" id="10_4n7xu"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_bank.gd" id="11_hqc1s"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_track_resource.gd" id="12_xo61e"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="13_gxjs0"]
+[ext_resource type="AudioStream" uid="uid://c06nsj4t7sx5f" path="res://assets/audio/ost/Space Jazz.mp3" id="14_h3jus"]
 
 [sub_resource type="Resource" id="Resource_libk2"]
 script = ExtResource("6_p52gh")
@@ -35,6 +39,31 @@ volume = 0.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("10_4n7xu")])
 
+[sub_resource type="Resource" id="Resource_tnunk"]
+script = ExtResource("13_gxjs0")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("14_h3jus")
+
+[sub_resource type="Resource" id="Resource_x7bfk"]
+script = ExtResource("12_xo61e")
+name = "space_jazz"
+bus = ""
+stems = Array[ExtResource("13_gxjs0")]([SubResource("Resource_tnunk")])
+
+[sub_resource type="Resource" id="Resource_c3wnl"]
+script = ExtResource("12_xo61e")
+name = "sinister_patriotism"
+bus = ""
+stems = Array[ExtResource("13_gxjs0")]([])
+
+[sub_resource type="Resource" id="Resource_c66s6"]
+script = ExtResource("12_xo61e")
+name = "drunk_elephants"
+bus = ""
+stems = Array[ExtResource("13_gxjs0")]([])
+
 [node name="MainScene" type="Node"]
 script = ExtResource("1_8uaxr")
 
@@ -49,3 +78,9 @@ script = ExtResource("5_bgjg3")
 label = "ui"
 bus = "UISFX"
 events = Array[ExtResource("6_p52gh")]([SubResource("Resource_libk2"), SubResource("Resource_bdbji"), SubResource("Resource_tqk3v")])
+
+[node name="MusicBank" type="Node" parent="."]
+script = ExtResource("11_hqc1s")
+label = "OST"
+bus = "Music"
+tracks = Array[ExtResource("12_xo61e")]([SubResource("Resource_x7bfk"), SubResource("Resource_c3wnl"), SubResource("Resource_c66s6")])
