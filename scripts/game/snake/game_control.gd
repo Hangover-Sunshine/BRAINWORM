@@ -352,7 +352,7 @@ func check_for_tissue_eating_neuron():
 func check_for_tissue_eating_powerup():
 	for tissue in brainfolds:
 		if powerup.curr_position in tissue.positions:
-			generate_neuron()
+			generate_powerup()
 		##
 	##
 ##
