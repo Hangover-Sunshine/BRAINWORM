@@ -343,7 +343,7 @@ func check_for_tissue_eating_neuron():
 	##
 	
 	for mak in macs:
-		if neuron_pos == mak.curr_position:
+		if mak != null and neuron_pos == mak.curr_position:
 			generate_neuron()
 		##
 	##
