@@ -4,7 +4,8 @@ class_name GameBoard
 const CELL_SIZE:float = 64
 const GRID_OFFSET:Vector2i = Vector2i(5,1)
 
-@onready var environment:TileMap = $Background/Environment
+@onready var environment:TileMap = $Background/TileHolder/Environment
+@onready var change_background = $GUI/GUI_Health
 
 func initialize_ui():
 	$GUI.visible = true
@@ -37,6 +38,12 @@ func update_time(milliseconds:int):
 
 func update_health(value:int):
 	$GUI/GUI_Health.set_healthbar_value(value)
+	if value <= 75 and (value > 50):
+		$Background/TileHolder/AP_Flash.play("75%")
+	elif value <= 50 and (value > 25):
+		$Background/TileHolder/AP_Flash.play("50%")
+	elif value <= 25:
+		$Background/TileHolder/AP_Flash.play("25%")
 ##
 
 func hide_ui():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2cmtfshbsc1o"]
+[gd_scene load_steps=29 format=3 uid="uid://c2cmtfshbsc1o"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_board.gd" id="1_cruol"]
 [ext_resource type="Texture2D" uid="uid://dxqgl22iah80x" path="res://assets/environment/Env_Background.png" id="1_s5y6h"]
@@ -124,6 +124,98 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_dmqsi")
 sources/2 = SubResource("TileSetAtlasSource_rmqef")
+
+[sub_resource type="Animation" id="Animation_opjsw"]
+resource_name = "100%"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.987109, 0.614536, 0.672064, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_caogf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hoay0"]
+resource_name = "75%"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.984961, 0.572127, 0.639695, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ha5w7"]
+resource_name = "50%"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.972549, 0.427451, 0.537255, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_us4kk"]
+resource_name = "25%"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.939798, 0.281563, 0.44871, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3s33v"]
+_data = {
+"100%": SubResource("Animation_opjsw"),
+"25%": SubResource("Animation_us4kk"),
+"50%": SubResource("Animation_ha5w7"),
+"75%": SubResource("Animation_hoay0"),
+"RESET": SubResource("Animation_caogf")
+}
 
 [sub_resource type="Gradient" id="Gradient_ugrly"]
 offsets = PackedFloat32Array(0.644809, 1)
@@ -268,7 +360,9 @@ texture = SubResource("GradientTexture2D_a6khg")
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="Environment" type="TileMap" parent="Background"]
+[node name="TileHolder" type="Node2D" parent="Background"]
+
+[node name="Environment" type="TileMap" parent="Background/TileHolder"]
 tile_set = SubResource("TileSet_xvk8g")
 format = 2
 layer_0/name = "Background"
@@ -276,22 +370,18 @@ layer_0/tile_data = PackedInt32Array(131080, 65537, 0, 65544, 1, 0, 65543, 65537
 layer_1/name = "Tissue"
 layer_1/tile_data = PackedInt32Array()
 
+[node name="AP_Flash" type="AnimationPlayer" parent="Background/TileHolder"]
+libraries = {
+"": SubResource("AnimationLibrary_3s33v")
+}
+autoplay = "100%"
+
 [node name="Filter_Vignette_Map" type="TextureRect" parent="Background"]
 offset_left = 316.0
 offset_top = 67.0
 offset_right = 1346.0
 offset_bottom = 1027.0
 texture = SubResource("GradientTexture2D_yxy5y")
-
-[node name="Flash" type="ColorRect" parent="Background"]
-visible = false
-custom_minimum_size = Vector2(1030, 960)
-offset_left = 316.0
-offset_top = 67.0
-offset_right = 1346.0
-offset_bottom = 1027.0
-
-[node name="AP_Flash" type="AnimationPlayer" parent="Background/Flash"]
 
 [node name="Border" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_0angk")

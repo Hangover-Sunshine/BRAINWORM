@@ -3,6 +3,8 @@ extends Node2D
 @onready var healthbar = $GUI_Health_Bar
 @onready var number = $GUI_Health_Number
 
+signal change_background
+
 func set_healthbar_value(value:int):
 	healthbar.value = value
 ##
@@ -14,5 +16,5 @@ func _on_gui_health_bar_value_changed(value):
 	elif value <= 50 and (value > 25):
 		$AP_Flash.play("50%")
 	elif value <= 25:
-		$AP_Flash.play("50%")
+		$AP_Flash.play("25%")
 ##

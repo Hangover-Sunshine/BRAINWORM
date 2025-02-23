@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2s0nqr0ug6bp"]
+[gd_scene load_steps=2 format=3 uid="uid://b14xoy8ua8mjk"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/brainwall.gd" id="1_og8cr"]
 

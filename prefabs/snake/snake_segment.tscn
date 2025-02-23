@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=21 format=3 uid="uid://6vqekqvxjoat"]
 
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_7muqm"]
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="6_sy3ai"]
 [ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="7_raijf"]
 [ext_resource type="Script" path="res://prefabs/snake/FX_Splatter.gd" id="8_fen8w"]
+[ext_resource type="Texture2D" uid="uid://by7q7cboxy0cv" path="res://assets/particle/Asterik.png" id="9_0g0c2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
@@ -100,6 +101,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FX_Sparkle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tvf24"]
 length = 0.001
@@ -127,6 +140,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FX_Sparkle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tvh2w"]
 resource_name = "Ram"
@@ -151,6 +176,18 @@ tracks/1/path = NodePath("Timer_Ram:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FX_Sparkle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -307,6 +344,21 @@ script = ExtResource("8_fen8w")
 [node name="Timer" type="Timer" parent="FX_Splatter"]
 wait_time = 5.0
 one_shot = true
+
+[node name="FX_Sparkle" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+texture = ExtResource("9_0g0c2")
+emission_shape = 2
+emission_sphere_radius = 32.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = ExtResource("7_raijf")
 
 [connection signal="tree_entered" from="FX_Splatter" to="FX_Splatter" method="_on_tree_entered"]
 [connection signal="timeout" from="FX_Splatter/Timer" to="FX_Splatter" method="_on_timer_timeout"]
