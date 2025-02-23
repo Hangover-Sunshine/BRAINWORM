@@ -291,6 +291,8 @@ func check_for_neuron():
 			GlobalSignals.player_got_damage.emit()
 			jumble_jerry = false
 		##
+		
+		SoundManager.play_varied("game", "nom", randf_range(0.8, 1.1))
 	##
 ##
 
@@ -300,6 +302,7 @@ func check_for_powerup():
 		$InvulnTimer.one_shot = true
 		$InvulnTimer.start(SecondsPerSegment * (snake.Length - 2))
 		powerup.kill()
+		SoundManager.play_varied("game", "nom", randf_range(0.8, 1.1))
 	##
 ##
 
