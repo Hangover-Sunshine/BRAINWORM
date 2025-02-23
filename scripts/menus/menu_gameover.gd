@@ -79,10 +79,12 @@ func to_win():
 
 func _on_again_button_pressed():
 	gameover_to_game.emit()
+	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 ##
 
 func _on_leave_button_pressed():
 	gameover_to_main.emit()
+	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 ##
 
 func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
@@ -100,4 +102,12 @@ func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
 	number_neuron.text = "%03d" % neurons
 	number_macs.text = "%03d" % macs
 	number_tissue.text = "%03d" % tissue
+##
+
+func _on_mouse_entered():
+	SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
+##
+
+func play_newspaper_sound():
+	SoundManager.play("ui", "newspaper")
 ##

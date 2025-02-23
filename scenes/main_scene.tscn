@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5mpw8kapddme"]
+[gd_scene load_steps=14 format=3 uid="uid://5mpw8kapddme"]
 
 [ext_resource type="Script" path="res://scripts/system/main_scene.gd" id="1_8uaxr"]
 [ext_resource type="Script" path="res://addons/verho/resources/TransitionBank.gd" id="1_aeq3o"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ewceuio4mvvf" path="res://assets/audio/sfx/ui/UISFX1.ogg" id="7_8liq6"]
 [ext_resource type="AudioStream" uid="uid://cqm3i8kk1rvaf" path="res://assets/audio/sfx/meat-move1.ogg" id="8_7fboa"]
 [ext_resource type="AudioStream" uid="uid://sfstcn7q3wte" path="res://assets/audio/sfx/meat-move2.ogg" id="9_hr3nx"]
+[ext_resource type="AudioStream" uid="uid://doia8rgvhnikp" path="res://assets/audio/sfx/newspaper.ogg" id="10_4n7xu"]
 
 [sub_resource type="Resource" id="Resource_libk2"]
 script = ExtResource("6_p52gh")
@@ -21,10 +22,18 @@ streams = Array[AudioStream]([ExtResource("7_8liq6")])
 [sub_resource type="Resource" id="Resource_bdbji"]
 script = ExtResource("6_p52gh")
 name = "hover"
-bus = ""
+bus = "UISFX"
 volume = 0.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("8_7fboa"), ExtResource("8_7fboa"), ExtResource("9_hr3nx"), ExtResource("9_hr3nx")])
+
+[sub_resource type="Resource" id="Resource_tqk3v"]
+script = ExtResource("6_p52gh")
+name = "newspaper"
+bus = "UISFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("10_4n7xu")])
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_8uaxr")
@@ -39,4 +48,4 @@ TRANSITIONS = Array[Resource("res://addons/verho/resources/TransitionResource.gd
 script = ExtResource("5_bgjg3")
 label = "ui"
 bus = "UISFX"
-events = Array[ExtResource("6_p52gh")]([SubResource("Resource_libk2"), SubResource("Resource_bdbji")])
+events = Array[ExtResource("6_p52gh")]([SubResource("Resource_libk2"), SubResource("Resource_bdbji"), SubResource("Resource_tqk3v")])
