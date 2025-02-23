@@ -84,6 +84,9 @@ theme = ExtResource("3_v37kx")
 theme_override_font_sizes/font_size = 50
 text = "LEAVE"
 
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_cont_button_pressed"]
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]

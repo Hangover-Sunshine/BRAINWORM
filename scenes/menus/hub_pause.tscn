@@ -115,3 +115,5 @@ offset_right = -130.0
 libraries = {
 "": SubResource("AnimationLibrary_0e1jm")
 }
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

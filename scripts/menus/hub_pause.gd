@@ -35,3 +35,7 @@ func to_free(_scene_name):
 	self.queue_free()
 ##
 
+func _on_visibility_changed():
+	$MenuSettings.visible = false
+	$MenuPause.visible = true
+##
