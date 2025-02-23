@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=55 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
@@ -132,6 +132,10 @@ _data = {
 [sub_resource type="Curve" id="Curve_m1md6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2135, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rgkek"]
+offsets = PackedFloat32Array(0.489583, 0.677083)
+colors = PackedColorArray(1, 1, 1, 0.815686, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_fgt0x"]
 resource_name = "321"
@@ -1276,9 +1280,10 @@ spread = 180.0
 initial_velocity_max = 75.0
 angle_min = -180.0
 angle_max = 180.0
-scale_amount_min = 0.15
-scale_amount_max = 0.15
+scale_amount_min = 0.1
+scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_m1md6")
+color_ramp = SubResource("Gradient_rgkek")
 
 [node name="FX_WhiteBloodGUI" type="CPUParticles2D" parent="StabilityStatus"]
 z_index = 1
@@ -1295,9 +1300,10 @@ spread = 180.0
 initial_velocity_max = 25.0
 angle_min = -180.0
 angle_max = 180.0
-scale_amount_min = 0.15
-scale_amount_max = 0.15
+scale_amount_min = 0.1
+scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_m1md6")
+color_ramp = SubResource("Gradient_rgkek")
 
 [node name="ColorRect" type="ColorRect" parent="StabilityStatus"]
 visible = false
