@@ -33,6 +33,7 @@ func initialize():
 		camera_anims.play("zoom_out")
 	else:
 		await get_tree().create_timer(7.5).timeout
+		MusicManager.play("OST", "patriot_sins")
 		play_cutscene()
 	##
 ##

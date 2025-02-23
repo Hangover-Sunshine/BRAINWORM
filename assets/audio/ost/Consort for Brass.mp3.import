@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0g75c4y6iraf"
+path="res://.godot/imported/Consort for Brass.mp3-fa2867c07796f72bda92cb2034f72edb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/ost/Consort for Brass.mp3"
+dest_files=["res://.godot/imported/Consort for Brass.mp3-fa2867c07796f72bda92cb2034f72edb.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
