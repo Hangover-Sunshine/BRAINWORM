@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cxqjeubo6yefw" path="res://assets/environment/Env_Tissue.png" id="15_x3fnw"]
 [ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="15_yqm7k"]
 [ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="16_pgikg"]
-[ext_resource type="PackedScene" uid="uid://d2f4ytn43g7yj" path="res://prefabs/art/art_neuron.tscn" id="16_ur765"]
+[ext_resource type="PackedScene" path="res://prefabs/art/art_neuron.tscn" id="16_ur765"]
 [ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="17_bmk42"]
 [ext_resource type="PackedScene" uid="uid://bqmwc3nqlu56v" path="res://prefabs/art/art_mac.tscn" id="20_qy81l"]
 [ext_resource type="PackedScene" uid="uid://drvg5jrhktmd8" path="res://prefabs/art/art_ram.tscn" id="21_5ab7l"]
@@ -203,7 +203,8 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_2k2nn"]
+[sub_resource type="Animation" id="Animation_dm34k"]
+resource_name = "2"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -215,7 +216,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -227,7 +228,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -582,8 +583,7 @@ tracks/5/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_dm34k"]
-resource_name = "2"
+[sub_resource type="Animation" id="Animation_2k2nn"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -595,7 +595,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -607,7 +607,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false

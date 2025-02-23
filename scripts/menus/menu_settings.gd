@@ -20,12 +20,14 @@ func _ready():
 ##
 
 func _on_back_button_pressed():
-	#GlobalSettings.save_settings()
+	GlobalSettings.save_settings()
 	settings_to_main.emit()
+	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 ##
 
 func _on_full_check_toggled(toggled_on):
 	GlobalSettings.FullScreen = toggled_on
+	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 	
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
@@ -57,4 +59,8 @@ func _on_music_slider_value_changed(value):
 	GlobalSettings.MusicVolume = value / 100
 	var sfx = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MusicVolume))
+##
+
+func _on_mouse_entered():
+	SoundManager.play_varied("ui", "hover", randf_range(0.8, 1.1))
 ##
