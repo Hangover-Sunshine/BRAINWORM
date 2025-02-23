@@ -283,6 +283,16 @@ offset_right = 1346.0
 offset_bottom = 1027.0
 texture = SubResource("GradientTexture2D_yxy5y")
 
+[node name="Flash" type="ColorRect" parent="Background"]
+visible = false
+custom_minimum_size = Vector2(1030, 960)
+offset_left = 316.0
+offset_top = 67.0
+offset_right = 1346.0
+offset_bottom = 1027.0
+
+[node name="AP_Flash" type="AnimationPlayer" parent="Background/Flash"]
+
 [node name="Border" type="Line2D" parent="Background"]
 material = SubResource("ShaderMaterial_0angk")
 position = Vector2(305, 59)

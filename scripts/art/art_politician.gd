@@ -26,7 +26,7 @@ var line3
 var can_skip:bool = false
 signal is_done
 signal show_prompt
-var script_size = 10 # I had to manually set this. I couldn't figure out why.
+var script_size = 11 # I had to manually set this. I couldn't figure out why.
 @onready var lines_to_read = 0
 
 func _ready():
@@ -85,6 +85,8 @@ func anim_relaxed_talking():
 		$AP_Worm.play("Pos2")
 	elif lines_to_read == 8:
 		$AP_Worm.play("Pos3")
+	elif lines_to_read == 10:
+		$AP_Worm.play("Pos4")
 
 ## Trigger everytime a Mac or Tissue dies, but not on neuron grabs.
 func anim_ouch():
