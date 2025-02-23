@@ -221,7 +221,7 @@ func _process(_delta):
 		for seg in segments:
 			seg.update_text(time_left)
 		##
-		if not_triggered and $InvulnTimer.time_left <= 3:
+		if not_triggered and $InvulnTimer.time_left < 1:
 			invuln_sfx.trigger()
 			not_triggered = false
 		##

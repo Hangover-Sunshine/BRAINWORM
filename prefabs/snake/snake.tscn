@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_t6qk3"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="3_v71j5"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="4_j2u2r"]
-[ext_resource type="AudioStream" uid="uid://bf3nbx8w8sp4p" path="res://assets/audio/sfx/flat_line.ogg" id="5_gpivl"]
+[ext_resource type="AudioStream" uid="uid://d3dudbyme3o7s" path="res://assets/audio/sfx/flat_line-2.ogg" id="5_gc0t5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oww7b"]
 shader = ExtResource("1_t6qk3")
@@ -25,7 +25,7 @@ name = "invuln"
 bus = ""
 volume = 0.0
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("5_gpivl")])
+streams = Array[AudioStream]([ExtResource("5_gc0t5")])
 
 [node name="Snake" type="Node2D"]
 material = SubResource("ShaderMaterial_oww7b")
