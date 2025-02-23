@@ -56,6 +56,9 @@ static var GRID_HEIGHT_COUNT:int = 15
 var neuron
 var neuron_pos:Vector2i
 
+var neuron2
+var neuron_pos2:Vector2i
+
 var powerup
 
 var macs:Array[Mak]
@@ -88,10 +91,12 @@ func _ready():
 	GlobalSignals.connect("start_game", _on_game_start)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
+	neuron2 = load("res://prefabs/art/art_neuron.tscn").instantiate()
 	powerup = load("res://prefabs/snake/powerup.tscn").instantiate()
 	powerup.global_position = game_board.get_world_position_at(Vector2i(-100, -100))
 	powerup.curr_position = Vector2i(-100, -100)
 	add_child(neuron)
+	add_child(neuron2)
 	add_child(powerup)
 	
 	jerry_health = BrainHealth
@@ -172,6 +177,7 @@ func initialize_board():
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	generate_neuron()
+	generate_neuron2()
 ##
 
 func _on_player_move():
@@ -323,6 +329,22 @@ func check_for_neuron():
 		
 		SoundManager.play_varied("game", "nom", randf_range(0.8, 1.1))
 	##
+	
+	if neuron_pos2 == snake.Head:
+		jerry_health -= CostOfNeuron
+		snake.add_segment()
+		generate_neuron2()
+		update_score = true
+		neurons_consumed += 1
+		
+		if jumble_jerry:
+			$JumblingJerryTimer.start()
+			GlobalSignals.player_got_damage.emit()
+			jumble_jerry = false
+		##
+		
+		SoundManager.play_varied("game", "nom", randf_range(0.8, 1.1))
+	##
 ##
 
 func check_for_powerup():
@@ -340,11 +362,17 @@ func check_for_tissue_eating_neuron():
 		if tissue != null and neuron_pos in tissue.positions:
 			generate_neuron()
 		##
+		if tissue != null and neuron_pos2 in tissue.positions:
+			generate_neuron2()
+		##
 	##
 	
 	for mak in macs:
 		if mak != null and neuron_pos == mak.curr_position:
 			generate_neuron()
+		##
+		if mak != null and neuron_pos2 == mak.curr_position:
+			generate_neuron2()
 		##
 	##
 ##
@@ -378,7 +406,7 @@ func generate_neuron():
 			##
 		##
 		
-		if position == powerup.curr_position:
+		if position == powerup.curr_position or position == neuron_pos2:
 			regen_food = true
 		##
 	##
@@ -386,6 +414,37 @@ func generate_neuron():
 	neuron_pos = position
 	neuron.global_position = game_board.get_world_position_at(position)
 	neuron.spawn_ram()
+##
+
+func generate_neuron2():
+	var position:Vector2i
+	var regen_food:bool = true
+	while regen_food:
+		regen_food = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
+		
+		for pos in snake.curr_positions:
+			if pos == position:
+				regen_food = true
+				break
+			##
+		##
+		
+		for tissue in brainfolds:
+			if position in tissue.positions:
+				regen_food = true
+				break
+			##
+		##
+		
+		if position == powerup.curr_position or position == neuron_pos:
+			regen_food = true
+		##
+	##
+	
+	neuron_pos2 = position
+	neuron2.global_position = game_board.get_world_position_at(position)
+	neuron2.spawn_ram()
 ##
 
 func _on_tissue_timer_timeout():
