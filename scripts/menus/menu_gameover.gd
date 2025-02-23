@@ -92,16 +92,16 @@ func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
 	
 	# NOTE: Magic number -- 2 minutes or 120,000 ms
 	var past_time_lose_bonus:int = 2 * 60 * 1000
-	var time_modifier:int = past_time_lose_bonus / time
+	var time_modifier = past_time_lose_bonus / time
 	
 	if background.visible:
-		score += 1000000 * time_modifier
+		score += 10000 * time_modifier
 	##
 	
-	number_stage.text = "%011d" % score
-	number_neuron.text = "%03d" % neurons
-	number_macs.text = "%03d" % macs
-	number_tissue.text = "%03d" % tissue
+	number_stage.text = "%03d" % score
+	number_neuron.text = "%02d" % neurons
+	number_macs.text = "%02d" % macs
+	number_tissue.text = "%02d" % tissue
 ##
 
 func _on_mouse_entered():

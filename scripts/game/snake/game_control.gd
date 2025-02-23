@@ -149,14 +149,14 @@ func _process(_delta):
 	
 	if jerry_health <= 0:
 		MusicManager.stop(3)
-		turn_off_all_timers()
-		$"../StabilityStatus".death_politician()
-		GlobalSignals.emit_signal("game_won")
-		SoundManager.play("game", "jerry_dead")
 		PlayerPrefs.Neurons = neurons_consumed
 		PlayerPrefs.Tissue = tissue_destroyed
 		PlayerPrefs.Macs = macs_killed
 		PlayerPrefs.GameTime = Time.get_ticks_msec() - start_time
+		turn_off_all_timers()
+		$"../StabilityStatus".death_politician()
+		GlobalSignals.emit_signal("game_won")
+		SoundManager.play("game", "jerry_dead")
 		set_process(false)
 	##
 ##
