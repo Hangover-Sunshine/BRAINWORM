@@ -1,10 +1,12 @@
-[gd_scene load_steps=55 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=57 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
 [ext_resource type="Script" path="res://scripts/game/snake/game_control.gd" id="2_r1gp1"]
 [ext_resource type="PackedScene" uid="uid://dm2pa21ra2su3" path="res://prefabs/snake/snake.tscn" id="4_sees7"]
+[ext_resource type="Script" path="res://scripts/game/system/tissue_control.gd" id="5_1iryx"]
 [ext_resource type="PackedScene" uid="uid://1qn63raxgjo7" path="res://prefabs/art/art_politician.tscn" id="5_1r75v"]
+[ext_resource type="Script" path="res://scripts/game/system/mac_control.gd" id="6_6tefx"]
 [ext_resource type="Script" path="res://scripts/game/gui/Shake.gd" id="6_gjvbh"]
 [ext_resource type="Script" path="res://scenes/StabilityStatus.gd" id="7_7ose1"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="8_lldiq"]
@@ -1227,25 +1229,26 @@ MaxMacSpawn = {
 
 [node name="Layout_Game" parent="GameControl" instance=ExtResource("2_0p6tp")]
 
-[node name="TissueTimer" type="Timer" parent="GameControl"]
-wait_time = 4.0
-one_shot = true
-
-[node name="MacTimer" type="Timer" parent="GameControl"]
-wait_time = 2.5
-one_shot = true
-
 [node name="InvulnTimer" type="Timer" parent="GameControl"]
-
-[node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
-z_index = 2
 
 [node name="JumblingJerryTimer" type="Timer" parent="GameControl"]
 wait_time = 0.7
 one_shot = true
 
-[node name="CleanUpTimer" type="Timer" parent="GameControl"]
-wait_time = 10.0
+[node name="TissueControl" type="Node" parent="GameControl"]
+script = ExtResource("5_1iryx")
+DelayToSpawn = 5.0
+
+[node name="TissueTimer" type="Timer" parent="GameControl/TissueControl"]
+one_shot = true
+
+[node name="MacControl" type="Node" parent="GameControl"]
+script = ExtResource("6_6tefx")
+
+[node name="MacTimer" type="Timer" parent="GameControl/MacControl"]
+
+[node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
+z_index = 2
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(954.963, 537.333)
@@ -1442,8 +1445,6 @@ bus = "GameSFX"
 mode = 3
 events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_257qe"), SubResource("Resource_qtd5q"), SubResource("Resource_byhb0"), SubResource("Resource_p0jmt")])
 
-[connection signal="timeout" from="GameControl/TissueTimer" to="GameControl" method="_on_tissue_timer_timeout"]
-[connection signal="timeout" from="GameControl/MacTimer" to="GameControl" method="_on_mac_timer_timeout"]
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
 [connection signal="timeout" from="GameControl/JumblingJerryTimer" to="GameControl" method="_on_jumbling_jerry_timer_timeout"]
-[connection signal="timeout" from="GameControl/CleanUpTimer" to="GameControl" method="_on_clean_up_timer_timeout"]
+[connection signal="timeout" from="GameControl/TissueControl/TissueTimer" to="GameControl/TissueControl" method="_on_tissue_timer_timeout"]

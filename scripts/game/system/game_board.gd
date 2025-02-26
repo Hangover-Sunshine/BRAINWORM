@@ -1,7 +1,8 @@
 extends Node2D
 class_name GameBoard
 
-const CELL_SIZE:float = 64
+static var GRID_WIDTH_COUNT:int = 15
+static var GRID_HEIGHT_COUNT:int = 15
 const GRID_OFFSET:Vector2i = Vector2i(5,1)
 
 @onready var environment:TileMap = $Background/TileHolder/Environment

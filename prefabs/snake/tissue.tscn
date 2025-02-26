@@ -4,3 +4,5 @@
 
 [node name="Tissue" type="Node2D"]
 script = ExtResource("1_og8cr")
+
+[node name="GrowthTimer" type="Timer" parent="."]

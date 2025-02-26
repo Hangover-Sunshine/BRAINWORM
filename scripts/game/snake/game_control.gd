@@ -99,6 +99,13 @@ func _ready():
 	add_child(neuron2)
 	add_child(powerup)
 	
+	$TissueControl.initialize()
+	$TissueControl.super_control = self
+	$TissueControl.game_board = game_board
+	
+	$MacControl.super_control = self
+	$MacControl.game_board = game_board
+	
 	jerry_health = BrainHealth
 	
 	start_time = 0
@@ -254,32 +261,24 @@ func player_has_died():
 func check_for_enemy():
 	var gameover:bool = false
 	
+	if $TissueControl.does_position_overlap(snake.Head):
+		if snake.Invulnerable:
+			$TissueControl.remove_at(snake.Head)
+			tissue_destroyed += 1
+			SoundManager.play_varied("game", "tear", randf_range(0.8, 1.1))
+			
+			if jumble_jerry:
+				$JumblingJerryTimer.start()
+				GlobalSignals.player_got_damage.emit()
+				jumble_jerry = false
+			##
+		else:
+			gameover = true
+		##
+	##
+	
 	if snake.Invulnerable:
 		var remove = []
-		for tissue in brainfolds:
-			if snake.Head in tissue.positions:
-				tissue.remove_wall_at(snake.Head)
-				tissue_destroyed += 1
-				SoundManager.play_varied("game", "tear", randf_range(0.8, 1.1))
-				if len(tissue.positions) == 0:
-					remove.push_back(brainfolds.find(tissue))
-				##
-				if jumble_jerry:
-					$JumblingJerryTimer.start()
-					GlobalSignals.player_got_damage.emit()
-					jumble_jerry = false
-				##
-			##
-		##
-		
-		for t in remove:
-			brainfolds.remove_at(t)
-			tissue_destroyed += 2
-			jerry_health -= CostOfTissue
-			update_score = true
-		##
-		
-		remove.clear()
 		for makIndx in range(len(macs)):
 			if macs[makIndx] != null and snake.Head == macs[makIndx].curr_position:
 				macs[makIndx].kill_it()
@@ -393,27 +392,29 @@ func check_for_tissue_eating_powerup():
 
 func generate_neuron():
 	var position:Vector2i
-	var regen_food:bool = true
-	while regen_food:
-		regen_food = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
+	var regen_position:bool = true
+	
+	while regen_position:
+		regen_position = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT),
+							randi_range(0, GRID_HEIGHT_COUNT - 1))
 		
 		for pos in snake.curr_positions:
 			if pos == position:
-				regen_food = true
+				regen_position = true
 				break
 			##
 		##
 		
 		for tissue in brainfolds:
 			if position in tissue.positions:
-				regen_food = true
+				regen_position = true
 				break
 			##
 		##
 		
 		if position == powerup.curr_position or position == neuron_pos2:
-			regen_food = true
+			regen_position = true
 		##
 	##
 	
@@ -451,91 +452,6 @@ func generate_neuron2():
 	neuron_pos2 = position
 	neuron2.global_position = game_board.get_world_position_at(position)
 	neuron2.spawn_ram()
-##
-
-func _on_tissue_timer_timeout():
-	var rand:int = (randi() % 100) + 1
-	
-	if len(brainfolds) == 0 or (rand <= 100 / (1 + len(brainfolds)) and len(brainfolds) < MaxTissueNodes):
-		var inst:Brainwall = Brainwall.new()
-		inst.game_board = game_board
-		inst.max_number_growths = randi_range(MinRangeOfGrowth, MaxRangeOfGrowth)
-		var position:Vector2i
-		var find_position:bool = true
-		
-		while find_position:
-			find_position = false
-			
-			position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
-			
-			if (position - snake.Head).length() <= PlayerSafetySquare or position in snake.curr_positions:
-				find_position = true
-			##
-			
-			for existing_walls in brainfolds:
-				# Take over dead walls
-				if existing_walls.is_alive == false:
-					continue
-				##
-				
-				# Otherwise, wall is alive, can't touch it or be near it
-				if position in existing_walls.positions or (position - existing_walls.get_root()).length() <= 2:
-					find_position = true
-				##
-			##
-		##
-		
-		add_child(inst)
-		inst.initialize(position)
-		brainfolds.push_back(inst)
-		growable_folds.push_back(inst)
-	else:
-		# NOTE: Pick a random one and grow
-		rand = randi() % len(growable_folds)
-		var inst:Brainwall = growable_folds[rand]
-		
-		# Grow the wall, if it comes back false for any reason,
-		#	remove the fold
-		if inst != null and inst.grow_wall(brainfolds) == false:
-			growable_folds.remove_at(rand)
-		##
-	##
-	
-	$TissueTimer.start(2.5)
-##
-
-func _on_mac_timer_timeout():
-	if len(macs) >= MaxAtATime:
-		return
-	##
-	
-	var new_mac:Mak = MAC.instantiate()
-	new_mac.max_width = GRID_WIDTH_COUNT
-	new_mac.max_height = GRID_HEIGHT_COUNT
-	var find_pos:bool = true
-	var position:Vector2i
-	
-	while find_pos:
-		find_pos = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
-		
-		if position in snake.curr_positions or \
-			(position - snake.Head).length() <= PlayerSpawnSafetySquare:
-			find_pos = true
-		##
-	##
-	
-	new_mac.curr_position = position
-	new_mac.global_position = game_board.get_world_position_at(position)
-	new_mac.connect("please_move_me", _listen_for_mak_movement)
-	macs.push_back(new_mac)
-	add_child(new_mac)
-	new_mac.initialize(curr_mac_timer_time)
-	$MacTimer.start(2)
-##
-
-func _listen_for_mak_movement(mak:Mak):
-	mak.move(game_board.get_world_position_at(mak.curr_position))
 ##
 
 func _on_invuln_timer_timeout():
@@ -591,28 +507,18 @@ func _on_jumbling_jerry_timer_timeout():
 
 func turn_on_all_timers():
 	$InvulnTimer.start(CheckForPowerupInterval)
-	$MacTimer.start(mac_spawn_time)
-	$TissueTimer.start(tissue_spawn_time)
-	
+	$MacControl.start_timers()
+	$TissueControl.start_timers()
 	snake.start_timers()
-	
-	for mac in macs:
-		mac.start_timer()
-	##
 ##
 
 func turn_off_all_timers():
 	mac_spawn_time = $MacTimer.time_left
 	tissue_spawn_time = $TissueTimer.time_left
 	$InvulnTimer.stop()
-	$MacTimer.stop()
-	$TissueTimer.stop()
-	
+	$MacControl.stop_timers()
+	$TissueControl.stop_timers()
 	snake.stop_timers()
-	
-	for mac in macs:
-		mac.stop_timer()
-	##
 ##
 
 func countdown():
@@ -620,32 +526,67 @@ func countdown():
 	need_to_countdown = true
 ##
 
-func _on_clean_up_timer_timeout():
-	var remove = []
-	for elem in range(len(brainfolds)):
-		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
-			remove.push_back(elem)
-			if brainfolds[elem] != null:
-				brainfolds[elem].queue_free()
+func find_open_position(obj_self, macs_poses:bool, tissue_poses:bool, offset:bool) -> Vector2i:
+	var position:Vector2i
+	var regen_position:bool = true
+	
+	var taken_positions:Array[Vector2i] = []
+	
+	if tissue_poses:
+		for t in $TissueControl.get_active_tissues():
+			if t == obj_self:
+				continue
+			##
+			
+			var start:int = 0
+			
+			if offset and t.is_alive:
+				start = 1
+				
+				# Can't spawn in a box around the root node
+				for x in range(-1, 1):
+					for y in range(-1, 1):
+						taken_positions.push_back(t.positions[0] + Vector2i(x, y))
+					##
+				##
+			##
+			
+			for pos in range(start, len(t.positions)):
+				if not(t.positions[pos] in taken_positions):
+					taken_positions.push_back(t.positions[pos])
+				##
 			##
 		##
 	##
 	
-	for id in remove:
-		brainfolds.remove_at(id)
+	if macs_poses:
+		for mac in $MacControl.get_active_macs():
+			taken_positions.push_back(mac.curr_position)
+		##
 	##
 	
-	remove = []
-	for elem in range(len(macs)):
-		if macs[elem] == null or macs[elem].is_alive == false:
-			remove.push_back(elem)
-			if macs[elem] != null:
-				macs[elem].queue_free()
+	for snegment in range(1, len(snake.curr_positions)):
+		taken_positions.push_back(snake.curr_positions[snegment])
+	##
+	
+	for x in range(-1, 1):
+		for y in range(-1, 1):
+			var pos = snake.curr_positions[0] + Vector2i(x, y)
+			if not(pos in taken_positions):
+				taken_positions.push_back(pos)
 			##
 		##
 	##
 	
-	for id in remove:
-		macs.remove_at(id)
+	while regen_position:
+		regen_position = false
+		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT),
+							randi_range(0, GRID_HEIGHT_COUNT - 1))
+		
+		if position in taken_positions:
+			regen_position = true
+		##
 	##
+	
+	return position
 ##
