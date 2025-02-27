@@ -61,11 +61,6 @@ var neuron_pos2:Vector2i
 
 var powerup
 
-var macs:Array[Mak]
-
-var brainfolds:Array[Brainwall]
-var growable_folds:Array[Brainwall]
-
 var update_score:bool = false
 var neurons_consumed:int = 0
 var tissue_destroyed:int = 0
@@ -184,8 +179,10 @@ func initialize_board():
 	snake.connect("invuln_over", _on_invuln_timer_timeout)
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
-	generate_neuron()
-	generate_neuron2()
+	neuron_pos = find_open_position(neuron, true, true, false)
+	neuron.global_position = game_board.get_world_position_at(neuron_pos)
+	neuron_pos2 = find_open_position(neuron2, true, true, false)
+	neuron2.global_position = game_board.get_world_position_at(neuron_pos2)
 ##
 
 func _on_player_move():
@@ -268,7 +265,8 @@ func check_for_neuron():
 	if neuron_pos == snake.Head:
 		jerry_health -= CostOfNeuron
 		snake.add_segment()
-		generate_neuron()
+		neuron_pos = find_open_position(neuron, true, true, false)
+		neuron.global_position = game_board.get_world_position_at(neuron_pos)
 		update_score = true
 		neurons_consumed += 1
 		
@@ -284,7 +282,8 @@ func check_for_neuron():
 	if neuron_pos2 == snake.Head:
 		jerry_health -= CostOfNeuron
 		snake.add_segment()
-		generate_neuron2()
+		neuron_pos2 = find_open_position(neuron2, true, true, false)
+		neuron2.global_position = game_board.get_world_position_at(neuron_pos2)
 		update_score = true
 		neurons_consumed += 1
 		
@@ -309,95 +308,24 @@ func check_for_powerup():
 ##
 
 func check_for_tissue_eating_neuron():
-	for tissue in brainfolds:
-		if tissue != null and neuron_pos in tissue.positions:
-			generate_neuron()
-		##
-		if tissue != null and neuron_pos2 in tissue.positions:
-			generate_neuron2()
-		##
+	if $TissueControl.does_position_overlap(neuron_pos) or\
+		$MacControl.does_position_overlap(neuron_pos):
+		neuron_pos = find_open_position(neuron, true, true, false)
+		neuron.global_position = game_board.get_world_position_at(neuron_pos)
 	##
 	
-	for mak in macs:
-		if mak != null and neuron_pos == mak.curr_position:
-			generate_neuron()
-		##
-		if mak != null and neuron_pos2 == mak.curr_position:
-			generate_neuron2()
-		##
+	if $TissueControl.does_position_overlap(neuron_pos2) or\
+		$MacControl.does_position_overlap(neuron_pos2):
+		neuron_pos2 = find_open_position(neuron2, true, true, false)
+		neuron2.global_position = game_board.get_world_position_at(neuron_pos2)
 	##
 ##
 
 func check_for_tissue_eating_powerup():
-	for tissue in brainfolds:
-		if powerup.curr_position in tissue.positions:
-			generate_powerup()
-		##
+	if $TissueControl.does_position_overlap(powerup.curr_position):
+		powerup.curr_position = find_open_position(powerup, false, true, false)
+		powerup.global_position = game_board.get_world_position_at(powerup.curr_position)
 	##
-##
-
-func generate_neuron():
-	var position:Vector2i
-	var regen_position:bool = true
-	
-	while regen_position:
-		regen_position = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT),
-							randi_range(0, GRID_HEIGHT_COUNT - 1))
-		
-		for pos in snake.curr_positions:
-			if pos == position:
-				regen_position = true
-				break
-			##
-		##
-		
-		for tissue in brainfolds:
-			if position in tissue.positions:
-				regen_position = true
-				break
-			##
-		##
-		
-		if position == powerup.curr_position or position == neuron_pos2:
-			regen_position = true
-		##
-	##
-	
-	neuron_pos = position
-	neuron.global_position = game_board.get_world_position_at(position)
-	neuron.spawn_ram()
-##
-
-func generate_neuron2():
-	var position:Vector2i
-	var regen_food:bool = true
-	while regen_food:
-		regen_food = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
-		
-		for pos in snake.curr_positions:
-			if pos == position:
-				regen_food = true
-				break
-			##
-		##
-		
-		for tissue in brainfolds:
-			if position in tissue.positions:
-				regen_food = true
-				break
-			##
-		##
-		
-		if position == powerup.curr_position or position == neuron_pos:
-			regen_food = true
-		##
-	##
-	
-	neuron_pos2 = position
-	neuron2.global_position = game_board.get_world_position_at(position)
-	neuron2.spawn_ram()
 ##
 
 func _on_invuln_timer_timeout():
@@ -405,46 +333,17 @@ func _on_invuln_timer_timeout():
 		var r = randi() % 100 - snake.Length
 		if snake.Invulnerable == false and snake.meets_requirements_for_invuln(InvulnMinNumber)\
 			and r <= 35:
-			generate_powerup()
+			powerup.curr_position = find_open_position(powerup, false, true, false)
+			powerup.global_position = game_board.get_world_position_at(powerup.curr_position)
 		##
 		$InvulnTimer.start(CheckForPowerupInterval)
 	else:
 		if (powerup.curr_position - snake.Head).length() > 10:
-			generate_powerup()
+			powerup.curr_position = find_open_position(powerup, false, true, false)
+			powerup.global_position = game_board.get_world_position_at(powerup.curr_position)
 		##
 		$InvulnTimer.start(MovePowerupInterval)
 	##
-##
-
-func generate_powerup():
-	var position:Vector2i
-	var regen_food:bool = true
-	while regen_food:
-		regen_food = false
-		position = Vector2i(randi_range(0, GRID_WIDTH_COUNT), randi_range(0, GRID_HEIGHT_COUNT - 1))
-		
-		for pos in snake.curr_positions:
-			if pos == position:
-				regen_food = true
-				break
-			##
-		##
-		
-		for tissue in brainfolds:
-			if position in tissue.positions:
-				regen_food = true
-				break
-			##
-		##
-		
-		if position == neuron_pos:
-			regen_food = true
-		##
-	##
-	
-	powerup.curr_position = position
-	powerup.global_position = game_board.get_world_position_at(powerup.curr_position)
-	powerup.spawn()
 ##
 
 func _on_jumbling_jerry_timer_timeout():
