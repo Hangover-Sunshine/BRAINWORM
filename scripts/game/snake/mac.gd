@@ -22,6 +22,7 @@ var direction:Vector2i
 
 var last_global_position:Vector2
 
+var time_left:float = 0
 var tween:Tween
 
 func _ready():
@@ -142,9 +143,13 @@ func _on_mac_movespeed_changed(new_time:float):
 ##
 
 func start_timer():
-	$MovementTimer.start(_indicate_moving)
+	if time_left == 0:
+		time_left = _indicate_moving
+	##
+	$MovementTimer.start(time_left)
 ##
 
 func stop_timer():
-	$MovementTimer.stop(_indicate_moving)
+	time_left = $MovementTimer.time_left
+	$MovementTimer.stop()
 ##

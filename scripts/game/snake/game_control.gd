@@ -221,7 +221,6 @@ func player_has_died():
 	snake._on_player_died()
 	$"../StabilityStatus".death_worm()
 	await get_tree().create_timer(2).timeout
-	GlobalSignals.emit_signal("player_died")
 	GlobalSignals.emit_signal("game_scores",
 									neurons_consumed, macs_killed, tissue_destroyed,
 									Time.get_ticks_msec() - start_time)

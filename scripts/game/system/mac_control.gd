@@ -74,11 +74,22 @@ func start_timers():
 		_time_left = SpawnTime
 	##
 	$MacTimer.start(_time_left)
+	for child in get_children():
+		if child is Brainwall:
+			child.start_timer()
+		##
+	##
 ##
 
 func stop_timers():
 	_time_left = $MacTimer.time_left
 	$MacTimer.stop()
+	
+	for child in get_children():
+		if child is Mak:
+			child.stop_timer()
+		##
+	##
 ##
 
 func _listen_for_mak_movement(mak:Mak):

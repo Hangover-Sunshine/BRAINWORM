@@ -3,6 +3,7 @@ class_name Snake
 
 signal move
 signal invuln_over
+signal snake_done_exploding
 
 const HEAD_RECTS:Dictionary = {
 	MOVE_UP: Rect2(SEG_WIDTH * 0, SEG_HEIGHT * 1, SEG_WIDTH, SEG_HEIGHT),
@@ -133,6 +134,8 @@ func _on_player_died():
 	set_process(false)
 	is_dead = true
 	invuln_sfx.release()
+	old_segments = segments
+	$RemoveSegmentTimer.start()
 ##
 
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
@@ -294,10 +297,17 @@ func _on_remove_segment_timer_timeout():
 	if len(old_segments) > 0:
 		$RemoveSegmentTimer.start()
 	else:
+		if len(segments) == 0:
+			GlobalSignals.player_died.emit()
+		##
 		return
 	##
 	old_segments[-1].lose_parts()
 	old_segments.remove_at(len(old_segments) - 1)
+	
+	if len(segments) == 0:
+		$RemoveSegmentTimer.start(1.7)
+	##
 ##
 
 func _on_invuln_timer_timeout():
