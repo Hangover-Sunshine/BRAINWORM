@@ -1,5 +1,20 @@
 extends CanvasLayer
 
+func _ready():
+	pass
+	##connect_signals()
+
+func connect_signals():
+	#node.game_is_pausing.connect(invisible_percent)
+	#node.game_is_pausing.connect(visible_percent)
+	pass
+
+func invisible_percent():
+	$PercentRemaining.visible = false
+
+func visible_percent():
+	$PercentRemaining.visible = true
+
 # Trigger everytime player before goes into gameplay
 func delay_gamestart():
 	$AP_Stability.play("321")
