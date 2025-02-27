@@ -98,6 +98,7 @@ var Invulnerable:bool:
 	set(val):
 		_invuln = val
 		if val:
+			GlobalSignals.player_ramming.emit(true)
 			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
 			$RemoveSegmentTimer.start()
 			var sid = len(curr_positions) - 1
@@ -301,6 +302,7 @@ func _on_remove_segment_timer_timeout():
 
 func _on_invuln_timer_timeout():
 	invuln_over.emit()
+	GlobalSignals.player_ramming.emit(false)
 	_invuln = false
 	for i in range(len(curr_positions)):
 		segments[i].not_ramming()

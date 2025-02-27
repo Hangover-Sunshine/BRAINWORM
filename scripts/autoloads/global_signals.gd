@@ -10,6 +10,7 @@ signal game_status(is_over:bool)
 signal game_won
 signal player_died
 signal player_got_damage
+signal player_ramming(has_ram:bool)
 signal game_scores(neurons:int, macs:int, tissue:int, time:int)
 
 signal speed_up(new_time:float)
