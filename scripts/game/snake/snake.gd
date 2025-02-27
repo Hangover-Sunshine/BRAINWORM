@@ -196,24 +196,28 @@ func _process(_delta):
 		if prev_move_dir != move_dir:
 			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
 		##
+		can_change_dir = false
 	##
 	if can_change_dir and Input.is_action_just_pressed("up") and (Head + MOVE_UP) != curr_positions[1]:
 		move_dir = MOVE_UP
 		if prev_move_dir != move_dir:
 			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
 		##
+		can_change_dir = false
 	##
 	if can_change_dir and Input.is_action_just_pressed("left") and (Head + MOVE_LEFT) != curr_positions[1]:
 		move_dir = MOVE_LEFT
 		if prev_move_dir != move_dir:
 			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
 		##
+		can_change_dir = false
 	##
 	if can_change_dir and Input.is_action_just_pressed("right") and (Head + MOVE_RIGHT) != curr_positions[1]:
 		move_dir = MOVE_RIGHT
 		if prev_move_dir != move_dir:
 			SoundManager.play_varied("game", "move", randf_range(0.8, 1.1))
 		##
+		can_change_dir = false
 	##
 	
 	if Invulnerable:
@@ -232,7 +236,6 @@ func _on_movement_timer_timeout():
 	if is_dead:
 		return
 	##
-	can_change_dir = false
 	
 	prev_positions = curr_positions.duplicate()
 	curr_positions[0] += move_dir
