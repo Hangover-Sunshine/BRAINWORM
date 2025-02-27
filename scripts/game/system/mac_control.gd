@@ -6,11 +6,17 @@ const MAC = preload("res://prefabs/snake/mac.tscn")
 @export var SpawnTime:float = 2
 @export var DelayToSpawn:float = 12
 
-var max_at_a_time:int = 8
+var max_at_a_time:int = 4
 
 var _time_left:float = 0
 var super_control:GameControl
 var game_board:GameBoard
+
+var _curr_mac_move_time:float = 1.8
+
+func initialize():
+	_time_left = DelayToSpawn
+##
 
 func get_active_macs():
 	var children:Array[Mak] = []
@@ -24,8 +30,30 @@ func get_active_macs():
 	return children
 ##
 
+func does_position_overlap(pos:Vector2i):
+	var active = get_active_macs()
+	for mac in active:
+		if mac.curr_position == pos:
+			return true
+		##
+	##
+	
+	return false
+##
+
+func remove_at(pos:Vector2i):
+	var active = get_active_macs()
+	for mac in active:
+		if mac.curr_position == pos:
+			mac.kill_it()
+			break
+		##
+	##
+##
+
 func _on_mac_timer_timeout():
-	if get_child_count() >= max_at_a_time:
+	var rand = randi() % 100 + 1
+	if get_child_count() - 1 >= max_at_a_time or rand > 50:
 		$MacTimer.start(SpawnTime)
 		return
 	##
@@ -40,7 +68,7 @@ func _on_mac_timer_timeout():
 	new_mac.global_position = game_board.get_world_position_at(position)
 	new_mac.connect("please_move_me", _listen_for_mak_movement)
 	add_child(new_mac)
-	new_mac.initialize(.1)
+	new_mac.initialize(_curr_mac_move_time)
 	$MacTimer.start(SpawnTime)
 ##
 

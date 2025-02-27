@@ -103,6 +103,7 @@ func _ready():
 	$TissueControl.super_control = self
 	$TissueControl.game_board = game_board
 	
+	$MacControl.initialize()
 	$MacControl.super_control = self
 	$MacControl.game_board = game_board
 	
@@ -193,35 +194,6 @@ func _on_player_move():
 	check_for_neuron()
 	check_for_powerup()
 	check_for_enemy()
-	
-	var remove = []
-	for elem in range(len(brainfolds)):
-		if brainfolds[elem] == null or brainfolds[elem].is_alive == false:
-			remove.push_back(elem)
-			if brainfolds[elem] != null:
-				brainfolds[elem].queue_free()
-			##
-		##
-	##
-	
-	for id in remove:
-		brainfolds.remove_at(id)
-	##
-	
-	remove = []
-	for elem in range(len(macs)):
-		if macs[elem] == null or macs[elem].is_alive == false:
-			remove.push_back(elem)
-			if macs[elem] != null:
-				macs[elem].queue_free()
-			##
-		##
-	##
-	
-	for id in remove:
-		macs.remove_at(id)
-	##
-	
 	check_for_tissue_eating_neuron()
 	check_for_tissue_eating_powerup()
 	
@@ -277,39 +249,13 @@ func check_for_enemy():
 		##
 	##
 	
-	if snake.Invulnerable:
-		var remove = []
-		for makIndx in range(len(macs)):
-			if macs[makIndx] != null and snake.Head == macs[makIndx].curr_position:
-				macs[makIndx].kill_it()
-				remove.push_back(makIndx)
-			##
-			if macs[makIndx] == null and not(makIndx in remove):
-				remove.push_back(makIndx)
-			##
-		##
-		
-		for m in remove:
+	if gameover == false and $MacControl.does_position_overlap(snake.Head):
+		if snake.Invulnerable:
+			$MacControl.remove_at(snake.Head)
+			tissue_destroyed += 1
 			SoundManager.play_varied("game", "splat", randf_range(0.8, 1.1))
-			macs.remove_at(m)
-			macs_killed += 1
-			update_score = true
-		##
-		
-		return
-	##
-	
-	for tissue in brainfolds:
-		if snake.Head in tissue.positions:
+		else:
 			gameover = true
-		##
-	##
-	
-	if gameover == false:
-		for mak in macs:
-			if snake.Head == mak.curr_position:
-				gameover = true
-			##
 		##
 	##
 	
@@ -513,8 +459,6 @@ func turn_on_all_timers():
 ##
 
 func turn_off_all_timers():
-	mac_spawn_time = $MacTimer.time_left
-	tissue_spawn_time = $TissueTimer.time_left
 	$InvulnTimer.stop()
 	$MacControl.stop_timers()
 	$TissueControl.stop_timers()
@@ -534,13 +478,13 @@ func find_open_position(obj_self, macs_poses:bool, tissue_poses:bool, offset:boo
 	
 	if tissue_poses:
 		for t in $TissueControl.get_active_tissues():
-			if t == obj_self:
+			if t == obj_self or t.is_alive == false:
 				continue
 			##
 			
 			var start:int = 0
 			
-			if offset and t.is_alive:
+			if offset:
 				start = 1
 				
 				# Can't spawn in a box around the root node

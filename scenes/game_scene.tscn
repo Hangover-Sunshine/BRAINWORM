@@ -1246,6 +1246,7 @@ one_shot = true
 script = ExtResource("6_6tefx")
 
 [node name="MacTimer" type="Timer" parent="GameControl/MacControl"]
+one_shot = true
 
 [node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
 z_index = 2
@@ -1448,3 +1449,4 @@ events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_257qe"), SubResou
 [connection signal="timeout" from="GameControl/InvulnTimer" to="GameControl" method="_on_invuln_timer_timeout"]
 [connection signal="timeout" from="GameControl/JumblingJerryTimer" to="GameControl" method="_on_jumbling_jerry_timer_timeout"]
 [connection signal="timeout" from="GameControl/TissueControl/TissueTimer" to="GameControl/TissueControl" method="_on_tissue_timer_timeout"]
+[connection signal="timeout" from="GameControl/MacControl/MacTimer" to="GameControl/MacControl" method="_on_mac_timer_timeout"]
