@@ -45,6 +45,7 @@ func _ready():
 
 func _input(event):
 	if _can_pause and event.is_action_pressed("pause"):
+		GlobalSignals.game_is_pausing.emit(!get_tree().paused)
 		get_tree().paused = !get_tree().paused
 		$PauseMenu.visible = get_tree().paused
 		
@@ -87,6 +88,7 @@ func _unpause_game():
 	_can_pause = false
 	_game_scene.countdown()
 	
+	GlobalSignals.game_is_pausing.emit(false)
 	get_tree().paused = false
 	$PauseMenu.visible = false
 	AudioServer.remove_bus_effect(bus, 0)

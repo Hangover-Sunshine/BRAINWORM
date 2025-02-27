@@ -15,15 +15,8 @@ static var GRID_HEIGHT_COUNT:int = 15
 @export var MovePowerupInterval:float = 3
 @export var InvulnMinNumber:int = 5
 
-@export_category("Tissue Spawn Info")
-@export var MaxTissueNodes:int = 4
-@export var MinRangeOfGrowth:int = 4
-@export var MaxRangeOfGrowth:int = 8
-@export var PlayerSafetySquare:int = 2
-
 @export_category("Mak Spawning Info")
 @export var MaxAtATime:int = 8
-@export var PlayerSpawnSafetySquare:int = 4
 
 @export_category("Win Conditions")
 @export var BrainHealth:int = 200

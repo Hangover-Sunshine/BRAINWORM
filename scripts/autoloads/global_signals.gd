@@ -17,4 +17,5 @@ signal speed_up(new_time:float)
 signal speed_up_macs(new_time:float)
 
 signal start_game
+signal game_is_pausing(is_pausing:bool)
 # GAMEPLAY ###############################
