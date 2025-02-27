@@ -32,23 +32,19 @@ func get_active_macs():
 
 func does_position_overlap(pos:Vector2i):
 	var active = get_active_macs()
+	
 	for mac in active:
 		if mac.curr_position == pos:
-			return true
+			return mac
 		##
 	##
 	
-	return false
+	return null
 ##
 
-func remove_at(pos:Vector2i):
+func remove(mac:Mak):
 	var active = get_active_macs()
-	for mac in active:
-		if mac.curr_position == pos:
-			mac.kill_it()
-			break
-		##
-	##
+	active[active.find(mac)].kill_it()
 ##
 
 func _on_mac_timer_timeout():
