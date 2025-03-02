@@ -126,3 +126,29 @@ func remove_marker():
 	direction = 0
 	marker.visible = false
 ##
+
+##
+func is_scared():
+	$Skeleton/Face/L_Brow.flip_h = true
+	$Skeleton/Face/R_Brow.flip_h = true
+	death.color = Color8(193,216,244,255)
+	trail.color = Color8(193,216,244,255)
+	body.color = Color8(193,216,244,255)
+	head.color = Color8(146,170,201,255)
+	face.modulate = Color8(39,39,55,255)
+	marker_body.color = Color8(193,216,244,255)
+	marker_head.color = Color8(146,170,201,255)
+##
+
+## Do not play this before the randomize_color(), only use after is_scared()
+func is_angry():
+	$Skeleton/Face/L_Brow.flip_h = false
+	$Skeleton/Face/R_Brow.flip_h = false
+	death.color = lite_color
+	trail.color = lite_color
+	body.color = lite_color
+	head.color = mid_color
+	face.modulate = dark_color
+	marker_body.color = lite_color
+	marker_head.color = mid_color
+##
