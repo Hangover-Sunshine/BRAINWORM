@@ -4,6 +4,8 @@ signal move
 signal invuln_over
 signal snake_done_exploding
 
+const SEGMENT_DESPAWN = preload("res://prefabs/snake/segment_despawn.tscn")
+
 const MOVE_UP:Vector2i = Vector2i(0, -1)
 const MOVE_DOWN:Vector2i = Vector2i(0, 1)
 const MOVE_LEFT:Vector2i = Vector2i(-1, 0)
@@ -62,8 +64,13 @@ var Invulnerable:bool:
 	set(val):
 		_invuln = val
 		if val:
+			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
+			
 			for i in range(len(curr_positions) - 1, 2, -1):
-				old_positions.push_back(curr_positions[i])
+				var seg = SEGMENT_DESPAWN.instantiate()
+				add_child(seg)
+				seg.explode()
+				seg.global_position = game_board.get_world_position_at(curr_positions[i])
 				curr_positions.remove_at(i)
 			##
 			
@@ -244,4 +251,11 @@ func _on_player_died():
 	is_dead = true
 	invuln_sfx.release()
 	old_segments = segments
+##
+
+func _on_invuln_timer_timeout():
+	invuln_over.emit()
+	GlobalSignals.player_ramming.emit(false)
+	_invuln = false
+	# TODO: Turn it off
 ##
