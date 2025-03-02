@@ -3,6 +3,8 @@ extends Control
 signal gameover_to_game
 signal gameover_to_main
 
+@onready var cutscene_over : bool = false
+
 @onready var win_title = $GameOver_MC/GameOver_VBox/Text_Vbox/Win_Title
 @onready var lose_title = $GameOver_MC/GameOver_VBox/Text_Vbox/Lose_Title
 @onready var win_text = $GameOver_MC/GameOver_VBox/Text_Vbox/Win_VBox
@@ -119,3 +121,16 @@ func play_win_song():
 func play_norm_song():
 	MusicManager.play("OST", "space_jazz")
 ##
+
+func _input(event):
+	if event.is_pressed() and cutscene_over == true:
+		cutscene_over = false
+		$AP_Newspaper.play("Newspaper_Fade")
+		$Prompt.visible = false
+		$Prompt/AP_Flash.stop()
+
+func _on_ap_newspaper_animation_finished(anim_name):
+	if anim_name == "Newspaper":
+		cutscene_over = true
+		$Prompt.visible = true
+		$Prompt/AP_Flash.play("Flash")
