@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8yyd5w2a43w"]
+
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_riick"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="2_y8jd8"]
+
+[node name="FX_Splatter2" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.5
+texture = ExtResource("1_riick")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 90.0
+scale_amount_min = 0.35
+scale_amount_max = 0.35
+scale_amount_curve = ExtResource("2_y8jd8")
+color = Color(0.929412, 0.501961, 0.6, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

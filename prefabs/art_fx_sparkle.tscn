@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dorncspu2pr4g"]
+
+[ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="1_gd287"]
+[ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="2_3dkhm"]
+
+[sub_resource type="Gradient" id="Gradient_fgtrn"]
+offsets = PackedFloat32Array(0.697917, 0.854167)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="FX_Sparkle" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+texture = ExtResource("1_gd287")
+emission_shape = 2
+emission_sphere_radius = 32.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = ExtResource("2_3dkhm")
+color_ramp = SubResource("Gradient_fgtrn")
