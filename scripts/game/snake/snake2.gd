@@ -14,6 +14,7 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 var can_change_dir:bool = true
 var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
+var old_positions:Array[Vector2i]
 var old_segments:Array
 var segments:Array
 var invuln_time_per_segment:float
@@ -60,6 +61,16 @@ var Invulnerable:bool:
 		return _invuln
 	set(val):
 		_invuln = val
+		if val:
+			for i in range(len(curr_positions) - 1, 2, -1):
+				old_positions.push_back(curr_positions[i])
+				curr_positions.remove_at(i)
+			##
+			
+			for i in range(len(snake.points) - 1, 3, -1):
+				snake.remove_point(i)
+			##
+		##
 	##
 ##
 
@@ -78,9 +89,7 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	snake.points[0] = game_board.get_world_position_at(curr_positions[0])
 	snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + Vector2(-8, 0)
 	
-	#draw_snake()
-	#segments[0].turn_on_face()
-	#segments[0].rotate_face(FACE_DIRECTIONS[move_dir])
+	draw_snake()
 	set_process(false)
 ##
 
@@ -101,6 +110,14 @@ func draw_snake():
 		offset = Vector2(0, -8)
 	##
 	snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + offset
+##
+
+func add_segment():
+	curr_positions.push_back(curr_positions[-1])
+	snake.add_point(game_board.get_world_position_at(curr_positions[-1]))
+	#if Invulnerable:
+		#snake_seg.is_ramming(segments[0].get_time_in_ap())
+	##
 ##
 
 func start_timers():
