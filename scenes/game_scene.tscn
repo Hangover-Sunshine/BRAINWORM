@@ -254,6 +254,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0.196078), Color(0.74902, 0.141176, 0.32549, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PercentRemaining:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_leuvx"]
 resource_name = "Death_Politician"
@@ -1455,3 +1467,4 @@ events = Array[ExtResource("13_rb0vq")]([SubResource("Resource_257qe"), SubResou
 [connection signal="timeout" from="GameControl/JumblingJerryTimer" to="GameControl" method="_on_jumbling_jerry_timer_timeout"]
 [connection signal="timeout" from="GameControl/TissueControl/TissueTimer" to="GameControl/TissueControl" method="_on_tissue_timer_timeout"]
 [connection signal="timeout" from="GameControl/MacControl/MacTimer" to="GameControl/MacControl" method="_on_mac_timer_timeout"]
+[connection signal="animation_finished" from="StabilityStatus/AP_Stability" to="StabilityStatus" method="_on_ap_stability_animation_finished"]
