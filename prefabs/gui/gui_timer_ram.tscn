@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://0twa84phpulo"]
+
+[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="1_mvhp4"]
+
+[node name="Timer_Ram" type="MarginContainer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.5
+offset_top = -65.0
+offset_right = -13.5
+offset_bottom = -27.0
+grow_horizontal = 2
+
+[node name="Label_Ram" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mvhp4")
+theme_override_font_sizes/font_size = 30
+text = "00"
+horizontal_alignment = 1

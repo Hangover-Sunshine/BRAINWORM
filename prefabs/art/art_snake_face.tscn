@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3rgrfn1jcjxi"]
+
+[ext_resource type="Texture2D" uid="uid://bcjaetdg6ueto" path="res://assets/character/Mac_Eye.png" id="1_023rb"]
+[ext_resource type="Texture2D" uid="uid://bhxhrc15srskk" path="res://assets/character/Mac_Frown.png" id="2_uqhb0"]
+
+[sub_resource type="Animation" id="Animation_dyw5m"]
+resource_name = "Blink"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("L_Eye:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.3), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("R_Eye:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.3), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4xw1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("L_Eye:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("R_Eye:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rybp"]
+_data = {
+"Blink": SubResource("Animation_dyw5m"),
+"RESET": SubResource("Animation_4xw1j")
+}
+
+[node name="Face" type="Node2D"]
+
+[node name="L_Eye" type="Sprite2D" parent="."]
+modulate = Color(0.210706, 0.0444339, 0.109765, 1)
+position = Vector2(-12, 3)
+texture = ExtResource("1_023rb")
+
+[node name="R_Eye" type="Sprite2D" parent="."]
+modulate = Color(0.210706, 0.0444339, 0.109765, 1)
+position = Vector2(11, 3)
+texture = ExtResource("1_023rb")
+
+[node name="Smile" type="Sprite2D" parent="."]
+modulate = Color(0.210706, 0.0444339, 0.109765, 1)
+position = Vector2(0, 15)
+texture = ExtResource("2_uqhb0")
+flip_v = true
+
+[node name="AP_Face" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5rybp")
+}
+autoplay = "Blink"
