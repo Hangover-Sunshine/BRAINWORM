@@ -44,7 +44,7 @@ static var GRID_HEIGHT_COUNT:int = 15
 }
 
 @onready var game_board = $Layout_Game
-@onready var snake = $Snake
+@onready var snake = $Snake2
 
 var neuron
 var neuron_pos:Vector2i

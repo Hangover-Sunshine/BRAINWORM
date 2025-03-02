@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dv4v38ahvej5j"]
+[gd_scene load_steps=58 format=3 uid="uid://dv4v38ahvej5j"]
 
 [ext_resource type="Script" path="res://scripts/game/system/game_scene_dummy.gd" id="1_ymqpa"]
 [ext_resource type="PackedScene" uid="uid://c2cmtfshbsc1o" path="res://scenes/layout_game.tscn" id="2_0p6tp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/game/system/mac_control.gd" id="6_6tefx"]
 [ext_resource type="Script" path="res://scripts/game/gui/Shake.gd" id="6_gjvbh"]
 [ext_resource type="Script" path="res://scenes/StabilityStatus.gd" id="7_7ose1"]
+[ext_resource type="PackedScene" uid="uid://c1c3csrtfqabx" path="res://prefabs/snake/snake2.tscn" id="7_vc8m2"]
 [ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="8_lldiq"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="8_s42b6"]
 [ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="9_umb08"]
@@ -1246,7 +1247,11 @@ script = ExtResource("6_6tefx")
 one_shot = true
 
 [node name="Snake" parent="GameControl" instance=ExtResource("4_sees7")]
+process_mode = 4
+visible = false
 z_index = 2
+
+[node name="Snake2" parent="GameControl" instance=ExtResource("7_vc8m2")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(954.963, 537.333)
