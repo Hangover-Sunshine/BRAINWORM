@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://6vqekqvxjoat"]
+[gd_scene load_steps=17 format=3 uid="uid://6vqekqvxjoat"]
 
-[ext_resource type="FontFile" uid="uid://dk2tmtv4d2kef" path="res://assets/fonts/tfonts/quicksand/Quicksand-Bold.ttf" id="2_7muqm"]
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
+[ext_resource type="PackedScene" uid="uid://0twa84phpulo" path="res://prefabs/gui/gui_timer_ram.tscn" id="3_ntxs0"]
 [ext_resource type="PackedScene" uid="uid://c3rgrfn1jcjxi" path="res://prefabs/art/art_snake_face.tscn" id="4_qlcqp"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="6_sy3ai"]
 [ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="7_raijf"]
 [ext_resource type="Script" path="res://prefabs/snake/FX_Splatter.gd" id="8_fen8w"]
-[ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="9_scn55"]
+[ext_resource type="PackedScene" uid="uid://dorncspu2pr4g" path="res://prefabs/art_fx_sparkle.tscn" id="8_oe6h5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
@@ -200,10 +200,6 @@ _data = {
 "Ram": SubResource("Animation_tvh2w")
 }
 
-[sub_resource type="Gradient" id="Gradient_fgtrn"]
-offsets = PackedFloat32Array(0.697917, 0.854167)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
 [node name="SnakeSegment" type="Sprite2D"]
 material = SubResource("ShaderMaterial_o64fk")
 texture = ExtResource("2_pddsj")
@@ -222,23 +218,7 @@ libraries = {
 }
 autoplay = "No_Ram"
 
-[node name="Timer_Ram" type="MarginContainer" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -49.5
-offset_top = -65.0
-offset_right = -13.5
-offset_bottom = -27.0
-grow_horizontal = 2
-
-[node name="Label_Ram" type="Label" parent="Timer_Ram"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_7muqm")
-theme_override_font_sizes/font_size = 30
-text = "00"
-horizontal_alignment = 1
+[node name="Timer_Ram" parent="." instance=ExtResource("3_ntxs0")]
 
 [node name="Face" parent="." instance=ExtResource("4_qlcqp")]
 visible = false
@@ -264,21 +244,7 @@ script = ExtResource("8_fen8w")
 wait_time = 5.0
 one_shot = true
 
-[node name="FX_Sparkle" type="CPUParticles2D" parent="."]
-z_index = 1
-emitting = false
-texture = ExtResource("9_scn55")
-emission_shape = 2
-emission_sphere_radius = 32.0
-gravity = Vector2(0, 0)
-angular_velocity_min = -50.0
-angular_velocity_max = 50.0
-angle_min = -180.0
-angle_max = 180.0
-scale_amount_min = 0.1
-scale_amount_max = 0.2
-scale_amount_curve = ExtResource("7_raijf")
-color_ramp = SubResource("Gradient_fgtrn")
+[node name="FX_Sparkle" parent="." instance=ExtResource("8_oe6h5")]
 
 [connection signal="tree_entered" from="FX_Splatter" to="FX_Splatter" method="_on_tree_entered"]
 [connection signal="timeout" from="FX_Splatter/Timer" to="FX_Splatter" method="_on_timer_timeout"]

@@ -1,19 +1,13 @@
 extends CanvasLayer
 
 func _ready():
-	pass
-	##connect_signals()
+	connect_signals()
 
 func connect_signals():
-	#node.game_is_pausing.connect(invisible_percent)
-	#node.game_is_pausing.connect(visible_percent)
-	pass
+	GlobalSignals.connect("game_is_pausing", visible_percent)
 
-func invisible_percent():
-	$PercentRemaining.visible = false
-
-func visible_percent():
-	$PercentRemaining.visible = true
+func visible_percent(is_pausing:bool):
+	$PercentRemaining.visible = !is_pausing
 
 # Trigger everytime player before goes into gameplay
 func delay_gamestart():
