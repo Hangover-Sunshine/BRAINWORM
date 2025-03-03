@@ -88,7 +88,7 @@ func _ready():
 
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	invuln_sfx = SoundManager.instance("snake", "invuln")
-	GlobalSignals.connect("player_died", _on_player_died)
+	#GlobalSignals.connect("player_died", _on_player_died)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
 	move_dir = Vector2i(1, 0)
 	game_board = gb
@@ -142,10 +142,6 @@ func draw_snake():
 		else:
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
 		##
-	##
-	
-	#for seg_pos in range(1, len(curr_positions)):
-		#snake.points[seg_pos + 1] = game_board.get_world_position_at(curr_positions[seg_pos])
 	##
 ##
 
