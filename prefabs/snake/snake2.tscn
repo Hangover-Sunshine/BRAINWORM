@@ -1,9 +1,101 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1c3csrtfqabx"]
+[gd_scene load_steps=10 format=3 uid="uid://c1c3csrtfqabx"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake2.gd" id="1_hknqd"]
-[ext_resource type="Curve" uid="uid://dp7vqmfg7lhdd" path="res://prefabs/snake/snake_width_graph.tres" id="2_a7n0u"]
 [ext_resource type="Texture2D" uid="uid://c4n71eb6ycmfs" path="res://assets/pc/PC_Ring_64.png" id="2_dhjen"]
+[ext_resource type="PackedScene" uid="uid://dorncspu2pr4g" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
 [ext_resource type="PackedScene" uid="uid://c0bhu5ct6kkf" path="res://prefabs/gui/gui_timer_ram.tscn" id="4_mn7do"]
+[ext_resource type="PackedScene" uid="uid://c3rgrfn1jcjxi" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
+
+[sub_resource type="Animation" id="Animation_xf3df"]
+resource_name = "No_Ram"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FX_Sparkle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v1ys7"]
+resource_name = "Ram"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.917115, 0.451351, 0.446758, 1), Color(0.976471, 0.607843, 0.317647, 1), Color(1, 0.74902, 0.54902, 1), Color(0.611765, 0.952941, 0.780392, 1), Color(0.576927, 0.769932, 0.968836, 1), Color(0.917647, 0.678431, 0.929412, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FX_Sparkle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mkjx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FX_Sparkle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4xbg"]
+_data = {
+"No_Ram": SubResource("Animation_xf3df"),
+"RESET": SubResource("Animation_mkjx6"),
+"Ram": SubResource("Animation_v1ys7")
+}
 
 [node name="Snake2" type="Node2D"]
 script = ExtResource("1_hknqd")
@@ -11,7 +103,6 @@ script = ExtResource("1_hknqd")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, -8, 0, -64, 0, -128, 0)
 width = 58.0
-width_curve = ExtResource("2_a7n0u")
 default_color = Color(0.921569, 0.670588, 0.72549, 1)
 joint_mode = 2
 begin_cap_mode = 2
@@ -21,8 +112,7 @@ antialiased = true
 [node name="Ringworm" type="Line2D" parent="."]
 texture_repeat = 2
 points = PackedVector2Array(0, 0, -8, 0, -64, 0, -128, 0)
-width = 58.0
-width_curve = ExtResource("2_a7n0u")
+width = 64.0
 texture = ExtResource("2_dhjen")
 texture_mode = 1
 
@@ -33,10 +123,27 @@ one_shot = true
 one_shot = true
 
 [node name="Timer_Ram" parent="." instance=ExtResource("4_mn7do")]
-offset_left = -24.0
+visible = true
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
 offset_top = -64.0
-offset_right = 12.0
+offset_right = 18.0
 offset_bottom = -26.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="AP_Ram" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h4xbg")
+}
+
+[node name="FX_Sparkle" parent="." instance=ExtResource("4_11mtt")]
+
+[node name="Face" parent="." instance=ExtResource("5_45gsa")]
+rotation = -1.5708
 
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]

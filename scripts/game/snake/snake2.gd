@@ -188,6 +188,7 @@ func start_timers():
 	$MovementTimer.start(curr_move_time)
 	if invuln_time_left > 0:
 		$InvulnTimer.start(invuln_time_left)
+		$AP_Ram.play("Ram")
 		invuln_time_left = 0
 		invuln_sfx.process_mode = PROCESS_MODE_INHERIT
 	##
@@ -333,6 +334,7 @@ func _on_invuln_timer_timeout():
 	GlobalSignals.player_ramming.emit(false)
 	_invuln = false
 	$Timer_Ram.hide_label()
+	$AP_Ram.play("No_Ram")
 ##
 
 func update_text(time_left):
