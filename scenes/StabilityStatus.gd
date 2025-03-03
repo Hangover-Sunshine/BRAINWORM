@@ -5,6 +5,7 @@ func _ready():
 
 func connect_signals():
 	GlobalSignals.connect("game_is_pausing", visible_percent)
+	##GlobalSignals.connect("game_is_over?", visible_percent)
 
 func visible_percent(is_pausing:bool):
 	$PercentRemaining.visible = !is_pausing
