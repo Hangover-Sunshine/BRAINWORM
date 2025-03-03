@@ -12,10 +12,12 @@ var _time_left:float = 0
 var super_control:GameControl
 var game_board:GameBoard
 
+var _player_is_invulned:bool = false
 var _curr_mac_move_time:float = 1.8
 
 func initialize():
 	_time_left = DelayToSpawn
+	GlobalSignals.connect("player_ramming", _on_player_invulned)
 ##
 
 func get_active_macs():
@@ -65,7 +67,16 @@ func _on_mac_timer_timeout():
 	new_mac.connect("please_move_me", _listen_for_mak_movement)
 	add_child(new_mac)
 	new_mac.initialize(_curr_mac_move_time)
+	
+	if _player_is_invulned:
+		new_mac.make_scared()
+	##
+	
 	$MacTimer.start(SpawnTime)
+##
+
+func _on_player_invulned(is_player_invulned:bool):
+	_player_is_invulned = is_player_invulned
 ##
 
 func start_timers():

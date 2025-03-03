@@ -32,6 +32,7 @@ func _ready():
 	marker.visible = false
 	marker.position = Vector2(0,0)
 	randomize_color()
+	GlobalSignals.connect("player_ramming", player_invulned)
 
 func randomize_color():
 	mac_color = randi() % 4
@@ -125,6 +126,14 @@ func remove_marker():
 	marker.position = Vector2(0,0)
 	direction = 0
 	marker.visible = false
+##
+
+func player_invulned(invulned:bool):
+	if invulned:
+		is_scared()
+	else:
+		is_angry()
+	##
 ##
 
 ##

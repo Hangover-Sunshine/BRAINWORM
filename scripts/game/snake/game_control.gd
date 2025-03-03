@@ -59,7 +59,7 @@ var neurons_consumed:int = 0
 var tissue_destroyed:int = 0
 var macs_killed:int = 0
 var start_time:int
-var curr_timer_time:float
+var curr_timer_time:float = 0.14
 var curr_mac_timer_time:float
 
 var jumble_jerry:bool = true
@@ -134,7 +134,6 @@ func _process(_delta):
 	if timer_time != curr_mac_timer_time:
 		$"../StabilityStatus".regular_shake()
 		SoundManager.play_varied("game", "rumble", randf_range(0.9, 1.1))
-		GlobalSignals.emit_signal("speed_up", curr_timer_time)
 		GlobalSignals.emit_signal("speed_up_macs", curr_mac_timer_time)
 	##
 	

@@ -118,6 +118,10 @@ func move(new_global_position:Vector2):
 	tween.tween_property(self, "global_position", new_global_position, 0.4).set_trans(Tween.TRANS_ELASTIC)
 ##
 
+func make_scared():
+	$Art_Mac.player_invulned(true)
+##
+
 func kill_it():
 	if is_alive == false:
 		return
