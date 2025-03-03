@@ -1,22 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1c3csrtfqabx"]
+[gd_scene load_steps=4 format=3 uid="uid://c1c3csrtfqabx"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake2.gd" id="1_hknqd"]
-
-[sub_resource type="Curve" id="Curve_gny86"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.524194, 0.89011), -0.561086, -0.561086, 0, 0, Vector2(0.790323, 0.593406), -1.72601, -1.72601, 0, 0, Vector2(1, 0.153846), -1.79089, 0.0, 0, 0]
-point_count = 4
+[ext_resource type="Curve" uid="uid://dp7vqmfg7lhdd" path="res://prefabs/snake/snake_width_graph.tres" id="2_a7n0u"]
+[ext_resource type="Texture2D" uid="uid://c4n71eb6ycmfs" path="res://assets/pc/PC_Ring_64.png" id="2_dhjen"]
 
 [node name="Snake2" type="Node2D"]
 script = ExtResource("1_hknqd")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, -8, 0, -64, 0, -128, 0)
-width = 64.0
-width_curve = SubResource("Curve_gny86")
+width = 58.0
+width_curve = ExtResource("2_a7n0u")
 default_color = Color(0.921569, 0.670588, 0.72549, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+antialiased = true
+
+[node name="Ringworm" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, -8, 0, -64, 0, -128, 0)
+width = 58.0
+width_curve = ExtResource("2_a7n0u")
+texture = ExtResource("2_dhjen")
+texture_mode = 1
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true

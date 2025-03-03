@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnu0p0jax8yui"]
 
-[ext_resource type="Script" path="res://prefabs/snake/segment_despawn.gd" id="1_2en62"]
+[ext_resource type="Script" path="res://scripts/game/snake/segment_despawn.gd" id="1_8rgog"]
 [ext_resource type="Texture2D" uid="uid://bf6nrl603vnye" path="res://assets/pc/PC_Tilesheet_Solid.png" id="1_ttyjj"]
 [ext_resource type="PackedScene" uid="uid://b0ughddqhya3g" path="res://prefabs/art/art_fx_splatter.tscn" id="2_0l5gm"]
 
@@ -68,7 +68,7 @@ _data = {
 }
 
 [node name="SegmentDespawn" type="Node2D"]
-script = ExtResource("1_2en62")
+script = ExtResource("1_8rgog")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ttyjj")
@@ -81,3 +81,9 @@ region_rect = Rect2(128, 128, 64, 64)
 libraries = {
 "": SubResource("AnimationLibrary_d7yr3")
 }
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

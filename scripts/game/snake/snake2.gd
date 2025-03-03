@@ -140,7 +140,6 @@ func draw_snake():
 				snake.points[1] = interpolate_position,
 					snake.points[1], game_board.get_world_position_at(curr_positions[0]) + offset, 0.12)
 		else:
-			#tweens[i + 1].kill()
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
 		##
 	##
@@ -252,6 +251,10 @@ func _process(_delta):
 
 func _on_movement_timer_timeout():
 	if is_dead:
+		if get_child_count() == _INITIAL_CHILD_COUNT:
+			snake_done_exploding.emit()
+		else:
+			$MovementTimer.start(1)
 		return
 	##
 	

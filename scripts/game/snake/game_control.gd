@@ -170,12 +170,20 @@ func initialize_board():
 	snake.initialize(game_board, StartPosition, curr_timer_time)
 	snake.connect("move", _on_player_move)
 	snake.connect("invuln_over", _on_invuln_timer_timeout)
+	snake.connect("snake_done_exploding", _on_snake_dead)
 	snake.invuln_time_per_segment = SecondsPerSegment
 	
 	neuron_pos = find_open_position(neuron, true, true, false)
 	neuron.global_position = game_board.get_world_position_at(neuron_pos)
 	neuron_pos2 = find_open_position(neuron2, true, true, false)
 	neuron2.global_position = game_board.get_world_position_at(neuron_pos2)
+##
+
+func _on_snake_dead():
+	GlobalSignals.emit_signal("game_scores",
+									neurons_consumed, macs_killed, tissue_destroyed,
+									Time.get_ticks_msec() - start_time)
+	GlobalSignals.emit_signal("player_died")
 ##
 
 func _on_player_move():
@@ -213,10 +221,6 @@ func player_has_died():
 	turn_off_all_timers()
 	snake._on_player_died()
 	$"../StabilityStatus".death_worm()
-	await get_tree().create_timer(2).timeout
-	GlobalSignals.emit_signal("game_scores",
-									neurons_consumed, macs_killed, tissue_destroyed,
-									Time.get_ticks_msec() - start_time)
 ##
 
 func check_for_enemy():
