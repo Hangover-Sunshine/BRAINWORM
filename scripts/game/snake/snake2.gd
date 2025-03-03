@@ -147,10 +147,19 @@ func draw_snake():
 ##
 
 func add_segment():
-	#var next_position:Vector2i = curr_positions[-1] - curr_positions[-2]
+	var next_position:Vector2i = curr_positions[-1] - curr_positions[-2]
+	next_position += curr_positions[-1]
 	
-	curr_positions.push_back(curr_positions[-1])
-	snake.add_point(game_board.get_world_position_at(curr_positions[-1]))
+	if (curr_positions[-1] - next_position).x < 0 or\
+		(curr_positions[-1] - next_position).x > GameBoard.GRID_WIDTH_COUNT or\
+		(curr_positions[-1] - next_position).y < 0 or\
+		(curr_positions[-1] - next_position).y > GameBoard.GRID_HEIGHT_COUNT:
+			next_position = curr_positions[-2]
+		##
+	##
+	
+	curr_positions.push_back(next_position)
+	snake.add_point(game_board.get_world_position_at(next_position))
 	#if Invulnerable:
 		#snake_seg.is_ramming(segments[0].get_time_in_ap())
 	##

@@ -72,10 +72,9 @@ var mac_spawn_time:float
 var tissue_spawn_time:float
 
 func _ready():
-	curr_timer_time = MovementTimeChanges[100]
 	curr_mac_timer_time = MacMovementTimeChanges[100]
 	MaxAtATime = MaxMacSpawn[100]
-	GlobalSignals.emit_signal("speed_up", curr_timer_time)
+	GlobalSignals.emit_signal("speed_up", 0.14)
 	GlobalSignals.connect("start_game", _on_game_start)
 	
 	neuron = load("res://prefabs/art/art_neuron.tscn").instantiate()
@@ -120,23 +119,19 @@ func _process(_delta):
 	game_board.update_time(Time.get_ticks_msec() - start_time)
 	
 	threshold = floori(jerry_health / float(BrainHealth) * 100)
-	var timer_time = curr_timer_time
+	var timer_time = curr_mac_timer_time
 	if threshold > 50 and threshold <= 75:
-		timer_time = MovementTimeChanges[75]
 		curr_mac_timer_time = MacMovementTimeChanges[75]
 		MaxAtATime = MaxMacSpawn[75]
 	elif threshold > 25 and threshold <= 50:
-		timer_time = MovementTimeChanges[50]
 		curr_mac_timer_time = MacMovementTimeChanges[50]
 		MaxAtATime = MaxMacSpawn[50]
 	elif threshold < 25:
-		timer_time = MovementTimeChanges[25]
 		curr_mac_timer_time = MacMovementTimeChanges[25]
 		MaxAtATime = MaxMacSpawn[25]
 	##
 	
-	if timer_time != curr_timer_time:
-		curr_timer_time = timer_time
+	if timer_time != curr_mac_timer_time:
 		$"../StabilityStatus".regular_shake()
 		SoundManager.play_varied("game", "rumble", randf_range(0.9, 1.1))
 		GlobalSignals.emit_signal("speed_up", curr_timer_time)
