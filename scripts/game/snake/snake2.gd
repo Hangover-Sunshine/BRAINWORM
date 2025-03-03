@@ -16,9 +16,6 @@ const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 var can_change_dir:bool = true
 var prev_positions:Array[Vector2i]
 var curr_positions:Array[Vector2i]
-var old_positions:Array[Vector2i]
-var old_segments:Array
-var segments:Array
 var invuln_time_per_segment:float
 
 var prev_move_dir:Vector2i
@@ -27,11 +24,15 @@ var move_dir:Vector2i
 var game_board:GameBoard
 var curr_move_time:float
 
+var tweens:Array[Tween] = []
+
 var is_dead:bool = false
 var invuln_time_left:float = 0
 
 var invuln_sfx
 var not_triggered:bool = true
+
+var _INITIAL_CHILD_COUNT:int
 
 var Head : Vector2i :
 	get:
@@ -81,6 +82,10 @@ var Invulnerable:bool:
 	##
 ##
 
+func _ready():
+	_INITIAL_CHILD_COUNT = get_child_count()
+##
+
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	invuln_sfx = SoundManager.instance("snake", "invuln")
 	GlobalSignals.connect("player_died", _on_player_died)
@@ -96,16 +101,14 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	snake.points[0] = game_board.get_world_position_at(curr_positions[0])
 	snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + Vector2(-8, 0)
 	
+	tweens.push_back(get_tree().create_tween())
+	tweens.push_back(get_tree().create_tween())
+	
 	draw_snake()
 	set_process(false)
 ##
 
 func draw_snake():
-	for seg_pos in range(1, len(curr_positions)):
-		snake.points[seg_pos + 1] = game_board.get_world_position_at(curr_positions[seg_pos])
-	##
-	snake.points[0] = game_board.get_world_position_at(curr_positions[0])
-	
 	var offset:Vector2
 	if move_dir == MOVE_RIGHT:
 		offset = Vector2(-8, 0)
@@ -116,10 +119,40 @@ func draw_snake():
 	else:
 		offset = Vector2(0, -8)
 	##
-	snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + offset
+	
+	var tree = get_tree()
+	for i in range(len(curr_positions)):
+		if i == 0:
+			#snake.points[0] = game_board.get_world_position_at(curr_positions[0])
+			#snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + offset
+			if tweens[0]:
+				tweens[0].kill()
+				tweens[1].kill()
+			##
+			
+			tweens[0] = tree.create_tween()
+			tweens[0].tween_method(func(interpolate_position:Vector2) -> void:
+				snake.points[0] = interpolate_position,
+					snake.points[0], game_board.get_world_position_at(curr_positions[0]), 0.12)
+			
+			tweens[1] = tree.create_tween()
+			tweens[1].tween_method(func(interpolate_position:Vector2) -> void:
+				snake.points[1] = interpolate_position,
+					snake.points[1], game_board.get_world_position_at(curr_positions[0]) + offset, 0.12)
+		else:
+			#tweens[i + 1].kill()
+			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
+		##
+	##
+	
+	#for seg_pos in range(1, len(curr_positions)):
+		#snake.points[seg_pos + 1] = game_board.get_world_position_at(curr_positions[seg_pos])
+	##
 ##
 
 func add_segment():
+	#var next_position:Vector2i = curr_positions[-1] - curr_positions[-2]
+	
 	curr_positions.push_back(curr_positions[-1])
 	snake.add_point(game_board.get_world_position_at(curr_positions[-1]))
 	#if Invulnerable:
@@ -133,9 +166,6 @@ func start_timers():
 		$InvulnTimer.start(invuln_time_left)
 		invuln_time_left = 0
 		invuln_sfx.process_mode = PROCESS_MODE_INHERIT
-	##
-	if len(old_segments) > 0:
-		$RemoveSegmentTimer.start()
 	##
 	set_process(true)
 ##
@@ -250,12 +280,27 @@ func _on_player_died():
 	set_process(false)
 	is_dead = true
 	invuln_sfx.release()
-	old_segments = segments
+	
+	var offset:float = 0.01
+	
+	snake.remove_point(1) # get rid of point 1
+	
+	for i in range(len(curr_positions) - 1, -1, -1):
+		var seg = SEGMENT_DESPAWN.instantiate()
+		add_child(seg)
+		seg.explode()
+		seg.global_position = game_board.get_world_position_at(curr_positions[i])
+		curr_positions.remove_at(i)
+		snake.remove_point(i)
+		await get_tree().create_timer(0.1, true).timeout
+	##
+	
+	$MovementTimer.start(1)
 ##
 
 func _on_invuln_timer_timeout():
 	invuln_over.emit()
 	GlobalSignals.player_ramming.emit(false)
 	_invuln = false
-	# TODO: Turn it off
+	# TODO: Turn off UI stuff
 ##

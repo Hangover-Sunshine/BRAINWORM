@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake_segment.gd" id="2_kxqpr"]
 [ext_resource type="Texture2D" uid="uid://bgk1r1j1sl8x4" path="res://assets/pc/PC_Tilesheet.png" id="2_pddsj"]
-[ext_resource type="PackedScene" uid="uid://0twa84phpulo" path="res://prefabs/gui/gui_timer_ram.tscn" id="3_ntxs0"]
-[ext_resource type="PackedScene" uid="uid://c3rgrfn1jcjxi" path="res://prefabs/art/art_snake_face.tscn" id="4_qlcqp"]
+[ext_resource type="PackedScene" path="res://prefabs/gui/gui_timer_ram.tscn" id="3_ntxs0"]
+[ext_resource type="PackedScene" path="res://prefabs/art/art_snake_face.tscn" id="4_qlcqp"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="6_sy3ai"]
 [ext_resource type="Curve" uid="uid://dwjonasxbbcd" path="res://assets/graphs/sizefade.tres" id="7_raijf"]
 [ext_resource type="Script" path="res://prefabs/snake/FX_Splatter.gd" id="8_fen8w"]
-[ext_resource type="PackedScene" uid="uid://dorncspu2pr4g" path="res://prefabs/art_fx_sparkle.tscn" id="8_oe6h5"]
+[ext_resource type="PackedScene" path="res://prefabs/art_fx_sparkle.tscn" id="8_oe6h5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o64fk"]
 
