@@ -24,6 +24,7 @@ var move_dir:Vector2i
 var game_board:GameBoard
 var curr_move_time:float
 
+var timer_smoothing_tween:Tween
 var tweens:Array[Tween] = []
 
 var is_dead:bool = false
@@ -67,6 +68,7 @@ var Invulnerable:bool:
 		if val:
 			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
 			GlobalSignals.player_ramming.emit(true)
+			$Timer_Ram.show_label()
 			
 			for i in range(len(curr_positions) - 1, 2, -1):
 				var seg = SEGMENT_DESPAWN.instantiate()
@@ -140,9 +142,24 @@ func draw_snake():
 			tweens[1].tween_method(func(interpolate_position:Vector2) -> void:
 				snake.points[1] = interpolate_position,
 					snake.points[1], game_board.get_world_position_at(curr_positions[0]) + offset, 0.12)
+			
+			#var direction:Vector2 = snake.points[0] - snake.points[1]
 		else:
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
 		##
+	##
+	
+	var timer_final_pos:Vector2 = game_board.get_world_position_at(curr_positions[0])\
+										+ Vector2(-24, -64)
+	if $Timer_Ram.visible:
+		if timer_smoothing_tween:
+			timer_smoothing_tween.kill()
+		##
+		timer_smoothing_tween = tree.create_tween()
+		timer_smoothing_tween.tween_property($Timer_Ram, "global_position",
+			timer_final_pos, curr_move_time)
+	else:
+		$Timer_Ram.global_position = timer_final_pos
 	##
 ##
 
@@ -160,9 +177,6 @@ func add_segment():
 	
 	curr_positions.push_back(next_position)
 	snake.add_point(game_board.get_world_position_at(next_position))
-	#if Invulnerable:
-		#snake_seg.is_ramming(segments[0].get_time_in_ap())
-	##
 ##
 
 func start_timers():
@@ -247,14 +261,13 @@ func _process(_delta):
 		snake.points[0] = head
 	##
 	
-	#if Invulnerable:
-		#var time_left = "%02d" % $InvulnTimer.time_left
-		#for seg in segments:
-			#seg.update_text(time_left)
-		###
-		#if not_triggered and $InvulnTimer.time_left < 1:
-			#invuln_sfx.trigger()
-			#not_triggered = false
+	if Invulnerable:
+		var time_left = "%02d" % $InvulnTimer.time_left
+		$Timer_Ram.update_text(time_left)
+		
+		if not_triggered and $InvulnTimer.time_left < 1:
+			invuln_sfx.trigger()
+			not_triggered = false
 		##
 	##
 ##
@@ -315,5 +328,9 @@ func _on_invuln_timer_timeout():
 	invuln_over.emit()
 	GlobalSignals.player_ramming.emit(false)
 	_invuln = false
-	# TODO: Turn off UI stuff
+	$Timer_Ram.hide_label()
+##
+
+func update_text(time_left):
+	$Timer_Ram/Label_Ram.text = time_left
 ##
