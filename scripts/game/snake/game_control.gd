@@ -246,7 +246,7 @@ func check_for_enemy():
 	if gameover == false and mac != null:
 		if snake.Invulnerable:
 			$MacControl.remove(mac)
-			tissue_destroyed += 1
+			macs_killed += 1
 			SoundManager.play_varied("game", "splat", randf_range(0.8, 1.1))
 		else:
 			gameover = true
