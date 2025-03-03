@@ -38,9 +38,9 @@ func start_game():
 
 func change_percent():
 	$PercentRemaining.rotation_degrees = randf_range(-15, 15)
-	var percent_stability = floori((float($"../GameControl".jerry_health) / float($"../GameControl".BrainHealth))*100)
+	var percent_stability = floori((float($"../GameControl".jerry_health) / float($"../GameControl".max_health))*100)
 	$PercentRemaining/MarginContainer/VBoxContainer/Percent_Label.text = str(percent_stability)+"%"
-	##
+##
 
 func play_three():
 	SoundManager.play_varied("countdown", "3", randf_range(0.8, 1.1))

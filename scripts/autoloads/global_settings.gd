@@ -17,6 +17,8 @@ var ScreenEffects:bool = true
 
 var WasDisclaimed:bool = false
 var SkipCutscene:bool = false
+# 0 = beginner, 1 = mid, 2 = advanced babyyyyyy
+var DifficultyLevel:int = 0
 
 var os_type:String
 

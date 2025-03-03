@@ -19,7 +19,9 @@ static var GRID_HEIGHT_COUNT:int = 15
 @export var MaxAtATime:int = 8
 
 @export_category("Win Conditions")
+@export var EasyBrainHealth:int = 100
 @export var BrainHealth:int = 200
+@export var AdvancedBrainHealth:int = 300
 @export var CostOfNeuron:int = 2
 @export var CostOfTissue:int = 5
 
@@ -64,6 +66,7 @@ var curr_mac_timer_time:float
 
 var jumble_jerry:bool = true
 var jerry_health:int
+var max_health:int
 var threshold:int = 100
 
 var need_to_countdown:bool = false
@@ -94,7 +97,16 @@ func _ready():
 	$MacControl.super_control = self
 	$MacControl.game_board = game_board
 	
-	jerry_health = BrainHealth
+	if GlobalSettings.DifficultyLevel == 0:
+		jerry_health = EasyBrainHealth
+		max_health = EasyBrainHealth
+	elif GlobalSettings.DifficultyLevel == 1:
+		jerry_health = BrainHealth
+		max_health = BrainHealth
+	else:
+		jerry_health = AdvancedBrainHealth
+		max_health = AdvancedBrainHealth
+	##
 	
 	start_time = 0
 	set_process(false)
@@ -118,7 +130,7 @@ func _process(_delta):
 	
 	game_board.update_time(Time.get_ticks_msec() - start_time)
 	
-	threshold = floori(jerry_health / float(BrainHealth) * 100)
+	threshold = floori(jerry_health / float(max_health) * 100)
 	var timer_time = curr_mac_timer_time
 	if threshold > 50 and threshold <= 75:
 		curr_mac_timer_time = MacMovementTimeChanges[75]
@@ -191,7 +203,7 @@ func _on_player_move():
 	
 	if update_score:
 		game_board.update_score(neurons_consumed, macs_killed, tissue_destroyed)
-		game_board.update_health(floori(jerry_health / float(BrainHealth) * 100))
+		game_board.update_health(floori(jerry_health / float(max_health) * 100))
 		update_score = false
 	##
 ##
@@ -224,8 +236,9 @@ func check_for_enemy():
 		if snake.Invulnerable:
 			$TissueControl.remove_at(snake.Head)
 			tissue_destroyed += 1
+			jerry_health -= 2
 			SoundManager.play_varied("game", "tear", randf_range(0.8, 1.1))
-			
+			update_score = true
 			if jumble_jerry:
 				$JumblingJerryTimer.start()
 				GlobalSignals.player_got_damage.emit()
@@ -242,6 +255,7 @@ func check_for_enemy():
 			$MacControl.remove(mac)
 			macs_killed += 1
 			SoundManager.play_varied("game", "splat", randf_range(0.8, 1.1))
+			update_score = true
 		else:
 			gameover = true
 		##

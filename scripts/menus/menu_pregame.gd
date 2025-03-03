@@ -57,6 +57,7 @@ func _on_left_button_pressed():
 	curr_diff -= 1
 	if curr_diff < 0:
 		curr_diff = difficulty.size() - 1
+	GlobalSettings.DifficultyLevel = curr_diff
 	difficulty_label.text = difficulty[curr_diff]
 	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 ##
@@ -65,6 +66,7 @@ func _on_right_button_pressed():
 	curr_diff += 1
 	if curr_diff >= difficulty.size():
 		curr_diff = 0
+	GlobalSettings.DifficultyLevel = curr_diff
 	difficulty_label.text = difficulty[curr_diff]
 	SoundManager.play_varied("ui", "click", randf_range(0.8, 1.1))
 ##

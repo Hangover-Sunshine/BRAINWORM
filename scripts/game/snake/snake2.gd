@@ -112,6 +112,10 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 ##
 
 func draw_snake():
+	if is_dead:
+		return
+	##
+	
 	var offset:Vector2
 	if move_dir == MOVE_RIGHT:
 		offset = Vector2(-8, 0)
@@ -306,6 +310,7 @@ func _on_player_died():
 	set_process(false)
 	is_dead = true
 	invuln_sfx.release()
+	$Timer_Ram.hide_label()
 	
 	var offset:float = 0.01
 	
