@@ -8,19 +8,25 @@ const GRID_OFFSET:Vector2i = Vector2i(5,1)
 @onready var environment:TileMap = $Background/TileHolder/Environment
 @onready var change_background = $GUI/GUI_Health
 
+var difficultyBonus:int
+var difficultyFlatBonus:int
+
 func initialize_ui():
+	difficultyBonus = GlobalSettings.DifficultyLevel + 1
+	difficultyFlatBonus = 0 if GlobalSettings.DifficultyLevel == 0 else 150\
+								if GlobalSettings.DifficultyLevel == 1 else 300
 	$GUI.visible = true
 	$GUI.populate_flesh(0)
 	$GUI.populate_macs(0)
 	$GUI.populate_tissue(0)
-	$GUI.populate_score(0)
+	$GUI.populate_score(difficultyFlatBonus)
 ##
 
 func update_score(flesh:int, macs:int, tissue:int):
 	$GUI.populate_flesh(flesh)
 	$GUI.populate_macs(macs)
 	$GUI.populate_tissue(tissue)
-	$GUI.populate_score(flesh + macs * 2 + tissue * 5)
+	$GUI.populate_score((flesh * 2 + macs * 5 + tissue * 10) + difficultyFlatBonus)
 ##
 
 func update_time(milliseconds:int):
