@@ -66,6 +66,7 @@ var Invulnerable:bool:
 		_invuln = val
 		if val:
 			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
+			GlobalSignals.player_ramming.emit(true)
 			
 			for i in range(len(curr_positions) - 1, 2, -1):
 				var seg = SEGMENT_DESPAWN.instantiate()
@@ -88,7 +89,7 @@ func _ready():
 
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	invuln_sfx = SoundManager.instance("snake", "invuln")
-	#GlobalSignals.connect("player_died", _on_player_died)
+	GlobalSignals.connect("speed_up", _on_game_speed_up)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
 	move_dir = Vector2i(1, 0)
 	game_board = gb
@@ -185,6 +186,10 @@ func self_overlaps():
 	##
 	
 	return false
+##
+
+func _on_game_speed_up(new_speed:float):
+	curr_move_time = new_speed
 ##
 
 func _process(_delta):
