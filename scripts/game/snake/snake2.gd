@@ -69,6 +69,7 @@ var Invulnerable:bool:
 			$InvulnTimer.start(invuln_time_per_segment * (len(curr_positions) - 3))
 			GlobalSignals.player_ramming.emit(true)
 			$Timer_Ram.show_label()
+			not_triggered = true
 			
 			for i in range(len(curr_positions) - 1, 2, -1):
 				var seg = SEGMENT_DESPAWN.instantiate()
@@ -306,13 +307,11 @@ func _on_movement_timer_timeout():
 ##
 
 func _on_player_died():
+	is_dead = true
 	stop_timers()
 	set_process(false)
-	is_dead = true
 	invuln_sfx.release()
 	$Timer_Ram.hide_label()
-	
-	var offset:float = 0.01
 	
 	snake.remove_point(1) # get rid of point 1
 	
