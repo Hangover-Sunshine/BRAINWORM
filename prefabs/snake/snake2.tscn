@@ -2,12 +2,39 @@
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake2.gd" id="1_hknqd"]
 [ext_resource type="Texture2D" uid="uid://c4n71eb6ycmfs" path="res://assets/pc/PC_Ring_64.png" id="2_dhjen"]
-[ext_resource type="PackedScene" uid="uid://dorncspu2pr4g" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
+[ext_resource type="PackedScene" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
 [ext_resource type="PackedScene" uid="uid://c0bhu5ct6kkf" path="res://prefabs/gui/gui_timer_ram.tscn" id="4_mn7do"]
-[ext_resource type="PackedScene" uid="uid://c3rgrfn1jcjxi" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
+[ext_resource type="PackedScene" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
 
 [sub_resource type="Animation" id="Animation_xf3df"]
 resource_name = "No_Ram"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FX_Sparkle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mkjx6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,33 +90,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_mkjx6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FX_Sparkle:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4xbg"]
 _data = {
 "No_Ram": SubResource("Animation_xf3df"),
@@ -111,10 +111,11 @@ antialiased = true
 
 [node name="Ringworm" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(0, 0, -8, 0, -64, 0, -128, 0)
-width = 64.0
+points = PackedVector2Array(0, 0, -64, 0, -128, 0)
+width = 58.0
 texture = ExtResource("2_dhjen")
 texture_mode = 1
+joint_mode = 1
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
@@ -143,7 +144,7 @@ libraries = {
 [node name="FX_Sparkle" parent="." instance=ExtResource("4_11mtt")]
 
 [node name="Face" parent="." instance=ExtResource("5_45gsa")]
-rotation = -1.5708
+rotation = 4.71239
 
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]
