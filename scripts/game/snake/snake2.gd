@@ -183,6 +183,8 @@ func draw_snake():
 					snake.points[1], new_origin + offset, 0.12)
 					
 			ringworm_tweens[0] = tree.create_tween()
+			#ringworm_tweens[0].tween_property($Rings, "global_position",
+								#new_origin, 0.12)
 			ringworm_tweens[0].tween_method(func(interpolate_position:Vector2) -> void:
 				ringworm.points[0] = interpolate_position,
 					ringworm.points[0], new_origin, 0.12)
