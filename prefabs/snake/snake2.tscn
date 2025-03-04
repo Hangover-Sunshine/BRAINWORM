@@ -115,7 +115,7 @@ points = PackedVector2Array(0, 0, -64, 0, -128, 0)
 width = 58.0
 texture = ExtResource("2_dhjen")
 texture_mode = 1
-joint_mode = 1
+joint_mode = 2
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true

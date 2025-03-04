@@ -185,7 +185,7 @@ func draw_snake():
 			ringworm_tweens[0] = tree.create_tween()
 			ringworm_tweens[0].tween_method(func(interpolate_position:Vector2) -> void:
 				ringworm.points[0] = interpolate_position,
-					ringworm.points[0], new_origin, 0.08)
+					ringworm.points[0], new_origin, 0.12)
 		else:
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
 			ringworm.points[i] = game_board.get_world_position_at(curr_positions[i])
@@ -193,14 +193,14 @@ func draw_snake():
 	##
 	
 	var timer_final_pos:Vector2 = game_board.get_world_position_at(curr_positions[0])\
-										+ Vector2(-24, -64)
+										+ Vector2(-18, -64)
 	if $Timer_Ram.visible:
 		if timer_smoothing_tween:
 			timer_smoothing_tween.kill()
 		##
 		timer_smoothing_tween = tree.create_tween()
 		timer_smoothing_tween.tween_property($Timer_Ram, "global_position",
-			timer_final_pos, curr_move_time)
+			timer_final_pos, curr_move_time - 0.02)
 	else:
 		$Timer_Ram.global_position = timer_final_pos
 	##
