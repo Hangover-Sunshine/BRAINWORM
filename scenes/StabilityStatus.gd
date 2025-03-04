@@ -4,11 +4,14 @@ func _ready():
 	connect_signals()
 
 func connect_signals():
-	GlobalSignals.connect("game_is_pausing", visible_percent)
-	##GlobalSignals.connect("game_is_over?", visible_percent)
+	GlobalSignals.connect("game_is_pausing", visible_percent_pause)
+	GlobalSignals.connect("player_died", visible_percent_dead)
 
-func visible_percent(is_pausing:bool):
+func visible_percent_pause(is_pausing:bool):
 	$PercentRemaining.visible = !is_pausing
+
+func visible_percent_dead():
+	$PercentRemaining.visible = false
 
 # Trigger everytime player before goes into gameplay
 func delay_gamestart():
