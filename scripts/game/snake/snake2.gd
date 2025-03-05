@@ -188,6 +188,8 @@ func draw_snake():
 			ringworm_tweens[0].tween_method(func(interpolate_position:Vector2) -> void:
 				ringworm.points[0] = interpolate_position,
 					ringworm.points[0], new_origin, 0.12)
+			
+			$FX_Sparkle.global_position = snake.points[0]
 		else:
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
 			ringworm.points[i] = game_board.get_world_position_at(curr_positions[i])
