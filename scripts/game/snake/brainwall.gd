@@ -38,7 +38,7 @@ func initialize(base_pos):
 	inst.play_grow_animation(Rect2(64 * posOffset.x, 64 * posOffset.y, 64, 64))
 	add_child(inst)
 	
-	$SpriteCheckTimer.start(0.5 + randf_range(0.2, 0.5))
+	$SpriteCheckTimer.start(0.1 + randf_range(0.1, 0.2))
 ##
 
 func grow_wall(others:Array[Brainwall]) -> bool:
@@ -220,5 +220,5 @@ func _on_sprite_check_timer_timeout():
 	for pos in positions:
 		_update_nearby_tiles(_surrounding_tile_check(pos), pos)
 	##
-	$SpriteCheckTimer.start(0.5 + randf_range(0.2, 0.5))
+	$SpriteCheckTimer.start(0.1 + randf_range(0.1, 0.2))
 ##
