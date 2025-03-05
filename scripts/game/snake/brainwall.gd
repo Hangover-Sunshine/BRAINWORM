@@ -37,6 +37,8 @@ func initialize(base_pos):
 	var posOffset:Vector2i = TILES[0b0000]
 	inst.play_grow_animation(Rect2(64 * posOffset.x, 64 * posOffset.y, 64, 64))
 	add_child(inst)
+	
+	$SpriteCheckTimer.start(0.5 + randf_range(0.2, 0.5))
 ##
 
 func grow_wall(others:Array[Brainwall]) -> bool:
@@ -63,7 +65,7 @@ func grow_wall(others:Array[Brainwall]) -> bool:
 	inst.play_grow_animation(Rect2(64 * posOffset.x, 64 * posOffset.y, 64, 64))
 	add_child(inst)
 	
-	_update_nearby_tiles(_surrounding_tile_check(add_pos), posOffset, add_pos)
+	_update_nearby_tiles(_surrounding_tile_check(add_pos), add_pos)
 	
 	return !(max_number_growths == 0)
 ##
@@ -72,7 +74,7 @@ func remove_wall_at(pos:Vector2i):
 	var indx = positions.find(pos)
 	
 	positions[indx] = Vector2i(-1, -1)
-	_update_nearby_tiles(_surrounding_tile_check(pos), segments[indx].region_rect.position, pos)
+	_update_nearby_tiles(_surrounding_tile_check(pos), pos)
 	
 	positions.remove_at(indx)
 	segments[indx].kill()
@@ -164,7 +166,7 @@ func get_root():
 	##
 ##
 
-func _update_nearby_tiles(cardinals, posOffset:Vector2i, fold_pos:Vector2i):
+func _update_nearby_tiles(cardinals, fold_pos:Vector2i):
 	# Update local tiles
 	var next_tile_pos:Vector2i = fold_pos + Vector2i(0, -1)
 	if cardinals & 0b1000:
@@ -212,4 +214,11 @@ func _surrounding_tile_check(origin:Vector2i) -> int:
 	##
 	
 	return cardinals
+##
+
+func _on_sprite_check_timer_timeout():
+	for pos in positions:
+		_update_nearby_tiles(_surrounding_tile_check(pos), pos)
+	##
+	$SpriteCheckTimer.start(0.5 + randf_range(0.2, 0.5))
 ##
