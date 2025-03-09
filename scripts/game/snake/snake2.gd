@@ -12,7 +12,6 @@ const MOVE_LEFT:Vector2i = Vector2i(-1, 0)
 const MOVE_RIGHT:Vector2i = Vector2i(1, 0)
 
 @onready var snake = $Line2D
-@onready var ringworm = $Ringworm
 @onready var face = $Face
 
 var can_change_dir:bool = true
@@ -28,7 +27,6 @@ var curr_move_time:float
 
 var timer_smoothing_tween:Tween
 var tweens:Array[Tween] = []
-var ringworm_tweens:Array[Tween] = []
 var face_tween:Tween
 
 var is_dead:bool = false
@@ -87,10 +85,6 @@ var Invulnerable:bool:
 			for i in range(len(snake.points) - 1, 3, -1):
 				snake.remove_point(i)
 			##
-			
-			for i in range(len(ringworm.points) - 1, 2, -1):
-				ringworm.remove_point(i)
-			##
 		##
 	##
 ##
@@ -115,13 +109,8 @@ func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	face.global_position = snake.points[0]
 	snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + Vector2(-8, 0)
 	
-	for seg_pos in range(len(curr_positions)):
-		ringworm.points[seg_pos] = game_board.get_world_position_at(curr_positions[seg_pos])
-	##
-	
 	tweens.push_back(null)
 	tweens.push_back(null)
-	ringworm_tweens.push_back(null)
 	
 	draw_snake()
 	set_process(false)
@@ -146,12 +135,9 @@ func draw_snake():
 	var tree = get_tree()
 	for i in range(len(curr_positions)):
 		if i == 0:
-			#snake.points[0] = game_board.get_world_position_at(curr_positions[0])
-			#snake.points[1] = game_board.get_world_position_at(curr_positions[0]) + offset
 			if tweens[0]:
 				tweens[0].kill()
 				tweens[1].kill()
-				ringworm_tweens[0].kill()
 				face_tween.kill()
 			##
 			
@@ -181,18 +167,10 @@ func draw_snake():
 			tweens[1].tween_method(func(interpolate_position:Vector2) -> void:
 				snake.points[1] = interpolate_position,
 					snake.points[1], new_origin + offset, 0.12)
-					
-			ringworm_tweens[0] = tree.create_tween()
-			#ringworm_tweens[0].tween_property($Rings, "global_position",
-								#new_origin, 0.12)
-			ringworm_tweens[0].tween_method(func(interpolate_position:Vector2) -> void:
-				ringworm.points[0] = interpolate_position,
-					ringworm.points[0], new_origin, 0.12)
 			
 			$FX_Sparkle.global_position = snake.points[0]
 		else:
 			snake.points[i + 1] = game_board.get_world_position_at(curr_positions[i])
-			ringworm.points[i] = game_board.get_world_position_at(curr_positions[i])
 		##
 	##
 	
@@ -224,7 +202,6 @@ func add_segment():
 	
 	curr_positions.push_back(next_position)
 	snake.add_point(game_board.get_world_position_at(next_position))
-	ringworm.add_point(game_board.get_world_position_at(next_position))
 ##
 
 func start_timers():
@@ -366,7 +343,6 @@ func _on_player_died():
 		seg.global_position = game_board.get_world_position_at(curr_positions[i])
 		curr_positions.remove_at(i)
 		snake.remove_point(i)
-		ringworm.remove_point(i)
 		if i == 0:
 			face.visible = false
 		##

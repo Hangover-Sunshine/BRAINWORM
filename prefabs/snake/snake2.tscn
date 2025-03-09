@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1c3csrtfqabx"]
+[gd_scene load_steps=9 format=3 uid="uid://c1c3csrtfqabx"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake2.gd" id="1_hknqd"]
-[ext_resource type="Texture2D" uid="uid://c4n71eb6ycmfs" path="res://assets/pc/PC_Ring_64.png" id="2_dhjen"]
 [ext_resource type="PackedScene" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
 [ext_resource type="PackedScene" uid="uid://c0bhu5ct6kkf" path="res://prefabs/gui/gui_timer_ram.tscn" id="4_mn7do"]
 [ext_resource type="PackedScene" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
@@ -108,26 +107,6 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
-
-[node name="Ringworm" type="Line2D" parent="."]
-texture_repeat = 2
-points = PackedVector2Array(0, 0, -64, 0, -128, 0)
-width = 58.0
-texture = ExtResource("2_dhjen")
-texture_mode = 1
-joint_mode = 2
-round_precision = 16
-
-[node name="Rings" type="Node2D" parent="."]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Rings"]
-texture = ExtResource("2_dhjen")
-offset = Vector2(-32, 0)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Rings"]
-texture = ExtResource("2_dhjen")
-offset = Vector2(-96, 0)
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
