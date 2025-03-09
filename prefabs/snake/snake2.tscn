@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1c3csrtfqabx"]
 
 [ext_resource type="Script" path="res://scripts/game/snake/snake2.gd" id="1_hknqd"]
-[ext_resource type="PackedScene" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
+[ext_resource type="PackedScene" uid="uid://dorncspu2pr4g" path="res://prefabs/art_fx_sparkle.tscn" id="4_11mtt"]
 [ext_resource type="PackedScene" uid="uid://c0bhu5ct6kkf" path="res://prefabs/gui/gui_timer_ram.tscn" id="4_mn7do"]
-[ext_resource type="PackedScene" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
+[ext_resource type="PackedScene" uid="uid://c3rgrfn1jcjxi" path="res://prefabs/art/art_snake_face.tscn" id="5_45gsa"]
 
 [sub_resource type="Animation" id="Animation_xf3df"]
 resource_name = "No_Ram"
@@ -115,7 +115,6 @@ one_shot = true
 one_shot = true
 
 [node name="Timer_Ram" parent="." instance=ExtResource("4_mn7do")]
-visible = true
 anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
