@@ -92,12 +92,21 @@ func _on_leave_button_pressed():
 func _on_recv_game_scores(neurons:int, macs:int, tissue:int, time:int):
 	var score:int = neurons * 2 + macs * 5 + tissue * 10
 	
-	# NOTE: Magic number -- 2 minutes or 120,000 ms
-	var past_time_lose_bonus:int = 2 * 60 * 1000
+	# NOTE: Magic number
+	var past_time_lose_bonus:int
+	
+	if GlobalSettings.DifficultyLevel == 0:
+		past_time_lose_bonus = 2 * 60 * 1000
+	elif GlobalSettings.DifficultyLevel == 1:
+		past_time_lose_bonus = 2.5 * 60 * 1000
+	else:
+		past_time_lose_bonus = 3.5 * 60 * 1000
+	##
+	
 	var time_modifier = past_time_lose_bonus / time
 	var difficultyBonus = GlobalSettings.DifficultyLevel + 1
-	var difficultyFlatBonus = 0 if GlobalSettings.DifficultyLevel == 0 else 150\
-								if GlobalSettings.DifficultyLevel == 1 else 300
+	var difficultyFlatBonus = 0 if GlobalSettings.DifficultyLevel == 0 else 200\
+								if GlobalSettings.DifficultyLevel == 1 else 500
 	
 	if background.visible:
 		score += 10000 * time_modifier

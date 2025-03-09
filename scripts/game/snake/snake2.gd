@@ -95,7 +95,6 @@ func _ready():
 
 func initialize(gb:GameBoard, start_position:Vector2i, start_time_timer:float):
 	invuln_sfx = SoundManager.instance("snake", "invuln")
-	GlobalSignals.connect("speed_up", _on_game_speed_up)
 	curr_positions = [start_position, start_position - Vector2i(1, 0), start_position - Vector2i(2, 0)]
 	move_dir = Vector2i(1, 0)
 	game_board = gb
