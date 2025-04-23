@@ -5,12 +5,13 @@ signal pregame_to_main
 
 @onready var difficulty_label = $Pregame_MC/Pregame_VBox/Button_HBox/Button_PG_VBox/PG_HBox/ExtraButtons_VBox/HBox_PG2/Difficulty_Label
 @onready var difficulty : Array = ["Beginner","Novice","Expert"]
-@onready var curr_diff = 0
+@onready var curr_diff = 1
 
 @onready var ap_pg = $AP_Pics
 @onready var pg = 1
 
 func _ready():
+	GlobalSettings.DifficultyLevel = curr_diff
 	difficulty_label.text = difficulty[curr_diff]
 
 func _on_tutorial_button_pressed():
